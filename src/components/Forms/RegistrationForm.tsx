@@ -31,7 +31,7 @@ const tailFormItemLayout = {
 };
 
 const FormCustom = styled(Form)`
-    width: 35%;
+   min-width: 35%;
 `
 
 const RegistrationForm = () => {
