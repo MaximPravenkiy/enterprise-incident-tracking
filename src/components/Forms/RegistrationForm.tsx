@@ -3,8 +3,10 @@ import {
     Form,
     Input,
     Button,
+    DatePicker,
 } from 'antd';
 import styled from 'styled-components';
+import {useDispatch, useSelector} from "react-redux";
 
 const formItemLayout = {
     labelCol: {
@@ -30,16 +32,28 @@ const tailFormItemLayout = {
     },
 };
 
+const config = {
+    rules: [{ type: 'object' as const, required: true, message: 'Please select your Date of birth!' }],
+};
+
 const FormCustom = styled(Form)`
    min-width: 35%;
 `
 
 const RegistrationForm = () => {
     const [form] = Form.useForm();
+    const {login, password, dateOfBirth, position}: any = useSelector(({registrationReducer}: any) => registrationReducer);
+    const dispatch = useDispatch();
+
+    // console.log(login, password)
 
     const onFinish = (values: any) => {
         console.log('Received values of form: ', values);
     };
+
+    const update = (changedFields: any, allFields: any) => {
+        console.log(changedFields[0].value, allFields)
+    }
 
     return (
         <FormCustom
@@ -47,24 +61,18 @@ const RegistrationForm = () => {
             form={form}
             name="register"
             onFinish={onFinish}
-            initialValues={{
-                residence: ['zhejiang', 'hangzhou', 'xihu'],
-                prefix: '86',
-            }}
             scrollToFirstError
+            onFieldsChange={update}
         >
+
             <Form.Item
-                name="email"
-                label="E-mail"
+                label="Login"
+                name="login"
                 rules={[
                     {
-                        type: 'email',
-                        message: 'The input is not valid E-mail!',
-                    },
-                    {
                         required: true,
-                        message: 'Please input your E-mail!',
-                    },
+                        message: 'Please input your Login!'
+                    }
                 ]}
             >
                 <Input />
@@ -78,40 +86,32 @@ const RegistrationForm = () => {
                         required: true,
                         message: 'Please input your password!',
                     },
+                    {
+                        min: 6,
+                        message: 'Password must be at least 6 characters long!'
+                    }
                 ]}
-                hasFeedback
             >
                 <Input.Password />
             </Form.Item>
 
             <Form.Item
-                name="confirm"
-                label="Confirm Password"
-                dependencies={['password']}
-                hasFeedback
+                name="date-picker"
+                label="Date of birth"
+                {...config}
+            >
+                <DatePicker />
+            </Form.Item>
+
+            <Form.Item
+                label="Position"
+                name="position"
                 rules={[
                     {
                         required: true,
-                        message: 'Please confirm your password!',
-                    },
-                    ({ getFieldValue }) => ({
-                        validator(_, value) {
-                            if (!value || getFieldValue('password') === value) {
-                                return Promise.resolve();
-                            }
-                            return Promise.reject(new Error('The two passwords that you entered do not match!'));
-                        },
-                    }),
+                        message: 'Please input your Date of birth!',
+                    }
                 ]}
-            >
-                <Input.Password />
-            </Form.Item>
-
-            <Form.Item
-                name="nickname"
-                label="Nickname"
-                tooltip="What do you want others to call you?"
-                rules={[{ required: true, message: 'Please input your nickname!', whitespace: true }]}
             >
                 <Input />
             </Form.Item>
