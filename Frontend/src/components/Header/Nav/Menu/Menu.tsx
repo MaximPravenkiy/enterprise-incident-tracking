@@ -10,7 +10,7 @@ const MenuCustom = styled(Menu)`
 `
 
 const navContent = [
-    {text: 'Вход', url: 'authentication'},
+    {text: 'Вход', url: 'login'},
     {text: 'Регистрация', url: 'registration'}
 ];
 
