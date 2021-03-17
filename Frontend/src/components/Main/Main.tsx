@@ -3,7 +3,7 @@ import {RegistrationForm} from "../Forms/RegistrationForm";
 import {LoginForm} from "../Forms/LoginForm";
 import styled from "styled-components";
 import {Layout} from "antd";
-import {Route, Switch } from 'react-router-dom';
+import {Redirect, Route, Switch } from 'react-router-dom';
 
 const Content = styled(Layout.Content)`
     height: 70vh;
@@ -16,8 +16,9 @@ const Main = () => {
     return (
         <Content>
             <Switch>
-                <Route exact path='/authentication' component={LoginForm}/>
+                <Route exact path='/login' component={LoginForm}/>
                 <Route exact path='/registration' component={RegistrationForm}/>
+                <Redirect to="/login"/>
             </Switch>
         </Content>
     );

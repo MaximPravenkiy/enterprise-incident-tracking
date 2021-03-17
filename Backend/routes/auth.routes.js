@@ -9,7 +9,8 @@ const router = Router();
 router.post(
     '/registration',
     [
-        check('login', 'Некорректный login'),
+        check('login', 'Некорректный login')
+            .isLength({min: 4}),
         check('password', 'Минимальная длина пароля 6 символов')
             .isLength({min: 6})
     ],
@@ -24,7 +25,7 @@ router.post(
                 })
             }
 
-            const {login, password} = req.body;
+            const {login, password, dateOfBirth, position} = req.body;
             const candidate = await User.findOne({login});
 
             if (candidate) {
@@ -32,7 +33,12 @@ router.post(
             }
 
             const hashedPassword = await bcrypt.hash(password, 12);
-            const user = new User({login, password: hashedPassword});
+            const user = new User({
+                login,
+                password: hashedPassword,
+                dateOfBirth,
+                position
+            });
 
             await user.save();
 
@@ -45,7 +51,8 @@ router.post(
 router.post(
     '/login',
     [
-        check('login', 'Введите корректный login'),
+        check('login', 'Введите корректный login')
+            .isLength({min: 4}),
         check('password', 'Минимальная длина пароля 6 символов')
             .isLength({min: 6})
     ],
@@ -64,7 +71,7 @@ router.post(
             const user = await User.findOne({login});
 
             if (!user) {
-                return res.status(400).json({message: 'Пользовательне найден'});
+                return res.status(400).json({message: 'Пользователь не найден'});
             }
 
             const isMatch = await bcrypt.compare(password, user.password);

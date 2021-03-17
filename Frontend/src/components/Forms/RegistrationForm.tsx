@@ -7,6 +7,7 @@ import {
 } from 'antd';
 import styled from 'styled-components';
 import {useDispatch, useSelector} from "react-redux";
+import axios from 'axios';
 
 const formItemLayout = {
     labelCol: {
@@ -45,14 +46,21 @@ const RegistrationForm = () => {
     const {login, password, dateOfBirth, position}: any = useSelector(({registrationReducer}: any) => registrationReducer);
     const dispatch = useDispatch();
 
-    // console.log(login, password)
-
-    const onFinish = (values: any) => {
+    const onRegisterNewUser = async (values: any) => {
         console.log('Received values of form: ', values);
+        try {
+            const response = await axios.post(
+                '/registration',
+                values
+            );
+            console.log(response)
+        } catch (e) {
+            console.log(e.response.data.message)
+        }
     };
 
     const update = (changedFields: any, allFields: any) => {
-        console.log(changedFields[0].value, allFields)
+        // console.log(changedFields[0].value, allFields)
     }
 
     return (
@@ -60,7 +68,7 @@ const RegistrationForm = () => {
             {...formItemLayout}
             form={form}
             name="register"
-            onFinish={onFinish}
+            onFinish={onRegisterNewUser}
             scrollToFirstError
             onFieldsChange={update}
         >
@@ -96,7 +104,7 @@ const RegistrationForm = () => {
             </Form.Item>
 
             <Form.Item
-                name="date-picker"
+                name="dateOfBirth"
                 label="Date of birth"
                 {...config}
             >

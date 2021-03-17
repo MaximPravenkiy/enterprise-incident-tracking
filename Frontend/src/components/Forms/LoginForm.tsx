@@ -1,9 +1,19 @@
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import axios from "axios";
 
 const LoginForm = () => {
-    const onFinish = (values: any) => {
+    const onFinish = async (values: any) => {
         console.log('Received values of form: ', values);
+        try {
+            const response = await axios.post(
+                '/login',
+                values
+            );
+            console.log(response)
+        } catch (e) {
+            console.log(e.response.data.message)
+        }
     };
 
     return (
@@ -14,7 +24,7 @@ const LoginForm = () => {
             onFinish={onFinish}
         >
             <Form.Item
-                name="username"
+                name="login"
                 rules={[{ required: true, message: 'Please input your Username!' }]}
             >
                 <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />

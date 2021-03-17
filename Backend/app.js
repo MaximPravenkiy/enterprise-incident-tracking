@@ -4,6 +4,7 @@ const config = require('config');
 const mongoose = require('mongoose');
 const PORT = config.get('port') || 5000;
 
+app.use(express.json({extened: true}));
 app.use('/', require('./routes/auth.routes'));
 
 async function start() {
