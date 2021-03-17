@@ -6,7 +6,7 @@ import {
     DatePicker,
 } from 'antd';
 import styled from 'styled-components';
-import {useDispatch, useSelector} from "react-redux";
+// import {useDispatch, useSelector} from "react-redux";
 import axios from 'axios';
 
 const formItemLayout = {
@@ -43,8 +43,8 @@ const FormCustom = styled(Form)`
 
 const RegistrationForm = () => {
     const [form] = Form.useForm();
-    const {login, password, dateOfBirth, position}: any = useSelector(({registrationReducer}: any) => registrationReducer);
-    const dispatch = useDispatch();
+    // const {login, password, dateOfBirth, position}: any = useSelector(({registrationReducer}: any) => registrationReducer);
+    // const dispatch = useDispatch();
 
     const onRegisterNewUser = async (values: any) => {
         console.log('Received values of form: ', values);

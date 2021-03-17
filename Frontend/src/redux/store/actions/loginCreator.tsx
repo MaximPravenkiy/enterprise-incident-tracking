@@ -1,12 +1,17 @@
-import {LOGIN} from "./actionTypes";
+import {LOGIN, LOGOUT} from "./actionTypes";
 
-function login() {
+function login(userData: any) {
     return {
-        type: LOGIN
+        type: LOGIN,
+        userData
     }
 }
 
-export {
-    login
+function logout() {
+    return {
+        type: LOGOUT
+    }
 }
+
+export {login, logout};
 

@@ -1,8 +1,9 @@
 const LOGIN = 'LOGIN';
 const REGISTRATION = 'REGISTRATION';
+const LOGOUT = 'LOGOUT';
 
 export {
     LOGIN,
     REGISTRATION,
-
+    LOGOUT,
 }
