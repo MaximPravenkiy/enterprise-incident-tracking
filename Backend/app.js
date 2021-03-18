@@ -6,6 +6,7 @@ const PORT = config.get('port') || 5000;
 
 app.use(express.json({extened: true}));
 app.use('/', require('./routes/auth.routes'));
+app.use('/incidents', require('./routes/incidents.routes'));
 
 async function start() {
     try {

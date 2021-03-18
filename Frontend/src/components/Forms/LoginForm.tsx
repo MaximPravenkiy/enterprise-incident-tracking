@@ -15,7 +15,6 @@ const LoginForm = () => {
                 '/login',
                 values
             );
-            console.log(response)
 
             dispatch(login(response.data));
             localStorage.setItem('userData', JSON.stringify(response.data));

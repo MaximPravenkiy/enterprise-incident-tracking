@@ -1,4 +1,4 @@
-import {GET_INCIDENTS} from "./actionTypes";
+import {CHANGE_ASSIGNEE_USER_ID, GET_INCIDENTS, GET_USERS} from "./actionTypes";
 
 function getIncidents() {
     return {
@@ -6,4 +6,18 @@ function getIncidents() {
     }
 }
 
-export {getIncidents};
+function getUsers(users: any) {
+    return {
+        type: GET_USERS,
+        users
+    }
+}
+
+function changeAssigneeUserId(assigneeUserId: any) {
+    return {
+        type: CHANGE_ASSIGNEE_USER_ID,
+        assigneeUserId
+    }
+}
+
+export {getIncidents, getUsers, changeAssigneeUserId};

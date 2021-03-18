@@ -11,9 +11,9 @@ function App() {
     const dispatch = useDispatch();
     useEffect(() => {
         const data = localStorage.getItem('userData');
+
         if (data) {
-            dispatch(login(data));
-            console.log(JSON.parse(data))
+            dispatch(login(JSON.parse(data)));
         }
     });
 

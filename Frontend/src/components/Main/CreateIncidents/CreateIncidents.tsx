@@ -1,13 +1,19 @@
 import React from 'react';
 import { Form, Input, Button, Select, DatePicker } from 'antd';
-import { FormInstance } from 'antd/lib/form';
+// import { FormInstance } from 'antd/lib/form';
+import axios from "axios";
+import {useDispatch, useSelector} from "react-redux";
+import PriorityLabel from "./PriorityLabel/PriorityLabel";
+import { NavLink } from 'react-router-dom';
+import {changeAssigneeUserId} from "../../../redux/store/actions/incidentsCreator";
 
-const { Option } = Select;
+// const { Option } = Select;
 
 const layout = {
     labelCol: { span: 8 },
     wrapperCol: { span: 16 },
 };
+
 const tailLayout = {
     wrapperCol: { offset: 8, span: 16 },
 };
@@ -20,7 +26,7 @@ const config = {
 
 const CreateIncidents = () => {
 
-    const onGenderChange = (value: string) => {
+    // const onGenderChange = (value: string) => {
         // switch (value) {
         //     case 'male':
         //         this.formRef.current!.setFieldsValue({ note: 'Hi, man!' });
@@ -31,22 +37,19 @@ const CreateIncidents = () => {
         //     case 'other':
         //         this.formRef.current!.setFieldsValue({ note: 'Hi there!' });
         // }
-    };
+    // };
 
-    const onFinish = (values: any) => {
-        console.log(values);
-    };
 
-    const onReset = () => {
+    // const onReset = () => {
         // formRef.current!.resetFields();
-    };
+    // };
 
-    const onFill = () => {
+    // const onFill = () => {
         // this.formRef.current!.setFieldsValue({
         //     note: 'Hello world!',
         //     gender: 'male',
         // });
-    };
+    // };
 
     //// ДЛЯ СЕЛЕКШОНОВ
 
@@ -59,14 +62,15 @@ const CreateIncidents = () => {
     ];
 
     const priority = [
-        { label: 'Blocker', value: 'Blocker' },
-        { label: 'Critical', value: 'Critical' },
-        { label: 'Major', value: 'Major' },
-        { label: 'Normal', value: 'Normal' },
-        { label: 'Minor', value: 'Minor' },
+        { label: <PriorityLabel color='red' text='Blocker'/>, value: 'Blocker' },
+        { label: <PriorityLabel color='orange' text='Critical'/>, value: 'Critical' },
+        { label: <PriorityLabel color='yellow' text='Major'/>, value: 'Major' },
+        { label: <PriorityLabel color='green' text='Normal'/>, value: 'Normal' },
+        { label: <PriorityLabel color='grey' text='Minor'/>, value: 'Minor' },
     ];
 
     const status = [
+        { label: 'Зарегистрирован', value: 'Зарегистрирован' },
         { label: 'Открыт', value: 'Открыт' },
         { label: 'В работе', value: 'В работе' },
         { label: 'Необходима доп. информация', value: 'Необходима доп. информация' },
@@ -78,8 +82,42 @@ const CreateIncidents = () => {
         { label: 'Переоткрыто', value: 'Переоткрыто' },
     ];
 
+    const {users, assigneeUserId} = useSelector(({incidentsReducer}: any) => incidentsReducer);
+    const dispatch = useDispatch();
+
     const handleChange = () => {
-        // form.setFieldsValue({ sights: [] });
+
+    };
+
+    ///// ЗАПРОСЫ
+
+    /// Получить  user id
+
+    const getUserId = (...args: any[]) => {
+        dispatch(changeAssigneeUserId(args[1].id));
+    };
+
+    /// Получить инцидент
+
+    const getIncidents = async () => {
+        try {
+            const response = await axios.get('/incidents');
+            console.log(response)
+        } catch (e) {
+            console.log(e)
+        }
+    };
+
+    //// Создать incident
+
+    const onFinish = async (values: any) => {
+        values.owner = assigneeUserId;
+        try {
+            const response = await axios.post('/incidents/create-incident', values);
+            console.log(response.data.message)
+        } catch (e) {
+            console.log(e)
+        }
     };
 
     return (
@@ -90,23 +128,34 @@ const CreateIncidents = () => {
             onFinish={onFinish}
         >
 
-            <Form.Item name="incident-name" label="Incident Name" rules={[{ required: true }]}>
+            <NavLink to='/incidents'>
+                <Button
+                    type="primary"
+                    shape="circle"
+                    danger
+                    onClick={getIncidents}
+                >
+                    X
+                </Button>
+            </NavLink>
+
+            <Form.Item name="incidentName" label="Incident Name" rules={[{ required: true }]}>
                 <Input />
             </Form.Item>
 
             <Form.Item name="assignee" label="Assignee">
-                <Input />
+                <Select options={users} onChange={getUserId} />
             </Form.Item>
 
             <Form.Item name="area" label="Area" rules={[{ required: true, message: 'Missing area' }]}>
                 <Select options={areas} onChange={handleChange} />
             </Form.Item>
 
-            <Form.Item name="start-date" label="Start date" {...config}>
+            <Form.Item name="startDate" label="Start date" {...config}>
                 <DatePicker />
             </Form.Item>
 
-            <Form.Item name="due-date" label="Due Date" {...config}>
+            <Form.Item name="dueDate" label="Due Date" {...config}>
                 <DatePicker />
             </Form.Item>
 
@@ -124,13 +173,12 @@ const CreateIncidents = () => {
 
             <Form.Item {...tailLayout}>
 
-                <Button type="primary" htmlType="submit">
+                <Button
+                    type="primary"
+                    htmlType="submit"
+                >
                     Подтвердить
                 </Button>
-
-                {/*<Button htmlType="button" onClick={onReset}>*/}
-                {/*    Очистить*/}
-                {/*</Button>*/}
 
             </Form.Item>
         </Form>

@@ -21,7 +21,7 @@ const Main = () => {
     const routes = isAuth ? (
             <Switch>
                 <Route exact path='/incidents' component={Incidents}/>
-                <Route exact path='/create-incident' component={CreateIncidents}/>
+                <Route exact path='/incidents/create-incident' component={CreateIncidents}/>
                 <Redirect to="/incidents"/>
             </Switch>
         ) :
