@@ -1,9 +1,11 @@
 const LOGIN = 'LOGIN';
 const REGISTRATION = 'REGISTRATION';
 const LOGOUT = 'LOGOUT';
+const GET_INCIDENTS = 'GET_INCIDENTS'
 
 export {
     LOGIN,
     REGISTRATION,
     LOGOUT,
+    GET_INCIDENTS,
 }

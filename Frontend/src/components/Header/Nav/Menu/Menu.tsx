@@ -6,6 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import { IdcardOutlined, SnippetsOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import {logout} from "../../../../redux/store/actions/loginCreator";
+import {DownloadOutlined} from "@ant-design/icons/lib";
 
 const MenuCustom = styled(Menu)`
     display: flex;
@@ -34,6 +35,9 @@ const NavMenu = () => {
             <React.Fragment>
                 <SnippetsOutlined />
                 <IdcardOutlined />
+                <Button type="primary" shape="round" icon={<DownloadOutlined />} size="large">
+                    Создать новый инцидент
+                </Button>
                 <Button danger ghost onClick={onLogout}>Logout</Button>
             </React.Fragment>
         ) :

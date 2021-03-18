@@ -10,6 +10,7 @@ import Incidents from "./Incidents/Incidents";
 const Content = styled(Layout.Content)`
     height: 70vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 `
