@@ -1,3 +1,4 @@
+import React from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import axios from "axios";
@@ -30,12 +31,14 @@ const LoginForm = () => {
             initialValues={{ remember: true }}
             onFinish={onFinish}
         >
+
             <Form.Item
                 name="login"
                 rules={[{ required: true, message: 'Please input your Username!' }]}
             >
                 <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
             </Form.Item>
+
             <Form.Item
                 name="password"
                 rules={[{ required: true, message: 'Please input your Password!' }]}

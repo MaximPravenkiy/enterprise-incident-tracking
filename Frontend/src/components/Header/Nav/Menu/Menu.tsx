@@ -6,11 +6,13 @@ import {useDispatch, useSelector} from "react-redux";
 import { IdcardOutlined, SnippetsOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import {logout} from "../../../../redux/store/actions/loginCreator";
-import {DownloadOutlined} from "@ant-design/icons/lib";
+import {ScheduleOutlined} from "@ant-design/icons/lib";
+import { NavLink } from 'react-router-dom';
 
 const MenuCustom = styled(Menu)`
     display: flex;
     justify-content: center;
+    // align-items: center;
     height: 100%;
 `
 
@@ -19,7 +21,11 @@ const navContent = [
     {text: 'Регистрация', url: 'registration'}
 ];
 
-
+const CreateNewIncBut = styled(Button)`
+    display: flex;
+    align-items: center;
+    height: 60%;
+`
 
 const NavMenu = () => {
     const dispatch = useDispatch();
@@ -33,11 +39,20 @@ const NavMenu = () => {
     const menuItems = isAuth ?
         (
             <React.Fragment>
-                <SnippetsOutlined />
-                <IdcardOutlined />
-                <Button type="primary" shape="round" icon={<DownloadOutlined />} size="large">
-                    Создать новый инцидент
-                </Button>
+                <div>
+                    <SnippetsOutlined />
+                    INCIDENT TRACKING
+                    <IdcardOutlined />
+                </div>
+                <NavLink to='/create-incident'>
+                    <CreateNewIncBut
+                        type="primary"
+                        shape="round"
+                        icon={<ScheduleOutlined />}
+                    >
+                        Создать новый инцидент
+                    </CreateNewIncBut>
+                </NavLink>
                 <Button danger ghost onClick={onLogout}>Logout</Button>
             </React.Fragment>
         ) :

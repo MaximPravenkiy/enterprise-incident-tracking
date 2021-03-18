@@ -25,7 +25,7 @@ router.post(
                 })
             }
 
-            const {login, password, dateOfBirth, position} = req.body;
+            const {login, password, dateOfBirth, position, fullname} = req.body;
             const candidate = await User.findOne({login});
 
             if (candidate) {
@@ -34,6 +34,7 @@ router.post(
 
             const hashedPassword = await bcrypt.hash(password, 12);
             const user = new User({
+                fullname,
                 login,
                 password: hashedPassword,
                 dateOfBirth,
@@ -42,9 +43,9 @@ router.post(
 
             await user.save();
 
-            res.status(201).json({message: 'Регистрация прошла успешно!'})
+            return res.status(201).json({message: 'Регистрация прошла успешно!'})
         } catch (e) {
-            res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
+            return res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
         }
     });
 

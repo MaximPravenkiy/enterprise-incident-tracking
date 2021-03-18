@@ -72,7 +72,13 @@ const RegistrationForm = () => {
             scrollToFirstError
             onFieldsChange={update}
         >
-
+            <Form.Item
+                label="Full Name"
+                name="fullname"
+                rules={[{ required: true, message: 'Please input your Full Name!' }]}
+            >
+                <Input />
+            </Form.Item>
             <Form.Item
                 label="Login"
                 name="login"

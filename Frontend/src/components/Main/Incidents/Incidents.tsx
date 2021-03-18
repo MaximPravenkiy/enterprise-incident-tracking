@@ -1,5 +1,4 @@
-import { List, Button } from 'antd';
-import { Row, Col } from 'antd';
+import {List, Button} from 'antd';
 import React from 'react';
 import {WarningOutlined} from "@ant-design/icons/lib";
 import {useSelector} from "react-redux";
@@ -19,7 +18,7 @@ const Item = styled(List.Item)`
 `
 
 const Incidents = () => {
-    const { initLoading, loading, list } = useSelector(({incidentsReducer}: any) => incidentsReducer);
+    const {initLoading, loading, list} = useSelector(({incidentsReducer}: any) => incidentsReducer);
     const loadMore =
         !initLoading && !loading ? (
             <div
@@ -30,7 +29,8 @@ const Incidents = () => {
                     lineHeight: '32px',
                 }}
             >
-                <Button onClick={ () => {} }>loading more</Button>
+                <Button onClick={() => {
+                }}>loading more</Button>
             </div>
         ) : null;
 
@@ -50,20 +50,17 @@ const Incidents = () => {
                             <a href="#top" key="list-loadmore-more">Delete</a>
                         ]}
                     >
-                        <Row>
-
-                            <Col flex={1}>
-                                <WarningOutlined style={{ color: 'red' }} />
-                            </Col>
-                            <Col flex={7}>Название инцидента</Col>
-                            <Col flex={7}>Описание инцидента</Col>
-                            <Col flex={3}>Assignee Assignee</Col>
-                            <Col flex={3}>Area (откуда)</Col>
-                            <Col flex={2}>Start Date</Col>
-                            <Col flex={2}>Due Date</Col>
-                            <Col flex={2}>Priority</Col>
-                            <Col flex={2}>Status</Col>
-                        </Row>
+                        <div>
+                            <WarningOutlined style={{color: 'red'}}/>
+                        </div>
+                        <div>Название инцидента</div>
+                        <div>Описание инцидента</div>
+                        <div>Assignee Assignee</div>
+                        <div>Area (откуда)</div>
+                        <div>Start Date</div>
+                        <div>Due Date</div>
+                        <div>Priority</div>
+                        <div>Status</div>
                     </Item>
                 )}
             />
