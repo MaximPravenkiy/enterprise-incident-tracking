@@ -38,9 +38,8 @@ router.get(
     auth,
     async (req, res) => {
         try {
-            console.log(req.user.id)
-            const incidents = await Incident.find({owner: null});
-            console.log()
+            const incidents = await Incident.find({owner: req.user.userId});
+
             res.json(incidents);
         } catch (e) {
             return res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})

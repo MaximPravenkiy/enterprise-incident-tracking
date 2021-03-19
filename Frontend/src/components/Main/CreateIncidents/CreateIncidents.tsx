@@ -101,8 +101,15 @@ const CreateIncidents = () => {
 
     const getIncidents = async () => {
         try {
-            const response = await axios.get('/incidents');
-            console.log(response)
+            const data = localStorage.getItem('userData');
+            if (!data) return;
+            const token = JSON.parse(data).token;
+            const response = await axios.get(
+                '/incidents',
+            {headers: {Authorization: "Bearer " + token}}
+            );
+
+            console.log(response.data)
         } catch (e) {
             console.log(e)
         }
