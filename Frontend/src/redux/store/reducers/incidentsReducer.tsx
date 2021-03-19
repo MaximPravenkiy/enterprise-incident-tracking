@@ -1,4 +1,4 @@
-import {CHANGE_ASSIGNEE_USER_ID, GET_USERS, SET_INCIDENTS} from '../actions/actionTypes';
+import {CHANGE_ASSIGNEE_USER_ID, SET_INCIDENTS, SET_USERS} from '../actions/actionTypes';
 
 const initialState = {
     initLoading: false,
@@ -15,7 +15,7 @@ function incidentsReducer(state = initialState, action: any) {
                 ...state,
                 listOfIncidents: action.listOfIncidents
             };
-        case GET_USERS:
+        case SET_USERS:
             return {
                 ...state,
                 users: action.users

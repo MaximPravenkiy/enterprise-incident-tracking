@@ -7,7 +7,8 @@ import {
 } from 'antd';
 import styled from 'styled-components';
 // import {useDispatch, useSelector} from "react-redux";
-import axios from 'axios';
+import {useDispatch} from "react-redux";
+import {postRegistration} from "../../redux/store/actions/registrationCreator";
 
 const formItemLayout = {
     labelCol: {
@@ -43,20 +44,22 @@ const FormCustom = styled(Form)`
 
 const RegistrationForm = () => {
     const [form] = Form.useForm();
+    const dispatch = useDispatch();
     // const {login, password, dateOfBirth, position}: any = useSelector(({registrationReducer}: any) => registrationReducer);
     // const dispatch = useDispatch();
 
     const onRegisterNewUser = async (values: any) => {
         console.log('Received values of form: ', values);
-        try {
-            const response = await axios.post(
-                '/registration',
-                values
-            );
-            console.log(response)
-        } catch (e) {
-            console.log(e.response.data.message)
-        }
+        // try {
+        //     const response = await axios.post(
+        //         '/registration',
+        //         values
+        //     );
+        //     console.log(response)
+        // } catch (e) {
+        //     console.log(e.response.data.message)
+        // }
+        dispatch(postRegistration(values));
     };
 
     const update = (changedFields: any, allFields: any) => {

@@ -9,7 +9,6 @@ import { Button } from 'antd';
 import {logout} from "../../../../redux/store/actions/loginCreator";
 import {ScheduleOutlined} from "@ant-design/icons/lib";
 import { NavLink } from 'react-router-dom';
-import axios from 'axios';
 import {getUsers} from "../../../../redux/store/actions/incidentsCreator";
 
 const Text = styled(Typography.Text)`
@@ -44,23 +43,6 @@ const NavMenu = () => {
         dispatch(logout());
     }
 
-    ///// Получить юзеров для Assignee
-
-    const onGetUsers = async () => {
-        try {
-            const userData = localStorage.getItem('userData');
-            if (!userData) return;
-
-            const response = await axios.get('/incidents/create-incident');
-            const users = response.data.map((item: any) => ({label: item.fullname, value: item.fullname, id: item._id}));
-            console.log(users);
-
-            dispatch(getUsers(users));
-        } catch (e) {
-            console.log(e.response.data.message);
-        }
-    }
-
     /// Отображение меню в зависимости от аутентификации
 
     const menuItems = isAuth ?
@@ -76,7 +58,7 @@ const NavMenu = () => {
                         type="primary"
                         shape="round"
                         icon={<ScheduleOutlined />}
-                        onClick={onGetUsers}
+                        onClick={() => dispatch(getUsers())}
                     >
                         Создать новый инцидент
                     </CreateNewIncBut>

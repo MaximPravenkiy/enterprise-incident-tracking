@@ -3,7 +3,7 @@ import {LOGIN, LOGOUT, POST_LOGIN} from "./actionTypes";
 function postLogin(values: any) {
     return {
         type: POST_LOGIN,
-        payload: values
+        values
     }
 }
 

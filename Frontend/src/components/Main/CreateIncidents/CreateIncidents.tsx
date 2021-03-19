@@ -6,7 +6,6 @@ import {useDispatch, useSelector} from "react-redux";
 import PriorityLabel from "./PriorityLabel/PriorityLabel";
 import { NavLink } from 'react-router-dom';
 import {changeAssigneeUserId, getIncidents} from "../../../redux/store/actions/incidentsCreator";
-import PriorityIcon from "../../../containers/PriorityIcon";
 
 // const { Option } = Select;
 
@@ -96,38 +95,6 @@ const CreateIncidents = () => {
 
     const getUserId = (...args: any[]) => {
         dispatch(changeAssigneeUserId(args[1].id));
-    };
-
-    /// Получить инциденты при закрытии формы ///// ДУБЛИРОВАНИЕ
-
-    const onCloseFormCreateIncident = async () => {
-        try {
-            // const userData = localStorage.getItem('userData');
-            //
-            // if (!userData) return;
-            //
-            // const token = JSON.parse(userData).token;
-            // const response = await axios.get(
-            //     '/incidents',
-            // {headers: {Authorization: "Bearer " + token}}
-            // );
-            //
-            // const listOfIncidents = response.data.map((incident: any) => ({
-            //     icon: <PriorityIcon priority={incident.priority}/>,
-            //     incidentName: incident.incidentName,
-            //     description: incident.description,
-            //     assignee: incident.assignee,
-            //     area: incident.area,
-            //     startDate: incident.startDate.split('T')[0],
-            //     dueDate: incident.dueDate.split('T')[0],
-            //     priority: incident.priority,
-            //     status: incident.status
-            // }));
-
-
-        } catch (e) {
-            console.log(e)
-        }
     };
 
     //// Создать incident

@@ -1,11 +1,16 @@
-import {REGISTRATION} from "./actionTypes";
+import {POST_REGISTRATION, REGISTRATION} from "./actionTypes";
 
-function auth() {
+function postRegistration(values: any) {
+    return {
+        type: POST_REGISTRATION,
+        values
+    }
+}
+
+function registration() {
     return {
         type: REGISTRATION
     }
 }
 
-export {
-    REGISTRATION
-}
+export {registration, postRegistration};

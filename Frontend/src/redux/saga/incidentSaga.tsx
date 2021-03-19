@@ -1,9 +1,10 @@
-import {put, call, takeEvery} from 'redux-saga/effects';
-import {getIncidentsApi} from "./API";
-import PriorityIcon from "../../containers/PriorityIcon";
-import {setIncidents} from "../store/actions/incidentsCreator";
 import React from "react";
-import {GET_INCIDENTS} from "../store/actions/actionTypes";
+import PriorityIcon from "../../containers/PriorityIcon";
+
+import {put, call, takeEvery} from 'redux-saga/effects';
+import {getIncidentsApi, getUsersForAssigneeOptionApi} from "./API";
+import {setIncidents, setUsers} from "../store/actions/incidentsCreator";
+import {GET_INCIDENTS, GET_USERS} from "../store/actions/actionTypes";
 
 function* getInicdentsWorker(): any {
     try {
@@ -32,8 +33,20 @@ function* getInicdentsWorker(): any {
     }
 }
 
+function* getUsersForAssigneeOptionWorker(): any {
+    try {
+        const response = yield call(getUsersForAssigneeOptionApi);
+        const users = response.data.map((item: any) => ({label: item.fullname, value: item.fullname, id: item._id}));
+
+        yield put(setUsers(users));
+    } catch (e) {
+        console.log(e.response.data.message);
+    }
+}
+
 function* incidentsWatcher() {
     yield takeEvery(GET_INCIDENTS, getInicdentsWorker);
+    yield takeEvery(GET_USERS, getUsersForAssigneeOptionWorker);
 }
 
 export default incidentsWatcher;

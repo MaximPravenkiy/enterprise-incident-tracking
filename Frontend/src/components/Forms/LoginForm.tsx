@@ -9,19 +9,7 @@ const LoginForm = () => {
 
     const onFinish = (values: any) => {
         console.log('Received values of form: ', values);
-        // try {
-        //     const response = await axios.post(
-        //         '/login',
-        //         values
-        //     );
-        //
-        //     dispatch(login(response.data));
-        //     localStorage.setItem('userData', JSON.stringify(response.data));
-        // } catch (e) {
-        //     console.log(e.response.data.message)
-        // }
         dispatch(postLogin(values));
-
     };
 
     return (
