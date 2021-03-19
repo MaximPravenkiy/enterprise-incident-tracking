@@ -3,11 +3,15 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import GlobalStyles from "./GlobalStyle";
 import {BrowserRouter} from "react-router-dom";
-import {createStore} from "redux";
+import {applyMiddleware, createStore} from "redux";
 import rootReducer from './redux/store/reducers/rootReducer';
 import {Provider} from "react-redux";
+import createSagaMiddleware from 'redux-saga';
+import rootWatcher from "./redux/saga";
 
-const store = createStore(rootReducer);
+const sagaMiddleware = createSagaMiddleware();
+
+const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 
 ReactDOM.render(
   <React.StrictMode>
@@ -21,3 +25,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
+sagaMiddleware.run(rootWatcher);

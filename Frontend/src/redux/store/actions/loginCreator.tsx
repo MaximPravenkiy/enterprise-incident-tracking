@@ -1,4 +1,11 @@
-import {LOGIN, LOGOUT} from "./actionTypes";
+import {LOGIN, LOGOUT, POST_LOGIN} from "./actionTypes";
+
+function postLogin(values: any) {
+    return {
+        type: POST_LOGIN,
+        payload: values
+    }
+}
 
 function login(userData: any) {
     return {
@@ -13,5 +20,5 @@ function logout() {
     }
 }
 
-export {login, logout};
+export {login, logout, postLogin};
 

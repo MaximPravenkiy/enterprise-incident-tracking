@@ -1,26 +1,27 @@
 import React from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import axios from "axios";
 import {useDispatch} from "react-redux";
-import {login} from "../../redux/store/actions/loginCreator";
+import {postLogin} from "../../redux/store/actions/loginCreator";
 
 const LoginForm = () => {
     const dispatch = useDispatch();
 
-    const onFinish = async (values: any) => {
+    const onFinish = (values: any) => {
         console.log('Received values of form: ', values);
-        try {
-            const response = await axios.post(
-                '/login',
-                values
-            );
+        // try {
+        //     const response = await axios.post(
+        //         '/login',
+        //         values
+        //     );
+        //
+        //     dispatch(login(response.data));
+        //     localStorage.setItem('userData', JSON.stringify(response.data));
+        // } catch (e) {
+        //     console.log(e.response.data.message)
+        // }
+        dispatch(postLogin(values));
 
-            dispatch(login(response.data));
-            localStorage.setItem('userData', JSON.stringify(response.data));
-        } catch (e) {
-            console.log(e.response.data.message)
-        }
     };
 
     return (
