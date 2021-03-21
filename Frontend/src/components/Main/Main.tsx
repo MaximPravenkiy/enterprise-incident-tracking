@@ -6,7 +6,6 @@ import {Layout} from "antd";
 import {Redirect, Route, Switch } from 'react-router-dom';
 import {useSelector} from "react-redux";
 import Incidents from "./Incidents/Incidents";
-import CreateIncidents from "./CreateIncidents/CreateIncidents";
 
 const Content = styled(Layout.Content)`
     height: 70vh;
@@ -21,7 +20,6 @@ const Main = () => {
     const routes = isAuth ? (
             <Switch>
                 <Route exact path='/incidents' component={Incidents}/>
-                <Route exact path='/incidents/create-incident' component={CreateIncidents}/>
                 <Redirect to="/incidents"/>
             </Switch>
         ) :

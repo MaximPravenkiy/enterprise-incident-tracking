@@ -15,6 +15,7 @@ function* getInicdentsWorker(): any {
         const token = JSON.parse(userData).token;
         const response  = yield call(getIncidentsApi, token);
         const listOfIncidents = response.data.map((incident: any) => ({
+            key: incident._id,
             icon: <PriorityIcon priority={incident.priority}/>,
             incidentName: incident.incidentName,
             description: incident.description,
@@ -51,6 +52,7 @@ function* createIncidentWorker({values}: any): any {
     try {
         const response = yield call(postIncidentApi, values);
         console.log(response.data.message);
+        // yield put(setIncidents());
     } catch (e) {
         console.log(e.response.data.message);
     }
