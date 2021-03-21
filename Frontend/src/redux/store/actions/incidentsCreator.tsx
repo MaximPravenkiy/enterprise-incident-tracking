@@ -1,6 +1,13 @@
-import {CHANGE_ASSIGNEE_USER_ID, SET_INCIDENTS, GET_USERS, GET_INCIDENTS, SET_USERS} from "./actionTypes";
+import {
+    CHANGE_ASSIGNEE_USER_ID,
+    SET_INCIDENTS,
+    GET_USERS,
+    GET_INCIDENTS,
+    SET_USERS,
+    CREATE_INCIDENT
+} from "./actionTypes";
 
-// Инциденты
+// Incidents
 
 function getIncidents() {
     return {
@@ -15,7 +22,14 @@ function setIncidents(listOfIncidents: any) {
     }
 }
 
-// Юзеры
+function createIncident(values: any) {
+    return {
+        type: CREATE_INCIDENT,
+        values
+    }
+}
+
+// Users
 
 function getUsers() {
     return {
@@ -37,4 +51,11 @@ function changeAssigneeUserId(assigneeUserId: any) {
     }
 }
 
-export {getIncidents, setIncidents, getUsers, setUsers, changeAssigneeUserId};
+export {
+    getIncidents,
+    setIncidents,
+    getUsers,
+    setUsers,
+    changeAssigneeUserId,
+    createIncident
+};

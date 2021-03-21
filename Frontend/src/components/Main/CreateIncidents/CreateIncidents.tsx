@@ -1,11 +1,10 @@
 import React from 'react';
 import { Form, Input, Button, Select, DatePicker } from 'antd';
 // import { FormInstance } from 'antd/lib/form';
-import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
 import PriorityLabel from "./PriorityLabel/PriorityLabel";
 import { NavLink } from 'react-router-dom';
-import {changeAssigneeUserId, getIncidents} from "../../../redux/store/actions/incidentsCreator";
+import {changeAssigneeUserId, createIncident, getIncidents} from "../../../redux/store/actions/incidentsCreator";
 
 // const { Option } = Select;
 
@@ -101,12 +100,7 @@ const CreateIncidents = () => {
 
     const onFinish = async (values: any) => {
         values.owner = assigneeUserId;
-        try {
-            const response = await axios.post('/incidents/create-incident', values);
-            console.log(response.data.message)
-        } catch (e) {
-            console.log(e)
-        }
+        dispatch(createIncident(values));
     };
 
     return (

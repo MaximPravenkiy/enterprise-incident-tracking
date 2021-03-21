@@ -17,7 +17,6 @@ export interface IncidentsItemProps {
 }
 
 const IncidentsItem = ({incident}: IncidentsItemProps) => {
-    console.log(incident)
     return (
         <Item
             actions={[

@@ -18,6 +18,14 @@ const getIncidentsApi = (token: any) => axios.get(
     {headers: {Authorization: "Bearer " + token}}
 );
 
+const postIncidentApi = (values: any) => axios.post('/incidents/create-incident', values);
+
 const getUsersForAssigneeOptionApi = () => axios.get('/incidents/create-incident');
 
-export {getIncidentsApi, postLoginApi, getUsersForAssigneeOptionApi, postRegistrationApi};
+export {
+    getIncidentsApi,
+    postLoginApi,
+    getUsersForAssigneeOptionApi,
+    postRegistrationApi,
+    postIncidentApi
+};

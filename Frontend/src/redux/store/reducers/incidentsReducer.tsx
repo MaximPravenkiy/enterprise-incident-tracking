@@ -1,4 +1,4 @@
-import {CHANGE_ASSIGNEE_USER_ID, SET_INCIDENTS, SET_USERS} from '../actions/actionTypes';
+import {CHANGE_ASSIGNEE_USER_ID, LOGOUT, SET_INCIDENTS, SET_USERS} from '../actions/actionTypes';
 
 const initialState = {
     initLoading: false,

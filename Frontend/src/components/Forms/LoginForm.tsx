@@ -7,7 +7,7 @@ import {postLogin} from "../../redux/store/actions/loginCreator";
 const LoginForm = () => {
     const dispatch = useDispatch();
 
-    const onFinish = (values: any) => {
+    const onFinish = async (values: any) => {
         console.log('Received values of form: ', values);
         dispatch(postLogin(values));
     };
@@ -37,6 +37,7 @@ const LoginForm = () => {
                     placeholder="Password"
                 />
             </Form.Item>
+
             <Form.Item>
                 <Form.Item name="remember" valuePropName="checked" noStyle>
                     <Checkbox>Remember me</Checkbox>
