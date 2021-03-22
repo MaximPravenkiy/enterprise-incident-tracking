@@ -22,10 +22,13 @@ const postIncidentApi = (values: any) => axios.post('/incidents/create-incident'
 
 const getUsersForAssigneeOptionApi = () => axios.get('/incidents/create-incident');
 
+const deleteIncidentApi = (incidentID: any) => axios.delete('/incidents/delete-incident', { data: { incidentID } });
+
 export {
     getIncidentsApi,
     postLoginApi,
     getUsersForAssigneeOptionApi,
     postRegistrationApi,
-    postIncidentApi
+    postIncidentApi,
+    deleteIncidentApi
 };

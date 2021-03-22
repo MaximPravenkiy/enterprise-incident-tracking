@@ -2,9 +2,9 @@ import React from "react";
 import PriorityIcon from "../../containers/PriorityIcon";
 
 import {put, call, takeEvery} from 'redux-saga/effects';
-import {getIncidentsApi, getUsersForAssigneeOptionApi, postIncidentApi} from "./API";
+import {deleteIncidentApi, getIncidentsApi, getUsersForAssigneeOptionApi, postIncidentApi} from "./API";
 import {setIncidents, setUsers} from "../store/actions/incidentsCreator";
-import {CREATE_INCIDENT, GET_INCIDENTS, GET_USERS} from "../store/actions/actionTypes";
+import {CREATE_INCIDENT, DELETE_INCIDENT, GET_INCIDENTS, GET_USERS} from "../store/actions/actionTypes";
 
 function* getInicdentsWorker(): any {
     try {
@@ -58,10 +58,20 @@ function* createIncidentWorker({values}: any): any {
     }
 }
 
+function* deleteIncidentWorker({incidentID}: any): any {
+    try {
+        const response = yield call(deleteIncidentApi, incidentID);
+        console.log(response);
+    } catch (e) {
+        console.log(e.response.data.message);
+    }
+}
+
 function* incidentsWatcher() {
     yield takeEvery(GET_INCIDENTS, getInicdentsWorker);
     yield takeEvery(GET_USERS, getUsersForAssigneeOptionWorker);
     yield takeEvery(CREATE_INCIDENT, createIncidentWorker);
+    yield takeEvery(DELETE_INCIDENT, deleteIncidentWorker);
 }
 
 export default incidentsWatcher;

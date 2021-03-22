@@ -1,9 +1,8 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {getIncidents} from "../../../redux/store/actions/incidentsCreator";
-import {Table, Space} from 'antd';
+import {Table, Space, Button} from 'antd';
 import styled from "styled-components";
-import {NavLink} from "react-router-dom";
 import CreateIncidents from "../CreateIncidents/CreateIncidents";
 
 const TableCustom = styled(Table)`
@@ -59,17 +58,28 @@ const columns = [
     {
         title: 'Action',
         key: 'action',
-        render: () => (
+        render: (incident: any) => (
             <Space size="middle">
-                <NavLink to='/incidents/create-incident'>Edit</NavLink>
-                <NavLink to='/incidents' onClick={f}>Delete</NavLink>
+                <Button
+                    type="link"
+                    // onClick={}
+                >
+                    Edit
+                </Button>
+                <Button
+                    type="link"
+                    onClick={deleteIncident}
+                    data-key={incident.key}
+                >
+                    Delete
+                </Button>
             </Space>
         ),
     },
 ];
 
-const f = (event: any) => {
-    console.log(event)
+const deleteIncident = (event: any) => {
+    const incidentID = event.target.closest("button").dataset.key;
 }
 
 const Incidents = () => {
@@ -77,15 +87,17 @@ const Incidents = () => {
     const {listOfIncidents} = useSelector(({incidentsReducer}: any) => incidentsReducer);
 
     useEffect(() => {
+        console.log('slomal')
         dispatch(getIncidents());
     }, [dispatch]);
 
     return (
         <>
             <TableCustom
-                rowKey={(record: any) => record.key}
                 columns={columns}
                 dataSource={listOfIncidents}
+                bordered
+                // loading
             />
             <CreateIncidents/>
         </>

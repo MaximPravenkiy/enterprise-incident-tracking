@@ -17,7 +17,7 @@ const NavLinkEx = styled(NavLink)`
     font-size: 2em;
 `
 
-const MenuItem = (props: any) => {
+const MenuItemLogout = (props: any) => {
     return (
         <>
             <MenuItemCustom {...props} key={props.key}>
@@ -29,4 +29,4 @@ const MenuItem = (props: any) => {
     );
 }
 
-export default MenuItem;
+export default MenuItemLogout;

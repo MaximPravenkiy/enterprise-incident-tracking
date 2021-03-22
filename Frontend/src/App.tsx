@@ -9,8 +9,9 @@ import {login} from "./redux/store/actions/loginCreator";
 
 function App() {
     const dispatch = useDispatch();
+
     useEffect(() => {
-        const data = localStorage.getItem('userData');
+        const data: any = localStorage.getItem('userData');
 
         if (data) {
             dispatch(login(JSON.parse(data)));

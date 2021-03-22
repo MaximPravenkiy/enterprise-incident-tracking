@@ -46,4 +46,17 @@ router.get(
         }
     });
 
+router.delete(
+    '/delete-incident',
+    async (req, res) => {
+        try {
+            await Incident.deleteOne({_id: req.body.id});
+
+            return res.status(201).json({message: 'Инцидент был удалён!'});
+        } catch (e) {
+            return res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
+        }
+    }
+)
+
 module.exports = router;

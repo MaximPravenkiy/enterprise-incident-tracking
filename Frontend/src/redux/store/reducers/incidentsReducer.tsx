@@ -4,7 +4,7 @@ const initialState = {
     popUpMessage: '',
     isModalVisible: false,
     users: [],
-    listOfIncidents: [{}],
+    listOfIncidents: [],
     assigneeUserId: ''
 }
 

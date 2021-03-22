@@ -4,7 +4,7 @@ import {
     GET_USERS,
     GET_INCIDENTS,
     SET_USERS,
-    CREATE_INCIDENT, CLOSE_MODAL
+    CREATE_INCIDENT, CLOSE_MODAL, DELETE_INCIDENT
 } from "./actionTypes";
 
 // Incidents
@@ -26,6 +26,13 @@ function createIncident(values: any) {
     return {
         type: CREATE_INCIDENT,
         values
+    }
+}
+
+function deleteIncident(incidentID: any) {
+    return {
+        type: DELETE_INCIDENT,
+        incidentID
     }
 }
 
@@ -64,5 +71,6 @@ export {
     setUsers,
     changeAssigneeUserId,
     createIncident,
-    closeModal
+    closeModal,
+    deleteIncident
 };

@@ -6,6 +6,7 @@ import PriorityLabel from "./PriorityLabel/PriorityLabel";
 import {changeAssigneeUserId, createIncident, getIncidents} from "../../../redux/store/actions/incidentsCreator";
 import {Modal} from 'antd';
 import CloseModalButton from "./CloseModalButton/CloseModalButton";
+import TitleModal from "./TitleModal/TitleModal";
 
 // const { Option } = Select;
 
@@ -108,7 +109,7 @@ const CreateIncidents = () => {
         <Modal
             footer={null}
             centered
-            title="Список инцидентов"
+            title={<TitleModal/>}
             visible={isModalVisible}
             closeIcon={<CloseModalButton/>}
             okText='Создать инцидент'
