@@ -5,6 +5,7 @@ import {put, call, takeEvery} from 'redux-saga/effects';
 import {deleteIncidentApi, getIncidentsApi, getUsersForAssigneeOptionApi, postIncidentApi} from "./API";
 import {setIncidents, setUsers} from "../store/actions/incidentsCreator";
 import {CREATE_INCIDENT, DELETE_INCIDENT, GET_INCIDENTS, GET_USERS} from "../store/actions/actionTypes";
+import {logout} from "../store/actions/loginCreator";
 
 function* getInicdentsWorker(): any {
     try {
@@ -30,6 +31,7 @@ function* getInicdentsWorker(): any {
         yield put(setIncidents(listOfIncidents));
     } catch (e) {
         console.log(e.response.data.message);
+        yield put(logout());
     }
 }
 
@@ -61,7 +63,7 @@ function* createIncidentWorker({values}: any): any {
 function* deleteIncidentWorker({incidentID}: any): any {
     try {
         const response = yield call(deleteIncidentApi, incidentID);
-        console.log(response);
+        console.log(response.data.message);
     } catch (e) {
         console.log(e.response.data.message);
     }

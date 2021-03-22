@@ -14,7 +14,7 @@ const FooterCustom = styled(Layout.Footer)`
 `
 
 const StyleSpan = styled.span`
-    font-size: 30px;
+    font-size: 2.2em;
     text-transform: uppercase;
     margin: 0 10px;
 `

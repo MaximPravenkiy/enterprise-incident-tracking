@@ -1,9 +1,9 @@
-import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {getIncidents} from "../../../redux/store/actions/incidentsCreator";
-import {Table, Space, Button} from 'antd';
+import React from 'react';
+import {Table} from 'antd';
 import styled from "styled-components";
-import CreateIncidents from "../CreateIncidents/CreateIncidents";
+import {IncidentsProps} from "../../../containers/IncidentsContainer";
+import ActionButtons from "./ActionButtons/ActionButtons";
+import CreateIncidentsContainer from "../../../containers/CreateIncidentsContainer";
 
 const TableCustom = styled(Table)`
     width: 95%;
@@ -11,12 +11,12 @@ const TableCustom = styled(Table)`
 
 const columns = [
     {
-        title: 'Icon',
+        title: '',
         dataIndex: 'icon',
         key: 'icon',
     },
     {
-        title: 'IncidentName',
+        title: 'Incident Name',
         dataIndex: 'incidentName',
         key: 'incidentName',
     },
@@ -58,50 +58,22 @@ const columns = [
     {
         title: 'Action',
         key: 'action',
-        render: (incident: any) => (
-            <Space size="middle">
-                <Button
-                    type="link"
-                    // onClick={}
-                >
-                    Edit
-                </Button>
-                <Button
-                    type="link"
-                    onClick={deleteIncident}
-                    data-key={incident.key}
-                >
-                    Delete
-                </Button>
-            </Space>
-        ),
+        render: ({key}: any) => <ActionButtons incidentKey={key}/>,
     },
 ];
 
-const deleteIncident = (event: any) => {
-    const incidentID = event.target.closest("button").dataset.key;
-}
-
-const Incidents = () => {
-    const dispatch = useDispatch();
-    const {listOfIncidents} = useSelector(({incidentsReducer}: any) => incidentsReducer);
-
-    useEffect(() => {
-        console.log('slomal')
-        dispatch(getIncidents());
-    }, [dispatch]);
-
+const Incidents = ({listOfIncidents}: IncidentsProps) => {
     return (
         <>
             <TableCustom
+                pagination={{position: ['bottomCenter'], defaultPageSize: 4}}
                 columns={columns}
                 dataSource={listOfIncidents}
                 bordered
                 // loading
             />
-            <CreateIncidents/>
+            <CreateIncidentsContainer/>
         </>
-
     );
 }
 

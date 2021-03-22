@@ -1,17 +1,9 @@
 import React from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import {useDispatch} from "react-redux";
-import {postLogin} from "../../redux/store/actions/loginCreator";
+import {LoginProps} from "../../containers/LoginContainer";
 
-const LoginForm = () => {
-    const dispatch = useDispatch();
-
-    const onFinish = async (values: any) => {
-        console.log('Received values of form: ', values);
-        dispatch(postLogin(values));
-    };
-
+const LoginForm = ({onFinish}: LoginProps) => {
     return (
         <Form
             name="normal_login"

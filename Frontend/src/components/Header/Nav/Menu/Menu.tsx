@@ -11,6 +11,7 @@ const MenuCustom = styled(Menu)`
 `
 
 const NavMenu = ({menuItems}: MenuProps) => {
+    // console.log(params)
     return (
         <MenuCustom
             theme="dark"
