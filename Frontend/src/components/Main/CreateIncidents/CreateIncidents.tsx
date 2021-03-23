@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import {Form, Input, Button, Select, DatePicker} from 'antd';
 import {Modal} from 'antd';
 import CloseModalButton from "./CloseModalButton/CloseModalButton";
 import TitleModal from "./TitleModal/TitleModal";
 import {CreateIncidentProps} from "../../../containers/CreateIncidentsContainer";
+import moment from 'moment';
 
 const layout = {
     labelCol: {span: 8},
@@ -16,7 +17,7 @@ const tailLayout = {
 
 const config = {
     rules: [
-        {type: 'object' as const, required: true, message: 'Please select time!'}
+        {type: 'object' as const, required: true, message: 'Please select a date!'}
     ],
 };
 
@@ -28,9 +29,25 @@ const CreateIncidents = (
         isModalVisible,
         onFinish,
         users,
-        getUserId
+        getUserId,
+        valuesCreateIncidentForm,
+        onChange
     }
     : CreateIncidentProps) => {
+
+    // Костыль для ворнинга
+    const formRef = useRef(null);
+    const [form] = Form.useForm();
+
+    useEffect(() => {
+        if (formRef.current) {
+            form.setFieldsValue({...valuesCreateIncidentForm})
+        }
+    }, [form, valuesCreateIncidentForm]);
+
+    function disabledDate(currentDate: any) {
+        return currentDate && currentDate < moment().startOf('day');
+    }
     return (
         <Modal
             footer={null}
@@ -45,6 +62,10 @@ const CreateIncidents = (
                 {...layout}
                 name="create-incident"
                 onFinish={onFinish}
+                form={form}
+                initialValues={valuesCreateIncidentForm}
+                onValuesChange={onChange}
+                ref={formRef}
             >
 
                 <Form.Item name="incidentName" label="Incident Name" rules={[{required: true}]}>
@@ -60,11 +81,11 @@ const CreateIncidents = (
                 </Form.Item>
 
                 <Form.Item name="startDate" label="Start date" {...config}>
-                    <DatePicker/>
+                    <DatePicker disabled/>
                 </Form.Item>
 
                 <Form.Item name="dueDate" label="Due Date" {...config}>
-                    <DatePicker/>
+                    <DatePicker disabledDate={disabledDate}/>
                 </Form.Item>
 
                 <Form.Item name="description" label="Description" rules={[{required: true}]}>

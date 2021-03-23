@@ -2,7 +2,12 @@ import React from 'react';
 import CreateIncidents from "../components/Main/CreateIncidents/CreateIncidents";
 import PriorityLabel from "../components/Main/CreateIncidents/PriorityLabel/PriorityLabel";
 import {useDispatch, useSelector} from "react-redux";
-import {changeAssigneeUserId, createIncident, getIncidents} from "../redux/store/actions/incidentsCreator";
+import {
+    changeAssigneeUserId,
+    createIncident,
+    getIncidents,
+    updateValuesCreateIncidentForm
+} from "../redux/store/actions/incidentsCreator";
 
 export interface CreateIncidentProps {
     areas: any,
@@ -11,7 +16,9 @@ export interface CreateIncidentProps {
     users: any,
     isModalVisible: any,
     getUserId: any,
-    onFinish: any
+    onFinish: any,
+    valuesCreateIncidentForm: any
+    onChange: any
 }
 
 // For selections
@@ -49,13 +56,18 @@ const CreateIncidentsContainer = () => {
         // formRef.current!.resetFields();
     // };
 
-    const {users, assigneeUserId, isModalVisible} = useSelector(({incidentsReducer}: any) => incidentsReducer);
+    const {users, assigneeUserId, isModalVisible, valuesCreateIncidentForm} = useSelector(({incidentsReducer}: any) => incidentsReducer);
     const dispatch = useDispatch();
 
     // Получить  user id
     const getUserId = (...args: any[]) => {
         dispatch(changeAssigneeUserId(args[1].id));
     };
+
+    // Диспатч изменения контролов формы
+    function onChange(value: any) {
+        dispatch(updateValuesCreateIncidentForm(value))
+    }
 
     // Создать incident
     const onFinish = (values: any) => {
@@ -73,6 +85,8 @@ const CreateIncidentsContainer = () => {
             isModalVisible={isModalVisible}
             getUserId={getUserId}
             onFinish={onFinish}
+            valuesCreateIncidentForm={valuesCreateIncidentForm}
+            onChange={onChange}
         />
     );
 }

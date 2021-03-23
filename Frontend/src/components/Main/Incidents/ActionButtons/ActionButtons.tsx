@@ -1,20 +1,34 @@
 import React from 'react';
 import {Button, Space} from "antd";
 import {useDispatch} from "react-redux";
-import {deleteIncident, getIncidents} from "../../../../redux/store/actions/incidentsCreator";
+import {
+    deleteIncident,
+    getIncidents,
+    getUsers,
+    updateValuesCreateIncidentForm
+} from "../../../../redux/store/actions/incidentsCreator";
+import {getDate} from "../../../../redux/store/reducers/incidentsReducer";
 
-const ActionButtons = ({incidentKey}: any) => {
+const ActionButtons = ({incident}: any) => {
     const dispatch = useDispatch();
 
     const onDeleteIncident = (event: any) => {
         const incidentID = event.target.closest("button").dataset.key;
+
         dispatch(deleteIncident(incidentID));
         dispatch(getIncidents());
     }
 
     const onEditIncident = (event: any) => {
-        const incidentID = event.target.closest("button").dataset.key;
-        console.log(incidentID)
+        const currentIncident = JSON.parse(event.target.closest("button").dataset.incident);
+        console.log(currentIncident)
+
+        dispatch(updateValuesCreateIncidentForm({
+            ...currentIncident,
+            startDate: getDate(currentIncident.startDate),
+            dueDate: getDate(currentIncident.dueDate),
+        }));
+        dispatch(getUsers());
     }
 
     return (
@@ -22,14 +36,14 @@ const ActionButtons = ({incidentKey}: any) => {
             <Button
                 type="link"
                 onClick={onEditIncident}
-                data-key={incidentKey}
+                data-incident={JSON.stringify(incident)}
             >
                 Edit
             </Button>
             <Button
                 type="link"
                 onClick={onDeleteIncident}
-                data-key={incidentKey}
+                data-key={incident.key}
             >
                 Delete
             </Button>

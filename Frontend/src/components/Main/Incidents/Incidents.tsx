@@ -58,7 +58,7 @@ const columns = [
     {
         title: 'Action',
         key: 'action',
-        render: ({key}: any) => <ActionButtons incidentKey={key}/>,
+        render: (incident: any) => <ActionButtons incident={incident}/>,
     },
 ];
 
