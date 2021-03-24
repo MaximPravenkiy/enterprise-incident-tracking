@@ -69,7 +69,7 @@ const CreateIncidents = (
                 ref={formRef}
             >
 
-                <Form.Item name="incidentName" label="Incident Name" rules={[{required: true}]}>
+                <Form.Item name="incidentName" label="Incident Name" rules={[{required: true, max: 25}]}>
                     <Input/>
                 </Form.Item>
 

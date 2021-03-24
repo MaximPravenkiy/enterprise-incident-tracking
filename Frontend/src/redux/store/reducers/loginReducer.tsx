@@ -1,4 +1,4 @@
-import {LOGIN, LOGOUT, UPDATE_VALUES_LOGIN_FORM, UPDATE_VALUES_REGISTRATION_FORM} from "../actions/actionTypes";
+import {LOGIN, LOGOUT, UPDATE_VALUES_LOGIN_FORM} from "../actions/actionTypes";
 
 const initialState = {
     fullname: '',

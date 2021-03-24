@@ -1,4 +1,4 @@
-import {put, call, takeEvery} from 'redux-saga/effects';
+import {call, takeEvery} from 'redux-saga/effects';
 import {POST_REGISTRATION} from "../store/actions/actionTypes";
 import {postRegistrationApi} from "./API";
 

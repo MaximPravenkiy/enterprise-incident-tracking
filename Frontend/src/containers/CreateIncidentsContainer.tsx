@@ -88,9 +88,7 @@ const CreateIncidentsContainer = () => {
         dispatch(getIncidents());
         dispatch(resetCreateIncidentForm());
     };
-// const onReset = () => {
-    // formRef.current!.resetFields();
-    // };
+
     return (
         <CreateIncidents
             areas={areas}
