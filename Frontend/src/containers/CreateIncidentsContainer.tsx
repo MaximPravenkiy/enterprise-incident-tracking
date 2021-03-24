@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {
     changeAssigneeUserId,
     createIncident,
-    getIncidents, updateIncident,
+    getIncidents, resetCreateIncidentForm, updateIncident,
     updateValuesCreateIncidentForm
 } from "../redux/store/actions/incidentsCreator";
 
@@ -53,10 +53,6 @@ const status: any = [
 ];
 
 const CreateIncidentsContainer = () => {
-    // const onReset = () => {
-        // formRef.current!.resetFields();
-    // };
-
     const {
         users,
         assigneeUserId,
@@ -83,16 +79,18 @@ const CreateIncidentsContainer = () => {
 
         if (actionWithCreateIncidentForm === 'Создать') {
             dispatch(createIncident(values));
-            dispatch(getIncidents());
         }
 
         if (actionWithCreateIncidentForm === 'Обновить') {
             dispatch(updateIncident({values, incidentID}));
-            dispatch(getIncidents());
         }
 
+        dispatch(getIncidents());
+        dispatch(resetCreateIncidentForm());
     };
-
+// const onReset = () => {
+    // formRef.current!.resetFields();
+    // };
     return (
         <CreateIncidents
             areas={areas}

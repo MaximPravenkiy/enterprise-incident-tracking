@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
     Form,
     Input,
@@ -44,13 +44,35 @@ const FormCustom = styled(Form)`
    min-width: 35%;
 `
 
-const RegistrationForm = ({form, registerNewUser}: RegistrationProps) => {
+const RegistrationForm = (
+    {
+        registerNewUser,
+        dateOfBirth,
+        fullname,
+        login,
+        password,
+        position,
+        onChange
+    }: RegistrationProps) => {
+    const [form] = Form.useForm();
+
+    useEffect(() => {
+        form.setFieldsValue({
+            dateOfBirth,
+            fullname,
+            login,
+            password,
+            position
+        })
+    });
+
     return (
         <FormCustom
             {...formItemLayout}
             form={form}
             name="register"
             onFinish={registerNewUser}
+            onValuesChange={onChange}
         >
             <Form.Item
                 label="Full Name"

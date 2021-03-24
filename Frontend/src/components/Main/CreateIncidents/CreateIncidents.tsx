@@ -49,6 +49,7 @@ const CreateIncidents = (
     function disabledDate(currentDate: any) {
         return currentDate && currentDate < moment().startOf('day');
     }
+
     return (
         <Modal
             footer={null}

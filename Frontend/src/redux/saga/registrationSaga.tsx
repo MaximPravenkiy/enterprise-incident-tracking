@@ -5,7 +5,7 @@ import {postRegistrationApi} from "./API";
 function* postRegistrationWorker({values}: any): any {
     try {
         const response = yield call(postRegistrationApi, values);
-        console.log(response);
+        console.log(response.data.message);
     } catch (e) {
         console.log(e.response.data.message);
     }

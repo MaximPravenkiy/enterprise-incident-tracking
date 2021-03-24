@@ -7,7 +7,7 @@ import MenuItemLogout from "../components/Header/Nav/Menu/MenuItemLogout/MenuIte
 import {getUsers} from "../redux/store/actions/incidentsCreator";
 
 export interface MenuProps {
-    menuItems: any
+    menuItems: any,
 }
 
 export interface MenuItemLoginProps {

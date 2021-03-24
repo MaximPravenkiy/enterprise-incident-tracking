@@ -34,7 +34,7 @@ const ActionButtons = ({incident}: any) => {
         dispatch(updateValuesCreateIncidentForm({
             ...currentIncident,
             startDate: getDate(currentIncident.startDate),
-            dueDate: getDate(),
+            dueDate: getDate(currentIncident.dueDate),
         }));
         dispatch(getUsers());
     }

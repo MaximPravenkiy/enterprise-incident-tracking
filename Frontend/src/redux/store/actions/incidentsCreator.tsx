@@ -9,7 +9,7 @@ import {
     DELETE_INCIDENT,
     UPDATE_VALUES_CREATE_INCIDENT_FORM,
     UPDATE_INCIDENT,
-    SET_DATA_FOR_UPDATING
+    SET_DATA_FOR_UPDATING, RESET_CREATE_INCIDENT_FORM
 } from "./actionTypes";
 
 // Incidents
@@ -68,6 +68,12 @@ function updateIncident(updateData: any) {
     }
 }
 
+function resetCreateIncidentForm() {
+    return {
+        type: RESET_CREATE_INCIDENT_FORM
+    }
+}
+
 // Users
 
 function getUsers() {
@@ -101,5 +107,6 @@ export {
     deleteIncident,
     updateValuesCreateIncidentForm,
     updateIncident,
-    setDataForUpdating
+    setDataForUpdating,
+    resetCreateIncidentForm
 };

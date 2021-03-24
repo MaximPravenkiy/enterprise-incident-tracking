@@ -1,15 +1,22 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import {LoginProps} from "../../containers/LoginContainer";
 
-const LoginForm = ({onFinish}: LoginProps) => {
+const LoginForm = ({onFinish, onChange, login, password}: LoginProps) => {
+    const [form] = Form.useForm();
+
+    useEffect(() => {
+        form.setFieldsValue({login, password});
+    }, [form, login, password]);
+
     return (
         <Form
             name="normal_login"
-            className="login-form"
             initialValues={{ remember: true }}
             onFinish={onFinish}
+            onValuesChange={onChange}
+            form={form}
         >
 
             <Form.Item

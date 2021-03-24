@@ -63,7 +63,6 @@ router.put(
     '/update-incident',
     async (req, res) => {
         try {
-            console.log(req.body);
             const filter =  req.body.incidentID;
             const update =  req.body.values;
 

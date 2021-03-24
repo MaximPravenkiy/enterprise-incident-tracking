@@ -1,4 +1,4 @@
-import {LOGIN, LOGOUT, POST_LOGIN} from "./actionTypes";
+import {LOGIN, LOGOUT, POST_LOGIN, UPDATE_VALUES_LOGIN_FORM} from "./actionTypes";
 
 function postLogin(values: any) {
     return {
@@ -14,11 +14,18 @@ function login(userData: any) {
     }
 }
 
+function updateValuesLoginForm(values: any) {
+    return {
+        type: UPDATE_VALUES_LOGIN_FORM,
+        values
+    }
+}
+
 function logout() {
     return {
         type: LOGOUT
     }
 }
 
-export {login, logout, postLogin};
+export {login, logout, postLogin, updateValuesLoginForm};
 

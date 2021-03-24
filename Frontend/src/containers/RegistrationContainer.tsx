@@ -1,16 +1,26 @@
 import React from 'react';
 import {RegistrationForm} from "../components/Forms/RegistrationForm";
-import {Form} from "antd";
-import {useDispatch} from "react-redux";
-import {postRegistration} from "../redux/store/actions/registrationCreator";
+import {useDispatch, useSelector} from "react-redux";
+import {postRegistration, updateValuesRegistrationForm} from "../redux/store/actions/registrationCreator";
 
 export interface RegistrationProps {
-    form: any,
-    registerNewUser: any
+    registerNewUser: any,
+    dateOfBirth: any,
+    fullname: any,
+    login: any,
+    password: any,
+    position: any,
+    onChange: any
 }
 
 const RegistrationContainer = () => {
-    const [form] = Form.useForm();
+    const {
+        dateOfBirth,
+        fullname,
+        login,
+        password,
+        position,
+    } = useSelector(({registrationReducer}: any) => registrationReducer);
     const dispatch = useDispatch();
 
     const registerNewUser = async (values: any) => {
@@ -18,10 +28,19 @@ const RegistrationContainer = () => {
         dispatch(postRegistration(values));
     };
 
+    const onChange = (values: any) => {
+        dispatch(updateValuesRegistrationForm(values));
+    }
+
     return (
         <RegistrationForm
-            form={form}
             registerNewUser={registerNewUser}
+            dateOfBirth={dateOfBirth}
+            fullname={fullname}
+            login={login}
+            password={password}
+            position={position}
+            onChange={onChange}
         />
     );
 }

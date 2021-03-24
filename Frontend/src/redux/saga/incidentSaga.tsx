@@ -43,6 +43,7 @@ function* getInicdentsWorker(): any {
         yield put(setIncidents(listOfIncidents));
     } catch (e) {
         console.log(e.response.data.message);
+        localStorage.removeItem('userData');
         yield put(logout());
     }
 }
@@ -83,11 +84,10 @@ function* deleteIncidentWorker({incidentID}: any): any {
 
 function* updateIncidentWorker({updateData}: any): any {
     try {
-        console.log(updateData)
         const response = yield call(updateIncidentApi, updateData)
-        console.log(response)
+        console.log(response.data.message);
     } catch (e) {
-        // console.log(e.response.data.message);
+        console.log(e.response.data.message);
     }
 }
 

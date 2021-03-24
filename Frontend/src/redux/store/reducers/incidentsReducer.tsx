@@ -1,14 +1,14 @@
 import {
     CHANGE_ASSIGNEE_USER_ID,
-    CLOSE_MODAL, SET_DATA_FOR_UPDATING,
+    CLOSE_MODAL, RESET_CREATE_INCIDENT_FORM, SET_DATA_FOR_UPDATING,
     SET_INCIDENTS,
     SET_USERS,
-    UPDATE_VALUES_CREATE_INCIDENT_FORM
+    UPDATE_VALUES_CREATE_INCIDENT_FORM, UPDATE_VALUES_LOGIN_FORM, UPDATE_VALUES_REGISTRATION_FORM
 } from '../actions/actionTypes';
 import moment from "moment";
 
 export function getDate(date: any = new Date()) {
-    return moment(date, 'YYYY-MM-DD');
+    return moment(date, 'YYYY-MM-DD').utc(true);
 }
 
 const initialState = {
@@ -68,6 +68,13 @@ function incidentsReducer(state = initialState, action: any) {
                 ...state,
                 actionWithCreateIncidentForm: 'Обновить',
                 incidentID: action.value
+            }
+        case RESET_CREATE_INCIDENT_FORM:
+            return {
+                ...state,
+                actionWithCreateIncidentForm: initialState.actionWithCreateIncidentForm,
+                incidentID: initialState.incidentID,
+                valuesCreateIncidentForm: initialState.valuesCreateIncidentForm
             }
         default:
             return state;

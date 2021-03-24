@@ -6,17 +6,15 @@ import {MenuProps} from "../../../../containers/MenuContainer";
 const MenuCustom = styled(Menu)`
     display: flex;
     justify-content: center;
-    // align-items: center;
     height: 100%;
 `
 
 const NavMenu = ({menuItems}: MenuProps) => {
-    // console.log(params)
     return (
         <MenuCustom
             theme="dark"
             mode="horizontal"
-            defaultSelectedKeys={['1']}
+            defaultSelectedKeys={window.location.pathname.includes('login') ? ['1'] : ['2']}
         >
             {menuItems}
         </MenuCustom>

@@ -1,8 +1,10 @@
-import {LOGIN, LOGOUT} from "../actions/actionTypes";
+import {LOGIN, LOGOUT, UPDATE_VALUES_LOGIN_FORM, UPDATE_VALUES_REGISTRATION_FORM} from "../actions/actionTypes";
 
 const initialState = {
     fullname: '',
     isAuth: false,
+    login: '',
+    password: '',
     token: '',
     userId: ''
 }
@@ -14,12 +16,17 @@ function loginReducer(state = initialState, action: any) {
                 ...state,
                 isAuth: true,
                 ...action.userData
-            }
+            };
+        case UPDATE_VALUES_LOGIN_FORM:
+            return {
+                ...state,
+                ...action.values
+            } ;
         case LOGOUT:
             return {
                 ...state,
                 isAuth: false
-            }
+            };
         default:
             return state;
     }
