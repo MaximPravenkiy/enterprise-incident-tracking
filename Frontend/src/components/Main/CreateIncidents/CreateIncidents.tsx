@@ -1,10 +1,11 @@
 import React, {useEffect, useRef} from 'react';
-import {Form, Input, Button, Select, DatePicker} from 'antd';
+import {Form, Input, Select, DatePicker} from 'antd';
 import {Modal} from 'antd';
 import CloseModalButton from "./CloseModalButton/CloseModalButton";
 import TitleModal from "./TitleModal/TitleModal";
 import {CreateIncidentProps} from "../../../containers/CreateIncidentsContainer";
 import moment from 'moment';
+import CreateOrUpdateButton from "./CreateOrUpdateButton/CreateOrUpdateButton";
 
 const layout = {
     labelCol: {span: 8},
@@ -102,17 +103,7 @@ const CreateIncidents = (
                 </Form.Item>
 
                 <Form.Item {...tailLayout}>
-
-                    <Button
-                        type="primary"
-                        htmlType="submit"
-                    >
-                        {actionWithCreateIncidentForm === 'Создать' ?
-                            'Создать' :
-                            'Обновить'
-                        }
-                    </Button>
-
+                    <CreateOrUpdateButton actionWithCreateIncidentForm={actionWithCreateIncidentForm}/>
                 </Form.Item>
             </Form>
 
