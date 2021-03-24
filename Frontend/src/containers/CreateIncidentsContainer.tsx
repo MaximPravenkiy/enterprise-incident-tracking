@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {
     changeAssigneeUserId,
     createIncident,
-    getIncidents,
+    getIncidents, updateIncident,
     updateValuesCreateIncidentForm
 } from "../redux/store/actions/incidentsCreator";
 
@@ -18,11 +18,12 @@ export interface CreateIncidentProps {
     getUserId: any,
     onFinish: any,
     valuesCreateIncidentForm: any
-    onChange: any
+    onChange: any,
+    actionWithCreateIncidentForm: any
 }
 
 // For selections
-const areas = [
+const areas: any = [
     {label: 'Layout', value: 'Layout'},
     {label: 'Frontend', value: 'Frontend'},
     {label: 'Backend', value: 'Backend'},
@@ -30,7 +31,7 @@ const areas = [
     {label: 'Testing', value: 'Testing'},
 ];
 
-const priority = [
+const priority: any = [
     {label: <PriorityLabel color='red' text='Blocker'/>, value: 'Blocker'},
     {label: <PriorityLabel color='orange' text='Critical'/>, value: 'Critical'},
     {label: <PriorityLabel color='yellow' text='Major'/>, value: 'Major'},
@@ -38,7 +39,7 @@ const priority = [
     {label: <PriorityLabel color='grey' text='Minor'/>, value: 'Minor'},
 ];
 
-const status = [
+const status: any = [
     {label: 'Зарегистрирован', value: 'Зарегистрирован'},
     {label: 'Открыт', value: 'Открыт'},
     {label: 'В работе', value: 'В работе'},
@@ -56,7 +57,14 @@ const CreateIncidentsContainer = () => {
         // formRef.current!.resetFields();
     // };
 
-    const {users, assigneeUserId, isModalVisible, valuesCreateIncidentForm} = useSelector(({incidentsReducer}: any) => incidentsReducer);
+    const {
+        users,
+        assigneeUserId,
+        isModalVisible,
+        valuesCreateIncidentForm,
+        actionWithCreateIncidentForm,
+        incidentID
+    } = useSelector(({incidentsReducer}: any) => incidentsReducer);
     const dispatch = useDispatch();
 
     // Получить  user id
@@ -69,11 +77,20 @@ const CreateIncidentsContainer = () => {
         dispatch(updateValuesCreateIncidentForm(value))
     }
 
-    // Создать incident
+    // Создать или обновить инцидент
     const onFinish = (values: any) => {
         values.owner = assigneeUserId;
-        dispatch(createIncident(values));
-        dispatch(getIncidents());
+
+        if (actionWithCreateIncidentForm === 'Создать') {
+            dispatch(createIncident(values));
+            dispatch(getIncidents());
+        }
+
+        if (actionWithCreateIncidentForm === 'Обновить') {
+            dispatch(updateIncident({values, incidentID}));
+            dispatch(getIncidents());
+        }
+
     };
 
     return (
@@ -87,6 +104,7 @@ const CreateIncidentsContainer = () => {
             onFinish={onFinish}
             valuesCreateIncidentForm={valuesCreateIncidentForm}
             onChange={onChange}
+            actionWithCreateIncidentForm={actionWithCreateIncidentForm}
         />
     );
 }

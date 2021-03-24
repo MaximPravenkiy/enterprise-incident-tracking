@@ -2,9 +2,10 @@ import React from 'react';
 import {Button, Space} from "antd";
 import {useDispatch} from "react-redux";
 import {
+    changeAssigneeUserId,
     deleteIncident,
     getIncidents,
-    getUsers,
+    getUsers, setDataForUpdating,
     updateValuesCreateIncidentForm
 } from "../../../../redux/store/actions/incidentsCreator";
 import {getDate} from "../../../../redux/store/reducers/incidentsReducer";
@@ -21,12 +22,19 @@ const ActionButtons = ({incident}: any) => {
 
     const onEditIncident = (event: any) => {
         const currentIncident = JSON.parse(event.target.closest("button").dataset.incident);
-        console.log(currentIncident)
+        const userData = localStorage.getItem('userData');
+        const incidentID = currentIncident.key;
 
+        if (!userData) return;
+
+        const assignOnCurrentUser = JSON.parse(userData).userId;
+
+        dispatch(setDataForUpdating(incidentID))
+        dispatch(changeAssigneeUserId(assignOnCurrentUser));
         dispatch(updateValuesCreateIncidentForm({
             ...currentIncident,
             startDate: getDate(currentIncident.startDate),
-            dueDate: getDate(currentIncident.dueDate),
+            dueDate: getDate(),
         }));
         dispatch(getUsers());
     }

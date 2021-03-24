@@ -1,8 +1,8 @@
 import {LOGIN, LOGOUT} from "../actions/actionTypes";
 
 const initialState = {
-    isAuth: false,
     fullname: '',
+    isAuth: false,
     token: '',
     userId: ''
 }

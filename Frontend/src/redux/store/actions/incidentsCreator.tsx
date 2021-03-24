@@ -4,7 +4,12 @@ import {
     GET_USERS,
     GET_INCIDENTS,
     SET_USERS,
-    CREATE_INCIDENT, CLOSE_MODAL, DELETE_INCIDENT, UPDATE_VALUES_CREATE_INCIDENT_FORM
+    CREATE_INCIDENT,
+    CLOSE_MODAL,
+    DELETE_INCIDENT,
+    UPDATE_VALUES_CREATE_INCIDENT_FORM,
+    UPDATE_INCIDENT,
+    SET_DATA_FOR_UPDATING
 } from "./actionTypes";
 
 // Incidents
@@ -49,6 +54,20 @@ function updateValuesCreateIncidentForm(value: any) {
     }
 }
 
+function setDataForUpdating(value: any) {
+    return {
+        type: SET_DATA_FOR_UPDATING,
+        value
+    }
+}
+
+function updateIncident(updateData: any) {
+    return {
+        type: UPDATE_INCIDENT,
+        updateData
+    }
+}
+
 // Users
 
 function getUsers() {
@@ -80,5 +99,7 @@ export {
     createIncident,
     closeModal,
     deleteIncident,
-    updateValuesCreateIncidentForm
+    updateValuesCreateIncidentForm,
+    updateIncident,
+    setDataForUpdating
 };

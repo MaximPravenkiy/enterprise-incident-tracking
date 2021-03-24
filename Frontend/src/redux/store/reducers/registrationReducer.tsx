@@ -1,7 +1,7 @@
 const initialState = {
-    login: 'qwe',
-    password: 'fs',
     dateOfBirth: '',
+    login: '',
+    password: '',
     position: ''
 }
 

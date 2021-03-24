@@ -31,7 +31,8 @@ const CreateIncidents = (
         users,
         getUserId,
         valuesCreateIncidentForm,
-        onChange
+        onChange,
+        actionWithCreateIncidentForm
     }
     : CreateIncidentProps) => {
 
@@ -55,7 +56,6 @@ const CreateIncidents = (
             title={<TitleModal/>}
             visible={isModalVisible}
             closeIcon={<CloseModalButton/>}
-            okText='Создать инцидент'
         >
 
             <Form
@@ -106,7 +106,10 @@ const CreateIncidents = (
                         type="primary"
                         htmlType="submit"
                     >
-                        Создать инцидент
+                        {actionWithCreateIncidentForm === 'Создать' ?
+                            'Создать' :
+                            'Обновить'
+                        }
                     </Button>
 
                 </Form.Item>

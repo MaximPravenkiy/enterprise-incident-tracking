@@ -1,6 +1,6 @@
 import {
     CHANGE_ASSIGNEE_USER_ID,
-    CLOSE_MODAL,
+    CLOSE_MODAL, SET_DATA_FOR_UPDATING,
     SET_INCIDENTS,
     SET_USERS,
     UPDATE_VALUES_CREATE_INCIDENT_FORM
@@ -12,11 +12,13 @@ export function getDate(date: any = new Date()) {
 }
 
 const initialState = {
-    popUpMessage: '',
-    isModalVisible: false,
-    users: [],
-    listOfIncidents: [],
+    actionWithCreateIncidentForm: 'Создать',
     assigneeUserId: '',
+    incidentID: '',
+    isModalVisible: false,
+    listOfIncidents: [],
+    popUpMessage: '',
+    users: [],
     valuesCreateIncidentForm: {
         incidentName: '',
         assignee: '',
@@ -59,8 +61,14 @@ function incidentsReducer(state = initialState, action: any) {
                 valuesCreateIncidentForm: {
                     ...state.valuesCreateIncidentForm,
                     ...action.value
-                }
+                },
             };
+        case SET_DATA_FOR_UPDATING:
+            return {
+                ...state,
+                actionWithCreateIncidentForm: 'Обновить',
+                incidentID: action.value
+            }
         default:
             return state;
     }

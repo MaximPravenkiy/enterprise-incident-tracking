@@ -52,7 +52,7 @@ router.delete(
         try {
             await Incident.deleteOne({_id: req.body.incidentID});
 
-            return res.status(201).json({message: 'Инцидент был удалён!'});
+            return res.status(201).json({message: 'Инцидент удалён!'});
         } catch (e) {
             return res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
         }
@@ -63,8 +63,13 @@ router.put(
     '/update-incident',
     async (req, res) => {
         try {
-            console.log(req)
-            // return res.status(201).json({message: 'Инцидент был удалён!'});
+            console.log(req.body);
+            const filter =  req.body.incidentID;
+            const update =  req.body.values;
+
+            await Incident.findByIdAndUpdate(filter, update);
+
+            return res.status(201).json({message: 'Инцидент обновлён!'});
         } catch (e) {
             return res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
         }

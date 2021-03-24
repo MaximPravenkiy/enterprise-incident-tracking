@@ -24,11 +24,14 @@ const getUsersForAssigneeOptionApi = () => axios.get('/incidents/create-incident
 
 const deleteIncidentApi = (incidentID: any) => axios.delete('/incidents/delete-incident', { data: { incidentID } });
 
+const updateIncidentApi = (updateData: any) => axios.put('/incidents/update-incident', updateData);
+
 export {
     getIncidentsApi,
     postLoginApi,
     getUsersForAssigneeOptionApi,
     postRegistrationApi,
     postIncidentApi,
-    deleteIncidentApi
+    deleteIncidentApi,
+    updateIncidentApi
 };
