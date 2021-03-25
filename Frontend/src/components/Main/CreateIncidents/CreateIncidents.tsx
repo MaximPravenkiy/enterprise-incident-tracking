@@ -70,7 +70,14 @@ const CreateIncidents = (
                 ref={formRef}
             >
 
-                <Form.Item name="incidentName" label="Incident Name" rules={[{required: true, max: 25}]}>
+                <Form.Item
+                    name="incidentName"
+                    label="Incident Name"
+                    rules={[
+                        { required: true, message: "Incident name can't be empty!"},
+                        { max: 30, message: "Incident name can't contain more than 30 symbols!" }
+                        ]}
+                >
                     <Input/>
                 </Form.Item>
 
@@ -78,7 +85,7 @@ const CreateIncidents = (
                     <Select options={users} onChange={getUserId}/>
                 </Form.Item>
 
-                <Form.Item name="area" label="Area" rules={[{required: true, message: 'Missing area'}]}>
+                <Form.Item name="area" label="Area" rules={[{required: true, message: 'Area is missing area'}]}>
                     <Select options={areas}/>
                 </Form.Item>
 
@@ -90,15 +97,15 @@ const CreateIncidents = (
                     <DatePicker disabledDate={disabledDate}/>
                 </Form.Item>
 
-                <Form.Item name="description" label="Description" rules={[{required: true}]}>
+                <Form.Item name="description" label="Description" rules={[{required: true, message: "Description can't be empty!"}]}>
                     <Input/>
                 </Form.Item>
 
-                <Form.Item name="priority" label="Priority" rules={[{required: true, message: 'Missing area'}]}>
+                <Form.Item name="priority" label="Priority" rules={[{required: true, message: 'Priority is missing area'}]}>
                     <Select options={priority}/>
                 </Form.Item>
 
-                <Form.Item name="status" label="Status" rules={[{required: true, message: 'Missing area'}]}>
+                <Form.Item name="status" label="Status" rules={[{required: true, message: 'Status is missing area'}]}>
                     <Select options={status}/>
                 </Form.Item>
 
