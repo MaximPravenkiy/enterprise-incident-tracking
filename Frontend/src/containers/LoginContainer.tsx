@@ -2,6 +2,7 @@ import React from 'react';
 import {LoginForm} from "../components/Forms/LoginForm";
 import {useDispatch, useSelector} from "react-redux";
 import {postLogin, updateValuesLoginForm} from "../redux/store/actions/loginCreator";
+import {openMessage} from "./ServerResponseHandlers/Message";
 
 export interface LoginProps {
     onFinish: any,
@@ -16,6 +17,7 @@ const LoginContainer = () => {
 
     const onFinish = async (values: any) => {
         console.log('Received values of form: ', values);
+        openMessage();
         dispatch(postLogin(values));
     };
 

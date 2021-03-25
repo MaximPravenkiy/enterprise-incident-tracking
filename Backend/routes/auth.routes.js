@@ -52,9 +52,9 @@ router.post(
 router.post(
     '/login',
     [
-        check('login', 'Введите корректный login')
+        check('login', 'Введите корректный login. Минимальная длина - 4 символа')
             .isLength({min: 4}),
-        check('password', 'Минимальная длина пароля 6 символов')
+        check('password', 'Минимальная длина пароля 6 символов.')
             .isLength({min: 6})
     ],
     async (req, res) => {
@@ -64,7 +64,7 @@ router.post(
             if (!errors.isEmpty()) {
                 return res.status(400).json({
                     errors: errors.array(),
-                    message: 'Некорректные данные при входе в систему'
+                    message: 'Некорректные данные при входе в систему!'
                 })
             }
 
@@ -72,13 +72,13 @@ router.post(
             const user = await User.findOne({login});
 
             if (!user) {
-                return res.status(400).json({message: 'Пользователь не найден'});
+                return res.status(400).json({message: 'Пользователь не найден!'});
             }
 
             const isMatch = await bcrypt.compare(password, user.password);
 
             if (!isMatch) {
-                return res.status(400).json({message: 'Неверный логин или пароль'});
+                return res.status(400).json({message: 'Неверный логин или пароль!'});
             }
 
             const token = jwt.sign(
@@ -89,7 +89,7 @@ router.post(
 
             return res.json({token, userId: user.id, fullname: user.fullname});
         } catch (e) {
-            return res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
+            return res.status(500).json({message: 'Что-то пошло не так, попробуйте снова...'})
         }
     });
 

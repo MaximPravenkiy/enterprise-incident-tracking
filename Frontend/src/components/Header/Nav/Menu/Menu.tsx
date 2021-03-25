@@ -14,7 +14,7 @@ const NavMenu = ({menuItems}: MenuProps) => {
         <MenuCustom
             theme="dark"
             mode="horizontal"
-            defaultSelectedKeys={window.location.pathname.includes('login') ? ['1'] : ['2']}
+            defaultSelectedKeys={window.location.pathname.includes('registration') ? ['2'] : ['1']}
         >
             {menuItems}
         </MenuCustom>
