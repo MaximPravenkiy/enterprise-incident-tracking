@@ -1,4 +1,4 @@
-import {POST_REGISTRATION, REGISTRATION, UPDATE_VALUES_REGISTRATION_FORM} from "./actionTypes";
+import {POST_REGISTRATION, REGISTRATION, RESET_REGISTRATION_FORM, UPDATE_VALUES_REGISTRATION_FORM} from "./actionTypes";
 
 function postRegistration(values: any) {
     return {
@@ -20,4 +20,10 @@ function registration() {
     }
 }
 
-export {registration, postRegistration, updateValuesRegistrationForm};
+function resetRegistrationForm() {
+    return {
+        type: RESET_REGISTRATION_FORM
+    }
+}
+
+export {registration, postRegistration, updateValuesRegistrationForm, resetRegistrationForm};

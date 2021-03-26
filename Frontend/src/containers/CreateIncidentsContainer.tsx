@@ -8,6 +8,7 @@ import {
     getIncidents, resetCreateIncidentForm, updateIncident,
     updateValuesCreateIncidentForm
 } from "../redux/store/actions/incidentsCreator";
+import {openMessage} from "./ServerResponseHandlers/Message";
 
 export interface CreateIncidentProps {
     areas: any,
@@ -76,6 +77,7 @@ const CreateIncidentsContainer = () => {
     // Создать или обновить инцидент
     const onFinish = (values: any) => {
         values.owner = assigneeUserId;
+        openMessage();
 
         if (actionWithCreateIncidentForm === 'Создать') {
             dispatch(createIncident(values));

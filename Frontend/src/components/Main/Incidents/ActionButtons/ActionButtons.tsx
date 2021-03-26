@@ -9,6 +9,7 @@ import {
     updateValuesCreateIncidentForm
 } from "../../../../redux/store/actions/incidentsCreator";
 import {getDate} from "../../../../redux/store/reducers/incidentsReducer";
+import {openMessage} from "../../../../containers/ServerResponseHandlers/Message";
 
 const ActionButtons = ({incident}: any) => {
     const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const ActionButtons = ({incident}: any) => {
     const onDeleteIncident = (event: any) => {
         const incidentID = event.target.closest("button").dataset.key;
 
+        openMessage();
         dispatch(deleteIncident(incidentID));
         dispatch(getIncidents());
     }

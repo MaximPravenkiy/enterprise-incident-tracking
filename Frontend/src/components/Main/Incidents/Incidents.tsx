@@ -63,6 +63,8 @@ const columns = [
 ];
 
 const Incidents = ({listOfIncidents}: IncidentsProps) => {
+
+
     return (
         <>
             <TableCustom
@@ -70,7 +72,7 @@ const Incidents = ({listOfIncidents}: IncidentsProps) => {
                 columns={columns}
                 dataSource={listOfIncidents}
                 bordered
-                // loading
+                loading={listOfIncidents.length === 0}
             />
             <CreateIncidentsContainer/>
         </>

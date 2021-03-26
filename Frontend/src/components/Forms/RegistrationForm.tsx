@@ -32,6 +32,8 @@ const tailFormItemLayout = {
     },
 };
 
+
+
 const config = {
     rules: [{
         type: 'object' as const,
@@ -77,7 +79,12 @@ const RegistrationForm = (
             <Form.Item
                 label="Full Name"
                 name="fullname"
-                rules={[{ required: true, message: 'Please input your Full Name!' }]}
+                rules={[
+                    {
+                        required: true,
+                        message: 'Please input your Full Name!',
+
+                    }]}
             >
                 <Input />
             </Form.Item>
@@ -126,7 +133,7 @@ const RegistrationForm = (
                 rules={[
                     {
                         required: true,
-                        message: 'Please input your Date of birth!',
+                        message: 'Please input your position!',
                     }
                 ]}
             >

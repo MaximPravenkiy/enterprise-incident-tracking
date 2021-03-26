@@ -18,6 +18,8 @@ import {
     UPDATE_INCIDENT
 } from "../store/actions/actionTypes";
 import {logout} from "../store/actions/loginCreator";
+import {errorNotification, successNotification} from "../../containers/ServerResponseHandlers/Notification";
+import {destroyMessage} from "../../containers/ServerResponseHandlers/Message";
 
 function* getInicdentsWorker(): any {
     try {
@@ -42,7 +44,7 @@ function* getInicdentsWorker(): any {
 
         yield put(setIncidents(listOfIncidents));
     } catch (e) {
-        console.log(e.response.data.message);
+        errorNotification('Не удалось выполнить операцию...', e.response.data.message);
         localStorage.removeItem('userData');
         yield put(logout());
     }
@@ -59,35 +61,40 @@ function* getUsersForAssigneeOptionWorker(): any {
 
         yield put(setUsers(users));
     } catch (e) {
-        console.log(e.response.data.message);
+        errorNotification('Не удалось выполнить операцию...', e.response.data.message);
     }
 }
 
 function* createIncidentWorker({values}: any): any {
     try {
         const response = yield call(postIncidentApi, values);
-        console.log(response.data.message);
-        // yield put(setIncidents());
+        destroyMessage();
+        successNotification('Операция выполнена.', response.data.message)
     } catch (e) {
-        console.log(e.response.data.message);
+        destroyMessage();
+        errorNotification('Не удалось выполнить операцию...', e.response.data.message);
     }
 }
 
 function* deleteIncidentWorker({incidentID}: any): any {
     try {
         const response = yield call(deleteIncidentApi, incidentID);
-        console.log(response.data.message);
+        destroyMessage();
+        successNotification('Операция выполнена.', response.data.message)
     } catch (e) {
-        console.log(e.response.data.message);
+        destroyMessage();
+        errorNotification('Не удалось выполнить операцию...', e.response.data.message);
     }
 }
 
 function* updateIncidentWorker({updateData}: any): any {
     try {
-        const response = yield call(updateIncidentApi, updateData)
-        console.log(response.data.message);
+        const response = yield call(updateIncidentApi, updateData);
+        destroyMessage();
+        successNotification('Операция выполнена.', response.data.message)
     } catch (e) {
-        console.log(e.response.data.message);
+        destroyMessage();
+        errorNotification('Не удалось выполнить операцию...', e.response.data.message);
     }
 }
 

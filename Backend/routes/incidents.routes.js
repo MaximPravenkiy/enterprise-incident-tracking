@@ -1,6 +1,5 @@
 const {Router} = require('express');
 const router = Router();
-const {check, validationResult} = require('express-validator');
 const Incident = require('../models/Incident');
 const User = require('../models/User');
 const auth = require('../middleware/auth.middleware');
@@ -12,16 +11,12 @@ router.get(
             const users = await User.find({}, 'fullname');
             return res.json(users);
         } catch (e) {
-            return res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
+            return res.status(500).json({message: 'Что-то пошло не так, попробуйте снова.'})
         }
     });
 
 router.post(
     '/create-incident',
-    [
-        check('incident-name', 'Имя инцидента не должно быть короч 4 символов')
-            .isLength({min: 4}),
-    ],
     async (req, res) => {
         try {
             const incident = new Incident(req.body);
@@ -29,7 +24,7 @@ router.post(
 
             return res.status(201).json({message: 'Инцидент был создан!'});
         } catch (e) {
-            return res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
+            return res.status(500).json({message: 'Что-то пошло не так, попробуйте снова.'})
         }
     });
 
@@ -42,7 +37,7 @@ router.get(
 
             res.json(incidents);
         } catch (e) {
-            return res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
+            return res.status(500).json({message: 'Что-то пошло не так, попробуйте снова.'})
         }
     });
 
@@ -54,7 +49,7 @@ router.delete(
 
             return res.status(201).json({message: 'Инцидент удалён!'});
         } catch (e) {
-            return res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
+            return res.status(500).json({message: 'Что-то пошло не так, попробуйте снова.'})
         }
     }
 )
@@ -70,7 +65,7 @@ router.put(
 
             return res.status(201).json({message: 'Инцидент обновлён!'});
         } catch (e) {
-            return res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
+            return res.status(500).json({message: 'Что-то пошло не так, попробуйте снова.'})
         }
     }
 )

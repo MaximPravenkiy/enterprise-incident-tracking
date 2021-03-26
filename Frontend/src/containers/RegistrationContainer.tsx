@@ -2,6 +2,7 @@ import React from 'react';
 import {RegistrationForm} from "../components/Forms/RegistrationForm";
 import {useDispatch, useSelector} from "react-redux";
 import {postRegistration, updateValuesRegistrationForm} from "../redux/store/actions/registrationCreator";
+import {openMessage} from "./ServerResponseHandlers/Message";
 
 export interface RegistrationProps {
     registerNewUser: any,
@@ -25,6 +26,7 @@ const RegistrationContainer = () => {
 
     const registerNewUser = async (values: any) => {
         console.log('Received values of form: ', values);
+        openMessage();
         dispatch(postRegistration(values));
     };
 

@@ -1,4 +1,4 @@
-import {UPDATE_VALUES_REGISTRATION_FORM} from "../actions/actionTypes";
+import {RESET_REGISTRATION_FORM, UPDATE_VALUES_REGISTRATION_FORM} from "../actions/actionTypes";
 
 const initialState = {
     dateOfBirth: '',
@@ -15,6 +15,10 @@ function registrationReducer(state = initialState, action: any): object {
                 ...state,
                 ...action.values
             };
+        case RESET_REGISTRATION_FORM:
+            return  {
+                ...initialState
+            }
         default:
             return state;
     }
