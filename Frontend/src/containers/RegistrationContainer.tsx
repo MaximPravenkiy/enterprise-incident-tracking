@@ -26,7 +26,7 @@ const RegistrationContainer = () => {
 
     const registerNewUser = async (values: any) => {
         console.log('Received values of form: ', values);
-        openMessage();
+        openMessage('Проверяем данные...');
         dispatch(postRegistration(values));
     };
 

@@ -17,7 +17,7 @@ const ActionButtons = ({incident}: any) => {
     const onDeleteIncident = (event: any) => {
         const incidentID = event.target.closest("button").dataset.key;
 
-        openMessage();
+        openMessage('Выполняем запрос...');
         dispatch(deleteIncident(incidentID));
         dispatch(getIncidents());
     }
@@ -31,6 +31,7 @@ const ActionButtons = ({incident}: any) => {
 
         const assignOnCurrentUser = JSON.parse(userData).userId;
 
+        openMessage('Загружаем данные...');
         dispatch(setDataForUpdating(incidentID))
         dispatch(changeAssigneeUserId(assignOnCurrentUser));
         dispatch(updateValuesCreateIncidentForm({

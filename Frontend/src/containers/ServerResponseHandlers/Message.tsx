@@ -2,9 +2,9 @@ import { message  } from 'antd';
 
 const key = 'loading';
 
-const openMessage = () => {
+const openMessage = (text: string): void => {
     message.loading({
-            content: 'Проверяем данные...',
+            content: text,
             duration: 0,
             key,
             style: {
@@ -13,7 +13,7 @@ const openMessage = () => {
         });
 };
 
-const destroyMessage = () => {
+const destroyMessage = (): void => {
     message.destroy(key);
 }
 

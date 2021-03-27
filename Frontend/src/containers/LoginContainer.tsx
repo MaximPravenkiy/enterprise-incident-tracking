@@ -17,7 +17,7 @@ const LoginContainer = () => {
 
     const onFinish = async (values: any) => {
         console.log('Received values of form: ', values);
-        openMessage();
+        openMessage('Проверяем данные...');
         dispatch(postLogin(values));
     };
 

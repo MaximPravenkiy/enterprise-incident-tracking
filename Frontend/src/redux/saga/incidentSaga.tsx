@@ -46,7 +46,9 @@ function* getInicdentsWorker(): any {
     } catch (e) {
         errorNotification('Не удалось выполнить операцию...', e.response.data.message);
         localStorage.removeItem('userData');
-        yield put(logout());
+        if (e.response.status === 401) {
+            yield put(logout());
+        }
     }
 }
 
@@ -59,8 +61,10 @@ function* getUsersForAssigneeOptionWorker(): any {
             id: item._id
         }));
 
+        destroyMessage();
         yield put(setUsers(users));
     } catch (e) {
+        destroyMessage();
         errorNotification('Не удалось выполнить операцию...', e.response.data.message);
     }
 }

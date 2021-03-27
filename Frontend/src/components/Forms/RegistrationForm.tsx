@@ -83,8 +83,12 @@ const RegistrationForm = (
                     {
                         required: true,
                         message: 'Please input your Full Name!',
-
-                    }]}
+                    },
+                    {
+                        pattern: /^\D*$/,
+                        message: 'This field can\'t contain numbers!'
+                    }
+                ]}
             >
                 <Input />
             </Form.Item>

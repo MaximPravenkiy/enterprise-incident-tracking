@@ -5,6 +5,7 @@ import {logout} from "../redux/store/actions/loginCreator";
 import MenuItemLogin from "../components/Header/Nav/Menu/MenuItemLogin/MenuItemLogin";
 import MenuItemLogout from "../components/Header/Nav/Menu/MenuItemLogout/MenuItemLogout";
 import {getUsers} from "../redux/store/actions/incidentsCreator";
+import {openMessage} from "./ServerResponseHandlers/Message";
 
 export interface MenuProps {
     menuItems: any,
@@ -31,6 +32,7 @@ const MenuContainer = () => {
     }
     
     const createIncident = () => {
+        openMessage('Загружаем данные...');
         dispatch(getUsers());
     }
 
