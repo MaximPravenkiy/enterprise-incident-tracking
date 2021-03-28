@@ -57,8 +57,9 @@ function* getUsersForAssigneeOptionWorker(): any {
         const response = yield call(getUsersForAssigneeOptionApi);
         const users = response.data.map((item: any) => ({
             label: item.fullname,
-            value: item.fullname,
-            id: item._id
+            value: `${item.fullname} ${item._id}`,
+            id: item._id,
+            key: item._id
         }));
 
         destroyMessage();

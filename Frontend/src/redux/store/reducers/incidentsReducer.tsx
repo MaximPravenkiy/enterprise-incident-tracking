@@ -34,11 +34,12 @@ export type ValuesCreateIncidentFormTypes = {
     startDate: moment.Moment
     status: string
 }
-type UsersTypes = {
+export type UsersTypes = Array<{
     id: string
     label: string
     value: string
-};
+    key: string
+}>;
 
 const initialState = {
     actionWithCreateIncidentForm: 'Создать' as 'Создать' | 'Обновить',
@@ -46,7 +47,7 @@ const initialState = {
     incidentID: '',
     isModalVisible: false,
     listOfIncidents: [] as ListOfIncidentsTypes,
-    users: [] as Array<UsersTypes>,
+    users: [] as UsersTypes,
     valuesCreateIncidentForm: {
         area: '',
         assignee: '',
@@ -90,14 +91,14 @@ function incidentsReducer(state = initialState, action: any): InitialStateType {
                 ...state,
                 valuesCreateIncidentForm: {
                     ...state.valuesCreateIncidentForm,
-                    ...action.value
+                    ...action.updatedValue
                 },
             };
         case SET_DATA_FOR_UPDATING:
             return {
                 ...state,
                 actionWithCreateIncidentForm: 'Обновить',
-                incidentID: action.value
+                incidentID: action.incidentID
             }
         case RESET_CREATE_INCIDENT_FORM:
             return {

@@ -77,6 +77,7 @@ const CreateIncidentsContainer = () => {
     // Создать или обновить инцидент
     const onFinish = (values: any) => {
         values.owner = assigneeUserId;
+        values.assignee = values.assignee.split(assigneeUserId)[0];
         openMessage('Проверяем данные...');
 
         if (actionWithCreateIncidentForm === 'Создать') {

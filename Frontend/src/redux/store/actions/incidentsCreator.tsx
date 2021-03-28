@@ -11,42 +11,104 @@ import {
     UPDATE_INCIDENT,
     SET_DATA_FOR_UPDATING, RESET_CREATE_INCIDENT_FORM
 } from "./actionTypes";
-import {ListOfIncidentsTypes, ValuesCreateIncidentFormTypes} from "../reducers/incidentsReducer";
+import {ListOfIncidentsTypes, UsersTypes, ValuesCreateIncidentFormTypes} from "../reducers/incidentsReducer";
 
 // Incidents
-type GetIncidentsType = {
+type GetIncidentsActionType = {
     type: typeof GET_INCIDENTS
 }
-const getIncidents = (): GetIncidentsType => ({ type: GET_INCIDENTS })
-type SetIncidentsType = {
+const getIncidents = ()
+    : GetIncidentsActionType =>
+    ({ type: GET_INCIDENTS })
+
+type SetIncidentsActionType = {
     type: typeof SET_INCIDENTS,
     listOfIncidents: ListOfIncidentsTypes
 }
-const setIncidents = (listOfIncidents: ListOfIncidentsTypes): SetIncidentsType => ({ type: SET_INCIDENTS, listOfIncidents })
-type CreateIncidentType = {
+const setIncidents = (listOfIncidents: ListOfIncidentsTypes)
+    : SetIncidentsActionType =>
+    ({ type: SET_INCIDENTS, listOfIncidents })
+
+type CreateIncidentActionType = {
     type: typeof CREATE_INCIDENT,
     valuesCreateIncidentForm: ValuesCreateIncidentFormTypes
 }
-const createIncident = (valuesCreateIncidentForm: ValuesCreateIncidentFormTypes): CreateIncidentType => ({ type: CREATE_INCIDENT, valuesCreateIncidentForm })
+const createIncident = (valuesCreateIncidentForm: ValuesCreateIncidentFormTypes)
+    : CreateIncidentActionType =>
+    ({ type: CREATE_INCIDENT, valuesCreateIncidentForm })
 
-const deleteIncident = (incidentID: any) => ({ type: DELETE_INCIDENT, incidentID })
+type DeleteIncidentActionType = {
+    type: typeof DELETE_INCIDENT,
+    incidentID: string
+}
+const deleteIncident = (incidentID: string)
+    : DeleteIncidentActionType =>
+    ({ type: DELETE_INCIDENT, incidentID })
 
-const closeModal = () => ({ type: CLOSE_MODAL })
+type CloseModalActionType = {
+    type: typeof CLOSE_MODAL
+}
+const closeModal = ()
+    : CloseModalActionType =>
+    ({ type: CLOSE_MODAL })
 
-const updateValuesCreateIncidentForm = (value: any) => ({ type: UPDATE_VALUES_CREATE_INCIDENT_FORM, value })
+type UpdateValuesCreateIncidentFormActionType = {
+    type: typeof UPDATE_VALUES_CREATE_INCIDENT_FORM,
+    updatedValue: ValuesCreateIncidentFormTypes
+}
+const updateValuesCreateIncidentForm = (updatedValue: ValuesCreateIncidentFormTypes)
+    : UpdateValuesCreateIncidentFormActionType =>
+    ({ type: UPDATE_VALUES_CREATE_INCIDENT_FORM, updatedValue })
 
-const setDataForUpdating = (value: any) => ({ type: SET_DATA_FOR_UPDATING, value })
+type SetDataForUpdatingActionType = {
+    type: typeof SET_DATA_FOR_UPDATING,
+    incidentID: string
+}
+const setDataForUpdating = (incidentID: string)
+    : SetDataForUpdatingActionType =>
+    ({ type: SET_DATA_FOR_UPDATING, incidentID })
 
-const updateIncident = (updateData: any) => ({ type: UPDATE_INCIDENT, updateData })
+type UpdateIncidentActionType = {
+    type: typeof UPDATE_INCIDENT,
+    updateData: {
+        incidentID: string,
+        values: ValuesCreateIncidentFormTypes & { owner: string }
+    }
+}
+const updateIncident = (updateData: UpdateIncidentActionType["updateData"])
+    : UpdateIncidentActionType =>
+    ({ type: UPDATE_INCIDENT, updateData })
 
-const resetCreateIncidentForm = () => ({ type: RESET_CREATE_INCIDENT_FORM })
+type ResetCreateIncidentFormActionType = {
+    type: typeof RESET_CREATE_INCIDENT_FORM
+}
+const resetCreateIncidentForm = ()
+    : ResetCreateIncidentFormActionType =>
+    ({ type: RESET_CREATE_INCIDENT_FORM })
 
 // Users
-const getUsers = () => ({ type: GET_USERS })
+type GetUsersActionType = {
+    type: typeof GET_USERS
+}
+const getUsers = ()
+    : GetUsersActionType =>
+    ({ type: GET_USERS })
 
-const setUsers = (users: any) => ({ type: SET_USERS, users })
+type SetUsersActionType = {
+    type: typeof SET_USERS,
+    users: UsersTypes
+}
+const setUsers = (users: UsersTypes)
+    : SetUsersActionType =>
+    ({ type: SET_USERS, users })
 
-const changeAssigneeUserId = (assigneeUserId: any) => ({ type: CHANGE_ASSIGNEE_USER_ID, assigneeUserId })
+type ChangeAssigneeUserIdActionType = {
+    type: typeof CHANGE_ASSIGNEE_USER_ID,
+    assigneeUserId: string
+}
+const changeAssigneeUserId = (assigneeUserId: string)
+    : ChangeAssigneeUserIdActionType =>
+    ({ type: CHANGE_ASSIGNEE_USER_ID, assigneeUserId })
 
 export {
     getIncidents,
