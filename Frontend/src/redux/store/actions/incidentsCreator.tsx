@@ -11,90 +11,42 @@ import {
     UPDATE_INCIDENT,
     SET_DATA_FOR_UPDATING, RESET_CREATE_INCIDENT_FORM
 } from "./actionTypes";
+import {ListOfIncidentsTypes, ValuesCreateIncidentFormTypes} from "../reducers/incidentsReducer";
 
 // Incidents
-
-function getIncidents() {
-    return {
-        type: GET_INCIDENTS
-    }
+type GetIncidentsType = {
+    type: typeof GET_INCIDENTS
 }
-
-function setIncidents(listOfIncidents: any) {
-    return {
-        type: SET_INCIDENTS,
-        listOfIncidents
-    }
+const getIncidents = (): GetIncidentsType => ({ type: GET_INCIDENTS })
+type SetIncidentsType = {
+    type: typeof SET_INCIDENTS,
+    listOfIncidents: ListOfIncidentsTypes
 }
-
-function createIncident(values: any) {
-    return {
-        type: CREATE_INCIDENT,
-        values
-    }
+const setIncidents = (listOfIncidents: ListOfIncidentsTypes): SetIncidentsType => ({ type: SET_INCIDENTS, listOfIncidents })
+type CreateIncidentType = {
+    type: typeof CREATE_INCIDENT,
+    valuesCreateIncidentForm: ValuesCreateIncidentFormTypes
 }
+const createIncident = (valuesCreateIncidentForm: ValuesCreateIncidentFormTypes): CreateIncidentType => ({ type: CREATE_INCIDENT, valuesCreateIncidentForm })
 
-function deleteIncident(incidentID: any) {
-    return {
-        type: DELETE_INCIDENT,
-        incidentID
-    }
-}
+const deleteIncident = (incidentID: any) => ({ type: DELETE_INCIDENT, incidentID })
 
-function closeModal() {
-    return {
-        type: CLOSE_MODAL
-    }
-}
+const closeModal = () => ({ type: CLOSE_MODAL })
 
-function updateValuesCreateIncidentForm(value: any) {
-    return {
-        type: UPDATE_VALUES_CREATE_INCIDENT_FORM,
-        value
-    }
-}
+const updateValuesCreateIncidentForm = (value: any) => ({ type: UPDATE_VALUES_CREATE_INCIDENT_FORM, value })
 
-function setDataForUpdating(value: any) {
-    return {
-        type: SET_DATA_FOR_UPDATING,
-        value
-    }
-}
+const setDataForUpdating = (value: any) => ({ type: SET_DATA_FOR_UPDATING, value })
 
-function updateIncident(updateData: any) {
-    return {
-        type: UPDATE_INCIDENT,
-        updateData
-    }
-}
+const updateIncident = (updateData: any) => ({ type: UPDATE_INCIDENT, updateData })
 
-function resetCreateIncidentForm() {
-    return {
-        type: RESET_CREATE_INCIDENT_FORM
-    }
-}
+const resetCreateIncidentForm = () => ({ type: RESET_CREATE_INCIDENT_FORM })
 
 // Users
+const getUsers = () => ({ type: GET_USERS })
 
-function getUsers() {
-    return {
-        type: GET_USERS
-    }
-}
+const setUsers = (users: any) => ({ type: SET_USERS, users })
 
-function setUsers(users: any) {
-    return {
-        type: SET_USERS,
-        users
-    }
-}
-
-function changeAssigneeUserId(assigneeUserId: any) {
-    return {
-        type: CHANGE_ASSIGNEE_USER_ID,
-        assigneeUserId
-    }
-}
+const changeAssigneeUserId = (assigneeUserId: any) => ({ type: CHANGE_ASSIGNEE_USER_ID, assigneeUserId })
 
 export {
     getIncidents,

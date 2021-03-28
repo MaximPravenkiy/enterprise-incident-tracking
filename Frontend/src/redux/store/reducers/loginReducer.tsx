@@ -9,7 +9,9 @@ const initialState = {
     userId: ''
 }
 
-function loginReducer(state = initialState, action: any) {
+type InitialStateType = typeof initialState;
+
+function loginReducer(state = initialState, action: any): InitialStateType {
     switch (action.type) {
         case LOGIN:
             return {

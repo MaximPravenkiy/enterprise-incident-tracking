@@ -1,31 +1,12 @@
 import {LOGIN, LOGOUT, POST_LOGIN, UPDATE_VALUES_LOGIN_FORM} from "./actionTypes";
 
-function postLogin(values: any) {
-    return {
-        type: POST_LOGIN,
-        values
-    }
-}
+const postLogin = (values: any) => ({ type: POST_LOGIN, values })
 
-function login(userData: any) {
-    return {
-        type: LOGIN,
-        userData
-    }
-}
+const login = (userData: any) => ({ type: LOGIN, userData })
 
-function updateValuesLoginForm(values: any) {
-    return {
-        type: UPDATE_VALUES_LOGIN_FORM,
-        values
-    }
-}
+const updateValuesLoginForm = (values: any) => ({ type: UPDATE_VALUES_LOGIN_FORM, values })
 
-function logout() {
-    return {
-        type: LOGOUT
-    }
-}
+const logout = () => ({ type: LOGOUT })
 
 export {login, logout, postLogin, updateValuesLoginForm};
 

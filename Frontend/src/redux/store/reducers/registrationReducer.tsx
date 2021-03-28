@@ -8,12 +8,15 @@ const initialState = {
     position: ''
 }
 
-function registrationReducer(state = initialState, action: any): object {
+type InitialStateType = typeof initialState;
+
+function registrationReducer(state = initialState, action: any): InitialStateType {
     switch (action.type) {
         case UPDATE_VALUES_REGISTRATION_FORM:
             return {
                 ...state,
-                ...action.values
+                ...action.values,
+                qwe: 123
             };
         case RESET_REGISTRATION_FORM:
             return  {

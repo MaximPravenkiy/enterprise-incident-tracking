@@ -69,9 +69,9 @@ function* getUsersForAssigneeOptionWorker(): any {
     }
 }
 
-function* createIncidentWorker({values}: any): any {
+function* createIncidentWorker({valuesCreateIncidentForm}: any): any {
     try {
-        const response = yield call(postIncidentApi, values);
+        const response = yield call(postIncidentApi, valuesCreateIncidentForm);
         destroyMessage();
         successNotification('Операция выполнена.', response.data.message)
     } catch (e) {

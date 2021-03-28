@@ -14,15 +14,13 @@ const sagaMiddleware = createSagaMiddleware();
 const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 
 ReactDOM.render(
-  <React.StrictMode>
-      <Provider store={store}>
-          <BrowserRouter>
-              <GlobalStyles/>
-              <App/>
-          </BrowserRouter>
-      </Provider>
-  </React.StrictMode>,
-  document.getElementById('root')
+    <Provider store={store}>
+        <BrowserRouter>
+            <GlobalStyles/>
+            <App/>
+        </BrowserRouter>
+    </Provider>,
+    document.getElementById('root')
 );
 
 sagaMiddleware.run(rootWatcher);

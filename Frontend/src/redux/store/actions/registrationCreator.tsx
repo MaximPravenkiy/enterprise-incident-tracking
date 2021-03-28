@@ -1,29 +1,11 @@
 import {POST_REGISTRATION, REGISTRATION, RESET_REGISTRATION_FORM, UPDATE_VALUES_REGISTRATION_FORM} from "./actionTypes";
 
-function postRegistration(values: any) {
-    return {
-        type: POST_REGISTRATION,
-        values
-    }
-}
+const postRegistration = (values: any) => ({ type: POST_REGISTRATION, values })
 
-function updateValuesRegistrationForm(values: any) {
-    return {
-        type: UPDATE_VALUES_REGISTRATION_FORM,
-        values
-    }
-}
+const updateValuesRegistrationForm = (values: any) => ({ type: UPDATE_VALUES_REGISTRATION_FORM, values })
 
-function registration() {
-    return {
-        type: REGISTRATION
-    }
-}
+const registration = () => ({ type: REGISTRATION })
 
-function resetRegistrationForm() {
-    return {
-        type: RESET_REGISTRATION_FORM
-    }
-}
+const resetRegistrationForm = () => ({ type: RESET_REGISTRATION_FORM })
 
 export {registration, postRegistration, updateValuesRegistrationForm, resetRegistrationForm};
