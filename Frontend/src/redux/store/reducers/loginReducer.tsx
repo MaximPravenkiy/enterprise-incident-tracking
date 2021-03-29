@@ -22,7 +22,7 @@ function loginReducer(state = initialState, action: any): InitialStateType {
         case UPDATE_VALUES_LOGIN_FORM:
             return {
                 ...state,
-                ...action.values
+                ...action.updatedValueLoginForm
             } ;
         case LOGOUT:
             return {

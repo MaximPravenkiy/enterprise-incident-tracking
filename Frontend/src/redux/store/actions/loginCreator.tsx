@@ -1,12 +1,46 @@
 import {LOGIN, LOGOUT, POST_LOGIN, UPDATE_VALUES_LOGIN_FORM} from "./actionTypes";
 
-const postLogin = (values: any) => ({ type: POST_LOGIN, values })
+type PostLoginActionType = {
+    type: typeof POST_LOGIN,
+    loginFormValues: {
+        login: string
+        password: string
+        remember: boolean
+    }
+}
+const postLogin = (loginFormValues: PostLoginActionType["loginFormValues"])
+    : PostLoginActionType =>
+    ({ type: POST_LOGIN, loginFormValues })
 
-const login = (userData: any) => ({ type: LOGIN, userData })
+type LoginActionType = {
+    type: typeof LOGIN,
+    userData: {
+        fullname: string
+        token: string
+        userId: string
+    }
+}
+const login = (userData: LoginActionType["userData"])
+    : LoginActionType =>
+    ({ type: LOGIN, userData })
 
-const updateValuesLoginForm = (values: any) => ({ type: UPDATE_VALUES_LOGIN_FORM, values })
+type UpdateValuesLoginFormActionType = {
+    type: typeof UPDATE_VALUES_LOGIN_FORM,
+    updatedValueLoginForm: {
+        login: string,
+        password: string
+    }
+}
+const updateValuesLoginForm = (updatedValueLoginForm: UpdateValuesLoginFormActionType["updatedValueLoginForm"])
+    : UpdateValuesLoginFormActionType =>
+    ({ type: UPDATE_VALUES_LOGIN_FORM, updatedValueLoginForm })
 
-const logout = () => ({ type: LOGOUT })
+type LogoutActionType = {
+    type: typeof LOGOUT
+}
+const logout = ()
+    : LogoutActionType =>
+    ({ type: LOGOUT })
 
 export {login, logout, postLogin, updateValuesLoginForm};
 

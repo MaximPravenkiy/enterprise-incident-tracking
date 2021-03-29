@@ -5,9 +5,9 @@ import {postLoginApi} from "./API";
 import {errorNotification, successNotification} from "../../containers/ServerResponseHandlers/Notification";
 import {destroyMessage} from "../../containers/ServerResponseHandlers/Message";
 
-function* postLoginWorker({values}: any): any {
+function* postLoginWorker({loginFormValues}: any): any {
     try {
-        const response = yield call(postLoginApi, values);
+        const response = yield call(postLoginApi, loginFormValues);
 
         if (response.status === 200) {
             localStorage.setItem('userData', JSON.stringify(response.data));

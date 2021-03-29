@@ -5,9 +5,9 @@ import {destroyMessage} from "../../containers/ServerResponseHandlers/Message";
 import {errorNotification, successNotification} from "../../containers/ServerResponseHandlers/Notification";
 import {resetRegistrationForm} from "../store/actions/registrationCreator";
 
-function* postRegistrationWorker({values}: any): any {
+function* postRegistrationWorker({registrationFormValues}: any): any {
     try {
-        const response = yield call(postRegistrationApi, values);
+        const response = yield call(postRegistrationApi, registrationFormValues);
 
         if (response.status === 201) {
             destroyMessage();

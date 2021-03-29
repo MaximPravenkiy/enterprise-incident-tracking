@@ -1,11 +1,34 @@
 import {POST_REGISTRATION, REGISTRATION, RESET_REGISTRATION_FORM, UPDATE_VALUES_REGISTRATION_FORM} from "./actionTypes";
+import {InitialStateType} from "../reducers/registrationReducer";
 
-const postRegistration = (values: any) => ({ type: POST_REGISTRATION, values })
+type PostRegistrationActionType = {
+    type: typeof POST_REGISTRATION,
+    registrationFormValues: InitialStateType
+}
+const postRegistration = (registrationFormValues: InitialStateType)
+    : PostRegistrationActionType =>
+    ({ type: POST_REGISTRATION, registrationFormValues })
 
-const updateValuesRegistrationForm = (values: any) => ({ type: UPDATE_VALUES_REGISTRATION_FORM, values })
+type UpdateValuesRegistrationFormActionType = {
+    type: typeof UPDATE_VALUES_REGISTRATION_FORM,
+    updatedValueRegistrationForm: InitialStateType
+}
+const updateValuesRegistrationForm = (updatedValueRegistrationForm: any)
+    : UpdateValuesRegistrationFormActionType =>
+    ({ type: UPDATE_VALUES_REGISTRATION_FORM, updatedValueRegistrationForm })
 
-const registration = () => ({ type: REGISTRATION })
+type RegistrationActionType = {
+    type: typeof REGISTRATION
+}
+const registration = ()
+    : RegistrationActionType =>
+    ({ type: REGISTRATION })
 
-const resetRegistrationForm = () => ({ type: RESET_REGISTRATION_FORM })
+type ResetRegistrationFormActionType = {
+    type: typeof RESET_REGISTRATION_FORM
+}
+const resetRegistrationForm = ()
+    : ResetRegistrationFormActionType =>
+    ({ type: RESET_REGISTRATION_FORM })
 
 export {registration, postRegistration, updateValuesRegistrationForm, resetRegistrationForm};
