@@ -1,5 +1,6 @@
 import moment from "moment";
 import {RESET_REGISTRATION_FORM, UPDATE_VALUES_REGISTRATION_FORM} from "../actions/actionTypes";
+import {RegistrationType} from "../actions/Types/registrationType";
 
 const initialState = {
     dateOfBirth: null as null | moment.Moment,
@@ -11,7 +12,7 @@ const initialState = {
 
 export type InitialStateType = typeof initialState;
 
-function registrationReducer(state = initialState, action: any): InitialStateType {
+function registrationReducer(state = initialState, action: RegistrationType): InitialStateType {
     switch (action.type) {
         case UPDATE_VALUES_REGISTRATION_FORM:
             return {

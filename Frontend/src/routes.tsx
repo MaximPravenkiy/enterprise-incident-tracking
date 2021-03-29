@@ -6,7 +6,7 @@ import LoginContainer from "./containers/LoginContainer";
 import IncidentsContainer from "./containers/IncidentsContainer";
 
 const Routes = () => {
-    const isAuth: any = useSelector(({loginReducer}: any) => loginReducer.isAuth);
+    const isAuth: boolean = useSelector(({loginReducer}: any) => loginReducer.isAuth);
     const routes = isAuth ? (
             <Switch>
                 <Route exact path='/incidents' component={IncidentsContainer}/>

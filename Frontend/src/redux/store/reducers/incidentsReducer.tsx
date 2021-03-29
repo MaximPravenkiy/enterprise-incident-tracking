@@ -6,7 +6,7 @@ import {
     UPDATE_VALUES_CREATE_INCIDENT_FORM
 } from '../actions/actionTypes';
 import moment from "moment";
-import {ReactElement} from "react";
+import {IncidentsType} from "../actions/Types/incidentsTypes";
 
 export function getDate(date = new Date()): moment.Moment {
     return moment(date, 'YYYY-MM-DD').utc(true);
@@ -17,7 +17,7 @@ export type ListOfIncidentsTypes = Array<{
     assignee: string
     description: string
     dueDate: moment.Moment
-    icon: ReactElement
+    icon: JSX.Element
     incidentName: string
     key: string
     priority: string
@@ -62,7 +62,7 @@ const initialState = {
 
 type InitialStateType = typeof initialState;
 
-function incidentsReducer(state = initialState, action: any): InitialStateType {
+function incidentsReducer(state = initialState, action: IncidentsType): InitialStateType {
     switch (action.type) {
         case SET_INCIDENTS:
             return {
