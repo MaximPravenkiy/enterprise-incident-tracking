@@ -6,6 +6,7 @@ import MenuItemLogin from "../components/Header/Nav/Menu/MenuItemLogin/MenuItemL
 import MenuItemLogout from "../components/Header/Nav/Menu/MenuItemLogout/MenuItemLogout";
 import {getUsers} from "../redux/store/actions/incidentsCreator";
 import {openMessage} from "./ServerResponseHandlers/Message";
+import {RootReducer} from "../redux/store/reducers/rootReducer";
 
 export interface MenuProps {
     menuItems: any,
@@ -24,7 +25,7 @@ const navContent = [
 
 const MenuContainer = () => {
     const dispatch = useDispatch();
-    const {isAuth, fullname}: any = useSelector(({loginReducer}: any) => loginReducer);
+    const {isAuth, fullname} = useSelector(({loginReducer}: RootReducer) => loginReducer);
 
     const onLogout = () => {
         localStorage.removeItem('userData');

@@ -3,6 +3,7 @@ import {RegistrationForm} from "../components/Forms/RegistrationForm";
 import {useDispatch, useSelector} from "react-redux";
 import {postRegistration, updateValuesRegistrationForm} from "../redux/store/actions/registrationCreator";
 import {openMessage} from "./ServerResponseHandlers/Message";
+import {RootReducer} from "../redux/store/reducers/rootReducer";
 
 export interface RegistrationProps {
     registerNewUser: any,
@@ -21,7 +22,7 @@ const RegistrationContainer = () => {
         login,
         password,
         position,
-    } = useSelector(({registrationReducer}: any) => registrationReducer);
+    } = useSelector(({registrationReducer}: RootReducer) => registrationReducer);
     const dispatch = useDispatch();
 
     const registerNewUser = async (values: any) => {

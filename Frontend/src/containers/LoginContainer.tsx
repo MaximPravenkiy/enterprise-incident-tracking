@@ -3,6 +3,7 @@ import {LoginForm} from "../components/Forms/LoginForm";
 import {useDispatch, useSelector} from "react-redux";
 import {postLogin, updateValuesLoginForm} from "../redux/store/actions/loginCreator";
 import {openMessage} from "./ServerResponseHandlers/Message";
+import {RootReducer} from "../redux/store/reducers/rootReducer";
 
 export interface LoginProps {
     onFinish: any,
@@ -12,7 +13,7 @@ export interface LoginProps {
 }
 
 const LoginContainer = () => {
-    const {login, password} = useSelector(({loginReducer}: any) => loginReducer);
+    const {login, password} = useSelector(({loginReducer}: RootReducer) => loginReducer);
     const dispatch = useDispatch();
 
     const onFinish = async (values: any) => {

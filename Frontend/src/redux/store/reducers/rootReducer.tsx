@@ -9,4 +9,6 @@ const rootReducer = combineReducers({
     incidentsReducer
 });
 
+export type RootReducer = ReturnType<typeof rootReducer>
+
 export default rootReducer;

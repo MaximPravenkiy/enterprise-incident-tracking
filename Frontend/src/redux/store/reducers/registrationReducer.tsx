@@ -10,9 +10,10 @@ const initialState = {
     position: ''
 }
 
-export type InitialStateType = typeof initialState;
+export type RegistrationInitialStateType = typeof initialState;
 
-function registrationReducer(state = initialState, action: RegistrationType): InitialStateType {
+function registrationReducer(state = initialState, action: RegistrationType)
+    : RegistrationInitialStateType {
     switch (action.type) {
         case UPDATE_VALUES_REGISTRATION_FORM:
             return {

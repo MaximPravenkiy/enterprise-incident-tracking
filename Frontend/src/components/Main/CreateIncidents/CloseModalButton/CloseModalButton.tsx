@@ -2,9 +2,10 @@ import React from 'react';
 import {Button} from "antd";
 import {closeModal, resetCreateIncidentForm} from "../../../../redux/store/actions/incidentsCreator";
 import {useDispatch, useSelector} from "react-redux";
+import {RootReducer} from "../../../../redux/store/reducers/rootReducer";
 
 const CloseModalButton = () => {
-    const {actionWithCreateIncidentForm} = useSelector(({incidentsReducer}: any) => incidentsReducer)
+    const {actionWithCreateIncidentForm} = useSelector(({incidentsReducer}: RootReducer) => incidentsReducer)
     const dispatch = useDispatch();
 
     const onCloseModal = () => {

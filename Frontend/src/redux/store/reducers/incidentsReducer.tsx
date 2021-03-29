@@ -60,9 +60,10 @@ const initialState = {
     } as ValuesCreateIncidentFormTypes
 }
 
-type InitialStateType = typeof initialState;
+type IncidentsInitialStateType = typeof initialState;
 
-function incidentsReducer(state = initialState, action: IncidentsType): InitialStateType {
+function incidentsReducer(state = initialState, action: IncidentsType)
+    : IncidentsInitialStateType {
     switch (action.type) {
         case SET_INCIDENTS:
             return {

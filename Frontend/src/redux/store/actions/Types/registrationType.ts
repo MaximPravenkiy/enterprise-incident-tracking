@@ -4,16 +4,16 @@ import {
     RESET_REGISTRATION_FORM,
     UPDATE_VALUES_REGISTRATION_FORM
 } from "../actionTypes";
-import {InitialStateType} from "../../reducers/registrationReducer";
+import {RegistrationInitialStateType} from "../../reducers/registrationReducer";
 
 export type PostRegistrationActionType = {
     type: typeof POST_REGISTRATION,
-    registrationFormValues: InitialStateType
+    registrationFormValues: RegistrationInitialStateType
 }
 
 export type UpdateValuesRegistrationFormActionType = {
     type: typeof UPDATE_VALUES_REGISTRATION_FORM,
-    updatedValueRegistrationForm: InitialStateType
+    updatedValueRegistrationForm: RegistrationInitialStateType
 }
 
 export type RegistrationActionType = {

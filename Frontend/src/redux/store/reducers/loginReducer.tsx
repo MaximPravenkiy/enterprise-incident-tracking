@@ -10,9 +10,10 @@ const initialState = {
     userId: ''
 }
 
-type InitialStateType = typeof initialState;
+export type LoginInitialStateType = typeof initialState;
 
-function loginReducer(state = initialState, action: LoginType): InitialStateType {
+function loginReducer(state = initialState, action: LoginType)
+    : LoginInitialStateType {
     switch (action.type) {
         case LOGIN:
             return {
