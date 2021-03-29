@@ -10,9 +10,11 @@ import {
 } from "../../../../redux/store/actions/incidentsCreator";
 import {getDate} from "../../../../redux/store/reducers/incidentsReducer";
 import {openMessage} from "../../../../containers/ServerResponseHandlers/Message";
+import {Dispatch} from "redux";
+import {IncidentsType} from "../../../../redux/store/actions/Types/incidentsTypes";
 
 const ActionButtons = ({incident}: any) => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<Dispatch<IncidentsType>>();
 
     const onDeleteIncident = (event: any) => {
         const incidentID = event.target.closest("button").dataset.key;

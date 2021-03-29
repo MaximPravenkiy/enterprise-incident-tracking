@@ -7,6 +7,9 @@ import MenuItemLogout from "../components/Header/Nav/Menu/MenuItemLogout/MenuIte
 import {getUsers} from "../redux/store/actions/incidentsCreator";
 import {openMessage} from "./ServerResponseHandlers/Message";
 import {RootReducer} from "../redux/store/reducers/rootReducer";
+import {Dispatch} from "redux";
+import {LoginType} from "../redux/store/actions/Types/loginTypes";
+import {IncidentsType} from "../redux/store/actions/Types/incidentsTypes";
 
 export interface MenuProps {
     menuItems: any,
@@ -24,7 +27,7 @@ const navContent = [
 ];
 
 const MenuContainer = () => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<Dispatch<LoginType | IncidentsType>>();
     const {isAuth, fullname} = useSelector(({loginReducer}: RootReducer) => loginReducer);
 
     const onLogout = () => {

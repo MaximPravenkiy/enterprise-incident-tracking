@@ -6,9 +6,11 @@ import Main from "./components/Main/Main";
 import Footer from "./components/Footer/Footer";
 import {useDispatch} from "react-redux";
 import {login} from "./redux/store/actions/loginCreator";
+import {Dispatch} from "redux";
+import {LoginActionType} from "./redux/store/actions/Types/loginTypes";
 
 function App() {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<Dispatch<LoginActionType>>();
 
     useEffect(() => {
         const data = localStorage.getItem('userData');

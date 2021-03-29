@@ -4,6 +4,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {postLogin, updateValuesLoginForm} from "../redux/store/actions/loginCreator";
 import {openMessage} from "./ServerResponseHandlers/Message";
 import {RootReducer} from "../redux/store/reducers/rootReducer";
+import {Dispatch} from "redux";
+import {LoginType} from "../redux/store/actions/Types/loginTypes";
 
 export interface LoginProps {
     onFinish: any,
@@ -14,7 +16,7 @@ export interface LoginProps {
 
 const LoginContainer = () => {
     const {login, password} = useSelector(({loginReducer}: RootReducer) => loginReducer);
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<Dispatch<LoginType>>();
 
     const onFinish = async (values: any) => {
         console.log('Received values of form: ', values);

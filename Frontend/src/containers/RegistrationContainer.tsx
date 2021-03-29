@@ -4,6 +4,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {postRegistration, updateValuesRegistrationForm} from "../redux/store/actions/registrationCreator";
 import {openMessage} from "./ServerResponseHandlers/Message";
 import {RootReducer} from "../redux/store/reducers/rootReducer";
+import {Dispatch} from "redux";
+import {RegistrationType} from "../redux/store/actions/Types/registrationType";
 
 export interface RegistrationProps {
     registerNewUser: any,
@@ -23,7 +25,7 @@ const RegistrationContainer = () => {
         password,
         position,
     } = useSelector(({registrationReducer}: RootReducer) => registrationReducer);
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<Dispatch<RegistrationType>>();
 
     const registerNewUser = async (values: any) => {
         console.log('Received values of form: ', values);

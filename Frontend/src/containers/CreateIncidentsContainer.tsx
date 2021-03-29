@@ -10,6 +10,8 @@ import {
 } from "../redux/store/actions/incidentsCreator";
 import {openMessage} from "./ServerResponseHandlers/Message";
 import {RootReducer} from "../redux/store/reducers/rootReducer";
+import {Dispatch} from "redux";
+import {IncidentsType} from "../redux/store/actions/Types/incidentsTypes";
 
 export interface CreateIncidentProps {
     areas: any,
@@ -63,7 +65,7 @@ const CreateIncidentsContainer = () => {
         actionWithCreateIncidentForm,
         incidentID
     } = useSelector(({incidentsReducer}: RootReducer) => incidentsReducer);
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<Dispatch<IncidentsType>>();
 
     // Получить  user id
     const getUserId = (...args: any[]) => {

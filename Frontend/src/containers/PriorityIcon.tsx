@@ -1,7 +1,7 @@
 import React from 'react';
 import {WarningOutlined} from "@ant-design/icons/lib";
 
-export interface PriorityIconProps {
+interface PriorityIconProps {
     priority: string,
 }
 
