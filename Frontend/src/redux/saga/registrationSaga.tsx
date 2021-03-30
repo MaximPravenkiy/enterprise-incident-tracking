@@ -5,13 +5,13 @@ import {destroyMessage} from "../../containers/ServerResponseHandlers/Message";
 import {errorNotification, successNotification} from "../../containers/ServerResponseHandlers/Notification";
 import {resetRegistrationForm} from "../store/actions/registrationCreator";
 
-function* postRegistrationWorker({registrationFormValues}: any): any {
+function* postRegistrationWorker({registrationFormValues}: any) {
     try {
-        const response = yield call(postRegistrationApi, registrationFormValues);
+        const {data, status} = yield call(postRegistrationApi, registrationFormValues);
 
-        if (response.status === 201) {
+        if (status === 201) {
             destroyMessage();
-            successNotification('Поздравляем!', response.data.message);
+            successNotification('Поздравляем!', data.message);
             yield put(resetRegistrationForm());
         }
     } catch (e) {

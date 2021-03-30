@@ -16,6 +16,13 @@ export type LoginFormValue = {
     password: string
     remember?: boolean
 }
+
+export type UserDataType = {
+    fullname: string
+    token: string
+    userId: string
+}
+
 export type LoginInitialStateType = typeof initialState;
 
 function loginReducer(state = initialState, action: LoginType)

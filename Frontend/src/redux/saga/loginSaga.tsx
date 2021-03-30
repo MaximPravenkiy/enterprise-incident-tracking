@@ -4,16 +4,24 @@ import {login} from "../store/actions/loginCreator";
 import {postLoginApi} from "./API";
 import {errorNotification, successNotification} from "../../containers/ServerResponseHandlers/Notification";
 import {destroyMessage} from "../../containers/ServerResponseHandlers/Message";
+import {LoginFormValue, UserDataType} from "../store/reducers/loginReducer";
 
-function* postLoginWorker({loginFormValues}: any): any {
+type ResponseLoginType = {
+    data: UserDataType
+    status: number
+    loginFormValues: LoginFormValue
+}
+
+function* postLoginWorker({loginFormValues}: any) {
     try {
-        const response = yield call(postLoginApi, loginFormValues);
+        console.log(loginFormValues)
+        const {data, status}: ResponseLoginType = yield call(postLoginApi, loginFormValues);
 
-        if (response.status === 200) {
-            localStorage.setItem('userData', JSON.stringify(response.data));
+        if (status === 200) {
+            localStorage.setItem('userData', JSON.stringify(data));
             destroyMessage();
-            successNotification('Вы вошли в систему.', `Привет, ${response.data.fullname}!`);
-            yield put(login(response.data));
+            successNotification('Вы вошли в систему.', `Привет, ${data.fullname}!`);
+            yield put(login(data));
         }
 
     } catch (e) {

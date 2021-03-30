@@ -13,7 +13,7 @@ import {RootReducer} from "../redux/store/reducers/rootReducer";
 import {Dispatch} from "redux";
 import {IncidentsType} from "../redux/store/actions/Types/incidentsTypes";
 import {
-    actionWithCreateIncidentFormType, UsersTypes,
+    actionWithCreateIncidentFormType, CreateIncidentTypes, UsersTypes,
     ValuesCreateIncidentFormTypes
 } from "../redux/store/reducers/incidentsReducer";
 
@@ -26,16 +26,13 @@ export type CreateIncidentTypeProps = {
     valuesCreateIncidentForm: ValuesCreateIncidentFormTypes
     actionWithCreateIncidentForm: actionWithCreateIncidentFormType
     getUserId: (value: string) => void
-    onFinish: (value: CreateIncidentValuesType) => void
+    onFinish: (value: CreateIncidentTypes) => void
     onChange: (value: ValuesCreateIncidentFormTypes) => void
 }
 
 type AreaType = typeof areas;
 type PriorityType = typeof priority;
 type StatusType = typeof status;
-type CreateIncidentValuesType = ValuesCreateIncidentFormTypes & {
-    owner?: string,
-}
 
 // For selections
 const areas = [
@@ -92,7 +89,7 @@ const CreateIncidentsContainer = () => {
     }
 
     // Создать или обновить инцидент
-    const onFinish = (values: CreateIncidentValuesType) => {
+    const onFinish = (values: CreateIncidentTypes) => {
         values.owner = assigneeUserId;
         values.assignee = values.assignee.split(assigneeUserId)[0];
         openMessage('Проверяем данные...');

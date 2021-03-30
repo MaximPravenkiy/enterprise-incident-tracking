@@ -6,7 +6,12 @@ import {
     SET_INCIDENTS, SET_USERS, UPDATE_INCIDENT,
     UPDATE_VALUES_CREATE_INCIDENT_FORM
 } from "../actionTypes";
-import {ListOfIncidentsTypes, UsersTypes, ValuesCreateIncidentFormTypes} from "../../reducers/incidentsReducer";
+import {
+    CreateIncidentTypes,
+    ListOfIncidentsTypes,
+    UsersTypes,
+    ValuesCreateIncidentFormTypes
+} from "../../reducers/incidentsReducer";
 
 export type SetIncidentsActionType = {
     type: typeof SET_INCIDENTS,
@@ -41,7 +46,7 @@ export type UpdateIncidentActionType = {
     type: typeof UPDATE_INCIDENT,
     updateData: {
         incidentID: string,
-        values: ValuesCreateIncidentFormTypes & { owner?: string }
+        values: CreateIncidentTypes
     }
 }
 

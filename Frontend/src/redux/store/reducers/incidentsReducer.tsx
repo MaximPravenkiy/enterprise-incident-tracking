@@ -35,6 +35,10 @@ export type UsersTypes = {
     key: string
 }
 
+export type CreateIncidentTypes = ValuesCreateIncidentFormTypes & {
+    owner?: string,
+}
+
 export type actionWithCreateIncidentFormType = 'Создать' | 'Обновить'
 
 const initialState = {

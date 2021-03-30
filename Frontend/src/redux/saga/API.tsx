@@ -1,30 +1,40 @@
 import axios from "axios";
+import {RegistrationInitialStateType} from "../store/reducers/registrationReducer";
+import {LoginFormValue, UserDataType} from "../store/reducers/loginReducer";
+import {CreateIncidentTypes} from "../store/reducers/incidentsReducer";
+import {UpdateIncidentActionType} from "../store/actions/Types/incidentsTypes";
 
 // registration api
-const postRegistrationApi = (values: any) => axios.post(
-    '/registration',
-    values
-);;
+const postRegistrationApi = (values: RegistrationInitialStateType) =>
+    axios.post('/registration', values);
 
 // login api
-const postLoginApi = (values: any) => axios.post(
-    '/login',
-    values
-);
+const postLoginApi = (values: LoginFormValue) =>
+    axios.post('/login', values);
 
 // incidents api
-const getIncidentsApi = (token: any) => axios.get(
-    '/incidents',
-    {headers: {Authorization: "Bearer " + token}}
-);
+const getIncidentsApi = (token: string) =>
+    axios.get('/incidents', {
+        headers: {
+            Authorization: "Bearer " + token
+        }
+    });
 
-const postIncidentApi = (values: any) => axios.post('/incidents/create-incident', values);
+const postIncidentApi = (values: CreateIncidentTypes) =>
+    axios.post('/incidents/create-incident', values);
 
-const getUsersForAssigneeOptionApi = () => axios.get('/incidents/create-incident');
+const getUsersForAssigneeOptionApi = () =>
+    axios.get('/incidents/create-incident');
 
-const deleteIncidentApi = (incidentID: any) => axios.delete('/incidents/delete-incident', { data: { incidentID } });
+const deleteIncidentApi = (incidentID: string) =>
+    axios.delete('/incidents/delete-incident', {
+        data: {
+            incidentID
+        }
+    });
 
-const updateIncidentApi = (updateData: any) => axios.put('/incidents/update-incident', updateData);
+const updateIncidentApi = (updateData: UpdateIncidentActionType["updateData"]) =>
+    axios.put('/incidents/update-incident', updateData);
 
 export {
     getIncidentsApi,
