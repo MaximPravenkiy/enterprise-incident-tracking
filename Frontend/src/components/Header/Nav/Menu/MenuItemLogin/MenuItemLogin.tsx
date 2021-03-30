@@ -30,7 +30,7 @@ const RightSection = styled.div`
     justify-content: space-between;
 `
 
-const MenuItemLogin = ({fullname, onLogout, createIncident}: MenuItemLoginProps) => {
+const MenuItemLogin: React.FC<MenuItemLoginProps> = ({fullname, onLogout, createIncident}) => {
     return (
         <Wrapper>
 

@@ -6,15 +6,11 @@ import {openMessage} from "./ServerResponseHandlers/Message";
 import {RootReducer} from "../redux/store/reducers/rootReducer";
 import {Dispatch} from "redux";
 import {RegistrationType} from "../redux/store/actions/Types/registrationType";
+import {RegistrationInitialStateType} from "../redux/store/reducers/registrationReducer";
 
-export interface RegistrationProps {
-    registerNewUser: any,
-    dateOfBirth: any,
-    fullname: any,
-    login: any,
-    password: any,
-    position: any,
-    onChange: any
+export type RegistrationFormTypes = RegistrationInitialStateType & {
+    registerNewUser: (values: RegistrationInitialStateType) => void
+    onChange: (value: RegistrationInitialStateType) => void
 }
 
 const RegistrationContainer = () => {
@@ -27,14 +23,14 @@ const RegistrationContainer = () => {
     } = useSelector(({registrationReducer}: RootReducer) => registrationReducer);
     const dispatch = useDispatch<Dispatch<RegistrationType>>();
 
-    const registerNewUser = async (values: any) => {
+    const registerNewUser = (values: RegistrationInitialStateType) => {
         console.log('Received values of form: ', values);
         openMessage('Проверяем данные...');
         dispatch(postRegistration(values));
     };
 
-    const onChange = (values: any) => {
-        dispatch(updateValuesRegistrationForm(values));
+    const onChange = (value: RegistrationInitialStateType) => {
+        dispatch(updateValuesRegistrationForm(value));
     }
 
     return (

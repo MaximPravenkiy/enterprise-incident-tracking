@@ -9,7 +9,7 @@ const MenuCustom = styled(Menu)`
     height: 100%;
 `
 
-const NavMenu = ({menuItems}: MenuProps) => {
+const NavMenu: React.FC<MenuProps> = ({menuItems}) => {
     return (
         <MenuCustom
             theme="dark"

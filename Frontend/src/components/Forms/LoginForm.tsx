@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import {LoginProps} from "../../containers/LoginContainer";
+import {LoginFormTypes} from "../../containers/LoginContainer";
 
-const LoginForm = ({onFinish, onChange, login, password}: LoginProps) => {
+const LoginForm: React.FC<LoginFormTypes> = ({onFinish, onChange, login, password}) => {
     const [form] = Form.useForm();
 
     useEffect(() => {

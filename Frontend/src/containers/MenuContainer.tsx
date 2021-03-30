@@ -11,14 +11,20 @@ import {Dispatch} from "redux";
 import {LoginType} from "../redux/store/actions/Types/loginTypes";
 import {IncidentsType} from "../redux/store/actions/Types/incidentsTypes";
 
-export interface MenuProps {
-    menuItems: any,
+export type MenuProps = {
+    menuItems:  JSX.Element | JSX.Element[]
 }
 
-export interface MenuItemLoginProps {
-    fullname: any,
-    onLogout: () => void,
+export type MenuItemLoginProps = {
+    fullname: string
+    onLogout: () => void
     createIncident: () => void
+}
+
+export type MenuItemLogoutProps = {
+    text: string
+    url: string
+    key: number
 }
 
 const navContent = [

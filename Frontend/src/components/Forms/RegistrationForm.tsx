@@ -6,7 +6,7 @@ import {
     DatePicker,
 } from 'antd';
 import styled from 'styled-components';
-import {RegistrationProps} from "../../containers/RegistrationContainer";
+import {RegistrationFormTypes} from "../../containers/RegistrationContainer";
 
 const formItemLayout = {
     labelCol: {
@@ -32,8 +32,6 @@ const tailFormItemLayout = {
     },
 };
 
-
-
 const config = {
     rules: [{
         type: 'object' as const,
@@ -46,7 +44,7 @@ const FormCustom = styled(Form)`
    min-width: 35%;
 `
 
-const RegistrationForm = (
+const RegistrationForm: React.FC<RegistrationFormTypes> = (
     {
         registerNewUser,
         dateOfBirth,
@@ -55,7 +53,7 @@ const RegistrationForm = (
         password,
         position,
         onChange
-    }: RegistrationProps) => {
+    }) => {
     const [form] = Form.useForm();
 
     useEffect(() => {
@@ -69,7 +67,7 @@ const RegistrationForm = (
     });
 
     return (
-        <FormCustom
+        <Form
             {...formItemLayout}
             form={form}
             name="register"
@@ -149,7 +147,7 @@ const RegistrationForm = (
                     Register
                 </Button>
             </Form.Item>
-        </FormCustom>
+        </Form>
     );
 };
 
