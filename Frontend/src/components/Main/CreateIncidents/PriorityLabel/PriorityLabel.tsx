@@ -7,12 +7,12 @@ const Label = styled.div`
     align-items: center;
 `;
 
-export interface PriorityLabelProps {
+interface PriorityLabelProps {
     color: string,
     text: string
 }
 
-const PriorityLabel = ({color, text}: PriorityLabelProps) => {
+const PriorityLabel: React.FC<PriorityLabelProps> = ({color, text}) => {
     return (
         <Label>
             <WarningOutlined style={{color, marginRight: '5px', fontSize: '20px'}}/>

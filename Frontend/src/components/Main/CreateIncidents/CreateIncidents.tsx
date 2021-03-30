@@ -3,7 +3,7 @@ import {Form, Input, Select, DatePicker} from 'antd';
 import {Modal} from 'antd';
 import CloseModalButton from "./CloseModalButton/CloseModalButton";
 import TitleModal from "./TitleModal/TitleModal";
-import {CreateIncidentProps} from "../../../containers/CreateIncidentsContainer";
+import {CreateIncidentTypeProps} from "../../../containers/CreateIncidentsContainer";
 import moment from 'moment';
 import CreateOrUpdateButton from "./CreateOrUpdateButton/CreateOrUpdateButton";
 
@@ -22,20 +22,19 @@ const config = {
     ],
 };
 
-const CreateIncidents = (
+const CreateIncidents: React.FC<CreateIncidentTypeProps> = (
     {
         areas,
         priority,
         status,
         isModalVisible,
-        onFinish,
         users,
-        getUserId,
+        actionWithCreateIncidentForm,
         valuesCreateIncidentForm,
         onChange,
-        actionWithCreateIncidentForm
-    }
-    : CreateIncidentProps) => {
+        onFinish,
+        getUserId,
+    }) => {
 
     // Костыль для ворнинга
     const formRef = useRef(null);
@@ -47,7 +46,7 @@ const CreateIncidents = (
         }
     }, [form, valuesCreateIncidentForm]);
 
-    function disabledDate(currentDate: any) {
+    function disabledDate(currentDate: moment.Moment) {
         return currentDate && currentDate < moment().startOf('day');
     }
 

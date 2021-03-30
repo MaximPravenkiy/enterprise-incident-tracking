@@ -52,7 +52,7 @@ const MenuItemLogin: React.FC<MenuItemLoginProps> = ({fullname, onLogout, create
             <RightSection>
                 <div>
                     <Avatar size={50} gap={1}>{fullname.split(' ')
-                        .map((item: any) => item[0].toUpperCase())}
+                        .map((item) => item[0].toUpperCase())}
                     </Avatar>
                 </div>
 

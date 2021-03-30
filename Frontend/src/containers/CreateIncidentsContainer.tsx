@@ -12,18 +12,29 @@ import {openMessage} from "./ServerResponseHandlers/Message";
 import {RootReducer} from "../redux/store/reducers/rootReducer";
 import {Dispatch} from "redux";
 import {IncidentsType} from "../redux/store/actions/Types/incidentsTypes";
+import {
+    actionWithCreateIncidentFormType, UsersTypes,
+    ValuesCreateIncidentFormTypes
+} from "../redux/store/reducers/incidentsReducer";
 
-export type CreateIncidentProps = {
-    areas: any,
-    priority: any,
-    status: any,
-    users: any,
-    isModalVisible: any,
-    getUserId: any,
-    onFinish: any,
-    valuesCreateIncidentForm: any
-    onChange: any,
-    actionWithCreateIncidentForm: any
+export type CreateIncidentTypeProps = {
+    areas: AreaType
+    priority: PriorityType
+    status: StatusType
+    users: Array<UsersTypes>
+    isModalVisible: boolean
+    valuesCreateIncidentForm: ValuesCreateIncidentFormTypes
+    actionWithCreateIncidentForm: actionWithCreateIncidentFormType
+    getUserId: (value: string) => void
+    onFinish: (value: CreateIncidentValuesType) => void
+    onChange: (value: ValuesCreateIncidentFormTypes) => void
+}
+
+type AreaType = typeof areas;
+type PriorityType = typeof priority;
+type StatusType = typeof status;
+type CreateIncidentValuesType = ValuesCreateIncidentFormTypes & {
+    owner?: string,
 }
 
 // For selections
@@ -69,17 +80,19 @@ const CreateIncidentsContainer = () => {
     const dispatch = useDispatch<Dispatch<IncidentsType>>();
 
     // Получить  user id
-    const getUserId = (...args: any[]) => {
-        dispatch(changeAssigneeUserId(args[1].id));
+    const getUserId = (value: string) => {
+        const helperArray = value.split(' ');
+        const extractID = helperArray[helperArray.length - 1];
+        dispatch(changeAssigneeUserId(extractID));
     };
 
     // Диспатч изменения контролов формы
-    function onChange(value: any) {
+    function onChange(value: ValuesCreateIncidentFormTypes) {
         dispatch(updateValuesCreateIncidentForm(value))
     }
 
     // Создать или обновить инцидент
-    const onFinish = (values: any) => {
+    const onFinish = (values: CreateIncidentValuesType) => {
         values.owner = assigneeUserId;
         values.assignee = values.assignee.split(assigneeUserId)[0];
         openMessage('Проверяем данные...');

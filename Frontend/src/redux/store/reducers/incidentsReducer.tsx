@@ -28,20 +28,22 @@ export type ValuesCreateIncidentFormTypes = {
     status: string
 }
 
-export type UsersTypes = Array<{
+export type UsersTypes = {
     id: string
     label: string
     value: string
     key: string
-}>
+}
+
+export type actionWithCreateIncidentFormType = 'Создать' | 'Обновить'
 
 const initialState = {
-    actionWithCreateIncidentForm: 'Создать' as 'Создать' | 'Обновить',
+    actionWithCreateIncidentForm: 'Создать' as actionWithCreateIncidentFormType,
     assigneeUserId: '',
     incidentID: '',
     isModalVisible: false,
     listOfIncidents: [] as Array<ListOfIncidentsTypes>,
-    users: [] as UsersTypes,
+    users: [] as Array<UsersTypes>,
     valuesCreateIncidentForm: {
         area: '',
         assignee: '',

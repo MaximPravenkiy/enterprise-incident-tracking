@@ -63,7 +63,7 @@ const getUsers = ()
     : GetUsersActionType =>
     ({ type: GET_USERS })
 
-const setUsers = (users: UsersTypes)
+const setUsers = (users: Array<UsersTypes>)
     : SetUsersActionType =>
     ({ type: SET_USERS, users })
 

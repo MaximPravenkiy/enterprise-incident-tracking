@@ -41,7 +41,7 @@ export type UpdateIncidentActionType = {
     type: typeof UPDATE_INCIDENT,
     updateData: {
         incidentID: string,
-        values: ValuesCreateIncidentFormTypes & { owner: string }
+        values: ValuesCreateIncidentFormTypes & { owner?: string }
     }
 }
 
@@ -55,7 +55,7 @@ export type GetUsersActionType = {
 
 export type SetUsersActionType = {
     type: typeof SET_USERS,
-    users: UsersTypes
+    users: Array<UsersTypes>
 }
 
 export type ChangeAssigneeUserIdActionType = {
