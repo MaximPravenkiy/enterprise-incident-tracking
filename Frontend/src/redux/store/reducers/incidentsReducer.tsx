@@ -8,14 +8,15 @@ import {
 import moment from "moment";
 import {IncidentsType} from "../actions/Types/incidentsTypes";
 
-export function getDate(date = new Date()): moment.Moment {
+export function getDate(date = new Date() as Date | moment.Moment): moment.Moment {
     return moment(date, 'YYYY-MM-DD').utc(true);
 }
 
 export type ListOfIncidentsTypes = ValuesCreateIncidentFormTypes & {
     icon: JSX.Element
     key: string
-};
+}
+
 export type ValuesCreateIncidentFormTypes = {
     area: string
     assignee: string
@@ -32,7 +33,7 @@ export type UsersTypes = Array<{
     label: string
     value: string
     key: string
-}>;
+}>
 
 const initialState = {
     actionWithCreateIncidentForm: 'Создать' as 'Создать' | 'Обновить',

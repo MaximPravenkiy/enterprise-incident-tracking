@@ -4,6 +4,8 @@ import styled from "styled-components";
 import ActionButtons from "./ActionButtons/ActionButtons";
 import CreateIncidentsContainer from "../../../containers/CreateIncidentsContainer";
 import {IncidentsTypeProps} from "../../../containers/IncidentsContainer";
+import {ListOfIncidentsTypes} from "../../../redux/store/reducers/incidentsReducer";
+import ActionButtonContainer from "../../../containers/ActionButtonContainer";
 
 const TableCustom = styled(Table)`
     width: 95%;
@@ -58,7 +60,7 @@ const columns = [
     {
         title: 'Action',
         key: 'action',
-        render: (incident: any) => <ActionButtons incident={incident}/>,
+        render: (incident: ListOfIncidentsTypes): JSX.Element => <ActionButtonContainer incident={incident}/>,
     },
 ];
 
