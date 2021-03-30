@@ -8,16 +8,21 @@ import {
     getUsers, setDataForUpdating,
     updateValuesCreateIncidentForm
 } from "../../../../redux/store/actions/incidentsCreator";
-import {getDate} from "../../../../redux/store/reducers/incidentsReducer";
+import {getDate, ListOfIncidentsTypes} from "../../../../redux/store/reducers/incidentsReducer";
 import {openMessage} from "../../../../containers/ServerResponseHandlers/Message";
 import {Dispatch} from "redux";
 import {IncidentsType} from "../../../../redux/store/actions/Types/incidentsTypes";
 
-const ActionButtons = ({incident}: any) => {
+type ActionButtonsTypeProps = {
+    incident: ListOfIncidentsTypes
+}
+
+const ActionButtons: React.FC<ActionButtonsTypeProps> = ({incident}) => {
     const dispatch = useDispatch<Dispatch<IncidentsType>>();
 
-    const onDeleteIncident = (event: any) => {
-        const incidentID = event.target.closest("button").dataset.key;
+    const onDeleteIncident = (event: React.MouseEvent) => {
+        console.log(event.nativeEvent.target)
+        const incidentID = 'event.target.closest("button").dataset.key';
 
         openMessage('Выполняем запрос...');
         dispatch(deleteIncident(incidentID));
@@ -25,6 +30,7 @@ const ActionButtons = ({incident}: any) => {
     }
 
     const onEditIncident = (event: any) => {
+        console.log(event.target.matches)
         const currentIncident = JSON.parse(event.target.closest("button").dataset.incident);
         const userData = localStorage.getItem('userData');
         const incidentID = currentIncident.key;

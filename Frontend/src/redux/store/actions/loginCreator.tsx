@@ -5,8 +5,9 @@ import {
     PostLoginActionType,
     UpdateValuesLoginFormActionType
 } from "./Types/loginTypes";
+import {LoginFormValue} from "../reducers/loginReducer";
 
-const postLogin = (loginFormValues: PostLoginActionType["loginFormValues"])
+const postLogin = (loginFormValues: LoginFormValue)
     : PostLoginActionType =>
     ({ type: POST_LOGIN, loginFormValues })
 
@@ -14,7 +15,7 @@ const login = (userData: LoginActionType["userData"])
     : LoginActionType =>
     ({ type: LOGIN, userData })
 
-const updateValuesLoginForm = (updatedValueLoginForm: UpdateValuesLoginFormActionType["updatedValueLoginForm"])
+const updateValuesLoginForm = (updatedValueLoginForm: LoginFormValue)
     : UpdateValuesLoginFormActionType =>
     ({ type: UPDATE_VALUES_LOGIN_FORM, updatedValueLoginForm })
 

@@ -12,18 +12,10 @@ export function getDate(date = new Date()): moment.Moment {
     return moment(date, 'YYYY-MM-DD').utc(true);
 }
 
-export type ListOfIncidentsTypes = Array<{
-    area: string
-    assignee: string
-    description: string
-    dueDate: moment.Moment
+export type ListOfIncidentsTypes = ValuesCreateIncidentFormTypes & {
     icon: JSX.Element
-    incidentName: string
     key: string
-    priority: string
-    startDate: moment.Moment
-    status: string
-}>;
+};
 export type ValuesCreateIncidentFormTypes = {
     area: string
     assignee: string
@@ -34,6 +26,7 @@ export type ValuesCreateIncidentFormTypes = {
     startDate: moment.Moment
     status: string
 }
+
 export type UsersTypes = Array<{
     id: string
     label: string
@@ -46,7 +39,7 @@ const initialState = {
     assigneeUserId: '',
     incidentID: '',
     isModalVisible: false,
-    listOfIncidents: [] as ListOfIncidentsTypes,
+    listOfIncidents: [] as Array<ListOfIncidentsTypes>,
     users: [] as UsersTypes,
     valuesCreateIncidentForm: {
         area: '',
@@ -60,7 +53,7 @@ const initialState = {
     } as ValuesCreateIncidentFormTypes
 }
 
-type IncidentsInitialStateType = typeof initialState;
+export type IncidentsInitialStateType = typeof initialState;
 
 function incidentsReducer(state = initialState, action: IncidentsType)
     : IncidentsInitialStateType {

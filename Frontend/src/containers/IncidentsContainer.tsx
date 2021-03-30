@@ -5,9 +5,10 @@ import {getIncidents} from "../redux/store/actions/incidentsCreator";
 import {RootReducer} from "../redux/store/reducers/rootReducer";
 import {Dispatch} from "redux";
 import {IncidentsType} from "../redux/store/actions/Types/incidentsTypes";
+import {IncidentsInitialStateType} from "../redux/store/reducers/incidentsReducer";
 
-export interface IncidentsProps {
-    listOfIncidents: any
+export type IncidentsTypeProps = {
+    listOfIncidents: IncidentsInitialStateType["listOfIncidents"]
 }
 
 const IncidentsContainer = () => {

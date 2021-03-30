@@ -1,9 +1,9 @@
 import React from 'react';
 import {Table} from 'antd';
 import styled from "styled-components";
-import {IncidentsProps} from "../../../containers/IncidentsContainer";
 import ActionButtons from "./ActionButtons/ActionButtons";
 import CreateIncidentsContainer from "../../../containers/CreateIncidentsContainer";
+import {IncidentsTypeProps} from "../../../containers/IncidentsContainer";
 
 const TableCustom = styled(Table)`
     width: 95%;
@@ -62,9 +62,7 @@ const columns = [
     },
 ];
 
-const Incidents = ({listOfIncidents}: IncidentsProps) => {
-
-
+const Incidents: React.FC<IncidentsTypeProps> = ({listOfIncidents}) => {
     return (
         <>
             <TableCustom

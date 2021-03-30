@@ -13,7 +13,7 @@ import {RootReducer} from "../redux/store/reducers/rootReducer";
 import {Dispatch} from "redux";
 import {IncidentsType} from "../redux/store/actions/Types/incidentsTypes";
 
-export interface CreateIncidentProps {
+export type CreateIncidentProps = {
     areas: any,
     priority: any,
     status: any,
@@ -27,7 +27,7 @@ export interface CreateIncidentProps {
 }
 
 // For selections
-const areas: any = [
+const areas = [
     {label: 'Layout', value: 'Layout'},
     {label: 'Frontend', value: 'Frontend'},
     {label: 'Backend', value: 'Backend'},
@@ -35,7 +35,7 @@ const areas: any = [
     {label: 'Testing', value: 'Testing'},
 ];
 
-const priority: any = [
+const priority = [
     {label: <PriorityLabel color='red' text='Blocker'/>, value: 'Blocker'},
     {label: <PriorityLabel color='orange' text='Critical'/>, value: 'Critical'},
     {label: <PriorityLabel color='yellow' text='Major'/>, value: 'Major'},
@@ -43,7 +43,7 @@ const priority: any = [
     {label: <PriorityLabel color='grey' text='Minor'/>, value: 'Minor'},
 ];
 
-const status: any = [
+const status = [
     {label: 'Зарегистрирован', value: 'Зарегистрирован'},
     {label: 'Открыт', value: 'Открыт'},
     {label: 'В работе', value: 'В работе'},
@@ -55,6 +55,7 @@ const status: any = [
     {label: 'Брак', value: 'Брак'},
     {label: 'Переоткрыто', value: 'Переоткрыто'},
 ];
+
 
 const CreateIncidentsContainer = () => {
     const {

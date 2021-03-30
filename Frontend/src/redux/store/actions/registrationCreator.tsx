@@ -10,7 +10,7 @@ const postRegistration = (registrationFormValues: RegistrationInitialStateType)
     : PostRegistrationActionType =>
     ({ type: POST_REGISTRATION, registrationFormValues })
 
-const updateValuesRegistrationForm = (updatedValueRegistrationForm: any)
+const updateValuesRegistrationForm = (updatedValueRegistrationForm: RegistrationInitialStateType)
     : UpdateValuesRegistrationFormActionType =>
     ({ type: UPDATE_VALUES_REGISTRATION_FORM, updatedValueRegistrationForm })
 

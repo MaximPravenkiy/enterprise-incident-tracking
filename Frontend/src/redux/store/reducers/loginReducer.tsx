@@ -6,10 +6,16 @@ const initialState = {
     isAuth: false,
     login: '',
     password: '',
+    remember: false,
     token: '',
     userId: ''
 }
 
+export type LoginFormValue = {
+    login: string
+    password: string
+    remember?: boolean
+}
 export type LoginInitialStateType = typeof initialState;
 
 function loginReducer(state = initialState, action: LoginType)

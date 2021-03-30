@@ -6,26 +6,25 @@ import {openMessage} from "./ServerResponseHandlers/Message";
 import {RootReducer} from "../redux/store/reducers/rootReducer";
 import {Dispatch} from "redux";
 import {LoginType} from "../redux/store/actions/Types/loginTypes";
-import {LoginInitialStateType} from "../redux/store/reducers/loginReducer";
+import {LoginFormValue} from "../redux/store/reducers/loginReducer";
 
-export type LoginFormTypes =  {
-    login: LoginInitialStateType["login"]
-    password: LoginInitialStateType["password"]
-    onFinish: (values: any) => void
-    onChange: (value: any) => void
+
+export type LoginFormTypes = LoginFormValue & {
+    onFinish: (values: LoginFormValue) => void
+    onChange: (value: LoginFormValue) => void
 }
 
 const LoginContainer = () => {
     const {login, password} = useSelector(({loginReducer}: RootReducer) => loginReducer);
     const dispatch = useDispatch<Dispatch<LoginType>>();
 
-    const onFinish = (values: any) => {
+    const onFinish = (values: LoginFormValue) => {
         console.log('Received values of form: ', values);
         openMessage('Проверяем данные...');
         dispatch(postLogin(values));
     };
 
-    const onChange = (value: any) => {
+    const onChange = (value: LoginFormValue) => {
         dispatch(updateValuesLoginForm(value));
     }
 

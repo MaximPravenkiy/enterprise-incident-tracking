@@ -26,7 +26,7 @@ const getIncidents = ()
     : GetIncidentsActionType =>
     ({ type: GET_INCIDENTS })
 
-const setIncidents = (listOfIncidents: ListOfIncidentsTypes)
+const setIncidents = (listOfIncidents: Array<ListOfIncidentsTypes>)
     : SetIncidentsActionType =>
     ({ type: SET_INCIDENTS, listOfIncidents })
 

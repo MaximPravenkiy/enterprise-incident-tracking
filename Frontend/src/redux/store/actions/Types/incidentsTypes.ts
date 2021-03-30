@@ -10,7 +10,7 @@ import {ListOfIncidentsTypes, UsersTypes, ValuesCreateIncidentFormTypes} from ".
 
 export type SetIncidentsActionType = {
     type: typeof SET_INCIDENTS,
-    listOfIncidents: ListOfIncidentsTypes
+    listOfIncidents: Array<ListOfIncidentsTypes>
 }
 
 export type CreateIncidentActionType = {

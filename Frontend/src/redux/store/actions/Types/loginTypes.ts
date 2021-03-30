@@ -1,12 +1,9 @@
 import {LOGIN, LOGOUT, POST_LOGIN, UPDATE_VALUES_LOGIN_FORM} from "../actionTypes";
+import {LoginFormValue} from "../../reducers/loginReducer";
 
 export type PostLoginActionType = {
     type: typeof POST_LOGIN,
-    loginFormValues: {
-        login: string
-        password: string
-        remember: boolean
-    }
+    loginFormValues: LoginFormValue
 }
 
 export type LoginActionType = {
@@ -20,10 +17,7 @@ export type LoginActionType = {
 
 export type UpdateValuesLoginFormActionType = {
     type: typeof UPDATE_VALUES_LOGIN_FORM,
-    updatedValueLoginForm: {
-        login: string,
-        password: string
-    }
+    updatedValueLoginForm: LoginFormValue
 }
 
 export type LogoutActionType = {
