@@ -1,40 +1,42 @@
 import axios from "axios";
 import {RegistrationInitialStateType} from "../store/reducers/registrationReducer";
 import {LoginFormValue, UserDataType} from "../store/reducers/loginReducer";
-import {CreateIncidentTypes} from "../store/reducers/incidentsReducer";
+import {CreateIncidentTypes, ListOfIncidentsTypes, UsersTypes} from "../store/reducers/incidentsReducer";
 import {UpdateIncidentActionType} from "../store/actions/Types/incidentsTypes";
+
+type Message = { message: string }
 
 // registration api
 const postRegistrationApi = (values: RegistrationInitialStateType) =>
-    axios.post('/registration', values);
+    axios.post<Message>('/registration', values);
 
 // login api
 const postLoginApi = (values: LoginFormValue) =>
-    axios.post('/login', values);
+    axios.post<UserDataType>('/login', values);
 
 // incidents api
 const getIncidentsApi = (token: string) =>
-    axios.get('/incidents', {
+    axios.get<Array<ListOfIncidentsTypes>>('/incidents', {
         headers: {
             Authorization: "Bearer " + token
         }
     });
 
 const postIncidentApi = (values: CreateIncidentTypes) =>
-    axios.post('/incidents/create-incident', values);
+    axios.post<Message>('/incidents/create-incident', values);
 
 const getUsersForAssigneeOptionApi = () =>
-    axios.get('/incidents/create-incident');
+    axios.get<Array<UsersTypes>>('/incidents/create-incident');
 
 const deleteIncidentApi = (incidentID: string) =>
-    axios.delete('/incidents/delete-incident', {
+    axios.delete<Message>('/incidents/delete-incident', {
         data: {
             incidentID
         }
     });
 
 const updateIncidentApi = (updateData: UpdateIncidentActionType["updateData"]) =>
-    axios.put('/incidents/update-incident', updateData);
+    axios.put<Message>('/incidents/update-incident', updateData);
 
 export {
     getIncidentsApi,

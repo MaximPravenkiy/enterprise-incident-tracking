@@ -1,17 +1,20 @@
-import {call, put, takeEvery} from 'redux-saga/effects';
+import {call, put, SagaReturnType, takeEvery} from 'redux-saga/effects';
 import {POST_REGISTRATION} from "../store/actions/actionTypes";
 import {postRegistrationApi} from "./API";
 import {destroyMessage} from "../../containers/ServerResponseHandlers/Message";
 import {errorNotification, successNotification} from "../../containers/ServerResponseHandlers/Notification";
 import {resetRegistrationForm} from "../store/actions/registrationCreator";
+import {PostRegistrationActionType} from "../store/actions/Types/registrationType";
 
-function* postRegistrationWorker({registrationFormValues}: any) {
+type ResponseRegistrationType = SagaReturnType<typeof postRegistrationApi>
+
+function* postRegistrationWorker({registrationFormValues}: PostRegistrationActionType) {
     try {
-        const {data, status} = yield call(postRegistrationApi, registrationFormValues);
+        const response: ResponseRegistrationType = yield call(postRegistrationApi, registrationFormValues);
 
-        if (status === 201) {
+        if (response.status === 201) {
             destroyMessage();
-            successNotification('Поздравляем!', data.message);
+            successNotification('Поздравляем!', response.data.message);
             yield put(resetRegistrationForm());
         }
     } catch (e) {

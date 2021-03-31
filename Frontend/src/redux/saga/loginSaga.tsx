@@ -1,27 +1,22 @@
-import {put, call, takeEvery} from 'redux-saga/effects';
+import {put, call, takeEvery, SagaReturnType} from 'redux-saga/effects';
 import {POST_LOGIN} from "../store/actions/actionTypes";
 import {login} from "../store/actions/loginCreator";
 import {postLoginApi} from "./API";
 import {errorNotification, successNotification} from "../../containers/ServerResponseHandlers/Notification";
 import {destroyMessage} from "../../containers/ServerResponseHandlers/Message";
-import {LoginFormValue, UserDataType} from "../store/reducers/loginReducer";
+import {PostLoginActionType} from "../store/actions/Types/loginTypes";
 
-type ResponseLoginType = {
-    data: UserDataType
-    status: number
-    loginFormValues: LoginFormValue
-}
+type ResponseLoginType = SagaReturnType<typeof postLoginApi>
 
-function* postLoginWorker({loginFormValues}: any) {
+function* postLoginWorker({loginFormValues}: PostLoginActionType) {
     try {
-        console.log(loginFormValues)
-        const {data, status}: ResponseLoginType = yield call(postLoginApi, loginFormValues);
+        const response: ResponseLoginType = yield call(postLoginApi, loginFormValues);
 
-        if (status === 200) {
-            localStorage.setItem('userData', JSON.stringify(data));
+        if (response.status === 200) {
+            localStorage.setItem('userData', JSON.stringify(response.data));
             destroyMessage();
-            successNotification('Вы вошли в систему.', `Привет, ${data.fullname}!`);
-            yield put(login(data));
+            successNotification('Вы вошли в систему.', `Привет, ${response.data.fullname}!`);
+            yield put(login(response.data));
         }
 
     } catch (e) {

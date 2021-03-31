@@ -1,7 +1,7 @@
 import React from "react";
 import PriorityIcon from "../../containers/PriorityIcon";
 
-import {put, call, takeEvery} from 'redux-saga/effects';
+import {put, call, takeEvery, SagaReturnType} from 'redux-saga/effects';
 import {
     deleteIncidentApi,
     getIncidentsApi,
@@ -20,15 +20,26 @@ import {
 import {logout} from "../store/actions/loginCreator";
 import {errorNotification, successNotification} from "../../containers/ServerResponseHandlers/Notification";
 import {destroyMessage} from "../../containers/ServerResponseHandlers/Message";
+import {
+    CreateIncidentActionType,
+    DeleteIncidentActionType,
+    UpdateIncidentActionType
+} from "../store/actions/Types/incidentsTypes";
 
-function* getInicdentsWorker(): any {
+type ResponseGetIncidentsType = SagaReturnType<typeof getIncidentsApi>
+type ResponseGetUsersForAssigneeType = SagaReturnType<typeof getUsersForAssigneeOptionApi>
+type ResponseCreateIncidentType = SagaReturnType<typeof postIncidentApi>
+type ResponseDeleteIncident = SagaReturnType<typeof deleteIncidentApi>
+type ResponseUpdateIncident = SagaReturnType<typeof updateIncidentApi>
+
+function* getInicdentsWorker() {
     try {
         const userData = localStorage.getItem('userData');
 
         if (!userData) return;
 
-        const token = JSON.parse(userData).token;
-        const response  = yield call(getIncidentsApi, token);
+        const token: string = JSON.parse(userData).token;
+        const response: ResponseGetIncidentsType = yield call(getIncidentsApi, token);
         const listOfIncidents = response.data.map((incident: any) => ({
             key: incident._id,
             icon: <PriorityIcon priority={incident.priority}/>,
@@ -52,9 +63,9 @@ function* getInicdentsWorker(): any {
     }
 }
 
-function* getUsersForAssigneeOptionWorker(): any {
+function* getUsersForAssigneeOptionWorker() {
     try {
-        const response = yield call(getUsersForAssigneeOptionApi);
+        const response: ResponseGetUsersForAssigneeType = yield call(getUsersForAssigneeOptionApi);
         const users = response.data.map((item: any) => ({
             label: item.fullname,
             value: `${item.fullname} ${item._id}`,
@@ -70,9 +81,9 @@ function* getUsersForAssigneeOptionWorker(): any {
     }
 }
 
-function* createIncidentWorker({valuesCreateIncidentForm}: any): any {
+function* createIncidentWorker({valuesCreateIncidentForm}: CreateIncidentActionType) {
     try {
-        const response = yield call(postIncidentApi, valuesCreateIncidentForm);
+        const response: ResponseCreateIncidentType = yield call(postIncidentApi, valuesCreateIncidentForm);
         destroyMessage();
         successNotification('Операция выполнена.', response.data.message)
     } catch (e) {
@@ -81,9 +92,9 @@ function* createIncidentWorker({valuesCreateIncidentForm}: any): any {
     }
 }
 
-function* deleteIncidentWorker({incidentID}: any): any {
+function* deleteIncidentWorker({incidentID}: DeleteIncidentActionType) {
     try {
-        const response = yield call(deleteIncidentApi, incidentID);
+        const response: ResponseDeleteIncident = yield call(deleteIncidentApi, incidentID);
         destroyMessage();
         successNotification('Операция выполнена.', response.data.message)
     } catch (e) {
@@ -92,9 +103,9 @@ function* deleteIncidentWorker({incidentID}: any): any {
     }
 }
 
-function* updateIncidentWorker({updateData}: any): any {
+function* updateIncidentWorker({updateData}: UpdateIncidentActionType) {
     try {
-        const response = yield call(updateIncidentApi, updateData);
+        const response: ResponseUpdateIncident = yield call(updateIncidentApi, updateData);
         destroyMessage();
         successNotification('Операция выполнена.', response.data.message)
     } catch (e) {
