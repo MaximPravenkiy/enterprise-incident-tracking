@@ -1,59 +1,60 @@
-import React, {useEffect} from 'react';
-import {
-    Form,
-    Input,
-    Button,
-    DatePicker,
-} from 'antd';
-import styled from 'styled-components';
-import {RegistrationFormTypes} from "../../containers/RegistrationContainer";
+import React, { useEffect } from 'react';
+import { Form, Input, Button, DatePicker } from 'antd';
+import { RegistrationInitialStateType } from '../../redux/store/reducers/registrationReducer';
+// import styled from 'styled-components';
+
+type RegistrationFormTypes = RegistrationInitialStateType & {
+    registerNewUser: (values: RegistrationInitialStateType) => void;
+    onChange: (value: RegistrationInitialStateType) => void;
+};
 
 const formItemLayout = {
     labelCol: {
         xs: { span: 24 },
-        sm: { span: 8 },
+        sm: { span: 8 }
     },
     wrapperCol: {
         xs: { span: 24 },
-        sm: { span: 16 },
-    },
+        sm: { span: 16 }
+    }
 };
 
 const tailFormItemLayout = {
     wrapperCol: {
         xs: {
             span: 24,
-            offset: 0,
+            offset: 0
         },
         sm: {
             span: 16,
-            offset: 8,
-        },
-    },
+            offset: 8
+        }
+    }
 };
 
 const config = {
-    rules: [{
-        type: 'object' as const,
-        required: true,
-        message: 'Please select your Date of birth!'
-    }],
+    rules: [
+        {
+            type: 'object' as const,
+            required: true,
+            message: 'Please select your Date of birth!'
+        }
+    ]
 };
 
-const FormCustom = styled(Form)`
-   min-width: 35%;
-`
+// const FormCustom = styled(Form)`
+//     min-width: 35%;
+// `;
 
-const RegistrationForm: React.FC<RegistrationFormTypes> = (
-    {
-        registerNewUser,
-        dateOfBirth,
-        fullname,
-        login,
-        password,
-        position,
-        onChange
-    }) => {
+const RegistrationForm: React.FC<RegistrationFormTypes> = ({
+    registerNewUser,
+    dateOfBirth,
+    fullname,
+    login,
+    password,
+    position,
+    onChange
+}) => {
     const [form] = Form.useForm();
 
     useEffect(() => {
@@ -63,7 +64,7 @@ const RegistrationForm: React.FC<RegistrationFormTypes> = (
             login,
             password,
             position
-        })
+        });
     });
 
     return (
@@ -80,11 +81,11 @@ const RegistrationForm: React.FC<RegistrationFormTypes> = (
                 rules={[
                     {
                         required: true,
-                        message: 'Please input your Full Name!',
+                        message: 'Please input your Full Name!'
                     },
                     {
                         pattern: /^\D*$/,
-                        message: 'This field can\'t contain numbers!'
+                        message: "This field can't contain numbers!"
                     }
                 ]}
             >
@@ -110,7 +111,7 @@ const RegistrationForm: React.FC<RegistrationFormTypes> = (
                 rules={[
                     {
                         required: true,
-                        message: 'Please input your password!',
+                        message: 'Please input your password!'
                     },
                     {
                         min: 6,
@@ -121,11 +122,7 @@ const RegistrationForm: React.FC<RegistrationFormTypes> = (
                 <Input.Password />
             </Form.Item>
 
-            <Form.Item
-                name="dateOfBirth"
-                label="Date of birth"
-                {...config}
-            >
+            <Form.Item name="dateOfBirth" label="Date of birth" {...config}>
                 <DatePicker />
             </Form.Item>
 
@@ -135,7 +132,7 @@ const RegistrationForm: React.FC<RegistrationFormTypes> = (
                 rules={[
                     {
                         required: true,
-                        message: 'Please input your position!',
+                        message: 'Please input your position!'
                     }
                 ]}
             >
@@ -151,4 +148,4 @@ const RegistrationForm: React.FC<RegistrationFormTypes> = (
     );
 };
 
-export {RegistrationForm};
+export { RegistrationForm };

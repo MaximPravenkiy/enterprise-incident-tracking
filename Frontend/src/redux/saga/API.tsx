@@ -1,10 +1,14 @@
-import axios from "axios";
-import {RegistrationInitialStateType} from "../store/reducers/registrationReducer";
-import {LoginFormValue, UserDataType} from "../store/reducers/loginReducer";
-import {CreateIncidentTypes, ListOfIncidentsTypes, UsersTypes} from "../store/reducers/incidentsReducer";
-import {UpdateIncidentActionType} from "../store/actions/Types/incidentsTypes";
+import axios from 'axios';
+import { RegistrationInitialStateType } from '../store/reducers/registrationReducer';
+import { LoginFormValue, UserDataType } from '../store/reducers/loginReducer';
+import {
+    CreateIncidentTypes,
+    ListOfIncidentsTypes,
+    UpdateIncidentActionType,
+    UsersTypes
+} from '../store/reducers/incidentsReducer';
 
-type Message = { message: string }
+type Message = { message: string };
 
 // registration api
 const postRegistrationApi = (values: RegistrationInitialStateType) =>
@@ -18,7 +22,7 @@ const postLoginApi = (values: LoginFormValue) =>
 const getIncidentsApi = (token: string) =>
     axios.get<Array<ListOfIncidentsTypes>>('/incidents', {
         headers: {
-            Authorization: "Bearer " + token
+            Authorization: `Bearer ${token}`
         }
     });
 
@@ -35,8 +39,9 @@ const deleteIncidentApi = (incidentID: string) =>
         }
     });
 
-const updateIncidentApi = (updateData: UpdateIncidentActionType["updateData"]) =>
-    axios.put<Message>('/incidents/update-incident', updateData);
+const updateIncidentApi = (
+    updateData: UpdateIncidentActionType['updateData']
+) => axios.put<Message>('/incidents/update-incident', updateData);
 
 export {
     getIncidentsApi,

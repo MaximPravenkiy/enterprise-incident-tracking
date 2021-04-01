@@ -1,11 +1,11 @@
 import React from 'react';
-import {WarningOutlined} from "@ant-design/icons/lib";
+import { WarningOutlined } from '@ant-design/icons/lib';
 
 type PriorityIconProps = {
-    priority: string,
-}
+    priority: string;
+};
 
-const PriorityIcon: React.FC<PriorityIconProps> = ({priority}) => {
+const PriorityIcon: React.FC<PriorityIconProps> = ({ priority }) => {
     let color = '';
 
     switch (priority) {
@@ -23,11 +23,12 @@ const PriorityIcon: React.FC<PriorityIconProps> = ({priority}) => {
             break;
         case 'Minor':
             color = 'grey';
+            break;
+        default:
+            break;
     }
 
-    return (
-        <WarningOutlined style={{color, fontSize: '20px'}}/>
-    );
-}
+    return <WarningOutlined style={{ color, fontSize: '20px' }} />;
+};
 
 export default PriorityIcon;

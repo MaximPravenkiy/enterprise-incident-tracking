@@ -59,7 +59,7 @@ router.put(
     async (req, res) => {
         try {
             const filter =  req.body.incidentID;
-            const update =  req.body.values;
+            const update =  req.body.incidentFormData;
 
             await Incident.findByIdAndUpdate(filter, update);
 

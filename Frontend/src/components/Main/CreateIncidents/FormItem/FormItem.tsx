@@ -1,11 +1,5 @@
 import React from 'react';
 
-const FormItem = () => {
-    return (
-        <div className={''}>
-
-        </div>
-    );
-}
+const FormItem = () => <div className="" />;
 
 export default FormItem;

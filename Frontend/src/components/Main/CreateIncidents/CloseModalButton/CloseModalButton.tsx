@@ -1,13 +1,18 @@
 import React from 'react';
-import {Button} from "antd";
-import {closeModal, resetCreateIncidentForm} from "../../../../redux/store/actions/incidentsCreator";
-import {useDispatch, useSelector} from "react-redux";
-import {RootReducer} from "../../../../redux/store/reducers/rootReducer";
-import {Dispatch} from "redux";
-import {IncidentsType} from "../../../../redux/store/actions/Types/incidentsTypes";
+import { Button } from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
+import { Dispatch } from 'redux';
+import {
+    closeModal,
+    resetCreateIncidentForm
+} from '../../../../redux/store/actions/incidentsCreator';
+import { RootReducer } from '../../../../redux/store/reducers/rootReducer';
+import { IncidentsType } from '../../../../redux/store/reducers/incidentsReducer';
 
 const CloseModalButton = () => {
-    const {actionWithCreateIncidentForm} = useSelector(({incidentsReducer}: RootReducer) => incidentsReducer)
+    const { actionWithCreateIncidentForm } = useSelector(
+        ({ incidentsReducer }: RootReducer) => incidentsReducer
+    );
     const dispatch = useDispatch<Dispatch<IncidentsType>>();
 
     const onCloseModal = () => {
@@ -16,18 +21,13 @@ const CloseModalButton = () => {
         if (actionWithCreateIncidentForm === 'Обновить') {
             dispatch(resetCreateIncidentForm());
         }
-    }
+    };
 
     return (
-        <Button
-            type="primary"
-            shape="circle"
-            danger
-            onClick={onCloseModal}
-        >
+        <Button type="primary" shape="circle" danger onClick={onCloseModal}>
             X
         </Button>
     );
-}
+};
 
 export default CloseModalButton;

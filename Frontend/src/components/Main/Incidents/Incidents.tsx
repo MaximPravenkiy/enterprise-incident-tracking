@@ -1,82 +1,87 @@
 import React from 'react';
-import {Table} from 'antd';
-import styled from "styled-components";
-import ActionButtons from "./ActionButtons/ActionButtons";
-import CreateIncidentsContainer from "../../../containers/CreateIncidentsContainer";
-import {IncidentsTypeProps} from "../../../containers/IncidentsContainer";
-import {ListOfIncidentsTypes} from "../../../redux/store/reducers/incidentsReducer";
-import ActionButtonContainer from "../../../containers/ActionButtonContainer";
+import { Table } from 'antd';
+import styled from 'styled-components';
+import CreateIncidentsContainer from '../../../containers/CreateIncidentsContainer';
+import {
+    IncidentsInitialStateType,
+    ListOfIncidentsTypes
+} from '../../../redux/store/reducers/incidentsReducer';
+import ActionButtonContainer from '../../../containers/ActionButtonContainer';
+
+type IncidentsTypeProps = {
+    listOfIncidents: IncidentsInitialStateType['listOfIncidents'];
+};
 
 const TableCustom = styled(Table)`
     width: 95%;
-`
+`;
 
 const columns = [
     {
         title: '',
         dataIndex: 'icon',
-        key: 'icon',
+        key: 'icon'
     },
     {
         title: 'Incident Name',
         dataIndex: 'incidentName',
-        key: 'incidentName',
+        key: 'incidentName'
     },
     {
         title: 'Description',
         dataIndex: 'description',
-        key: 'description',
+        key: 'description'
     },
     {
         title: 'Assignee',
         dataIndex: 'assignee',
-        key: 'assignee',
+        key: 'assignee'
     },
     {
         title: 'Area',
         dataIndex: 'area',
-        key: 'area',
+        key: 'area'
     },
     {
         title: 'StartDate',
         dataIndex: 'startDate',
-        key: 'startDate',
+        key: 'startDate'
     },
     {
         title: 'DueDate',
         dataIndex: 'dueDate',
-        key: 'dueDate',
+        key: 'dueDate'
     },
     {
         title: 'Priority',
         dataIndex: 'priority',
-        key: 'priority',
+        key: 'priority'
     },
     {
         title: 'Status',
         dataIndex: 'status',
-        key: 'status',
+        key: 'status'
     },
     {
         title: 'Action',
         key: 'action',
-        render: (incident: ListOfIncidentsTypes): JSX.Element => <ActionButtonContainer incident={incident}/>,
-    },
+        render: (incident: ListOfIncidentsTypes): JSX.Element => (
+            <ActionButtonContainer incident={incident} />
+        )
+    }
 ];
 
-const Incidents: React.FC<IncidentsTypeProps> = ({listOfIncidents}) => {
-    return (
-        <>
-            <TableCustom
-                pagination={{position: ['bottomCenter'], defaultPageSize: 4}}
-                columns={columns}
-                dataSource={listOfIncidents}
-                bordered
-                loading={listOfIncidents.length === 0}
-            />
-            <CreateIncidentsContainer/>
-        </>
-    );
-}
+const Incidents: React.FC<IncidentsTypeProps> = ({ listOfIncidents }) => (
+    <>
+        <TableCustom
+            pagination={{ position: ['bottomCenter'], defaultPageSize: 4 }}
+            columns={columns}
+            dataSource={listOfIncidents}
+            bordered
+            loading={listOfIncidents.length === 0}
+        />
+        <CreateIncidentsContainer />
+    </>
+);
 
 export default Incidents;

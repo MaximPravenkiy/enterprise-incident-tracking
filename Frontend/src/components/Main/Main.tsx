@@ -1,7 +1,7 @@
 import React from 'react';
-import styled from "styled-components";
-import {Layout} from "antd";
-import Routes from "../../routes";
+import styled from 'styled-components';
+import { Layout } from 'antd';
+import Routes from '../../routes';
 
 const Content = styled(Layout.Content)`
     height: 70vh;
@@ -9,14 +9,12 @@ const Content = styled(Layout.Content)`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-`
+`;
 
-const Main = () => {
-    return (
-        <Content>
-            <Routes/>
-        </Content>
-    );
-}
+const Main = () => (
+    <Content>
+        <Routes />
+    </Content>
+);
 
 export default Main;

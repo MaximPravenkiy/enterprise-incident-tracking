@@ -1,7 +1,7 @@
 import React from 'react';
-import styled from "styled-components";
-import {Layout} from "antd";
-import {SettingOutlined, ToolOutlined } from '@ant-design/icons';
+import styled from 'styled-components';
+import { Layout } from 'antd';
+import { SettingOutlined, ToolOutlined } from '@ant-design/icons';
 
 const FooterCustom = styled(Layout.Footer)`
     height: 15vh;
@@ -10,23 +10,21 @@ const FooterCustom = styled(Layout.Footer)`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #A9A9A9;
-`
+    background-color: #a9a9a9;
+`;
 
 const StyleSpan = styled.span`
     font-size: 2.2em;
     text-transform: uppercase;
     margin: 0 10px;
-`
+`;
 
-const Footer = () => {
-    return (
-        <FooterCustom>
-            <ToolOutlined/>
-            <StyleSpan>iscander</StyleSpan>
-            <SettingOutlined />
-        </FooterCustom>
-    );
-}
+const Footer = () => (
+    <FooterCustom>
+        <ToolOutlined />
+        <StyleSpan>iscander</StyleSpan>
+        <SettingOutlined />
+    </FooterCustom>
+);
 
 export default Footer;

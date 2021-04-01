@@ -1,36 +1,41 @@
-import React from "react";
-import PriorityIcon from "../../containers/PriorityIcon";
+import React from 'react';
+import { put, call, takeEvery, SagaReturnType } from 'redux-saga/effects';
+import PriorityIcon from '../../containers/PriorityIcon';
 
-import {put, call, takeEvery, SagaReturnType} from 'redux-saga/effects';
 import {
     deleteIncidentApi,
     getIncidentsApi,
     getUsersForAssigneeOptionApi,
     postIncidentApi,
     updateIncidentApi
-} from "./API";
-import {setIncidents, setUsers} from "../store/actions/incidentsCreator";
+} from './API';
+import { setIncidents, setUsers } from '../store/actions/incidentsCreator';
 import {
     CREATE_INCIDENT,
     DELETE_INCIDENT,
     GET_INCIDENTS,
     GET_USERS,
     UPDATE_INCIDENT
-} from "../store/actions/actionTypes";
-import {logout} from "../store/actions/loginCreator";
-import {errorNotification, successNotification} from "../../containers/ServerResponseHandlers/Notification";
-import {destroyMessage} from "../../containers/ServerResponseHandlers/Message";
+} from '../store/actions/actionTypes';
+import { logout } from '../store/actions/loginCreator';
+import {
+    errorNotification,
+    successNotification
+} from '../../containers/ServerResponseHandlers/Notification';
+import { destroyMessage } from '../../containers/ServerResponseHandlers/Message';
 import {
     CreateIncidentActionType,
     DeleteIncidentActionType,
     UpdateIncidentActionType
-} from "../store/actions/Types/incidentsTypes";
+} from '../store/reducers/incidentsReducer';
 
-type ResponseGetIncidentsType = SagaReturnType<typeof getIncidentsApi>
-type ResponseGetUsersForAssigneeType = SagaReturnType<typeof getUsersForAssigneeOptionApi>
-type ResponseCreateIncidentType = SagaReturnType<typeof postIncidentApi>
-type ResponseDeleteIncident = SagaReturnType<typeof deleteIncidentApi>
-type ResponseUpdateIncident = SagaReturnType<typeof updateIncidentApi>
+type ResponseGetIncidentsType = SagaReturnType<typeof getIncidentsApi>;
+type ResponseGetUsersForAssigneeType = SagaReturnType<
+    typeof getUsersForAssigneeOptionApi
+>;
+type ResponseCreateIncidentType = SagaReturnType<typeof postIncidentApi>;
+type ResponseDeleteIncident = SagaReturnType<typeof deleteIncidentApi>;
+type ResponseUpdateIncident = SagaReturnType<typeof updateIncidentApi>;
 
 function* getInicdentsWorker() {
     try {
@@ -38,11 +43,14 @@ function* getInicdentsWorker() {
 
         if (!userData) return;
 
-        const token: string = JSON.parse(userData).token;
-        const response: ResponseGetIncidentsType = yield call(getIncidentsApi, token);
+        const { token } = JSON.parse(userData);
+        const response: ResponseGetIncidentsType = yield call(
+            getIncidentsApi,
+            token
+        );
         const listOfIncidents = response.data.map((incident: any) => ({
             key: incident._id,
-            icon: <PriorityIcon priority={incident.priority}/>,
+            icon: <PriorityIcon priority={incident.priority} />,
             incidentName: incident.incidentName,
             description: incident.description,
             assignee: incident.assignee,
@@ -55,7 +63,10 @@ function* getInicdentsWorker() {
 
         yield put(setIncidents(listOfIncidents));
     } catch (e) {
-        errorNotification('Не удалось выполнить операцию...', e.response.data.message);
+        errorNotification(
+            'Не удалось выполнить операцию...',
+            e.response.data.message
+        );
         localStorage.removeItem('userData');
         if (e.response.status === 401) {
             yield put(logout());
@@ -65,7 +76,9 @@ function* getInicdentsWorker() {
 
 function* getUsersForAssigneeOptionWorker() {
     try {
-        const response: ResponseGetUsersForAssigneeType = yield call(getUsersForAssigneeOptionApi);
+        const response: ResponseGetUsersForAssigneeType = yield call(
+            getUsersForAssigneeOptionApi
+        );
         const users = response.data.map((item: any) => ({
             label: item.fullname,
             value: `${item.fullname} ${item._id}`,
@@ -77,40 +90,63 @@ function* getUsersForAssigneeOptionWorker() {
         yield put(setUsers(users));
     } catch (e) {
         destroyMessage();
-        errorNotification('Не удалось выполнить операцию...', e.response.data.message);
+        errorNotification(
+            'Не удалось выполнить операцию...',
+            e.response.data.message
+        );
     }
 }
 
-function* createIncidentWorker({valuesCreateIncidentForm}: CreateIncidentActionType) {
+function* createIncidentWorker({
+    valuesCreateIncidentForm
+}: CreateIncidentActionType) {
     try {
-        const response: ResponseCreateIncidentType = yield call(postIncidentApi, valuesCreateIncidentForm);
+        const response: ResponseCreateIncidentType = yield call(
+            postIncidentApi,
+            valuesCreateIncidentForm
+        );
         destroyMessage();
-        successNotification('Операция выполнена.', response.data.message)
+        successNotification('Операция выполнена.', response.data.message);
     } catch (e) {
         destroyMessage();
-        errorNotification('Не удалось выполнить операцию...', e.response.data.message);
+        errorNotification(
+            'Не удалось выполнить операцию...',
+            e.response.data.message
+        );
     }
 }
 
-function* deleteIncidentWorker({incidentID}: DeleteIncidentActionType) {
+function* deleteIncidentWorker({ incidentID }: DeleteIncidentActionType) {
     try {
-        const response: ResponseDeleteIncident = yield call(deleteIncidentApi, incidentID);
+        const response: ResponseDeleteIncident = yield call(
+            deleteIncidentApi,
+            incidentID
+        );
         destroyMessage();
-        successNotification('Операция выполнена.', response.data.message)
+        successNotification('Операция выполнена.', response.data.message);
     } catch (e) {
         destroyMessage();
-        errorNotification('Не удалось выполнить операцию...', e.response.data.message);
+        errorNotification(
+            'Не удалось выполнить операцию...',
+            e.response.data.message
+        );
     }
 }
 
-function* updateIncidentWorker({updateData}: UpdateIncidentActionType) {
+function* updateIncidentWorker({ updateData }: UpdateIncidentActionType) {
     try {
-        const response: ResponseUpdateIncident = yield call(updateIncidentApi, updateData);
+        const response: ResponseUpdateIncident = yield call(
+            updateIncidentApi,
+            updateData
+        );
         destroyMessage();
-        successNotification('Операция выполнена.', response.data.message)
+        successNotification('Операция выполнена.', response.data.message);
     } catch (e) {
         destroyMessage();
-        errorNotification('Не удалось выполнить операцию...', e.response.data.message);
+        errorNotification(
+            'Не удалось выполнить операцию...',
+            e.response.data.message
+        );
     }
 }
 

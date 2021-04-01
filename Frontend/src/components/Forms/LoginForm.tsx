@@ -1,13 +1,23 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import {LoginFormTypes} from "../../containers/LoginContainer";
+import { LoginFormValue } from '../../redux/store/reducers/loginReducer';
 
-const LoginForm: React.FC<LoginFormTypes> = ({onFinish, onChange, login, password}) => {
+type LoginFormTypes = LoginFormValue & {
+    onFinish: (values: LoginFormValue) => void;
+    onChange: (value: LoginFormValue) => void;
+};
+
+const LoginForm: React.FC<LoginFormTypes> = ({
+    onFinish,
+    onChange,
+    login,
+    password
+}) => {
     const [form] = Form.useForm();
 
     useEffect(() => {
-        form.setFieldsValue({login, password});
+        form.setFieldsValue({ login, password });
     }, [form, login, password]);
 
     return (
@@ -18,17 +28,23 @@ const LoginForm: React.FC<LoginFormTypes> = ({onFinish, onChange, login, passwor
             onValuesChange={onChange}
             form={form}
         >
-
             <Form.Item
                 name="login"
-                rules={[{ required: true, message: 'Please input your Username!' }]}
+                rules={[
+                    { required: true, message: 'Please input your Username!' }
+                ]}
             >
-                <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+                <Input
+                    prefix={<UserOutlined className="site-form-item-icon" />}
+                    placeholder="Username"
+                />
             </Form.Item>
 
             <Form.Item
                 name="password"
-                rules={[{ required: true, message: 'Please input your Password!' }]}
+                rules={[
+                    { required: true, message: 'Please input your Password!' }
+                ]}
             >
                 <Input
                     prefix={<LockOutlined className="site-form-item-icon" />}
@@ -48,7 +64,11 @@ const LoginForm: React.FC<LoginFormTypes> = ({onFinish, onChange, login, passwor
             </Form.Item>
 
             <Form.Item>
-                <Button type="primary" htmlType="submit" className="login-form-button">
+                <Button
+                    type="primary"
+                    htmlType="submit"
+                    className="login-form-button"
+                >
                     Log in
                 </Button>
                 Or <a href="#top">register now!</a>
@@ -57,4 +77,4 @@ const LoginForm: React.FC<LoginFormTypes> = ({onFinish, onChange, login, passwor
     );
 };
 
-export {LoginForm};
+export { LoginForm };

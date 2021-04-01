@@ -1,0 +1,46 @@
+{
+  "extends": ["airbnb-typescript", "prettier"],
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "modules": true
+    },
+    "project": ["tsconfig.json"]
+  },
+  "plugins": ["@typescript-eslint", "prettier", "react-hooks"],
+  "rules": {
+    "prettier/prettier": ["error"],
+    "no-duplicate-imports": "error",
+    "no-console": "off",
+    "no-return-assign": ["error", "except-parens"],
+    "@typescript-eslint/no-unused-expressions": ["error", { "allowShortCircuit": true, "allowTernary": true }],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/prefer-stateless-function": "off",
+    "react/jsx-filename-extension": "off",
+    "react/jsx-indent": "off",
+    "import/prefer-default-export": "off",
+    "import/no-extraneous-dependencies": [ "error", { "packageDir": "./" } ],
+    "react/jsx-wrap-multilines": "off",
+    "react/forbid-prop-types": "off",
+    "react/jsx-indent-props": "off",
+    "react/jsx-curly-newline": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/require-default-props": "off",
+    "react/jsx-props-no-spreading": "off",
+    "spaced-comment": ["error", "always", { "markers": ["/"] }],
+    "react/prop-types": "off",
+    "@typescript-eslint/indent": "off",
+    "@typescript-eslint/quotes": "off",
+    "no-underscore-dangle": "off"
+  },
+  "settings": {
+    "import/core-modules": ["moment", "uuid"]
+  }
+}

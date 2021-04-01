@@ -1,13 +1,13 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import 'antd/dist/antd.css';
 import { Layout } from 'antd';
-import Header from "./components/Header/Header";
-import Main from "./components/Main/Main";
-import Footer from "./components/Footer/Footer";
-import {useDispatch} from "react-redux";
-import {login} from "./redux/store/actions/loginCreator";
-import {Dispatch} from "redux";
-import {LoginActionType} from "./redux/store/actions/Types/loginTypes";
+import { useDispatch } from 'react-redux';
+import { Dispatch } from 'redux';
+import Header from './components/Header/Header';
+import Main from './components/Main/Main';
+import Footer from './components/Footer/Footer';
+import { login } from './redux/store/actions/loginCreator';
+import { LoginActionType } from './redux/store/reducers/loginReducer';
 
 function App() {
     const dispatch = useDispatch<Dispatch<LoginActionType>>();
@@ -22,9 +22,9 @@ function App() {
 
     return (
         <Layout>
-            <Header/>
-            <Main/>
-            <Footer/>
+            <Header />
+            <Main />
+            <Footer />
         </Layout>
     );
 }
