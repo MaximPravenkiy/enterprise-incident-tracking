@@ -1,18 +1,21 @@
 import React, { useEffect } from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { NavLink } from 'react-router-dom';
 import { LoginFormValue } from '../../redux/store/reducers/loginReducer';
 
 type LoginFormTypes = LoginFormValue & {
     onFinish: (values: LoginFormValue) => void;
     onChange: (value: LoginFormValue) => void;
+    onRegisterClick: () => void;
 };
 
 const LoginForm: React.FC<LoginFormTypes> = ({
     onFinish,
     onChange,
     login,
-    password
+    password,
+    onRegisterClick
 }) => {
     const [form] = Form.useForm();
 
@@ -70,8 +73,11 @@ const LoginForm: React.FC<LoginFormTypes> = ({
                     className="login-form-button"
                 >
                     Log in
-                </Button>
-                Or <a href="#top">register now!</a>
+                </Button>{' '}
+                Or{' '}
+                <NavLink to="/registration" onClick={onRegisterClick}>
+                    register now!
+                </NavLink>
             </Form.Item>
         </Form>
     );

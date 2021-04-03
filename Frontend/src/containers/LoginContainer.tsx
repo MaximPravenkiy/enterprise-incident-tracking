@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
 import { LoginForm } from '../components/Forms/LoginForm';
 import {
+    changeKeyDepsOnPath,
     postLogin,
     updateValuesLoginForm
 } from '../redux/store/actions/loginCreator';
@@ -28,12 +29,17 @@ const LoginContainer = () => {
         dispatch(updateValuesLoginForm(value));
     };
 
+    const onRegisterClick = () => {
+        dispatch(changeKeyDepsOnPath('2')); // Меняет подсветку меню в хедере
+    };
+
     return (
         <LoginForm
             onFinish={onFinish}
             onChange={onChange}
             login={login}
             password={password}
+            onRegisterClick={onRegisterClick}
         />
     );
 };

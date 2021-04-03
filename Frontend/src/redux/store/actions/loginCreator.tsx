@@ -1,10 +1,13 @@
 import {
+    CHANGE_KEY_DEPS_ON_PATH,
     LOGIN,
     LOGOUT,
     POST_LOGIN,
     UPDATE_VALUES_LOGIN_FORM
 } from './actionTypes';
 import {
+    ChangeKeyDepsOnPathType,
+    KeysType,
     LoginActionType,
     LoginFormValue,
     LogoutActionType,
@@ -29,6 +32,13 @@ const updateValuesLoginForm = (
     updatedValueLoginForm
 });
 
+const changeKeyDepsOnPath = (
+    keyDepsOnPath: KeysType
+): ChangeKeyDepsOnPathType => ({
+    type: CHANGE_KEY_DEPS_ON_PATH,
+    keyDepsOnPath
+});
+
 const logout = (): LogoutActionType => ({ type: LOGOUT });
 
-export { login, logout, postLogin, updateValuesLoginForm };
+export { login, logout, postLogin, updateValuesLoginForm, changeKeyDepsOnPath };

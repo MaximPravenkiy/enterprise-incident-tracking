@@ -1,12 +1,6 @@
 import React, { useEffect } from 'react';
 import { Form, Input, Button, DatePicker } from 'antd';
 import { RegistrationInitialStateType } from '../../redux/store/reducers/registrationReducer';
-// import styled from 'styled-components';
-
-type RegistrationFormTypes = RegistrationInitialStateType & {
-    registerNewUser: (values: RegistrationInitialStateType) => void;
-    onChange: (value: RegistrationInitialStateType) => void;
-};
 
 const formItemLayout = {
     labelCol: {
@@ -42,9 +36,10 @@ const config = {
     ]
 };
 
-// const FormCustom = styled(Form)`
-//     min-width: 35%;
-// `;
+interface RegistrationFormTypes extends RegistrationInitialStateType {
+    registerNewUser: (values: RegistrationInitialStateType) => void;
+    onChange: (value: RegistrationInitialStateType) => void;
+}
 
 const RegistrationForm: React.FC<RegistrationFormTypes> = ({
     registerNewUser,
@@ -65,7 +60,7 @@ const RegistrationForm: React.FC<RegistrationFormTypes> = ({
             password,
             position
         });
-    });
+    }, [form, dateOfBirth, fullname, login, password, position]);
 
     return (
         <Form
@@ -74,6 +69,7 @@ const RegistrationForm: React.FC<RegistrationFormTypes> = ({
             name="register"
             onFinish={registerNewUser}
             onValuesChange={onChange}
+            className="registration-form"
         >
             <Form.Item
                 label="Full Name"

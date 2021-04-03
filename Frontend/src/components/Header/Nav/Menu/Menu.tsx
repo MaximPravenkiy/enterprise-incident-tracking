@@ -1,10 +1,14 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import { Menu } from 'antd';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { MenuClickEventHandler } from '../../../../../node_modules/rc-menu/lib/interface';
 
-type MenuProps = {
+interface MenuProps extends RouteComponentProps {
     menuItems: JSX.Element | JSX.Element[];
-};
+    keyDepsOnPath: string;
+    changeKey: MenuClickEventHandler;
+}
 
 const MenuCustom = styled(Menu)`
     display: flex;
@@ -12,16 +16,26 @@ const MenuCustom = styled(Menu)`
     height: 100%;
 `;
 
-const NavMenu: React.FC<MenuProps> = ({ menuItems }) => (
-    <MenuCustom
-        theme="dark"
-        mode="horizontal"
-        defaultSelectedKeys={
-            window.location.pathname.includes('registration') ? ['2'] : ['1']
-        }
-    >
-        {menuItems}
-    </MenuCustom>
-);
+const NavMenu: React.FC<MenuProps> = ({
+    menuItems,
+    keyDepsOnPath,
+    changeKey,
+    location
+}) => {
+    useEffect(() => {
+        console.log(location);
+    });
 
-export default NavMenu;
+    return (
+        <MenuCustom
+            theme="dark"
+            mode="horizontal"
+            selectedKeys={[keyDepsOnPath]}
+            onClick={changeKey}
+        >
+            {menuItems}
+        </MenuCustom>
+    );
+};
+
+export default withRouter(NavMenu);

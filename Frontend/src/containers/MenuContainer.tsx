@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
-import { v4 as uuid } from 'uuid';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 import NavMenu from '../components/Header/Nav/Menu/Menu';
-import { logout } from '../redux/store/actions/loginCreator';
+import {
+    changeKeyDepsOnPath,
+    logout
+} from '../redux/store/actions/loginCreator';
 import MenuItemLogin from '../components/Header/Nav/Menu/MenuItemLogin/MenuItemLogin';
 import MenuItemLogout from '../components/Header/Nav/Menu/MenuItemLogout/MenuItemLogout';
 import { getUsers } from '../redux/store/actions/incidentsCreator';
@@ -11,15 +14,16 @@ import { openMessage } from './ServerResponseHandlers/Message';
 import { RootReducer } from '../redux/store/reducers/rootReducer';
 import { LoginType } from '../redux/store/reducers/loginReducer';
 import { IncidentsType } from '../redux/store/reducers/incidentsReducer';
+import { MenuInfo } from '../../node_modules/rc-menu/lib/interface';
 
 const navContent = [
     { text: 'Вход', url: 'login' },
     { text: 'Регистрация', url: 'registration' }
 ];
 
-const MenuContainer = () => {
+const MenuContainer: React.FC<RouteComponentProps> = ({ location }) => {
     const dispatch = useDispatch<Dispatch<LoginType | IncidentsType>>();
-    const { isAuth, fullname } = useSelector(
+    const { isAuth, fullname, keyDepsOnPath } = useSelector(
         ({ loginReducer }: RootReducer) => loginReducer
     );
 
@@ -33,8 +37,20 @@ const MenuContainer = () => {
         dispatch(getUsers());
     };
 
-    /// Отображение меню в зависимости от аутентификации
+    const changeKey = ({ key }: MenuInfo) => {
+        dispatch(changeKeyDepsOnPath(key === '1' ? '1' : '2'));
+    };
 
+    useEffect(() => {
+        dispatch(
+            changeKeyDepsOnPath(
+                location.pathname === '/registration' ? '2' : '1'
+            )
+        );
+    }, [dispatch, location.pathname]);
+
+    // Отображение меню в зависимости от аутентификации
+    let key = 0;
     const menuItems = isAuth ? (
         <MenuItemLogin
             fullname={fullname}
@@ -42,16 +58,25 @@ const MenuContainer = () => {
             onLogout={onLogout}
         />
     ) : (
-        navContent.map((content) => (
-            <MenuItemLogout
-                key={uuid()}
-                url={content.url}
-                text={content.text}
-            />
-        ))
+        navContent.map((content) => {
+            key += 1;
+            return (
+                <MenuItemLogout
+                    key={key}
+                    url={content.url}
+                    text={content.text}
+                />
+            );
+        })
     );
 
-    return <NavMenu menuItems={menuItems} />;
+    return (
+        <NavMenu
+            menuItems={menuItems}
+            keyDepsOnPath={keyDepsOnPath}
+            changeKey={changeKey}
+        />
+    );
 };
 
-export default MenuContainer;
+export default withRouter(MenuContainer);

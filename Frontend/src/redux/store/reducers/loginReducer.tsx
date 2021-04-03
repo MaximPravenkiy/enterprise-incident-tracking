@@ -1,4 +1,5 @@
 import {
+    CHANGE_KEY_DEPS_ON_PATH,
     LOGIN,
     LOGOUT,
     POST_LOGIN,
@@ -24,11 +25,19 @@ export type LogoutActionType = {
     type: typeof LOGOUT;
 };
 
+export type ChangeKeyDepsOnPathType = {
+    type: typeof CHANGE_KEY_DEPS_ON_PATH;
+    keyDepsOnPath: KeysType;
+};
+
+export type KeysType = '1' | '2';
+
 export type LoginType =
     | PostLoginActionType
     | LoginActionType
     | UpdateValuesLoginFormActionType
-    | LogoutActionType;
+    | LogoutActionType
+    | ChangeKeyDepsOnPathType;
 
 export type LoginFormValue = {
     login: string;
@@ -47,6 +56,7 @@ export type LoginInitialStateType = typeof initialState;
 const initialState = {
     fullname: '',
     isAuth: false,
+    keyDepsOnPath: '1' as KeysType,
     login: '',
     password: '',
     remember: false,
@@ -74,6 +84,11 @@ function loginReducer(
             return {
                 ...state,
                 isAuth: false
+            };
+        case CHANGE_KEY_DEPS_ON_PATH:
+            return {
+                ...state,
+                keyDepsOnPath: action.keyDepsOnPath
             };
         default:
             return state;

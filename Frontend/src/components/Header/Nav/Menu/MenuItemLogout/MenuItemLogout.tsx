@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 export type MenuItemLogoutProps = {
     text: string;
     url: string;
-    key: string;
+    key: number;
 };
 
 const MenuItemCustom = styled(Menu.Item)`
@@ -31,7 +31,7 @@ const MenuItemLogout: React.FC<MenuItemLogoutProps> = ({
 }) => (
     <>
         <MenuItemCustom {...props} key={key}>
-            <NavLinkEx to={`./${url}`}>{text}</NavLinkEx>
+            <NavLinkEx to={`/${url}`}>{text}</NavLinkEx>
         </MenuItemCustom>
     </>
 );

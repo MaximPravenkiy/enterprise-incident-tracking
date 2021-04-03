@@ -8,6 +8,7 @@ import {
 } from '../../containers/ServerResponseHandlers/Notification';
 import { resetRegistrationForm } from '../store/actions/registrationCreator';
 import { PostRegistrationActionType } from '../store/reducers/registrationReducer';
+import { changeKeyDepsOnPath } from '../store/actions/loginCreator';
 
 type ResponseRegistrationType = SagaReturnType<typeof postRegistrationApi>;
 
@@ -24,6 +25,7 @@ function* postRegistrationWorker({
             destroyMessage();
             successNotification('Поздравляем!', response.data.message);
             yield put(resetRegistrationForm());
+            yield put(changeKeyDepsOnPath('1'));
         }
     } catch (e) {
         destroyMessage();
