@@ -31,10 +31,7 @@ import {
 } from '../reducers/incidentsReducer';
 
 // Incidents
-const getIncidents = (): GetIncidentsActionType => {
-    console.log('GET INCID');
-    return { type: GET_INCIDENTS };
-};
+const getIncidents = (): GetIncidentsActionType => ({ type: GET_INCIDENTS });
 
 const setIncidents = (
     listOfIncidents: Array<ListOfIncidentsTypes>

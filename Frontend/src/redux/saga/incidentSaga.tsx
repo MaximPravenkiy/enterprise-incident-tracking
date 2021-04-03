@@ -26,7 +26,6 @@ import { destroyMessage } from '../../containers/ServerResponseHandlers/Message'
 import {
     CreateIncidentActionType,
     DeleteIncidentActionType,
-    GetIncidentsActionType,
     UpdateIncidentActionType
 } from '../store/reducers/incidentsReducer';
 
@@ -38,10 +37,8 @@ type ResponseCreateIncidentType = SagaReturnType<typeof postIncidentApi>;
 type ResponseDeleteIncident = SagaReturnType<typeof deleteIncidentApi>;
 type ResponseUpdateIncident = SagaReturnType<typeof updateIncidentApi>;
 
-function* getInicdentsWorker(...arg: [GetIncidentsActionType]) {
+function* getInicdentsWorker() {
     try {
-        console.log(arg);
-        console.log('SAGA');
         const userData = localStorage.getItem('userData');
 
         if (!userData) return;
@@ -63,7 +60,7 @@ function* getInicdentsWorker(...arg: [GetIncidentsActionType]) {
             priority: incident.priority,
             status: incident.status
         }));
-        console.log(listOfIncidents);
+
         yield put(setIncidents(listOfIncidents));
     } catch (e) {
         errorNotification(

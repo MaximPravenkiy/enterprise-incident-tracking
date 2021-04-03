@@ -13,11 +13,8 @@ const IncidentsContainer = () => {
     );
 
     useEffect(() => {
-        console.log(listOfIncidents);
-        if (listOfIncidents.length === 0) {
-            dispatch(getIncidents());
-        }
-    }, [dispatch, listOfIncidents]);
+        dispatch(getIncidents());
+    }, [dispatch]);
 
     return <Incidents listOfIncidents={listOfIncidents} />;
 };

@@ -19,14 +19,12 @@ const postLoginApi = (values: LoginFormValue) =>
     axios.post<UserDataType>('/login', values);
 
 // incidents api
-const getIncidentsApi = (token: string) => {
-    console.log('API INC');
-    return axios.get<Array<ListOfIncidentsTypes>>('/incidents', {
+const getIncidentsApi = (token: string) =>
+    axios.get<Array<ListOfIncidentsTypes>>('/incidents', {
         headers: {
             Authorization: `Bearer ${token}`
         }
     });
-};
 
 const postIncidentApi = (values: CreateIncidentTypes) =>
     axios.post<Message>('/incidents/create-incident', values);

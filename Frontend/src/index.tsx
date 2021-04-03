@@ -13,6 +13,8 @@ const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 
+sagaMiddleware.run(rootWatcher);
+
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
@@ -22,5 +24,3 @@ ReactDOM.render(
     </Provider>,
     document.getElementById('root')
 );
-
-sagaMiddleware.run(rootWatcher);
