@@ -8,7 +8,7 @@ import { IncidentsType } from '../redux/store/reducers/incidentsReducer';
 
 const IncidentsContainer = () => {
     const dispatch = useDispatch<Dispatch<IncidentsType>>();
-    const { listOfIncidents } = useSelector(
+    const { listOfIncidents, isListOfIncidentsLoading } = useSelector(
         ({ incidentsReducer }: RootReducer) => incidentsReducer
     );
 
@@ -16,7 +16,12 @@ const IncidentsContainer = () => {
         dispatch(getIncidents());
     }, [dispatch]);
 
-    return <Incidents listOfIncidents={listOfIncidents} />;
+    return (
+        <Incidents
+            listOfIncidents={listOfIncidents}
+            isListOfIncidentsLoading={isListOfIncidentsLoading}
+        />
+    );
 };
 
 export default IncidentsContainer;

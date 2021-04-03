@@ -10,6 +10,7 @@ import ActionButtonContainer from '../../../containers/ActionButtonContainer';
 
 type IncidentsTypeProps = {
     listOfIncidents: IncidentsInitialStateType['listOfIncidents'];
+    isListOfIncidentsLoading: boolean;
 };
 
 const TableCustom = styled(Table)`
@@ -71,14 +72,17 @@ const columns = [
     }
 ];
 
-const Incidents: React.FC<IncidentsTypeProps> = ({ listOfIncidents }) => (
+const Incidents: React.FC<IncidentsTypeProps> = ({
+    listOfIncidents,
+    isListOfIncidentsLoading
+}) => (
     <>
         <TableCustom
             pagination={{ position: ['bottomCenter'], defaultPageSize: 4 }}
             columns={columns}
             dataSource={listOfIncidents}
             bordered
-            loading={listOfIncidents.length === 0}
+            loading={isListOfIncidentsLoading}
         />
         <CreateIncidentsContainer />
     </>

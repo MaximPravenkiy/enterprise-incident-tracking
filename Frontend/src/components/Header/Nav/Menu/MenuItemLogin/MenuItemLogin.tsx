@@ -20,10 +20,10 @@ const Wrapper = styled.div`
     width: 100%;
 `;
 
-const CreateNewIncBut = styled(Button)`
+const IncidentButton = styled(Button)`
     display: flex;
     align-items: center;
-    height: 40%;
+    height: 30%;
 `;
 
 const Title = styled.span`
@@ -39,20 +39,38 @@ const RightSection = styled.div`
     justify-content: space-between;
 `;
 
+const ButtonWrarpper = styled.div`
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-evenly;
+`;
+
 const MenuItemLogin: React.FC<MenuItemLoginProps> = ({
     fullname,
     onLogout,
     createIncident
 }) => (
     <Wrapper>
-        <CreateNewIncBut
-            type="primary"
-            shape="round"
-            icon={<ScheduleOutlined />}
-            onClick={createIncident}
-        >
-            Создать новый инцидент
-        </CreateNewIncBut>
+        <ButtonWrarpper>
+            <IncidentButton
+                type="primary"
+                shape="round"
+                icon={<ScheduleOutlined />}
+                onClick={createIncident}
+            >
+                Создать новый инцидент
+            </IncidentButton>
+
+            <IncidentButton
+                type="primary"
+                ghost
+                icon={<ScheduleOutlined />}
+                onClick={createIncident}
+            >
+                Показать все инциденты
+            </IncidentButton>
+        </ButtonWrarpper>
 
         <div>
             <SnippetsFilled style={{ fontSize: '3em', marginRight: '10px' }} />

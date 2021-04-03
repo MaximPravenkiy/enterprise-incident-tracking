@@ -11,6 +11,7 @@ import {
     SET_INCIDENTS,
     SET_USERS,
     UPDATE_INCIDENT,
+    UPDATE_LOADER,
     UPDATE_VALUES_CREATE_INCIDENT_FORM
 } from '../actions/actionTypes';
 
@@ -79,6 +80,11 @@ export type GetIncidentsActionType = {
     type: typeof GET_INCIDENTS;
 };
 
+export type UpdateLoaderActionType = {
+    type: typeof UPDATE_LOADER;
+    isListOfIncidentsLoading: boolean;
+};
+
 export type IncidentsType =
     | SetIncidentsActionType
     | CreateIncidentActionType
@@ -91,11 +97,13 @@ export type IncidentsType =
     | GetUsersActionType
     | SetUsersActionType
     | ChangeAssigneeUserIdActionType
-    | GetIncidentsActionType;
+    | GetIncidentsActionType
+    | UpdateLoaderActionType;
 
 export type ListOfIncidentsTypes = ValuesCreateIncidentFormTypes & {
     icon: JSX.Element;
     key: string;
+    owner: string;
 };
 
 export type ValuesCreateIncidentFormTypes = {
@@ -128,6 +136,7 @@ const initialState = {
     incidentID: '',
     isModalVisible: false,
     listOfIncidents: [] as Array<ListOfIncidentsTypes>,
+    isListOfIncidentsLoading: false,
     users: [] as Array<UsersTypes>,
     valuesCreateIncidentForm: {
         area: '',
@@ -191,6 +200,11 @@ function incidentsReducer(
                     initialState.actionWithCreateIncidentForm,
                 incidentID: initialState.incidentID,
                 valuesCreateIncidentForm: initialState.valuesCreateIncidentForm
+            };
+        case UPDATE_LOADER:
+            return {
+                ...state,
+                isListOfIncidentsLoading: action.isListOfIncidentsLoading
             };
         default:
             return state;

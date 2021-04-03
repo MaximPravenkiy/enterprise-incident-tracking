@@ -9,7 +9,13 @@ import {
     postIncidentApi,
     updateIncidentApi
 } from './API';
-import { setIncidents, setUsers } from '../store/actions/incidentsCreator';
+import {
+    getIncidents,
+    resetCreateIncidentForm,
+    setIncidents,
+    setUsers,
+    updateLoader
+} from '../store/actions/incidentsCreator';
 import {
     CREATE_INCIDENT,
     DELETE_INCIDENT,
@@ -39,6 +45,7 @@ type ResponseUpdateIncident = SagaReturnType<typeof updateIncidentApi>;
 
 function* getInicdentsWorker() {
     try {
+        yield put(updateLoader(true));
         const userData = localStorage.getItem('userData');
 
         if (!userData) return;
@@ -48,20 +55,25 @@ function* getInicdentsWorker() {
             getIncidentsApi,
             token
         );
-        const listOfIncidents = response.data.map((incident: any) => ({
-            key: incident._id,
-            icon: <PriorityIcon priority={incident.priority} />,
-            incidentName: incident.incidentName,
-            description: incident.description,
-            assignee: incident.assignee,
-            area: incident.area,
-            startDate: incident.startDate.split('T')[0],
-            dueDate: incident.dueDate.split('T')[0],
-            priority: incident.priority,
-            status: incident.status
-        }));
 
-        yield put(setIncidents(listOfIncidents));
+        if (response.status === 200) {
+            const listOfIncidents = response.data.map((incident: any) => ({
+                ...incident,
+                key: incident._id,
+                icon: <PriorityIcon priority={incident.priority} />,
+                // incidentName: incident.incidentName,
+                // description: incident.description,
+                // assignee: incident.assignee,
+                // area: incident.area,
+                startDate: incident.startDate.split('T')[0],
+                dueDate: incident.dueDate.split('T')[0]
+                // priority: incident.priority,
+                // status: incident.status
+            }));
+
+            yield put(setIncidents(listOfIncidents));
+            yield put(updateLoader(false));
+        }
     } catch (e) {
         errorNotification(
             'Не удалось выполнить операцию...',
@@ -86,8 +98,10 @@ function* getUsersForAssigneeOptionWorker() {
             key: item._id
         }));
 
-        destroyMessage();
-        yield put(setUsers(users));
+        if (response.status === 200) {
+            destroyMessage();
+            yield put(setUsers(users));
+        }
     } catch (e) {
         destroyMessage();
         errorNotification(
@@ -105,8 +119,13 @@ function* createIncidentWorker({
             postIncidentApi,
             valuesCreateIncidentForm
         );
-        destroyMessage();
-        successNotification('Операция выполнена.', response.data.message);
+
+        if (response.status === 201) {
+            destroyMessage();
+            successNotification('Операция выполнена.', response.data.message);
+            yield put(getIncidents());
+            yield put(resetCreateIncidentForm());
+        }
     } catch (e) {
         destroyMessage();
         errorNotification(
@@ -122,8 +141,12 @@ function* deleteIncidentWorker({ incidentID }: DeleteIncidentActionType) {
             deleteIncidentApi,
             incidentID
         );
-        destroyMessage();
-        successNotification('Операция выполнена.', response.data.message);
+
+        if (response.status === 201) {
+            destroyMessage();
+            successNotification('Операция выполнена.', response.data.message);
+            yield put(getIncidents());
+        }
     } catch (e) {
         destroyMessage();
         errorNotification(
@@ -139,8 +162,13 @@ function* updateIncidentWorker({ updateData }: UpdateIncidentActionType) {
             updateIncidentApi,
             updateData
         );
-        destroyMessage();
-        successNotification('Операция выполнена.', response.data.message);
+
+        if (response.status === 201) {
+            destroyMessage();
+            successNotification('Операция выполнена.', response.data.message);
+            yield put(getIncidents());
+            yield put(resetCreateIncidentForm());
+        }
     } catch (e) {
         destroyMessage();
         errorNotification(

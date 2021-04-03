@@ -6,7 +6,6 @@ import { openMessage } from './ServerResponseHandlers/Message';
 import {
     changeAssigneeUserId,
     deleteIncident,
-    getIncidents,
     getUsers,
     setDataForUpdating,
     updateValuesCreateIncidentForm
@@ -31,20 +30,19 @@ const ActionButtonContainer: React.FC<ActionButtonsContainerTypeProps> = ({
 
         openMessage('Выполняем запрос...');
         dispatch(deleteIncident(incidentID));
-        dispatch(getIncidents());
     };
 
     const onEditIncident = () => {
-        const userData = localStorage.getItem('userData');
         const incidentID = incident.key;
-
-        if (!userData) return;
-
-        const assignOnCurrentUser = JSON.parse(userData).userId;
-
+        // const userData = localStorage.getItem('userData');
+        //
+        // if (!userData) return;
+        //
+        // const assignOnCurrentUser = JSON.parse(userData).userId;
+        // console.log(assignOnCurrentUser);
         openMessage('Загружаем данные...');
         dispatch(setDataForUpdating(incidentID));
-        dispatch(changeAssigneeUserId(assignOnCurrentUser));
+        dispatch(changeAssigneeUserId(incident.owner));
         dispatch(
             updateValuesCreateIncidentForm({
                 ...incident,

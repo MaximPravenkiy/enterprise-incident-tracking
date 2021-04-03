@@ -10,7 +10,8 @@ import {
     UPDATE_VALUES_CREATE_INCIDENT_FORM,
     UPDATE_INCIDENT,
     SET_DATA_FOR_UPDATING,
-    RESET_CREATE_INCIDENT_FORM
+    RESET_CREATE_INCIDENT_FORM,
+    UPDATE_LOADER
 } from './actionTypes';
 import {
     ChangeAssigneeUserIdActionType,
@@ -25,6 +26,7 @@ import {
     SetIncidentsActionType,
     SetUsersActionType,
     UpdateIncidentActionType,
+    UpdateLoaderActionType,
     UpdateValuesCreateIncidentFormActionType,
     UsersTypes,
     ValuesCreateIncidentFormTypes
@@ -73,6 +75,13 @@ const resetCreateIncidentForm = (): ResetCreateIncidentFormActionType => ({
     type: RESET_CREATE_INCIDENT_FORM
 });
 
+const updateLoader = (
+    isListOfIncidentsLoading: boolean
+): UpdateLoaderActionType => ({
+    type: UPDATE_LOADER,
+    isListOfIncidentsLoading
+});
+
 // Users
 const getUsers = (): GetUsersActionType => ({ type: GET_USERS });
 
@@ -100,5 +109,6 @@ export {
     updateValuesCreateIncidentForm,
     updateIncident,
     setDataForUpdating,
-    resetCreateIncidentForm
+    resetCreateIncidentForm,
+    updateLoader
 };

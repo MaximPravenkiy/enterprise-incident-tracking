@@ -5,8 +5,6 @@ import CreateIncidents from '../components/Main/CreateIncidents/CreateIncidents'
 import {
     changeAssigneeUserId,
     createIncident,
-    getIncidents,
-    resetCreateIncidentForm,
     updateIncident,
     updateValuesCreateIncidentForm
 } from '../redux/store/actions/incidentsCreator';
@@ -29,7 +27,7 @@ const CreateIncidentsContainer = () => {
     } = useSelector(({ incidentsReducer }: RootReducer) => incidentsReducer);
     const dispatch = useDispatch<Dispatch<IncidentsType>>();
 
-    // Получить user id
+    // Получить user id для поля Assignee
     const getUserId = (value: string) => {
         const helperArray = value.split(' ');
         const extractID = helperArray[helperArray.length - 1];
@@ -43,7 +41,6 @@ const CreateIncidentsContainer = () => {
 
     // Создать или обновить инцидент
     const onFinish = (values: CreateIncidentTypes) => {
-        console.log(values.assignee.split(assigneeUserId)[0].trim());
         const incidentFormData = {
             ...values,
             assignee: values.assignee.split(assigneeUserId)[0].trim(),
@@ -58,9 +55,6 @@ const CreateIncidentsContainer = () => {
         if (actionWithCreateIncidentForm === 'Обновить') {
             dispatch(updateIncident({ incidentFormData, incidentID }));
         }
-
-        dispatch(getIncidents());
-        dispatch(resetCreateIncidentForm());
     };
 
     return (
