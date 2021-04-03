@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Menu } from 'antd';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
@@ -20,11 +20,13 @@ const NavMenu: React.FC<MenuProps> = ({
     menuItems,
     keyDepsOnPath,
     changeKey,
-    location
+    history
 }) => {
     useEffect(() => {
-        console.log(location);
-    });
+        if (keyDepsOnPath === '1') {
+            history.push('/login');
+        }
+    }, [history, keyDepsOnPath]);
 
     return (
         <MenuCustom

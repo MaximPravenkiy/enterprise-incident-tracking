@@ -43,9 +43,10 @@ const CreateIncidentsContainer = () => {
 
     // Создать или обновить инцидент
     const onFinish = (values: CreateIncidentTypes) => {
+        console.log(values.assignee.split(assigneeUserId)[0].trim());
         const incidentFormData = {
             ...values,
-            assignee: values.assignee.split(assigneeUserId)[0],
+            assignee: values.assignee.split(assigneeUserId)[0].trim(),
             owner: assigneeUserId
         };
         openMessage('Проверяем данные...');
