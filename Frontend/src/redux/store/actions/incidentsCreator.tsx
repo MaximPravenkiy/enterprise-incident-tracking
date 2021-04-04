@@ -11,9 +11,12 @@ import {
     UPDATE_INCIDENT,
     SET_DATA_FOR_UPDATING,
     RESET_CREATE_INCIDENT_FORM,
-    UPDATE_LOADER
+    UPDATE_LOADER,
+    CHANGE_ACTION_WITH_LIST_OF_INCIDENTS
 } from './actionTypes';
 import {
+    ActionWithIncidentsType,
+    ChangeActionWithListOfIncidentsActionType,
     ChangeAssigneeUserIdActionType,
     CloseModalActionType,
     CreateIncidentActionType,
@@ -75,6 +78,13 @@ const resetCreateIncidentForm = (): ResetCreateIncidentFormActionType => ({
     type: RESET_CREATE_INCIDENT_FORM
 });
 
+const changeActionWithListOfIncidents = (
+    actionWithIncidents: ActionWithIncidentsType
+): ChangeActionWithListOfIncidentsActionType => ({
+    type: CHANGE_ACTION_WITH_LIST_OF_INCIDENTS,
+    actionWithIncidents
+});
+
 const updateLoader = (
     isListOfIncidentsLoading: boolean
 ): UpdateLoaderActionType => ({
@@ -110,5 +120,6 @@ export {
     updateIncident,
     setDataForUpdating,
     resetCreateIncidentForm,
-    updateLoader
+    updateLoader,
+    changeActionWithListOfIncidents
 };

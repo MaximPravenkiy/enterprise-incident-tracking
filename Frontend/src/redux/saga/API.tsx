@@ -19,12 +19,15 @@ const postLoginApi = (values: LoginFormValue) =>
     axios.post<UserDataType>('/login', values);
 
 // incidents api
-const getIncidentsApi = (token: string) =>
-    axios.get<Array<ListOfIncidentsTypes>>('/incidents', {
+const getMyIncidentsApi = (token: string) =>
+    axios.get<Array<ListOfIncidentsTypes>>('/incidents/my-incidents', {
         headers: {
             Authorization: `Bearer ${token}`
         }
     });
+
+const getAllIncidentsApi = () =>
+    axios.get<Array<ListOfIncidentsTypes>>('/incidents/all-incidents');
 
 const postIncidentApi = (values: CreateIncidentTypes) =>
     axios.post<Message>('/incidents/create-incident', values);
@@ -44,11 +47,12 @@ const updateIncidentApi = (
 ) => axios.put<Message>('/incidents/update-incident', updateData);
 
 export {
-    getIncidentsApi,
+    getMyIncidentsApi,
     postLoginApi,
     getUsersForAssigneeOptionApi,
     postRegistrationApi,
     postIncidentApi,
     deleteIncidentApi,
-    updateIncidentApi
+    updateIncidentApi,
+    getAllIncidentsApi
 };

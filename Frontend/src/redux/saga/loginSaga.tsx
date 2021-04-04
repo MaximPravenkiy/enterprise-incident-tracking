@@ -19,7 +19,10 @@ function* postLoginWorker({ loginFormValues }: PostLoginActionType) {
         );
 
         if (response.status === 200) {
+            const actionWithIncidents = 'Показать мои инциденты' as 'Показать мои инциденты';
+            localStorage.setItem('actionWithIncidents', actionWithIncidents);
             localStorage.setItem('userData', JSON.stringify(response.data));
+
             destroyMessage();
             successNotification(
                 'Вы вошли в систему.',

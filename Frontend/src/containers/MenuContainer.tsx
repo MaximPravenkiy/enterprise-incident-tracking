@@ -9,7 +9,11 @@ import {
 } from '../redux/store/actions/loginCreator';
 import MenuItemLogin from '../components/Header/Nav/Menu/MenuItemLogin/MenuItemLogin';
 import MenuItemLogout from '../components/Header/Nav/Menu/MenuItemLogout/MenuItemLogout';
-import { getUsers } from '../redux/store/actions/incidentsCreator';
+import {
+    changeActionWithListOfIncidents,
+    getIncidents,
+    getUsers
+} from '../redux/store/actions/incidentsCreator';
 import { openMessage } from './ServerResponseHandlers/Message';
 import { RootReducer } from '../redux/store/reducers/rootReducer';
 import { LoginType } from '../redux/store/reducers/loginReducer';
@@ -26,9 +30,22 @@ const MenuContainer: React.FC<RouteComponentProps> = ({ location }) => {
     const { isAuth, fullname, keyDepsOnPath } = useSelector(
         ({ loginReducer }: RootReducer) => loginReducer
     );
+    const { actionWithIncidents } = useSelector(
+        ({ incidentsReducer }: RootReducer) => incidentsReducer
+    );
+
+    const changeAction = () => {
+        localStorage.setItem('actionWithIncidents', actionWithIncidents);
+        const action =
+            actionWithIncidents === 'Показать мои инциденты'
+                ? 'Показать все инциденты'
+                : 'Показать мои инциденты';
+        dispatch(changeActionWithListOfIncidents(action));
+        dispatch(getIncidents());
+    };
 
     const onLogout = () => {
-        localStorage.removeItem('userData');
+        localStorage.clear();
         dispatch(logout());
     };
 
@@ -56,6 +73,8 @@ const MenuContainer: React.FC<RouteComponentProps> = ({ location }) => {
             fullname={fullname}
             createIncident={createIncident}
             onLogout={onLogout}
+            actionWithIncidents={actionWithIncidents}
+            changeAction={changeAction}
         />
     ) : (
         navContent.map((content) => {

@@ -27,7 +27,7 @@ const areas = [
     { label: 'Layout', value: 'Layout' },
     { label: 'Frontend', value: 'Frontend' },
     { label: 'Backend', value: 'Backend' },
-    { label: 'System administration', value: 'System administration' },
+    { label: 'DevOps', value: 'DevOps' },
     { label: 'Testing', value: 'Testing' }
 ];
 
@@ -126,9 +126,9 @@ const CreateIncidents: React.FC<CreateIncidentTypeProps> = ({
                             message: "Incident name can't be empty!"
                         },
                         {
-                            max: 30,
+                            max: 15,
                             message:
-                                "Incident name can't contain more than 30 symbols!"
+                                "Incident name can't contain more than 15 symbols!"
                         }
                     ]}
                 >
@@ -164,6 +164,11 @@ const CreateIncidents: React.FC<CreateIncidentTypeProps> = ({
                         {
                             required: true,
                             message: "Description can't be empty!"
+                        },
+                        {
+                            max: 35,
+                            message:
+                                "Incident name can't contain more than 35 symbols!"
                         }
                     ]}
                 >

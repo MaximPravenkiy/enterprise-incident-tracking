@@ -4,7 +4,8 @@ import PriorityIcon from '../../containers/PriorityIcon';
 
 import {
     deleteIncidentApi,
-    getIncidentsApi,
+    getAllIncidentsApi,
+    getMyIncidentsApi,
     getUsersForAssigneeOptionApi,
     postIncidentApi,
     updateIncidentApi
@@ -35,7 +36,7 @@ import {
     UpdateIncidentActionType
 } from '../store/reducers/incidentsReducer';
 
-type ResponseGetIncidentsType = SagaReturnType<typeof getIncidentsApi>;
+type ResponseGetIncidentsType = SagaReturnType<typeof getMyIncidentsApi>;
 type ResponseGetUsersForAssigneeType = SagaReturnType<
     typeof getUsersForAssigneeOptionApi
 >;
@@ -46,29 +47,27 @@ type ResponseUpdateIncident = SagaReturnType<typeof updateIncidentApi>;
 function* getInicdentsWorker() {
     try {
         yield put(updateLoader(true));
-        const userData = localStorage.getItem('userData');
+        const actionWithIncidents = localStorage.getItem('actionWithIncidents');
+        let response: ResponseGetIncidentsType;
 
-        if (!userData) return;
+        if (actionWithIncidents === 'Показать мои инциденты') {
+            const userData = localStorage.getItem('userData');
 
-        const { token } = JSON.parse(userData);
-        const response: ResponseGetIncidentsType = yield call(
-            getIncidentsApi,
-            token
-        );
+            if (!userData) return;
+
+            const { token } = JSON.parse(userData);
+            response = yield call(getMyIncidentsApi, token);
+        } else {
+            response = yield call(getAllIncidentsApi);
+        }
 
         if (response.status === 200) {
             const listOfIncidents = response.data.map((incident: any) => ({
                 ...incident,
                 key: incident._id,
                 icon: <PriorityIcon priority={incident.priority} />,
-                // incidentName: incident.incidentName,
-                // description: incident.description,
-                // assignee: incident.assignee,
-                // area: incident.area,
                 startDate: incident.startDate.split('T')[0],
                 dueDate: incident.dueDate.split('T')[0]
-                // priority: incident.priority,
-                // status: incident.status
             }));
 
             yield put(setIncidents(listOfIncidents));

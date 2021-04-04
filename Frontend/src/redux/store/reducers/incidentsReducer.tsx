@@ -1,5 +1,6 @@
 import moment from 'moment';
 import {
+    CHANGE_ACTION_WITH_LIST_OF_INCIDENTS,
     CHANGE_ASSIGNEE_USER_ID,
     CLOSE_MODAL,
     CREATE_INCIDENT,
@@ -85,6 +86,11 @@ export type UpdateLoaderActionType = {
     isListOfIncidentsLoading: boolean;
 };
 
+export type ChangeActionWithListOfIncidentsActionType = {
+    type: typeof CHANGE_ACTION_WITH_LIST_OF_INCIDENTS;
+    actionWithIncidents: ActionWithIncidentsType;
+};
+
 export type IncidentsType =
     | SetIncidentsActionType
     | CreateIncidentActionType
@@ -98,7 +104,8 @@ export type IncidentsType =
     | SetUsersActionType
     | ChangeAssigneeUserIdActionType
     | GetIncidentsActionType
-    | UpdateLoaderActionType;
+    | UpdateLoaderActionType
+    | ChangeActionWithListOfIncidentsActionType;
 
 export type ListOfIncidentsTypes = ValuesCreateIncidentFormTypes & {
     icon: JSX.Element;
@@ -129,9 +136,13 @@ export type CreateIncidentTypes = ValuesCreateIncidentFormTypes & {
 };
 
 export type ActionWithCreateIncidentFormType = 'Создать' | 'Обновить';
+export type ActionWithIncidentsType =
+    | 'Показать все инциденты'
+    | 'Показать мои инциденты';
 
 const initialState = {
     actionWithCreateIncidentForm: 'Создать' as ActionWithCreateIncidentFormType,
+    actionWithIncidents: 'Показать все инциденты' as ActionWithIncidentsType,
     assigneeUserId: '',
     incidentID: '',
     isModalVisible: false,
@@ -205,6 +216,11 @@ function incidentsReducer(
             return {
                 ...state,
                 isListOfIncidentsLoading: action.isListOfIncidentsLoading
+            };
+        case CHANGE_ACTION_WITH_LIST_OF_INCIDENTS:
+            return {
+                ...state,
+                actionWithIncidents: action.actionWithIncidents
             };
         default:
             return state;

@@ -9,6 +9,7 @@ router.get(
     async (req, res) => {
         try {
             const users = await User.find({}, 'fullname');
+
             return res.json(users);
         } catch (e) {
             return res.status(500).json({message: 'Что-то пошло не так, попробуйте снова.'})
@@ -29,13 +30,25 @@ router.post(
     });
 
 router.get(
-    '/',
+    '/my-incidents',
     auth,
     async (req, res) => {
         try {
             const incidents = await Incident.find({owner: req.user.userId});
 
-            res.json(incidents);
+            return res.json(incidents);
+        } catch (e) {
+            return res.status(500).json({message: 'Что-то пошло не так, попробуйте снова.'})
+        }
+    });
+
+router.get(
+    '/all-incidents',
+    async (req, res) => {
+        try {
+            const incidents = await Incident.find();
+
+            return res.json(incidents);
         } catch (e) {
             return res.status(500).json({message: 'Что-то пошло не так, попробуйте снова.'})
         }

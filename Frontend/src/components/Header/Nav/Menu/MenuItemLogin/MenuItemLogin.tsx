@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
+    ExceptionOutlined,
     ScheduleFilled,
     ScheduleOutlined,
     SnippetsFilled
 } from '@ant-design/icons/lib';
 import { Avatar, Button } from 'antd';
 import styled from 'styled-components';
+import { ActionWithIncidentsType } from '../../../../../redux/store/reducers/incidentsReducer';
 
 export type MenuItemLoginProps = {
     fullname: string;
     onLogout: () => void;
     createIncident: () => void;
+    actionWithIncidents: ActionWithIncidentsType;
+    changeAction: () => void;
 };
 
 const Wrapper = styled.div`
@@ -49,47 +53,67 @@ const ButtonWrarpper = styled.div`
 const MenuItemLogin: React.FC<MenuItemLoginProps> = ({
     fullname,
     onLogout,
-    createIncident
-}) => (
-    <Wrapper>
-        <ButtonWrarpper>
-            <IncidentButton
-                type="primary"
-                shape="round"
-                icon={<ScheduleOutlined />}
-                onClick={createIncident}
-            >
-                Создать новый инцидент
-            </IncidentButton>
+    createIncident,
+    actionWithIncidents,
+    changeAction
+}) => {
+    useEffect(() => {
+        const data = localStorage.getItem('actionWithIncidents');
 
-            <IncidentButton
-                type="primary"
-                ghost
-                icon={<ScheduleOutlined />}
-                onClick={createIncident}
-            >
-                Показать все инциденты
-            </IncidentButton>
-        </ButtonWrarpper>
+        // console.log(`local: ${data} | store: ${actionWithIncidents}`);
+        // console.log(data === actionWithIncidents);
+        if (data === actionWithIncidents) {
+            changeAction();
+        }
+    });
 
-        <div>
-            <SnippetsFilled style={{ fontSize: '3em', marginRight: '10px' }} />
-            <Title>INCIDENT TRACKING</Title>
-            <ScheduleFilled style={{ fontSize: '3em', marginLeft: '10px' }} />
-        </div>
+    return (
+        <Wrapper>
+            <ButtonWrarpper>
+                <IncidentButton
+                    type="primary"
+                    shape="round"
+                    icon={<ScheduleOutlined />}
+                    onClick={createIncident}
+                >
+                    Создать новый инцидент
+                </IncidentButton>
 
-        <RightSection>
+                <IncidentButton
+                    danger
+                    ghost
+                    icon={<ExceptionOutlined />}
+                    onClick={changeAction}
+                >
+                    {actionWithIncidents}
+                </IncidentButton>
+            </ButtonWrarpper>
+
             <div>
-                <Avatar size={50} gap={1}>
-                    {fullname.split(' ').map((item) => item[0].toUpperCase())}
-                </Avatar>
+                <SnippetsFilled
+                    style={{ fontSize: '3em', marginRight: '10px' }}
+                />
+                <Title>INCIDENT TRACKING</Title>
+                <ScheduleFilled
+                    style={{ fontSize: '3em', marginLeft: '10px' }}
+                />
             </div>
 
-            <Button danger ghost onClick={onLogout}>
-                Logout
-            </Button>
-        </RightSection>
-    </Wrapper>
-);
+            <RightSection>
+                <div>
+                    <Avatar size={50} gap={1}>
+                        {fullname
+                            .split(' ')
+                            .map((item) => item[0].toUpperCase())}
+                    </Avatar>
+                </div>
+
+                <Button danger ghost onClick={onLogout}>
+                    Logout
+                </Button>
+            </RightSection>
+        </Wrapper>
+    );
+};
 
 export default MenuItemLogin;
