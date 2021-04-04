@@ -4,13 +4,12 @@ import { BrowserRouter } from 'react-router-dom';
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
-import rootReducer from './redux/store/reducers/rootReducer';
-import GlobalStyles from './GlobalStyle';
-import App from './App';
-import rootWatcher from './redux/saga';
+import App from 'App';
+import rootWatcher from 'redux/store/sagas';
+import rootReducer from 'redux/store/reducers/rootReducer';
+import GlobalStyles from 'GlobalStyle';
 
 const sagaMiddleware = createSagaMiddleware();
-
 const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 
 sagaMiddleware.run(rootWatcher);

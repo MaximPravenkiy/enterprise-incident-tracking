@@ -1,12 +1,12 @@
 import React from 'react';
 import { Table } from 'antd';
 import styled from 'styled-components';
-import CreateIncidentsContainer from '../../../containers/CreateIncidentsContainer';
+import CreateIncidentsContainer from 'containers/CreateIncidentsContainer';
 import {
     IncidentsInitialStateType,
     ListOfIncidentsTypes
-} from '../../../redux/store/reducers/incidentsReducer';
-import ActionButtonContainer from '../../../containers/ActionButtonContainer';
+} from 'redux/store/reducers/incidentsReducer';
+import ActionButtonContainer from 'containers/ActionButtonContainer';
 
 type IncidentsTypeProps = {
     listOfIncidents: IncidentsInitialStateType['listOfIncidents'];

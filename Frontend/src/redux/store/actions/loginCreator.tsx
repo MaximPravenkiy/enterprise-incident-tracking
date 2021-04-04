@@ -4,7 +4,7 @@ import {
     LOGOUT,
     POST_LOGIN,
     UPDATE_VALUES_LOGIN_FORM
-} from './actionTypes';
+} from 'redux/store/actions/actionTypes';
 import {
     ChangeKeyDepsOnPathType,
     KeysType,
@@ -13,7 +13,7 @@ import {
     LogoutActionType,
     PostLoginActionType,
     UpdateValuesLoginFormActionType
-} from '../reducers/loginReducer';
+} from 'redux/store/reducers/loginReducer';
 
 const postLogin = (loginFormValues: LoginFormValue): PostLoginActionType => ({
     type: POST_LOGIN,

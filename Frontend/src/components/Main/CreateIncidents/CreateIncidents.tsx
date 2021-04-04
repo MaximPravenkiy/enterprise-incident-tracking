@@ -1,16 +1,16 @@
 import React, { useEffect, useRef } from 'react';
 import { Form, Input, Select, DatePicker, Modal } from 'antd';
 import moment from 'moment';
-import CloseModalButton from './CloseModalButton/CloseModalButton';
-import TitleModal from './TitleModal/TitleModal';
-import CreateOrUpdateButton from './CreateOrUpdateButton/CreateOrUpdateButton';
 import {
     ActionWithCreateIncidentFormType,
     CreateIncidentTypes,
     UsersTypes,
     ValuesCreateIncidentFormTypes
-} from '../../../redux/store/reducers/incidentsReducer';
-import PriorityLabel from './PriorityLabel/PriorityLabel';
+} from 'redux/store/reducers/incidentsReducer';
+import PriorityLabel from 'components/Main/CreateIncidents/PriorityLabel/PriorityLabel';
+import CloseModalButton from 'components/Main/CreateIncidents/CloseModalButton/CloseModalButton';
+import TitleModal from 'components/Main/CreateIncidents/TitleModal/TitleModal';
+import CreateOrUpdateButton from 'components/Main/CreateIncidents/CreateOrUpdateButton/CreateOrUpdateButton';
 
 type CreateIncidentTypeProps = {
     users: Array<UsersTypes>;

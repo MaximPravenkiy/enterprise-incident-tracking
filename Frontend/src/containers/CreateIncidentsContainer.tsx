@@ -1,20 +1,20 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
-import CreateIncidents from '../components/Main/CreateIncidents/CreateIncidents';
+import CreateIncidents from 'components/Main/CreateIncidents/CreateIncidents';
 import {
     changeAssigneeUserId,
     createIncident,
     updateIncident,
     updateValuesCreateIncidentForm
-} from '../redux/store/actions/incidentsCreator';
-import { openMessage } from './ServerResponseHandlers/Message';
-import { RootReducer } from '../redux/store/reducers/rootReducer';
+} from 'redux/store/actions/incidentsCreator';
+import { RootReducer } from 'redux/store/reducers/rootReducer';
 import {
     CreateIncidentTypes,
     IncidentsType,
     ValuesCreateIncidentFormTypes
-} from '../redux/store/reducers/incidentsReducer';
+} from 'redux/store/reducers/incidentsReducer';
+import { openMessage } from 'containers/ServerResponseHandlers/Message';
 
 const CreateIncidentsContainer = () => {
     const {

@@ -4,7 +4,7 @@ import {
     REGISTRATION,
     RESET_REGISTRATION_FORM,
     UPDATE_VALUES_REGISTRATION_FORM
-} from '../actions/actionTypes';
+} from 'redux/store/actions/actionTypes';
 
 export type RegistrationInitialStateType = typeof initialState;
 

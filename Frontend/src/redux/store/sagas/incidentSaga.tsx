@@ -1,7 +1,31 @@
 import React from 'react';
 import { put, call, takeEvery, SagaReturnType } from 'redux-saga/effects';
-import PriorityIcon from '../../containers/PriorityIcon';
-
+import PriorityIcon from 'containers/PriorityIcon';
+import {
+    getIncidents,
+    resetCreateIncidentForm,
+    setIncidents,
+    setUsers,
+    updateLoader
+} from 'redux/store/actions/incidentsCreator';
+import {
+    CREATE_INCIDENT,
+    DELETE_INCIDENT,
+    GET_INCIDENTS,
+    GET_USERS,
+    UPDATE_INCIDENT
+} from 'redux/store/actions/actionTypes';
+import { logout } from 'redux/store/actions/loginCreator';
+import {
+    errorNotification,
+    successNotification
+} from 'containers/ServerResponseHandlers/Notification';
+import { destroyMessage } from 'containers/ServerResponseHandlers/Message';
+import {
+    CreateIncidentActionType,
+    DeleteIncidentActionType,
+    UpdateIncidentActionType
+} from 'redux/store/reducers/incidentsReducer';
 import {
     deleteIncidentApi,
     getAllIncidentsApi,
@@ -9,32 +33,7 @@ import {
     getUsersForAssigneeOptionApi,
     postIncidentApi,
     updateIncidentApi
-} from './API';
-import {
-    getIncidents,
-    resetCreateIncidentForm,
-    setIncidents,
-    setUsers,
-    updateLoader
-} from '../store/actions/incidentsCreator';
-import {
-    CREATE_INCIDENT,
-    DELETE_INCIDENT,
-    GET_INCIDENTS,
-    GET_USERS,
-    UPDATE_INCIDENT
-} from '../store/actions/actionTypes';
-import { logout } from '../store/actions/loginCreator';
-import {
-    errorNotification,
-    successNotification
-} from '../../containers/ServerResponseHandlers/Notification';
-import { destroyMessage } from '../../containers/ServerResponseHandlers/Message';
-import {
-    CreateIncidentActionType,
-    DeleteIncidentActionType,
-    UpdateIncidentActionType
-} from '../store/reducers/incidentsReducer';
+} from 'redux/store/sagas/API';
 
 type ResponseGetIncidentsType = SagaReturnType<typeof getMyIncidentsApi>;
 type ResponseGetUsersForAssigneeType = SagaReturnType<

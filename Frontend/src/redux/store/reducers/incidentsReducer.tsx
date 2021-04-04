@@ -14,7 +14,7 @@ import {
     UPDATE_INCIDENT,
     UPDATE_LOADER,
     UPDATE_VALUES_CREATE_INCIDENT_FORM
-} from '../actions/actionTypes';
+} from 'redux/store/actions/actionTypes';
 
 export function getDate(
     date = new Date() as Date | moment.Moment

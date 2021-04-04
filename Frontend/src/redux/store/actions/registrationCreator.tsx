@@ -3,14 +3,14 @@ import {
     REGISTRATION,
     RESET_REGISTRATION_FORM,
     UPDATE_VALUES_REGISTRATION_FORM
-} from './actionTypes';
+} from 'redux/store/actions/actionTypes';
 import {
     PostRegistrationActionType,
     RegistrationActionType,
     RegistrationInitialStateType,
     ResetRegistrationFormActionType,
     UpdateValuesRegistrationFormActionType
-} from '../reducers/registrationReducer';
+} from 'redux/store/reducers/registrationReducer';
 
 const postRegistration = (
     registrationFormValues: RegistrationInitialStateType

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { NavLink } from 'react-router-dom';
-import { LoginFormValue } from '../../redux/store/reducers/loginReducer';
+import { LoginFormValue } from 'redux/store/reducers/loginReducer';
 
 type LoginFormTypes = LoginFormValue & {
     onFinish: (values: LoginFormValue) => void;

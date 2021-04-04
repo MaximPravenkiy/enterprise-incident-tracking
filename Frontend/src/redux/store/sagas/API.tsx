@@ -1,12 +1,15 @@
 import axios from 'axios';
-import { RegistrationInitialStateType } from '../store/reducers/registrationReducer';
-import { LoginFormValue, UserDataType } from '../store/reducers/loginReducer';
+import { RegistrationInitialStateType } from 'redux/store/reducers/registrationReducer';
+import {
+    LoginFormValue,
+    UserDataType
+} from 'redux/store/reducers/loginReducer';
 import {
     CreateIncidentTypes,
     ListOfIncidentsTypes,
     UpdateIncidentActionType,
     UsersTypes
-} from '../store/reducers/incidentsReducer';
+} from 'redux/store/reducers/incidentsReducer';
 
 type Message = { message: string };
 

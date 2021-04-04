@@ -1,18 +1,15 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
-import { LoginForm } from '../components/Forms/LoginForm';
+import { LoginForm } from 'components/Forms/LoginForm';
 import {
     changeKeyDepsOnPath,
     postLogin,
     updateValuesLoginForm
-} from '../redux/store/actions/loginCreator';
-import { openMessage } from './ServerResponseHandlers/Message';
-import { RootReducer } from '../redux/store/reducers/rootReducer';
-import {
-    LoginFormValue,
-    LoginType
-} from '../redux/store/reducers/loginReducer';
+} from 'redux/store/actions/loginCreator';
+import { RootReducer } from 'redux/store/reducers/rootReducer';
+import { LoginFormValue, LoginType } from 'redux/store/reducers/loginReducer';
+import { openMessage } from 'containers/ServerResponseHandlers/Message';
 
 const LoginContainer = () => {
     const { login, password } = useSelector(

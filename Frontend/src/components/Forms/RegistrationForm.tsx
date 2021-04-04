@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Form, Input, Button, DatePicker } from 'antd';
-import { RegistrationInitialStateType } from '../../redux/store/reducers/registrationReducer';
+import { RegistrationInitialStateType } from 'redux/store/reducers/registrationReducer';
 
 const formItemLayout = {
     labelCol: {

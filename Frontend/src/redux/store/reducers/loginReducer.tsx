@@ -4,7 +4,7 @@ import {
     LOGOUT,
     POST_LOGIN,
     UPDATE_VALUES_LOGIN_FORM
-} from '../actions/actionTypes';
+} from 'redux/store/actions/actionTypes';
 
 export type PostLoginActionType = {
     type: typeof POST_LOGIN;

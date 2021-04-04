@@ -1,13 +1,13 @@
 import { put, call, takeEvery, SagaReturnType } from 'redux-saga/effects';
-import { POST_LOGIN } from '../store/actions/actionTypes';
-import { login } from '../store/actions/loginCreator';
-import { postLoginApi } from './API';
+import { POST_LOGIN } from 'redux/store/actions/actionTypes';
+import { login } from 'redux/store/actions/loginCreator';
+import { postLoginApi } from 'redux/store/sagas/API';
 import {
     errorNotification,
     successNotification
-} from '../../containers/ServerResponseHandlers/Notification';
-import { destroyMessage } from '../../containers/ServerResponseHandlers/Message';
-import { PostLoginActionType } from '../store/reducers/loginReducer';
+} from 'containers/ServerResponseHandlers/Notification';
+import { destroyMessage } from 'containers/ServerResponseHandlers/Message';
+import { PostLoginActionType } from 'redux/store/reducers/loginReducer';
 
 type ResponseLoginType = SagaReturnType<typeof postLoginApi>;
 

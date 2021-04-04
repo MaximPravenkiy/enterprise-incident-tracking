@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Layout } from 'antd';
-import Routes from '../../routes';
+import Routes from 'routes';
 
 const Content = styled(Layout.Content)`
     height: 70vh;

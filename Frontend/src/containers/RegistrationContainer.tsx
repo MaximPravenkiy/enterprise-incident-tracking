@@ -1,17 +1,17 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
-import { RegistrationForm } from '../components/Forms/RegistrationForm';
+import { RegistrationForm } from 'components/Forms/RegistrationForm';
 import {
     postRegistration,
     updateValuesRegistrationForm
-} from '../redux/store/actions/registrationCreator';
-import { openMessage } from './ServerResponseHandlers/Message';
-import { RootReducer } from '../redux/store/reducers/rootReducer';
+} from 'redux/store/actions/registrationCreator';
+import { RootReducer } from 'redux/store/reducers/rootReducer';
 import {
     RegistrationInitialStateType,
     RegistrationType
-} from '../redux/store/reducers/registrationReducer';
+} from 'redux/store/reducers/registrationReducer';
+import { openMessage } from 'containers/ServerResponseHandlers/Message';
 
 const RegistrationContainer = () => {
     const { dateOfBirth, fullname, login, password, position } = useSelector(

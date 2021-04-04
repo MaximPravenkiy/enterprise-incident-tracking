@@ -7,7 +7,7 @@ import {
 } from '@ant-design/icons/lib';
 import { Avatar, Button } from 'antd';
 import styled from 'styled-components';
-import { ActionWithIncidentsType } from '../../../../../redux/store/reducers/incidentsReducer';
+import { ActionWithIncidentsType } from 'redux/store/reducers/incidentsReducer';
 
 export type MenuItemLoginProps = {
     fullname: string;
@@ -60,8 +60,6 @@ const MenuItemLogin: React.FC<MenuItemLoginProps> = ({
     useEffect(() => {
         const data = localStorage.getItem('actionWithIncidents');
 
-        // console.log(`local: ${data} | store: ${actionWithIncidents}`);
-        // console.log(data === actionWithIncidents);
         if (data === actionWithIncidents) {
             changeAction();
         }
