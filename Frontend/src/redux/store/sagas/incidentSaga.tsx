@@ -1,6 +1,6 @@
 import React from 'react';
 import { put, call, takeEvery, SagaReturnType } from 'redux-saga/effects';
-import PriorityIcon from 'containers/PriorityIcon';
+import PriorityIcon from 'common/PriorityIcon';
 import {
     getIncidents,
     resetCreateIncidentForm,
@@ -19,8 +19,8 @@ import { logout } from 'redux/store/actions/loginCreator';
 import {
     errorNotification,
     successNotification
-} from 'containers/ServerResponseHandlers/Notification';
-import { destroyMessage } from 'containers/ServerResponseHandlers/Message';
+} from 'common/ServerResponseHandlers/Notification';
+import { destroyMessage } from 'common/ServerResponseHandlers/Message';
 import {
     CreateIncidentActionType,
     DeleteIncidentActionType,

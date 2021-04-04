@@ -5,8 +5,8 @@ import { postLoginApi } from 'redux/store/sagas/API';
 import {
     errorNotification,
     successNotification
-} from 'containers/ServerResponseHandlers/Notification';
-import { destroyMessage } from 'containers/ServerResponseHandlers/Message';
+} from 'common/ServerResponseHandlers/Notification';
+import { destroyMessage } from 'common/ServerResponseHandlers/Message';
 import { PostLoginActionType } from 'redux/store/reducers/loginReducer';
 
 type ResponseLoginType = SagaReturnType<typeof postLoginApi>;

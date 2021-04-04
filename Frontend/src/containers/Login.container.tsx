@@ -9,7 +9,7 @@ import {
 } from 'redux/store/actions/loginCreator';
 import { RootReducer } from 'redux/store/reducers/rootReducer';
 import { LoginFormValue, LoginType } from 'redux/store/reducers/loginReducer';
-import { openMessage } from 'containers/ServerResponseHandlers/Message';
+import { openMessage } from 'common/ServerResponseHandlers/Message';
 
 const LoginContainer = () => {
     const { login, password } = useSelector(

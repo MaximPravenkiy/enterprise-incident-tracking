@@ -14,7 +14,7 @@ import {
 import { RootReducer } from 'redux/store/reducers/rootReducer';
 import { LoginType } from 'redux/store/reducers/loginReducer';
 import { IncidentsType } from 'redux/store/reducers/incidentsReducer';
-import { openMessage } from 'containers/ServerResponseHandlers/Message';
+import { openMessage } from 'common/ServerResponseHandlers/Message';
 import { MenuInfo } from '../../node_modules/rc-menu/lib/interface';
 
 const navContent = [

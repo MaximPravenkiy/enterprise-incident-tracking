@@ -14,7 +14,7 @@ import {
     IncidentsType,
     ListOfIncidentsTypes
 } from 'redux/store/reducers/incidentsReducer';
-import { openMessage } from 'containers/ServerResponseHandlers/Message';
+import { openMessage } from 'common/ServerResponseHandlers/Message';
 
 export interface ActionButtonsContainerTypeProps {
     incident: ListOfIncidentsTypes;

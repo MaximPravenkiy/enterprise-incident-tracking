@@ -14,7 +14,7 @@ import {
     IncidentsType,
     ValuesCreateIncidentFormTypes
 } from 'redux/store/reducers/incidentsReducer';
-import { openMessage } from 'containers/ServerResponseHandlers/Message';
+import { openMessage } from 'common/ServerResponseHandlers/Message';
 
 const CreateIncidentsContainer = () => {
     const {

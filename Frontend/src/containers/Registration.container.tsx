@@ -11,7 +11,7 @@ import {
     RegistrationInitialStateType,
     RegistrationType
 } from 'redux/store/reducers/registrationReducer';
-import { openMessage } from 'containers/ServerResponseHandlers/Message';
+import { openMessage } from 'common/ServerResponseHandlers/Message';
 
 const RegistrationContainer = () => {
     const { dateOfBirth, fullname, login, password, position } = useSelector(
