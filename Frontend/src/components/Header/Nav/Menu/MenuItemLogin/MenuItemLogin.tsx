@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import {
     ExceptionOutlined,
     ScheduleFilled,
@@ -9,13 +9,13 @@ import { Avatar, Button } from 'antd';
 import styled from 'styled-components';
 import { ActionWithIncidentsType } from 'redux/store/reducers/incidentsReducer';
 
-export type MenuItemLoginProps = {
+export interface MenuItemLoginProps {
     fullname: string;
     onLogout: () => void;
     createIncident: () => void;
     actionWithIncidents: ActionWithIncidentsType;
     changeAction: () => void;
-};
+}
 
 const Wrapper = styled.div`
     display: flex;
@@ -50,7 +50,7 @@ const ButtonWrarpper = styled.div`
     justify-content: space-evenly;
 `;
 
-const MenuItemLogin: React.FC<MenuItemLoginProps> = ({
+const MenuItemLogin: FC<MenuItemLoginProps> = ({
     fullname,
     onLogout,
     createIncident,

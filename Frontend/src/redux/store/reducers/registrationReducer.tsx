@@ -8,23 +8,23 @@ import {
 
 export type RegistrationInitialStateType = typeof initialState;
 
-export type PostRegistrationActionType = {
+export interface PostRegistrationActionType {
     type: typeof POST_REGISTRATION;
     registrationFormValues: RegistrationInitialStateType;
-};
+}
 
-export type UpdateValuesRegistrationFormActionType = {
+export interface UpdateValuesRegistrationFormActionType {
     type: typeof UPDATE_VALUES_REGISTRATION_FORM;
     updatedValueRegistrationForm: RegistrationInitialStateType;
-};
+}
 
-export type RegistrationActionType = {
+export interface RegistrationActionType {
     type: typeof REGISTRATION;
-};
+}
 
-export type ResetRegistrationFormActionType = {
+export interface ResetRegistrationFormActionType {
     type: typeof RESET_REGISTRATION_FORM;
-};
+}
 
 export type RegistrationType =
     | PostRegistrationActionType

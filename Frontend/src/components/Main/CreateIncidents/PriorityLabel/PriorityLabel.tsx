@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { WarningOutlined } from '@ant-design/icons/lib';
 import styled from 'styled-components';
 
@@ -12,7 +12,7 @@ interface PriorityLabelProps {
     text: string;
 }
 
-const PriorityLabel: React.FC<PriorityLabelProps> = ({ color, text }) => (
+const PriorityLabel: FC<PriorityLabelProps> = ({ color, text }) => (
     <Label>
         <WarningOutlined
             style={{ color, marginRight: '5px', fontSize: '20px' }}

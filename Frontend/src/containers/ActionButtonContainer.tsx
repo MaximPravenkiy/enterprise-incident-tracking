@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { Dispatch } from 'redux';
 import ActionButtons from 'components/Main/Incidents/ActionButtons/ActionButtons';
@@ -16,11 +16,11 @@ import {
 } from 'redux/store/reducers/incidentsReducer';
 import { openMessage } from 'containers/ServerResponseHandlers/Message';
 
-export type ActionButtonsContainerTypeProps = {
+export interface ActionButtonsContainerTypeProps {
     incident: ListOfIncidentsTypes;
-};
+}
 
-const ActionButtonContainer: React.FC<ActionButtonsContainerTypeProps> = ({
+const ActionButtonContainer: FC<ActionButtonsContainerTypeProps> = ({
     incident
 }) => {
     const dispatch = useDispatch<Dispatch<IncidentsType>>();

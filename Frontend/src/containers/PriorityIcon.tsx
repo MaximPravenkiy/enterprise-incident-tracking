@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { WarningOutlined } from '@ant-design/icons/lib';
 
-type PriorityIconProps = {
+interface PriorityIconProps {
     priority: string;
-};
+}
 
-const PriorityIcon: React.FC<PriorityIconProps> = ({ priority }) => {
+const PriorityIcon: FC<PriorityIconProps> = ({ priority }) => {
     let color = '';
 
     switch (priority) {

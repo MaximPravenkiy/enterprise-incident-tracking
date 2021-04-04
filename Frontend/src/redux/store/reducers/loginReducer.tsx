@@ -6,29 +6,29 @@ import {
     UPDATE_VALUES_LOGIN_FORM
 } from 'redux/store/actions/actionTypes';
 
-export type PostLoginActionType = {
+export interface PostLoginActionType {
     type: typeof POST_LOGIN;
     loginFormValues: LoginFormValue;
-};
+}
 
-export type LoginActionType = {
+export interface LoginActionType {
     type: typeof LOGIN;
     userData: UserDataType;
-};
+}
 
-export type UpdateValuesLoginFormActionType = {
+export interface UpdateValuesLoginFormActionType {
     type: typeof UPDATE_VALUES_LOGIN_FORM;
     updatedValueLoginForm: LoginFormValue;
-};
+}
 
-export type LogoutActionType = {
+export interface LogoutActionType {
     type: typeof LOGOUT;
-};
+}
 
-export type ChangeKeyDepsOnPathType = {
+export interface ChangeKeyDepsOnPathType {
     type: typeof CHANGE_KEY_DEPS_ON_PATH;
     keyDepsOnPath: KeysType;
-};
+}
 
 export type KeysType = '1' | '2';
 
@@ -39,17 +39,17 @@ export type LoginType =
     | LogoutActionType
     | ChangeKeyDepsOnPathType;
 
-export type LoginFormValue = {
+export interface LoginFormValue {
     login: string;
     password: string;
     remember?: boolean;
-};
+}
 
-export type UserDataType = {
+export interface UserDataType {
     fullname: string;
     token: string;
     userId: string;
-};
+}
 
 export type LoginInitialStateType = typeof initialState;
 

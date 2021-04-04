@@ -22,74 +22,74 @@ export function getDate(
     return moment(date, 'YYYY-MM-DD').utc(true);
 }
 
-export type SetIncidentsActionType = {
+export interface SetIncidentsActionType {
     type: typeof SET_INCIDENTS;
     listOfIncidents: Array<ListOfIncidentsTypes>;
-};
+}
 
-export type CreateIncidentActionType = {
+export interface CreateIncidentActionType {
     type: typeof CREATE_INCIDENT;
     valuesCreateIncidentForm: ValuesCreateIncidentFormTypes;
-};
+}
 
-export type DeleteIncidentActionType = {
+export interface DeleteIncidentActionType {
     type: typeof DELETE_INCIDENT;
     incidentID: string;
-};
+}
 
-export type CloseModalActionType = {
+export interface CloseModalActionType {
     type: typeof CLOSE_MODAL;
-};
+}
 
-export type UpdateValuesCreateIncidentFormActionType = {
+export interface UpdateValuesCreateIncidentFormActionType {
     type: typeof UPDATE_VALUES_CREATE_INCIDENT_FORM;
     updatedValue: ValuesCreateIncidentFormTypes;
-};
+}
 
-export type SetDataForUpdatingActionType = {
+export interface SetDataForUpdatingActionType {
     type: typeof SET_DATA_FOR_UPDATING;
     incidentID: string;
-};
+}
 
-export type UpdateIncidentActionType = {
+export interface UpdateIncidentActionType {
     type: typeof UPDATE_INCIDENT;
     updateData: {
         incidentID: string;
         incidentFormData: CreateIncidentTypes;
     };
-};
+}
 
-export type ResetCreateIncidentFormActionType = {
+export interface ResetCreateIncidentFormActionType {
     type: typeof RESET_CREATE_INCIDENT_FORM;
-};
+}
 
-export type GetUsersActionType = {
+export interface GetUsersActionType {
     type: typeof GET_USERS;
-};
+}
 
-export type SetUsersActionType = {
+export interface SetUsersActionType {
     type: typeof SET_USERS;
     users: Array<UsersTypes>;
-};
+}
 
-export type ChangeAssigneeUserIdActionType = {
+export interface ChangeAssigneeUserIdActionType {
     type: typeof CHANGE_ASSIGNEE_USER_ID;
     assigneeUserId: string;
-};
+}
 
-export type GetIncidentsActionType = {
+export interface GetIncidentsActionType {
     type: typeof GET_INCIDENTS;
-};
+}
 
-export type UpdateLoaderActionType = {
+export interface UpdateLoaderActionType {
     type: typeof UPDATE_LOADER;
     isListOfIncidentsLoading: boolean;
-};
+}
 
-export type ChangeActionWithListOfIncidentsActionType = {
+export interface ChangeActionWithListOfIncidentsActionType {
     type: typeof CHANGE_ACTION_WITH_LIST_OF_INCIDENTS;
     actionWithIncidents: ActionWithIncidentsType;
-};
+}
 
 export type IncidentsType =
     | SetIncidentsActionType
@@ -107,13 +107,13 @@ export type IncidentsType =
     | UpdateLoaderActionType
     | ChangeActionWithListOfIncidentsActionType;
 
-export type ListOfIncidentsTypes = ValuesCreateIncidentFormTypes & {
+export interface ListOfIncidentsTypes extends ValuesCreateIncidentFormTypes {
     icon: JSX.Element;
     key: string;
     owner: string;
-};
+}
 
-export type ValuesCreateIncidentFormTypes = {
+export interface ValuesCreateIncidentFormTypes {
     area: string;
     assignee: string;
     description: string;
@@ -122,18 +122,18 @@ export type ValuesCreateIncidentFormTypes = {
     priority: string;
     startDate: moment.Moment;
     status: string;
-};
+}
 
-export type UsersTypes = {
+export interface UsersTypes {
     id: string;
     label: string;
     value: string;
     key: string;
-};
+}
 
-export type CreateIncidentTypes = ValuesCreateIncidentFormTypes & {
+export interface CreateIncidentTypes extends ValuesCreateIncidentFormTypes {
     owner?: string;
-};
+}
 
 export type ActionWithCreateIncidentFormType = 'Создать' | 'Обновить';
 export type ActionWithIncidentsType =

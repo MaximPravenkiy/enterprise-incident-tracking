@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import styled from 'styled-components';
 import { Menu } from 'antd';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
@@ -16,7 +16,7 @@ const MenuCustom = styled(Menu)`
     height: 100%;
 `;
 
-const NavMenu: React.FC<MenuProps> = ({
+const NavMenu: FC<MenuProps> = ({
     menuItems,
     keyDepsOnPath,
     changeKey,

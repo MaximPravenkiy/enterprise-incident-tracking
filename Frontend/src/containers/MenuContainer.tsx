@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
@@ -22,7 +22,7 @@ const navContent = [
     { text: 'Регистрация', url: 'registration' }
 ];
 
-const MenuContainer: React.FC<RouteComponentProps> = ({ location }) => {
+const MenuContainer: FC<RouteComponentProps> = ({ location }) => {
     const dispatch = useDispatch<Dispatch<LoginType | IncidentsType>>();
     const { isAuth, fullname, keyDepsOnPath } = useSelector(
         ({ loginReducer }: RootReducer) => loginReducer

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { FC, useEffect, useRef } from 'react';
 import { Form, Input, Select, DatePicker, Modal } from 'antd';
 import moment from 'moment';
 import {
@@ -12,7 +12,7 @@ import CloseModalButton from 'components/Main/CreateIncidents/CloseModalButton/C
 import TitleModal from 'components/Main/CreateIncidents/TitleModal/TitleModal';
 import CreateOrUpdateButton from 'components/Main/CreateIncidents/CreateOrUpdateButton/CreateOrUpdateButton';
 
-type CreateIncidentTypeProps = {
+interface CreateIncidentTypeProps {
     users: Array<UsersTypes>;
     isModalVisible: boolean;
     valuesCreateIncidentForm: ValuesCreateIncidentFormTypes;
@@ -20,7 +20,7 @@ type CreateIncidentTypeProps = {
     getUserId: (value: string) => void;
     onFinish: (value: CreateIncidentTypes) => void;
     onChange: (value: ValuesCreateIncidentFormTypes) => void;
-};
+}
 
 // For selections
 const areas = [
@@ -77,7 +77,7 @@ const config = {
     ]
 };
 
-const CreateIncidents: React.FC<CreateIncidentTypeProps> = ({
+const CreateIncidents: FC<CreateIncidentTypeProps> = ({
     isModalVisible,
     users,
     actionWithCreateIncidentForm,

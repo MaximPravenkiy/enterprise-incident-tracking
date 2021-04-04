@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { Form, Input, Button, DatePicker } from 'antd';
 import { RegistrationInitialStateType } from 'redux/store/reducers/registrationReducer';
 
@@ -41,7 +41,7 @@ interface RegistrationFormTypes extends RegistrationInitialStateType {
     onChange: (value: RegistrationInitialStateType) => void;
 }
 
-const RegistrationForm: React.FC<RegistrationFormTypes> = ({
+const RegistrationForm: FC<RegistrationFormTypes> = ({
     registerNewUser,
     dateOfBirth,
     fullname,

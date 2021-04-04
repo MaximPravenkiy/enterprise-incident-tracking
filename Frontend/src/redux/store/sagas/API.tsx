@@ -11,7 +11,9 @@ import {
     UsersTypes
 } from 'redux/store/reducers/incidentsReducer';
 
-type Message = { message: string };
+interface Message {
+    message: string;
+}
 
 // registration api
 const postRegistrationApi = (values: RegistrationInitialStateType) =>

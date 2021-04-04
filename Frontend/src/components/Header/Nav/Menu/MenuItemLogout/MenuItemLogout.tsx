@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import { Menu } from 'antd';
 import { NavLink } from 'react-router-dom';
 
-export type MenuItemLogoutProps = {
+export interface MenuItemLogoutProps {
     text: string;
     url: string;
     key: number;
-};
+}
 
 const MenuItemCustom = styled(Menu.Item)`
     && {
@@ -23,7 +23,7 @@ const NavLinkEx = styled(NavLink)`
     font-size: 2em;
 `;
 
-const MenuItemLogout: React.FC<MenuItemLogoutProps> = ({
+const MenuItemLogout: FC<MenuItemLogoutProps> = ({
     key,
     url,
     text,

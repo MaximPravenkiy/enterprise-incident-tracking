@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { NavLink } from 'react-router-dom';
 import { LoginFormValue } from 'redux/store/reducers/loginReducer';
 
-type LoginFormTypes = LoginFormValue & {
+interface LoginFormTypes extends LoginFormValue {
     onFinish: (values: LoginFormValue) => void;
     onChange: (value: LoginFormValue) => void;
     onRegisterClick: () => void;
-};
+}
 
-const LoginForm: React.FC<LoginFormTypes> = ({
+const LoginForm: FC<LoginFormTypes> = ({
     onFinish,
     onChange,
     login,

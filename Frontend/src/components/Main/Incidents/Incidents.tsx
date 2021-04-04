@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Table } from 'antd';
 import styled from 'styled-components';
 import CreateIncidentsContainer from 'containers/CreateIncidentsContainer';
@@ -8,10 +8,10 @@ import {
 } from 'redux/store/reducers/incidentsReducer';
 import ActionButtonContainer from 'containers/ActionButtonContainer';
 
-type IncidentsTypeProps = {
+interface IncidentsTypeProps {
     listOfIncidents: IncidentsInitialStateType['listOfIncidents'];
     isListOfIncidentsLoading: boolean;
-};
+}
 
 const TableCustom = styled(Table)`
     width: 95%;
@@ -72,7 +72,7 @@ const columns = [
     }
 ];
 
-const Incidents: React.FC<IncidentsTypeProps> = ({
+const Incidents: FC<IncidentsTypeProps> = ({
     listOfIncidents,
     isListOfIncidentsLoading
 }) => (
