@@ -6,9 +6,9 @@ import {
     errorNotification,
     successNotification
 } from 'common/ServerResponseHandlers/Notification';
-import { resetRegistrationForm } from 'redux/store/actions/registrationCreator';
-import { PostRegistrationActionType } from 'redux/store/reducers/registrationReducer';
-import { changeKeyDepsOnPath } from 'redux/store/actions/loginCreator';
+import { resetRegistrationForm } from 'redux/store/actions/registration/registrationCreator';
+import { changeKeyDepsOnPath } from 'redux/store/actions/login/loginCreator';
+import { PostRegistrationActionType } from 'redux/store/actions/registration/interfaces';
 
 type ResponseRegistrationType = SagaReturnType<typeof postRegistrationApi>;
 

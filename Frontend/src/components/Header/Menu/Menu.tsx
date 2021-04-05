@@ -2,7 +2,7 @@ import React, { FC, useEffect } from 'react';
 import styled from 'styled-components';
 import { Menu } from 'antd';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { MenuClickEventHandler } from '../../../../../node_modules/rc-menu/lib/interface';
+import { MenuClickEventHandler } from '../../../../node_modules/rc-menu/lib/interface';
 
 interface MenuProps extends RouteComponentProps {
     menuItems: JSX.Element | JSX.Element[];

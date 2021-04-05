@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import { Form, Input, Button, DatePicker } from 'antd';
-import { RegistrationInitialStateType } from 'redux/store/reducers/registrationReducer';
+import { IValuesRegistrationForm } from 'common/interfaces/registration';
 
 const formItemLayout = {
     labelCol: {
@@ -36,9 +36,9 @@ const config = {
     ]
 };
 
-interface RegistrationFormTypes extends RegistrationInitialStateType {
-    registerNewUser: (values: RegistrationInitialStateType) => void;
-    onChange: (value: RegistrationInitialStateType) => void;
+interface RegistrationFormTypes extends IValuesRegistrationForm {
+    registerNewUser: (values: IValuesRegistrationForm) => void;
+    onChange: (value: IValuesRegistrationForm) => void;
 }
 
 const RegistrationForm: FC<RegistrationFormTypes> = ({

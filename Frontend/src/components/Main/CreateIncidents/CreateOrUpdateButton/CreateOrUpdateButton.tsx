@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
-import { ActionWithCreateIncidentFormType } from 'redux/store/reducers/incidentsReducer';
+import { ActionWithCreateIncidentFormType } from 'common/interfaces/incidents';
 
 const CreateOrUpdateButton = ({
     actionWithCreateIncidentForm

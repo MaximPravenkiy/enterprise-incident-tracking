@@ -7,7 +7,7 @@ import {
 } from '@ant-design/icons/lib';
 import { Avatar, Button } from 'antd';
 import styled from 'styled-components';
-import { ActionWithIncidentsType } from 'redux/store/reducers/incidentsReducer';
+import { ActionWithIncidentsType } from 'common/interfaces/incidents';
 
 export interface MenuItemLoginProps {
     fullname: string;

@@ -5,26 +5,25 @@ import { RegistrationForm } from 'components/Forms/RegistrationForm';
 import {
     postRegistration,
     updateValuesRegistrationForm
-} from 'redux/store/actions/registrationCreator';
+} from 'redux/store/actions/registration/registrationCreator';
 import { RootReducer } from 'redux/store/reducers/rootReducer';
-import {
-    RegistrationInitialStateType,
-    RegistrationType
-} from 'redux/store/reducers/registrationReducer';
 import { openMessage } from 'common/ServerResponseHandlers/Message';
+import { RegistrationType } from 'redux/store/actions/registration/interfaces';
+import { IValuesRegistrationForm } from 'common/interfaces/registration';
 
 const RegistrationContainer = () => {
     const { dateOfBirth, fullname, login, password, position } = useSelector(
-        ({ registrationReducer }: RootReducer) => registrationReducer
+        ({ registrationReducer }: RootReducer) =>
+            registrationReducer.valuesRegistrationForm
     );
     const dispatch = useDispatch<Dispatch<RegistrationType>>();
 
-    const registerNewUser = (values: RegistrationInitialStateType) => {
+    const registerNewUser = (values: IValuesRegistrationForm) => {
         openMessage('Проверяем данные...');
         dispatch(postRegistration(values));
     };
 
-    const onChange = (value: RegistrationInitialStateType) => {
+    const onChange = (value: IValuesRegistrationForm) => {
         dispatch(updateValuesRegistrationForm(value));
     };
 

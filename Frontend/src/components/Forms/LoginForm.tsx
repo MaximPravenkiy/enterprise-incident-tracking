@@ -2,11 +2,11 @@ import React, { FC, useEffect } from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { NavLink } from 'react-router-dom';
-import { LoginFormValue } from 'redux/store/reducers/loginReducer';
+import { IValuesLoginForm } from 'common/interfaces/login';
 
-interface LoginFormTypes extends LoginFormValue {
-    onFinish: (values: LoginFormValue) => void;
-    onChange: (value: LoginFormValue) => void;
+interface LoginFormTypes extends IValuesLoginForm {
+    onFinish: (values: IValuesLoginForm) => void;
+    onChange: (value: IValuesLoginForm) => void;
     onRegisterClick: () => void;
 }
 

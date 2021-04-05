@@ -6,23 +6,24 @@ import {
     changeKeyDepsOnPath,
     postLogin,
     updateValuesLoginForm
-} from 'redux/store/actions/loginCreator';
+} from 'redux/store/actions/login/loginCreator';
 import { RootReducer } from 'redux/store/reducers/rootReducer';
-import { LoginFormValue, LoginType } from 'redux/store/reducers/loginReducer';
 import { openMessage } from 'common/ServerResponseHandlers/Message';
+import { IValuesLoginForm } from 'common/interfaces/login';
+import { LoginType } from 'redux/store/actions/login/interfaces';
 
 const LoginContainer = () => {
     const { login, password } = useSelector(
-        ({ loginReducer }: RootReducer) => loginReducer
+        ({ loginReducer }: RootReducer) => loginReducer.valuesLoginForm
     );
     const dispatch = useDispatch<Dispatch<LoginType>>();
 
-    const onFinish = (values: LoginFormValue) => {
+    const onFinish = (values: IValuesLoginForm) => {
         openMessage('Проверяем данные...');
         dispatch(postLogin(values));
     };
 
-    const onChange = (value: LoginFormValue) => {
+    const onChange = (value: IValuesLoginForm) => {
         dispatch(updateValuesLoginForm(value));
     };
 

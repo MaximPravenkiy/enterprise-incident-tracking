@@ -15,7 +15,6 @@ import {
     CHANGE_ACTION_WITH_LIST_OF_INCIDENTS
 } from 'redux/store/actions/actionTypes';
 import {
-    ActionWithIncidentsType,
     ChangeActionWithListOfIncidentsActionType,
     ChangeAssigneeUserIdActionType,
     CloseModalActionType,
@@ -23,27 +22,30 @@ import {
     DeleteIncidentActionType,
     GetIncidentsActionType,
     GetUsersActionType,
-    ListOfIncidentsTypes,
     ResetCreateIncidentFormActionType,
     SetDataForUpdatingActionType,
     SetIncidentsActionType,
     SetUsersActionType,
     UpdateIncidentActionType,
     UpdateLoaderActionType,
-    UpdateValuesCreateIncidentFormActionType,
-    UsersTypes,
-    ValuesCreateIncidentFormTypes
-} from 'redux/store/reducers/incidentsReducer';
+    UpdateValuesCreateIncidentFormActionType
+} from 'redux/store/actions/incidents/interfaces';
+import {
+    ActionWithIncidentsType,
+    IListOfIncidents,
+    IUsers,
+    IValuesCreateIncidentsForm
+} from 'common/interfaces/incidents';
 
 // Incidents
 const getIncidents = (): GetIncidentsActionType => ({ type: GET_INCIDENTS });
 
 const setIncidents = (
-    listOfIncidents: Array<ListOfIncidentsTypes>
+    listOfIncidents: Array<IListOfIncidents>
 ): SetIncidentsActionType => ({ type: SET_INCIDENTS, listOfIncidents });
 
 const createIncident = (
-    valuesCreateIncidentForm: ValuesCreateIncidentFormTypes
+    valuesCreateIncidentForm: IValuesCreateIncidentsForm
 ): CreateIncidentActionType => ({
     type: CREATE_INCIDENT,
     valuesCreateIncidentForm
@@ -57,7 +59,7 @@ const deleteIncident = (incidentID: string): DeleteIncidentActionType => ({
 const closeModal = (): CloseModalActionType => ({ type: CLOSE_MODAL });
 
 const updateValuesCreateIncidentForm = (
-    updatedValue: ValuesCreateIncidentFormTypes
+    updatedValue: IValuesCreateIncidentsForm
 ): UpdateValuesCreateIncidentFormActionType => ({
     type: UPDATE_VALUES_CREATE_INCIDENT_FORM,
     updatedValue
@@ -95,7 +97,7 @@ const updateLoader = (
 // Users
 const getUsers = (): GetUsersActionType => ({ type: GET_USERS });
 
-const setUsers = (users: Array<UsersTypes>): SetUsersActionType => ({
+const setUsers = (users: Array<IUsers>): SetUsersActionType => ({
     type: SET_USERS,
     users
 });

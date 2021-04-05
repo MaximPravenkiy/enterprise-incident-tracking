@@ -2,11 +2,9 @@ import React, { FC } from 'react';
 import { Table } from 'antd';
 import styled from 'styled-components';
 import CreateIncidentsContainer from 'containers/CreateIncidents.container';
-import {
-    IncidentsInitialStateType,
-    ListOfIncidentsTypes
-} from 'redux/store/reducers/incidentsReducer';
+import { IncidentsInitialStateType } from 'redux/store/reducers/incidentsReducer';
 import ActionButtonContainer from 'containers/ActionButton.container';
+import { IListOfIncidents } from 'common/interfaces/incidents';
 
 interface IncidentsTypeProps {
     listOfIncidents: IncidentsInitialStateType['listOfIncidents'];
@@ -66,7 +64,7 @@ const columns = [
     {
         title: 'Action',
         key: 'action',
-        render: (incident: ListOfIncidentsTypes): JSX.Element => (
+        render: (incident: IListOfIncidents): JSX.Element => (
             <ActionButtonContainer incident={incident} />
         )
     }

@@ -6,10 +6,10 @@ import { Dispatch } from 'redux';
 import Header from 'components/Header/Header';
 import Main from 'components/Main/Main';
 import Footer from 'components/Footer/Footer';
-import { login } from 'redux/store/actions/loginCreator';
-import { LoginActionType } from 'redux/store/reducers/loginReducer';
+import { login } from 'redux/store/actions/login/loginCreator';
+import { LoginActionType } from 'redux/store/actions/login/interfaces';
 
-function App() {
+const App = () => {
     const dispatch = useDispatch<Dispatch<LoginActionType>>();
 
     useEffect(() => {
@@ -27,6 +27,6 @@ function App() {
             <Footer />
         </Layout>
     );
-}
+};
 
 export default App;

@@ -7,14 +7,14 @@ import {
     createIncident,
     updateIncident,
     updateValuesCreateIncidentForm
-} from 'redux/store/actions/incidentsCreator';
+} from 'redux/store/actions/incidents/incidentsCreator';
 import { RootReducer } from 'redux/store/reducers/rootReducer';
-import {
-    CreateIncidentTypes,
-    IncidentsType,
-    ValuesCreateIncidentFormTypes
-} from 'redux/store/reducers/incidentsReducer';
 import { openMessage } from 'common/ServerResponseHandlers/Message';
+import { IncidentsType } from 'redux/store/actions/incidents/interfaces';
+import {
+    ICreateIncident,
+    IValuesCreateIncidentsForm
+} from 'common/interfaces/incidents';
 
 const CreateIncidentsContainer = () => {
     const {
@@ -35,12 +35,12 @@ const CreateIncidentsContainer = () => {
     };
 
     // Диспатч изменения контролов формы
-    function onChange(value: ValuesCreateIncidentFormTypes) {
+    function onChange(value: IValuesCreateIncidentsForm) {
         dispatch(updateValuesCreateIncidentForm(value));
     }
 
     // Создать или обновить инцидент
-    const onFinish = (values: CreateIncidentTypes) => {
+    const onFinish = (values: ICreateIncident) => {
         const incidentFormData = {
             ...values,
             assignee: values.assignee.split(assigneeUserId)[0].trim(),
