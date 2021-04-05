@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
-import CreateIncidents from 'components/Main/CreateIncidents/CreateIncidents';
+import CreateIncidentsForm from 'components/Main/Forms/CreateIncidents/CreateIncidentsForm';
 import {
     changeAssigneeUserId,
     createIncident,
@@ -35,9 +35,9 @@ const CreateIncidentsContainer = () => {
     };
 
     // Диспатч изменения контролов формы
-    function onChange(value: IValuesCreateIncidentsForm) {
+    const onChange = (value: IValuesCreateIncidentsForm) => {
         dispatch(updateValuesCreateIncidentForm(value));
-    }
+    };
 
     // Создать или обновить инцидент
     const onFinish = (values: ICreateIncident) => {
@@ -58,7 +58,7 @@ const CreateIncidentsContainer = () => {
     };
 
     return (
-        <CreateIncidents
+        <CreateIncidentsForm
             users={users}
             isModalVisible={isModalVisible}
             getUserId={getUserId}

@@ -1,16 +1,7 @@
 import React, { FC } from 'react';
 import { WarningOutlined } from '@ant-design/icons/lib';
-import styled from 'styled-components';
-
-const Label = styled.div`
-    display: flex;
-    align-items: center;
-`;
-
-interface PriorityLabelProps {
-    color: string;
-    text: string;
-}
+import { PriorityLabelProps } from 'components/Main/Forms/CreateIncidents/PriorityLabel/interfaces';
+import { Label } from 'components/Main/Forms/CreateIncidents/PriorityLabel/styles';
 
 const PriorityLabel: FC<PriorityLabelProps> = ({ color, text }) => (
     <Label>

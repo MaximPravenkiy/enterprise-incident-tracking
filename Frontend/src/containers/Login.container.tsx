@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
-import { LoginForm } from 'components/Forms/LoginForm';
+import { LoginForm } from 'components/Main/Forms/Login/LoginForm';
 import {
     changeKeyDepsOnPath,
     postLogin,

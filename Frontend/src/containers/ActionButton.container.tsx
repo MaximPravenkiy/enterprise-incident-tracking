@@ -14,11 +14,7 @@ import { getDate } from 'common/getDate';
 import { IncidentsType } from 'redux/store/actions/incidents/interfaces';
 import { IListOfIncidents } from 'common/interfaces/incidents';
 
-export interface ActionButtonsContainerTypeProps {
-    incident: IListOfIncidents;
-}
-
-const ActionButtonContainer: FC<ActionButtonsContainerTypeProps> = ({
+const ActionButtonContainer: FC<{ incident: IListOfIncidents }> = ({
     incident
 }) => {
     const dispatch = useDispatch<Dispatch<IncidentsType>>();

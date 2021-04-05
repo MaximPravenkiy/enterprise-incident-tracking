@@ -1,20 +1,7 @@
 import React, { FC, useEffect } from 'react';
-import styled from 'styled-components';
-import { Menu } from 'antd';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { MenuClickEventHandler } from '../../../../node_modules/rc-menu/lib/interface';
-
-interface MenuProps extends RouteComponentProps {
-    menuItems: JSX.Element | JSX.Element[];
-    keyDepsOnPath: string;
-    changeKey: MenuClickEventHandler;
-}
-
-const MenuCustom = styled(Menu)`
-    display: flex;
-    justify-content: center;
-    height: 100%;
-`;
+import { withRouter } from 'react-router-dom';
+import { MenuCustom } from 'components/Header/Menu/style';
+import { MenuProps } from 'components/Header/Menu/interfaces';
 
 const NavMenu: FC<MenuProps> = ({
     menuItems,

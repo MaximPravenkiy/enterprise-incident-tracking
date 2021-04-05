@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
-import { RegistrationForm } from 'components/Forms/RegistrationForm';
+import { RegistrationForm } from 'components/Main/Forms/Registration/RegistrationForm';
 import {
     postRegistration,
     updateValuesRegistrationForm

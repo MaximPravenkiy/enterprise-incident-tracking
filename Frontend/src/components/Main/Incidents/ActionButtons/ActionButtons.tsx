@@ -1,10 +1,6 @@
 import React, { FC } from 'react';
 import { Button, Space } from 'antd';
-
-interface ActionButtonsTypeProps {
-    onEditIncident: () => void;
-    onDeleteIncident: () => void;
-}
+import { ActionButtonsTypeProps } from 'components/Main/Incidents/ActionButtons/interfaces';
 
 const ActionButtons: FC<ActionButtonsTypeProps> = ({
     onEditIncident,

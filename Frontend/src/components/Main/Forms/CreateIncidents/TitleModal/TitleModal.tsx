@@ -1,16 +1,7 @@
 import React from 'react';
 import { Spin } from 'antd';
 import { CopyrightOutlined } from '@ant-design/icons/lib';
-import styled from 'styled-components';
-
-const SpanCustom = styled.span`
-    margin: 0 10px;
-    font-weight: bold;
-    font-style: italic;
-    font-size: 1.2em;
-    line-height: 1.2em;
-    color: red;
-`;
+import { SpanCustom } from 'components/Main/Forms/CreateIncidents/TitleModal/styles';
 
 const TitleModal = () => (
     <>

@@ -6,49 +6,14 @@ import {
     SnippetsFilled
 } from '@ant-design/icons/lib';
 import { Avatar, Button } from 'antd';
-import styled from 'styled-components';
-import { ActionWithIncidentsType } from 'common/interfaces/incidents';
-
-export interface MenuItemLoginProps {
-    fullname: string;
-    onLogout: () => void;
-    createIncident: () => void;
-    actionWithIncidents: ActionWithIncidentsType;
-    changeAction: () => void;
-}
-
-const Wrapper = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-`;
-
-const IncidentButton = styled(Button)`
-    display: flex;
-    align-items: center;
-    height: 30%;
-`;
-
-const Title = styled.span`
-    font-size: 3em;
-    line-height: 3em;
-`;
-
-const RightSection = styled.div`
-    height: 100%;
-    display: flex;
-    width: 15%;
-    align-items: center;
-    justify-content: space-between;
-`;
-
-const ButtonWrarpper = styled.div`
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: space-evenly;
-`;
+import { MenuItemLoginProps } from 'components/Header/Menu/MenuItemLogin/interfaces';
+import {
+    ButtonWrarpper,
+    IncidentButton,
+    RightSection,
+    Title,
+    Wrapper
+} from 'components/Header/Menu/MenuItemLogin/style';
 
 const MenuItemLogin: FC<MenuItemLoginProps> = ({
     fullname,

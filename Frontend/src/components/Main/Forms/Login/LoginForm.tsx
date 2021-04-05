@@ -2,13 +2,8 @@ import React, { FC, useEffect } from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { NavLink } from 'react-router-dom';
-import { IValuesLoginForm } from 'common/interfaces/login';
-
-interface LoginFormTypes extends IValuesLoginForm {
-    onFinish: (values: IValuesLoginForm) => void;
-    onChange: (value: IValuesLoginForm) => void;
-    onRegisterClick: () => void;
-}
+import { LoginFormTypes } from 'components/Main/Forms/Login/interfaces';
+import { configLogin, configPassword } from 'components/Main/Forms/Login/data';
 
 const LoginForm: FC<LoginFormTypes> = ({
     onFinish,
@@ -31,26 +26,13 @@ const LoginForm: FC<LoginFormTypes> = ({
             onValuesChange={onChange}
             form={form}
         >
-            <Form.Item
-                name="login"
-                rules={[
-                    { required: true, message: 'Please input your Username!' }
-                ]}
-            >
-                <Input
-                    prefix={<UserOutlined className="site-form-item-icon" />}
-                    placeholder="Username"
-                />
+            <Form.Item {...configLogin}>
+                <Input prefix={<UserOutlined />} placeholder="Username" />
             </Form.Item>
 
-            <Form.Item
-                name="password"
-                rules={[
-                    { required: true, message: 'Please input your Password!' }
-                ]}
-            >
+            <Form.Item {...configPassword}>
                 <Input
-                    prefix={<LockOutlined className="site-form-item-icon" />}
+                    prefix={<LockOutlined />}
                     type="password"
                     placeholder="Password"
                 />
