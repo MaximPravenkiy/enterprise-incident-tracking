@@ -21,7 +21,6 @@
     "eslint": "^7.23.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint@ant-design/icons-config-airbnb-typescript": "^12.3.1",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-flowtype": "^5.4.0",
     "eslint-plugin-import": "^2.22.1",
