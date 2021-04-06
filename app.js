@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const config = require('config');
 const mongoose = require('mongoose');
+const path = require('path');
 
 app.use(express.json({extened: true}));
 app.use('/', require('./routes/auth.routes'));
