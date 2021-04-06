@@ -1986,10 +1986,10 @@
   "resolved" "https://registry.npmjs.org/@types/stack-utils/-/stack-utils-2.0.0.tgz"
   "version" "2.0.0"
 
-"@types/styled-components@^5.1.8":
-  "integrity" "sha512-or4lQ12MhR4wTZ34rxRwI+Fw9vPqhd9WeEqFfF6yssDe1uS7L8p9YYMbmtDgHRbBKLR4aJIK8KHA0h9wSYifkg=="
-  "resolved" "https://registry.npmjs.org/@types/styled-components/-/styled-components-5.1.8.tgz"
-  "version" "5.1.8"
+"@types/styled-components@^5.1.9":
+  "integrity" "sha512-kbEG6YlwK8rucITpKEr6pA4Ho9KSQHUUOzZ9lY3va1mtcjvS3D0wDciFyHEiNHKLL/npZCKDQJqm0x44sPO9oA=="
+  "resolved" "https://registry.npmjs.org/@types/styled-components/-/styled-components-5.1.9.tgz"
+  "version" "5.1.9"
   dependencies:
     "@types/hoist-non-react-statics" "*"
     "@types/react" "*"
