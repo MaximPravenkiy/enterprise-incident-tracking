@@ -7,7 +7,7 @@ If you don't have an account yet, then you will neen to register.
 
 #### List of incidents
 After authorization you will see a list of incidents that relate directly to you. <br>
-If you are a new user, the list will be empty. Then you need to [create an incident](https://github.com/MaximPravenkiy/enterprise-incident-tracking#create-new-incident) yourself or wait until an incident is assigned to you.
+If you are a new user, the list will be empty. Then you need to [create an incident](https://github.com/MaximPravenkiy/enterprise-incident-tracking#create-new-incident-white_check_mark) yourself or wait until an incident is assigned to you.
 
 ##### _Additional features_
 - You can delete an extra incident by clicking the button "Delete" :x:
