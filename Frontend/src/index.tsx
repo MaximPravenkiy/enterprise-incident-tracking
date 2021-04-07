@@ -7,7 +7,7 @@ import createSagaMiddleware from 'redux-saga';
 import App from 'app/App';
 import rootWatcher from 'redux/store/sagas';
 import rootReducer from 'redux/store/reducers/rootReducer';
-import GlobalStyles from 'app/GlobalStyle.d';
+import GlobalStyles from 'app/GlobalStyle';
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));

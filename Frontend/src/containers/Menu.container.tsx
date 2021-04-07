@@ -19,6 +19,7 @@ import { openMessage } from 'common/ServerResponseHandlers/Message';
 import { LoginType } from 'redux/store/actions/login/interfaces';
 import { IncidentsType } from 'redux/store/actions/incidents/interfaces';
 import { MenuInfo } from '../../node_modules/rc-menu/lib/interface';
+import { logoutNotification } from '../common/ServerResponseHandlers/Notification';
 
 const navContent = [
     { text: 'Вход', url: 'login' },
@@ -47,6 +48,7 @@ const MenuContainer: FC<RouteComponentProps> = ({ location }) => {
     const onLogout = () => {
         localStorage.clear();
         dispatch(logout());
+        logoutNotification();
     };
 
     const createIncident = () => {

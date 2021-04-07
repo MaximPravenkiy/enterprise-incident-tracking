@@ -77,7 +77,9 @@ function* getInicdentsWorker() {
             'Не удалось выполнить операцию...',
             e.response.data.message
         );
-        localStorage.removeItem('userData');
+
+        localStorage.clear();
+
         if (e.response.status === 401) {
             yield put(logout());
         }
