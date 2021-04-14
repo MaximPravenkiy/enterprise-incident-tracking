@@ -1,5 +1,4 @@
 module.exports = {
-    mongoUri: process.env.MONGO_URI,
     jwt: {
         secret: process.env.JWT_SECRET,
         tokens: {
