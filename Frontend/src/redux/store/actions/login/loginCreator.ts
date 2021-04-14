@@ -5,7 +5,7 @@ import {
     POST_LOGIN,
     UPDATE_VALUES_LOGIN_FORM
 } from 'redux/store/actions/actionTypes';
-import { IValuesLoginForm, KeysType } from 'common/interfaces/login';
+import { ValuesLoginForm, KeysType } from 'common/interfaces/login';
 import {
     ChangeKeyDepsOnPathType,
     LoginActionType,
@@ -14,7 +14,7 @@ import {
     UpdateValuesLoginFormActionType
 } from 'redux/store/actions/login/interfaces';
 
-const postLogin = (loginFormValues: IValuesLoginForm): PostLoginActionType => ({
+const postLogin = (loginFormValues: ValuesLoginForm): PostLoginActionType => ({
     type: POST_LOGIN,
     loginFormValues
 });
@@ -25,7 +25,7 @@ const login = (userData: LoginActionType['userData']): LoginActionType => ({
 });
 
 const updateValuesLoginForm = (
-    updatedValueLoginForm: IValuesLoginForm
+    updatedValueLoginForm: ValuesLoginForm
 ): UpdateValuesLoginFormActionType => ({
     type: UPDATE_VALUES_LOGIN_FORM,
     updatedValueLoginForm

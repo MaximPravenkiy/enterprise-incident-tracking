@@ -4,9 +4,10 @@ const config = require('config');
 const mongoose = require('mongoose');
 const path = require('path');
 
-app.use(express.json({extened: true}));
+app.use(express.json({ extened: true }));
 app.use('/', require('./routes/auth.routes'));
 app.use('/incidents', require('./routes/incidents.routes'));
+app.use('/refreshTokens', require('./routes/refreshTokens.routes'));
 
 if (process.env.NODE_ENV === 'production') {
     app.use('/', express.static(path.join(__dirname, 'Frontend', 'build')));
@@ -26,6 +27,7 @@ async function start() {
             useCreateIndex: true,
             useFindAndModify: false
         });
+
         app.listen(PORT, () => console.log(`App has been started on port ${PORT}...`));
     } catch (e) {
         console.log('Server Error', e.message);

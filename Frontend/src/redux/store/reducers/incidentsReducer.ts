@@ -13,9 +13,9 @@ import { getDate } from 'common/getDate';
 import {
     ActionWithCreateIncidentFormType,
     ActionWithIncidentsType,
-    IListOfIncidents,
-    IUsers,
-    IValuesCreateIncidentsForm
+    ListOfIncidents,
+    Users,
+    ValuesCreateIncidentsForm
 } from 'common/interfaces/incidents';
 import { IncidentsType } from 'redux/store/actions/incidents/interfaces';
 
@@ -27,9 +27,9 @@ const initialState = {
     assigneeUserId: '',
     incidentID: '',
     isModalVisible: false,
-    listOfIncidents: [] as Array<IListOfIncidents>,
+    listOfIncidents: [] as Array<ListOfIncidents>,
     isListOfIncidentsLoading: false,
-    users: [] as Array<IUsers>,
+    users: [] as Array<Users>,
     valuesCreateIncidentForm: {
         area: '',
         assignee: '',
@@ -39,7 +39,7 @@ const initialState = {
         priority: '',
         startDate: getDate(),
         status: ''
-    } as IValuesCreateIncidentsForm
+    } as ValuesCreateIncidentsForm
 };
 
 function incidentsReducer(

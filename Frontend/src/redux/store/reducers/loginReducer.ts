@@ -4,7 +4,7 @@ import {
     LOGOUT,
     UPDATE_VALUES_LOGIN_FORM
 } from 'redux/store/actions/actionTypes';
-import { IValuesLoginForm, KeysType } from 'common/interfaces/login';
+import { ValuesLoginForm, KeysType } from 'common/interfaces/login';
 import { LoginType } from 'redux/store/actions/login/interfaces';
 
 type LoginInitialStateType = typeof initialState;
@@ -14,12 +14,10 @@ const initialState = {
         login: '',
         password: '',
         remember: false
-    } as IValuesLoginForm,
+    } as ValuesLoginForm,
     fullname: '',
     isAuth: false,
-    keyDepsOnPath: '1' as KeysType,
-    token: '',
-    userId: ''
+    keyDepsOnPath: '1' as KeysType
 };
 
 function loginReducer(

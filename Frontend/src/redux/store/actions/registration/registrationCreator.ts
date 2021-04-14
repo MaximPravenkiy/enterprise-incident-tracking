@@ -4,7 +4,7 @@ import {
     RESET_REGISTRATION_FORM,
     UPDATE_VALUES_REGISTRATION_FORM
 } from 'redux/store/actions/actionTypes';
-import { IValuesRegistrationForm } from 'common/interfaces/registration';
+import { ValuesRegistrationForm } from 'common/interfaces/registration';
 import {
     PostRegistrationActionType,
     RegistrationActionType,
@@ -13,14 +13,14 @@ import {
 } from 'redux/store/actions/registration/interfaces';
 
 const postRegistration = (
-    registrationFormValues: IValuesRegistrationForm
+    registrationFormValues: ValuesRegistrationForm
 ): PostRegistrationActionType => ({
     type: POST_REGISTRATION,
     registrationFormValues
 });
 
 const updateValuesRegistrationForm = (
-    updatedValueRegistrationForm: IValuesRegistrationForm
+    updatedValueRegistrationForm: ValuesRegistrationForm
 ): UpdateValuesRegistrationFormActionType => ({
     type: UPDATE_VALUES_REGISTRATION_FORM,
     updatedValueRegistrationForm

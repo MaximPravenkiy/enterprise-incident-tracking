@@ -5,21 +5,21 @@ import {
     POST_LOGIN,
     UPDATE_VALUES_LOGIN_FORM
 } from 'redux/store/actions/actionTypes';
-import { IValuesLoginForm, KeysType, IUserData } from 'common/interfaces/login';
+import { ValuesLoginForm, KeysType, UserData } from 'common/interfaces/login';
 
 export interface PostLoginActionType {
     type: typeof POST_LOGIN;
-    loginFormValues: IValuesLoginForm;
+    loginFormValues: ValuesLoginForm;
 }
 
 export interface LoginActionType {
     type: typeof LOGIN;
-    userData: IUserData;
+    userData: UserData;
 }
 
 export interface UpdateValuesLoginFormActionType {
     type: typeof UPDATE_VALUES_LOGIN_FORM;
-    updatedValueLoginForm: IValuesLoginForm;
+    updatedValueLoginForm: ValuesLoginForm;
 }
 
 export interface LogoutActionType {

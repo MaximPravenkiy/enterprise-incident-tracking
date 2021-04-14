@@ -1,4 +1,4 @@
-const {Router} = require('express');
+const { Router } = require('express');
 const router = Router();
 const Incident = require('../models/Incident');
 const User = require('../models/User');
@@ -12,7 +12,7 @@ router.get(
 
             return res.json(users);
         } catch (e) {
-            return res.status(500).json({message: 'Что-то пошло не так, попробуйте снова.'})
+            return res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова.' })
         }
     });
 
@@ -23,9 +23,9 @@ router.post(
             const incident = new Incident(req.body);
             await incident.save();
 
-            return res.status(201).json({message: 'Инцидент был создан!'});
+            return res.status(201).json({ message: 'Инцидент был создан!' });
         } catch (e) {
-            return res.status(500).json({message: 'Что-то пошло не так, попробуйте снова.'})
+            return res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова.' })
         }
     });
 
@@ -34,11 +34,11 @@ router.get(
     auth,
     async (req, res) => {
         try {
-            const incidents = await Incident.find({owner: req.user.userId});
+            const incidents = await Incident.find({ owner: req.userId });
 
             return res.json(incidents);
         } catch (e) {
-            return res.status(500).json({message: 'Что-то пошло не так, попробуйте снова.'})
+            return res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова.' })
         }
     });
 
@@ -50,7 +50,7 @@ router.get(
 
             return res.json(incidents);
         } catch (e) {
-            return res.status(500).json({message: 'Что-то пошло не так, попробуйте снова.'})
+            return res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова.' })
         }
     });
 
@@ -58,11 +58,11 @@ router.delete(
     '/delete-incident',
     async (req, res) => {
         try {
-            await Incident.deleteOne({_id: req.body.incidentID});
+            await Incident.deleteOne({ _id: req.body.incidentID });
 
-            return res.status(201).json({message: 'Инцидент удалён!'});
+            return res.status(201).json({ message: 'Инцидент удалён!' });
         } catch (e) {
-            return res.status(500).json({message: 'Что-то пошло не так, попробуйте снова.'})
+            return res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова.' })
         }
     }
 )
@@ -76,9 +76,9 @@ router.put(
 
             await Incident.findByIdAndUpdate(filter, update);
 
-            return res.status(201).json({message: 'Инцидент обновлён!'});
+            return res.status(201).json({ message: 'Инцидент обновлён!' });
         } catch (e) {
-            return res.status(500).json({message: 'Что-то пошло не так, попробуйте снова.'})
+            return res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова.' })
         }
     }
 )

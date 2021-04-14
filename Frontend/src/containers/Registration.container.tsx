@@ -9,7 +9,7 @@ import {
 import { RootReducer } from 'redux/store/reducers/rootReducer';
 import { openMessage } from 'common/ServerResponseHandlers/Message';
 import { RegistrationType } from 'redux/store/actions/registration/interfaces';
-import { IValuesRegistrationForm } from 'common/interfaces/registration';
+import { ValuesRegistrationForm } from 'common/interfaces/registration';
 
 const RegistrationContainer = () => {
     const { dateOfBirth, fullname, login, password, position } = useSelector(
@@ -18,12 +18,12 @@ const RegistrationContainer = () => {
     );
     const dispatch = useDispatch<Dispatch<RegistrationType>>();
 
-    const registerNewUser = (values: IValuesRegistrationForm) => {
+    const registerNewUser = (values: ValuesRegistrationForm) => {
         openMessage('Проверяем данные...');
         dispatch(postRegistration(values));
     };
 
-    const onChange = (value: IValuesRegistrationForm) => {
+    const onChange = (value: ValuesRegistrationForm) => {
         dispatch(updateValuesRegistrationForm(value));
     };
 

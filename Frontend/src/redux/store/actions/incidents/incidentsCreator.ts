@@ -32,20 +32,20 @@ import {
 } from 'redux/store/actions/incidents/interfaces';
 import {
     ActionWithIncidentsType,
-    IListOfIncidents,
-    IUsers,
-    IValuesCreateIncidentsForm
+    ListOfIncidents,
+    Users,
+    ValuesCreateIncidentsForm
 } from 'common/interfaces/incidents';
 
 // Incidents
 const getIncidents = (): GetIncidentsActionType => ({ type: GET_INCIDENTS });
 
 const setIncidents = (
-    listOfIncidents: Array<IListOfIncidents>
+    listOfIncidents: Array<ListOfIncidents>
 ): SetIncidentsActionType => ({ type: SET_INCIDENTS, listOfIncidents });
 
 const createIncident = (
-    valuesCreateIncidentForm: IValuesCreateIncidentsForm
+    valuesCreateIncidentForm: ValuesCreateIncidentsForm
 ): CreateIncidentActionType => ({
     type: CREATE_INCIDENT,
     valuesCreateIncidentForm
@@ -59,7 +59,7 @@ const deleteIncident = (incidentID: string): DeleteIncidentActionType => ({
 const closeModal = (): CloseModalActionType => ({ type: CLOSE_MODAL });
 
 const updateValuesCreateIncidentForm = (
-    updatedValue: IValuesCreateIncidentsForm
+    updatedValue: ValuesCreateIncidentsForm
 ): UpdateValuesCreateIncidentFormActionType => ({
     type: UPDATE_VALUES_CREATE_INCIDENT_FORM,
     updatedValue
@@ -97,7 +97,7 @@ const updateLoader = (
 // Users
 const getUsers = (): GetUsersActionType => ({ type: GET_USERS });
 
-const setUsers = (users: Array<IUsers>): SetUsersActionType => ({
+const setUsers = (users: Array<Users>): SetUsersActionType => ({
     type: SET_USERS,
     users
 });

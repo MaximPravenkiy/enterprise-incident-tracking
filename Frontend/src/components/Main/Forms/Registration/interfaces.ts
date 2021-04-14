@@ -1,6 +1,6 @@
-import { IValuesRegistrationForm } from 'common/interfaces/registration';
+import { ValuesRegistrationForm } from 'common/interfaces/registration';
 
-export interface RegistrationFormTypes extends IValuesRegistrationForm {
-    registerNewUser: (values: IValuesRegistrationForm) => void;
-    onChange: (value: IValuesRegistrationForm) => void;
+export interface RegistrationFormTypes extends ValuesRegistrationForm {
+    registerNewUser: (values: ValuesRegistrationForm) => void;
+    onChange: (value: ValuesRegistrationForm) => void;
 }

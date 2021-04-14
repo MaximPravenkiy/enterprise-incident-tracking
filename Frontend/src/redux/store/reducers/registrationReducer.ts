@@ -4,7 +4,7 @@ import {
     UPDATE_VALUES_REGISTRATION_FORM
 } from 'redux/store/actions/actionTypes';
 import { RegistrationType } from 'redux/store/actions/registration/interfaces';
-import { IValuesRegistrationForm } from 'common/interfaces/registration';
+import { ValuesRegistrationForm } from 'common/interfaces/registration';
 
 type RegistrationInitialStateType = typeof initialState;
 
@@ -15,7 +15,7 @@ const initialState = {
         login: '',
         password: '',
         position: ''
-    } as IValuesRegistrationForm
+    } as ValuesRegistrationForm
 };
 
 function registrationReducer(

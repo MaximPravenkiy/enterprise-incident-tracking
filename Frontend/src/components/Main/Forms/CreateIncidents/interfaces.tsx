@@ -1,15 +1,16 @@
 import {
-    ActionWithCreateIncidentFormType, ICreateIncident,
-    IUsers,
-    IValuesCreateIncidentsForm
+    ActionWithCreateIncidentFormType,
+    CreateIncident,
+    Users,
+    ValuesCreateIncidentsForm
 } from 'common/interfaces/incidents';
 
 export interface CreateIncidentTypeProps {
-    users: Array<IUsers>;
+    users: Array<Users>;
     isModalVisible: boolean;
-    valuesCreateIncidentForm: IValuesCreateIncidentsForm;
+    valuesCreateIncidentForm: ValuesCreateIncidentsForm;
     actionWithCreateIncidentForm: ActionWithCreateIncidentFormType;
     getUserId: (value: string) => void;
-    onFinish: (value: ICreateIncident) => void;
-    onChange: (value: IValuesCreateIncidentsForm) => void;
+    onFinish: (value: CreateIncident) => void;
+    onChange: (value: ValuesCreateIncidentsForm) => void;
 }

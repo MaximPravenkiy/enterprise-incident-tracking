@@ -16,20 +16,20 @@ import {
 } from 'redux/store/actions/actionTypes';
 import {
     ActionWithIncidentsType,
-    ICreateIncident,
-    IListOfIncidents,
-    IUsers,
-    IValuesCreateIncidentsForm
+    CreateIncident,
+    ListOfIncidents,
+    Users,
+    ValuesCreateIncidentsForm
 } from 'common/interfaces/incidents';
 
 export interface SetIncidentsActionType {
     type: typeof SET_INCIDENTS;
-    listOfIncidents: Array<IListOfIncidents>;
+    listOfIncidents: Array<ListOfIncidents>;
 }
 
 export interface CreateIncidentActionType {
     type: typeof CREATE_INCIDENT;
-    valuesCreateIncidentForm: IValuesCreateIncidentsForm;
+    valuesCreateIncidentForm: ValuesCreateIncidentsForm;
 }
 
 export interface DeleteIncidentActionType {
@@ -43,7 +43,7 @@ export interface CloseModalActionType {
 
 export interface UpdateValuesCreateIncidentFormActionType {
     type: typeof UPDATE_VALUES_CREATE_INCIDENT_FORM;
-    updatedValue: IValuesCreateIncidentsForm;
+    updatedValue: ValuesCreateIncidentsForm;
 }
 
 export interface SetDataForUpdatingActionType {
@@ -55,7 +55,7 @@ export interface UpdateIncidentActionType {
     type: typeof UPDATE_INCIDENT;
     updateData: {
         incidentID: string;
-        incidentFormData: ICreateIncident;
+        incidentFormData: CreateIncident;
     };
 }
 
@@ -69,7 +69,7 @@ export interface GetUsersActionType {
 
 export interface SetUsersActionType {
     type: typeof SET_USERS;
-    users: Array<IUsers>;
+    users: Array<Users>;
 }
 
 export interface ChangeAssigneeUserIdActionType {

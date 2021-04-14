@@ -1,5 +1,5 @@
 import React from 'react';
-import { IListOfIncidents } from 'common/interfaces/incidents';
+import { ListOfIncidents } from 'common/interfaces/incidents';
 import ActionButtonContainer from 'containers/ActionButton.container';
 
 export const columns = [
@@ -51,7 +51,7 @@ export const columns = [
     {
         title: 'Action',
         key: 'action',
-        render: (incident: IListOfIncidents): any => (
+        render: (incident: ListOfIncidents): any => (
             <ActionButtonContainer incident={incident} />
         )
     }

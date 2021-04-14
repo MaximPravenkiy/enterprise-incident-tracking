@@ -27,7 +27,7 @@ const LoginForm: FC<LoginFormTypes> = ({
             form={form}
         >
             <Form.Item {...configLogin}>
-                <Input prefix={<UserOutlined />} placeholder="Username" />
+                <Input prefix={<UserOutlined />} placeholder="Login" />
             </Form.Item>
 
             <Form.Item {...configPassword}>

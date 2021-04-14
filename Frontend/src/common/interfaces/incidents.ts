@@ -1,12 +1,12 @@
 import moment from 'moment';
 
-export interface IListOfIncidents extends IValuesCreateIncidentsForm {
+export interface ListOfIncidents extends ValuesCreateIncidentsForm {
     icon: JSX.Element;
     key: string;
     owner: string;
 }
 
-export interface IValuesCreateIncidentsForm {
+export interface ValuesCreateIncidentsForm {
     area: string;
     assignee: string;
     description: string;
@@ -17,14 +17,14 @@ export interface IValuesCreateIncidentsForm {
     status: string;
 }
 
-export interface IUsers {
+export interface Users {
     id: string;
     label: string;
     value: string;
     key: string;
 }
 
-export interface ICreateIncident extends IValuesCreateIncidentsForm {
+export interface CreateIncident extends ValuesCreateIncidentsForm {
     owner: string;
 }
 

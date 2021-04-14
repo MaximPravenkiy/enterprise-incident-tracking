@@ -1,7 +1,7 @@
-import { IValuesLoginForm } from 'common/interfaces/login';
+import { ValuesLoginForm } from 'common/interfaces/login';
 
-export interface LoginFormTypes extends IValuesLoginForm {
-    onFinish: (values: IValuesLoginForm) => void;
-    onChange: (value: IValuesLoginForm) => void;
+export interface LoginFormTypes extends ValuesLoginForm {
+    onFinish: (values: ValuesLoginForm) => void;
+    onChange: (value: ValuesLoginForm) => void;
     onRegisterClick: () => void;
 }

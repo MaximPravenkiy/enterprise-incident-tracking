@@ -12,9 +12,9 @@ import {
 import { openMessage } from 'common/ServerResponseHandlers/Message';
 import { getDate } from 'common/getDate';
 import { IncidentsType } from 'redux/store/actions/incidents/interfaces';
-import { IListOfIncidents } from 'common/interfaces/incidents';
+import { ListOfIncidents } from 'common/interfaces/incidents';
 
-const ActionButtonContainer: FC<{ incident: IListOfIncidents }> = ({
+const ActionButtonContainer: FC<{ incident: ListOfIncidents }> = ({
     incident
 }) => {
     const dispatch = useDispatch<Dispatch<IncidentsType>>();

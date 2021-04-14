@@ -1,6 +1,6 @@
-import { IListOfIncidents } from 'common/interfaces/incidents';
+import { ListOfIncidents } from 'common/interfaces/incidents';
 
 export interface IncidentsTypeProps {
-    listOfIncidents: Array<IListOfIncidents>;
+    listOfIncidents: Array<ListOfIncidents>;
     isListOfIncidentsLoading: boolean;
 }

@@ -50,12 +50,7 @@ function* getInicdentsWorker() {
         let response: ResponseGetIncidentsType;
 
         if (actionWithIncidents === 'Показать мои инциденты') {
-            const userData = localStorage.getItem('userData');
-
-            if (!userData) return;
-
-            const { token } = JSON.parse(userData);
-            response = yield call(getMyIncidentsApi, token);
+            response = yield call(getMyIncidentsApi);
         } else {
             response = yield call(getAllIncidentsApi);
         }
