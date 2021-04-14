@@ -7,7 +7,7 @@ import {
     updateValuesRegistrationForm
 } from 'redux/store/actions/registration/registrationCreator';
 import { RootReducer } from 'redux/store/reducers/rootReducer';
-import { openMessage } from 'common/ServerResponseHandlers/Message';
+import { openMessage } from 'common/serverResponseHandlers/message';
 import { RegistrationType } from 'redux/store/actions/registration/interfaces';
 import { ValuesRegistrationForm } from 'common/interfaces/registration';
 

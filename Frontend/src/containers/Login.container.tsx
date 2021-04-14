@@ -8,7 +8,7 @@ import {
     updateValuesLoginForm
 } from 'redux/store/actions/login/loginCreator';
 import { RootReducer } from 'redux/store/reducers/rootReducer';
-import { openMessage } from 'common/ServerResponseHandlers/Message';
+import { openMessage } from 'common/serverResponseHandlers/message';
 import { ValuesLoginForm } from 'common/interfaces/login';
 import { LoginType } from 'redux/store/actions/login/interfaces';
 

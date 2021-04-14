@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const Token = require('../models/Token');
 const { v4: uuid } = require('uuid');
-const { tokens, secret } = require('../config/default.json').jwt;
+const { tokens, secret } = require('../config/default').jwt;
 
 const generateAccessToken = (userId) => {
     const payload = {

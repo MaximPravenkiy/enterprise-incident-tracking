@@ -9,7 +9,7 @@ import {
     setDataForUpdating,
     updateValuesCreateIncidentForm
 } from 'redux/store/actions/incidents/incidentsCreator';
-import { openMessage } from 'common/ServerResponseHandlers/Message';
+import { openMessage } from 'common/serverResponseHandlers/message';
 import { getDate } from 'common/getDate';
 import { IncidentsType } from 'redux/store/actions/incidents/interfaces';
 import { ListOfIncidents } from 'common/interfaces/incidents';

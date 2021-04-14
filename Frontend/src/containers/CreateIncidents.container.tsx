@@ -9,7 +9,7 @@ import {
     updateValuesCreateIncidentForm
 } from 'redux/store/actions/incidents/incidentsCreator';
 import { RootReducer } from 'redux/store/reducers/rootReducer';
-import { openMessage } from 'common/ServerResponseHandlers/Message';
+import { openMessage } from 'common/serverResponseHandlers/message';
 import { IncidentsType } from 'redux/store/actions/incidents/interfaces';
 import {
     CreateIncident,

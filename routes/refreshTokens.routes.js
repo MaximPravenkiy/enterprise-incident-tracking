@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const router = Router();
-const { secret } = require('../config/default.json').jwt;
+const { secret } = require('../config/default').jwt;
 const jwt = require('jsonwebtoken');
 const Token = require('../models/Token');
 const { updateTokens } = require('../helper/authHelper');

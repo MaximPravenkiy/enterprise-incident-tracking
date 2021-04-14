@@ -19,8 +19,8 @@ import { logout } from 'redux/store/actions/login/loginCreator';
 import {
     errorNotification,
     successNotification
-} from 'common/ServerResponseHandlers/Notification';
-import { destroyMessage } from 'common/ServerResponseHandlers/Message';
+} from 'common/serverResponseHandlers/notification';
+import { destroyMessage } from 'common/serverResponseHandlers/message';
 import {
     deleteIncidentApi,
     getAllIncidentsApi,

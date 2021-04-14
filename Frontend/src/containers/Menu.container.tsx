@@ -15,11 +15,11 @@ import {
     getUsers
 } from 'redux/store/actions/incidents/incidentsCreator';
 import { RootReducer } from 'redux/store/reducers/rootReducer';
-import { openMessage } from 'common/ServerResponseHandlers/Message';
+import { openMessage } from 'common/serverResponseHandlers/message';
 import { LoginType } from 'redux/store/actions/login/interfaces';
 import { IncidentsType } from 'redux/store/actions/incidents/interfaces';
+import { logoutNotification } from 'common/serverResponseHandlers/notification';
 import { MenuInfo } from '../../node_modules/rc-menu/lib/interface';
-import { logoutNotification } from '../common/ServerResponseHandlers/Notification';
 
 const navContent = [
     { text: 'Вход', url: 'login' },
