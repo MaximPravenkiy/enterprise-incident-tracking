@@ -36,7 +36,7 @@ router.post(
     '/login',
     async (req, res) => {
         try {
-            const { login, password } = req.body;
+            const { login, password, remember } = req.body;
             const user = await User.findOne({ login });
 
             if (!user) {
@@ -49,7 +49,7 @@ router.post(
                 return res.status(400).json({ message: 'Неверный логин или пароль!' });
             }
 
-            const tokens = await updateTokens(user._id);
+            const tokens = await updateTokens(user._id, remember);
 
             return res.json({ tokens, fullname: user.fullname });
         } catch (e) {

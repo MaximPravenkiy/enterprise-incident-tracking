@@ -12,16 +12,17 @@ router.put(
             const { refreshToken } = req.body;
 
             let payload = jwt.verify(refreshToken, secret);
+
             if (payload.type !== 'refresh') {
                 return res.status(400).json({ message: 'Некорректный токен!'});
             }
 
-            const { userId } = await Token.findOne({ tokenId: payload.id });
+            const { userId, remember } = await Token.findOne({ tokenId: payload.id });
             if (!userId) {
                 return res.status(400).json({ message: 'Некорректный токен!'});
             }
 
-            const tokens = await updateTokens(userId);
+            const tokens = await updateTokens(userId, remember);
             return res.json(tokens);
         } catch (e) {
             if (e instanceof jwt.TokenExpiredError) {

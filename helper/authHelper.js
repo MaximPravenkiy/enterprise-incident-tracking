@@ -16,12 +16,16 @@ const generateAccessToken = (userId) => {
     };
 }
 
-const generateRefreshToken = () => {
+const generateRefreshToken = (remember) => {
     const payload = {
         id: uuid(),
         type: tokens.refresh.type
     };
-    const options = { expiresIn: tokens.refresh.expiresIn }
+
+    const options = { expiresIn: remember
+            ? tokens.refresh.expiresInRemember
+            : tokens.refresh.expiresIn
+    }
 
     return {
         id: payload.id,
@@ -29,19 +33,19 @@ const generateRefreshToken = () => {
     }
 }
 
-const replaceDbRefreshToken = async (tokenId, userId) => {
+const replaceDbRefreshToken = async (tokenId, userId, remember) => {
     await Token.deleteOne({ userId });
 
-    const newToken = new Token({ tokenId, userId });
+    const newToken = new Token({ tokenId, userId, remember });
     await newToken.save();
 }
 
-const updateTokens = async (userId) => {
+const updateTokens = async (userId, remember) => {
     const accessToken = generateAccessToken(userId);
-    const refreshToken = generateRefreshToken();
-    const expiresIn = Date.now() + +accessToken.expiresIn;
+    const refreshToken = generateRefreshToken(remember);
+    const expiresIn = Date.now() + 30 * 60 * 1000;
 
-    await replaceDbRefreshToken(refreshToken.id, userId);
+    await replaceDbRefreshToken(refreshToken.id, userId, remember);
 
     return {
         accessToken: accessToken.token,
