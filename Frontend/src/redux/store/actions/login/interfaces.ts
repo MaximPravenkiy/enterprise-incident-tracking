@@ -14,7 +14,7 @@ export interface PostLoginActionType {
 
 export interface LoginActionType {
     type: typeof LOGIN;
-    userData: UserData;
+    userData: string;
 }
 
 export interface UpdateValuesLoginFormActionType {

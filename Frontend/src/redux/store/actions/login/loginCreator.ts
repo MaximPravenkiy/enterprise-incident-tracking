@@ -19,7 +19,7 @@ const postLogin = (loginFormValues: ValuesLoginForm): PostLoginActionType => ({
     loginFormValues
 });
 
-const login = (userData: LoginActionType['userData']): LoginActionType => ({
+const login = (userData: string): LoginActionType => ({
     type: LOGIN,
     userData
 });

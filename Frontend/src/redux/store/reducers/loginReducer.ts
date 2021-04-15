@@ -29,7 +29,7 @@ function loginReducer(
             return {
                 ...state,
                 isAuth: true,
-                ...action.userData
+                fullname: action.userData
             };
         case UPDATE_VALUES_LOGIN_FORM:
             return {

@@ -4,7 +4,6 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const path = require('path');
-const { mongoUri } = require('./config/default');
 
 app.use(express.json({ extened: true }));
 app.use('/', require('./routes/auth.routes'));

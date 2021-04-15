@@ -65,9 +65,10 @@ const MenuItemLogin: FC<MenuItemLoginProps> = ({
             <RightSection>
                 <div>
                     <Avatar size={50} gap={1}>
-                        {fullname
-                            .split(' ')
-                            .map((item) => item[0].toUpperCase())}
+                        {fullname &&
+                            fullname
+                                .split(' ')
+                                .map((item) => item[0].toUpperCase())}
                     </Avatar>
                 </div>
 

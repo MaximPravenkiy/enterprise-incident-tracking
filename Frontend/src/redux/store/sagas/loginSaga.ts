@@ -35,7 +35,7 @@ function* postLoginWorker({ loginFormValues }: PostLoginActionType) {
                 'Вы вошли в систему.',
                 `Привет, ${response.data.fullname}!`
             );
-            yield put(login(response.data));
+            yield put(login(response.data.fullname));
         }
     } catch (e) {
         destroyMessage();
