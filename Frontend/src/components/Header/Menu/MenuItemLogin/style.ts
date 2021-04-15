@@ -12,6 +12,7 @@ export const IncidentButton = styled(Button)`
     display: flex;
     align-items: center;
     height: 30%;
+    flex-shrink: 0;
 `;
 
 export const Title = styled.span`
@@ -27,9 +28,11 @@ export const RightSection = styled.div`
     justify-content: space-between;
 `;
 
-export const ButtonWrarpper = styled.div`
+export const ButtonWrapper = styled.div`
     display: flex;
     flex-direction: column;
     height: 100%;
     justify-content: space-evenly;
+    align-items: flex-start;
+    flex-basis: 20%;
 `;

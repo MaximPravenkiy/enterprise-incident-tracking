@@ -8,7 +8,7 @@ import {
 import { Avatar, Button } from 'antd';
 import { MenuItemLoginProps } from 'components/Header/Menu/MenuItemLogin/interfaces';
 import {
-    ButtonWrarpper,
+    ButtonWrapper,
     IncidentButton,
     RightSection,
     Title,
@@ -32,7 +32,7 @@ const MenuItemLogin: FC<MenuItemLoginProps> = ({
 
     return (
         <Wrapper>
-            <ButtonWrarpper>
+            <ButtonWrapper>
                 <IncidentButton
                     type="primary"
                     shape="round"
@@ -50,7 +50,7 @@ const MenuItemLogin: FC<MenuItemLoginProps> = ({
                 >
                     {actionWithIncidents}
                 </IncidentButton>
-            </ButtonWrarpper>
+            </ButtonWrapper>
 
             <div>
                 <SnippetsFilled

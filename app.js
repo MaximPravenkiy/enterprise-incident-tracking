@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const path = require('path');
+const { mongoURI } =  require('./config/default');
 
 app.use(express.json({ extened: true }));
 app.use('/', require('./routes/auth.routes'));
@@ -22,7 +23,7 @@ const PORT = process.env.PORT || 5000;
 
 async function start() {
     try {
-        await mongoose.connect(process.env.MONGO_URI, {
+        await mongoose.connect(mongoURI, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useCreateIndex: true,

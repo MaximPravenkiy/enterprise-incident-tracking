@@ -43,7 +43,7 @@ const replaceDbRefreshToken = async (tokenId, userId, remember) => {
 const updateTokens = async (userId, remember) => {
     const accessToken = generateAccessToken(userId);
     const refreshToken = generateRefreshToken(remember);
-    const expiresIn = Date.now() + 30 * 60 * 1000;
+    const expiresIn = Date.now() + parseInt(accessToken.expiresIn) * 60 * 1000;
 
     await replaceDbRefreshToken(refreshToken.id, userId, remember);
 
