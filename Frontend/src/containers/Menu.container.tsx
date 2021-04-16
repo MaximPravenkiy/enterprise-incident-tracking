@@ -19,6 +19,7 @@ import { openMessage } from 'common/serverResponseHandlers/message';
 import { LoginType } from 'redux/store/actions/login/interfaces';
 import { IncidentsType } from 'redux/store/actions/incidents/interfaces';
 import { logoutNotification } from 'common/serverResponseHandlers/notification';
+import { KeysType } from 'common/interfaces/login';
 import { MenuInfo } from '../../node_modules/rc-menu/lib/interface';
 
 const navContent = [
@@ -61,11 +62,15 @@ const MenuContainer: FC<RouteComponentProps> = ({ location }) => {
     };
 
     useEffect(() => {
-        dispatch(
-            changeKeyDepsOnPath(
-                location.pathname === '/registration' ? '2' : '1'
-            )
-        );
+        let path: KeysType;
+        if (location.pathname === '/login') {
+            path = '1';
+        } else if (location.pathname === '/registration') {
+            path = '2';
+        } else {
+            path = '0';
+        }
+        dispatch(changeKeyDepsOnPath(path));
     }, [dispatch, location.pathname]);
 
     // Отображение меню в зависимости от аутентификации

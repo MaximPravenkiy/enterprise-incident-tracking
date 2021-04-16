@@ -8,6 +8,11 @@ const GlobalStyles = createGlobalStyle`
     &.registration-form {
         min-width: 30%;
     }
+    
+    &.recover-password-form {
+        min-width: 50%;
+        min-height: 45%;
+    }
 `;
 
 export default GlobalStyles;

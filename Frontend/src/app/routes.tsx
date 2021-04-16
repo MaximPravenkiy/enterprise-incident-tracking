@@ -5,6 +5,7 @@ import { RootReducer } from 'redux/store/reducers/rootReducer';
 import RegistrationContainer from 'containers/Registration.container';
 import LoginContainer from 'containers/Login.container';
 import IncidentsContainer from 'containers/Incidents.container';
+import ForgotPassword from 'components/Main/Forms/ForgotPassword/ForgotPassword';
 
 const Routes = () => {
     const isAuth = useSelector(
@@ -23,6 +24,7 @@ const Routes = () => {
                 path="/registration"
                 component={RegistrationContainer}
             />
+            <Route exact path="/forgot-password" component={ForgotPassword} />
             <Redirect to="/login" />
         </Switch>
     );

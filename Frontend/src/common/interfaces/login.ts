@@ -1,7 +1,7 @@
 export interface ValuesLoginForm {
     login: string;
     password: string;
-    remember?: boolean;
+    remember: boolean;
 }
 
 export interface UserData {
@@ -15,4 +15,4 @@ interface Token {
     expiresIn: number;
 }
 
-export type KeysType = '1' | '2';
+export type KeysType = '0' | '1' | '2';

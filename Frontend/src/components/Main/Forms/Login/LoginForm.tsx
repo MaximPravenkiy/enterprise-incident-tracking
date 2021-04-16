@@ -10,13 +10,15 @@ const LoginForm: FC<LoginFormTypes> = ({
     onChange,
     login,
     password,
-    onRegisterClick
+    onRegisterClick,
+    onForgotPasswordClick,
+    remember
 }) => {
     const [form] = Form.useForm();
 
     useEffect(() => {
-        form.setFieldsValue({ login, password });
-    }, [form, login, password]);
+        form.setFieldsValue({ login, password, remember });
+    }, [form, login, password, remember]);
 
     return (
         <Form
@@ -43,9 +45,9 @@ const LoginForm: FC<LoginFormTypes> = ({
                     <Checkbox>Remember me</Checkbox>
                 </Form.Item>
 
-                <a className="login-form-forgot" href="#top">
+                <NavLink to="/forgot-password" onClick={onForgotPasswordClick}>
                     Forgot password
-                </a>
+                </NavLink>
             </Form.Item>
 
             <Form.Item>

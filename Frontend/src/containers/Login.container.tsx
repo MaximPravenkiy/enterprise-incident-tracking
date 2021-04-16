@@ -13,7 +13,7 @@ import { ValuesLoginForm } from 'common/interfaces/login';
 import { LoginType } from 'redux/store/actions/login/interfaces';
 
 const LoginContainer = () => {
-    const { login, password } = useSelector(
+    const { login, password, remember } = useSelector(
         ({ loginReducer }: RootReducer) => loginReducer.valuesLoginForm
     );
     const dispatch = useDispatch<Dispatch<LoginType>>();
@@ -31,13 +31,19 @@ const LoginContainer = () => {
         dispatch(changeKeyDepsOnPath('2')); // Меняет подсветку меню в хедере
     };
 
+    const onForgotPasswordClick = () => {
+        dispatch(changeKeyDepsOnPath('0'));
+    };
+
     return (
         <LoginForm
             onFinish={onFinish}
             onChange={onChange}
             login={login}
             password={password}
+            remember={remember}
             onRegisterClick={onRegisterClick}
+            onForgotPasswordClick={onForgotPasswordClick}
         />
     );
 };
