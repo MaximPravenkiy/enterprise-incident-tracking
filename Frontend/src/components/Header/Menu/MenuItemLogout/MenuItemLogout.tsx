@@ -11,11 +11,9 @@ const MenuItemLogout: FC<MenuItemLogoutProps> = ({
     text,
     ...props
 }) => (
-    <>
-        <MenuItemCustom {...props} key={key}>
-            <NavLinkEx to={`/${url}`}>{text}</NavLinkEx>
-        </MenuItemCustom>
-    </>
+    <MenuItemCustom {...props} key={key}>
+        <NavLinkEx to={`/${url}`}>{text}</NavLinkEx>
+    </MenuItemCustom>
 );
 
 export default MenuItemLogout;

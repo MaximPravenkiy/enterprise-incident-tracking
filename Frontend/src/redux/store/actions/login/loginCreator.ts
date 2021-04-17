@@ -3,14 +3,20 @@ import {
     LOGIN,
     LOGOUT,
     POST_LOGIN,
+    RESTORE_PASSWORD,
     UPDATE_VALUES_LOGIN_FORM
 } from 'redux/store/actions/actionTypes';
-import { ValuesLoginForm, KeysType } from 'common/interfaces/login';
+import {
+    ValuesLoginForm,
+    KeysType,
+    RestorePasswordFormValue
+} from 'common/interfaces/login';
 import {
     ChangeKeyDepsOnPathType,
     LoginActionType,
     LogoutActionType,
     PostLoginActionType,
+    RestorePasswordType,
     UpdateValuesLoginFormActionType
 } from 'redux/store/actions/login/interfaces';
 
@@ -40,4 +46,18 @@ const changeKeyDepsOnPath = (
 
 const logout = (): LogoutActionType => ({ type: LOGOUT });
 
-export { login, logout, postLogin, updateValuesLoginForm, changeKeyDepsOnPath };
+const restorePassword = (
+    restorePasswordFormValue: RestorePasswordFormValue
+): RestorePasswordType => ({
+    type: RESTORE_PASSWORD,
+    restorePasswordFormValue
+});
+
+export {
+    login,
+    logout,
+    postLogin,
+    updateValuesLoginForm,
+    changeKeyDepsOnPath,
+    restorePassword
+};

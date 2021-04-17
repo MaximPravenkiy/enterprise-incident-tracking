@@ -43,9 +43,9 @@ router.post(
                 return res.status(400).json({ message: 'Пользователь не найден!' });
             }
 
-            const isMatch = await bcrypt.compare(password, user.password);
+            const isMatchPasswords = await bcrypt.compare(password, user.password);
 
-            if (!isMatch) {
+            if (!isMatchPasswords) {
                 return res.status(400).json({ message: 'Неверный логин или пароль!' });
             }
 
@@ -53,8 +53,34 @@ router.post(
 
             return res.json({ tokens, fullname: user.fullname });
         } catch (e) {
-            return res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова...' })
+            return res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова...' });
         }
     });
+
+router.put(
+    '/forgot-password',
+    async (req, res) => {
+        try {
+            const { login, password: newPassword } = req.body;
+
+            const user = await User.findOne({ login });
+            if (!user) {
+                return res.status(400).json({ message: 'Пользователь с таким логином не существует!' });
+            }
+
+            const isMatchPasswords = await bcrypt.compare(newPassword, user.password);
+            if (isMatchPasswords) {
+                return res.status(400).json({ message: 'Новый пароль должен отличаться от предыдущего пароля!' });
+            }
+
+            const hashedNewPassword = await bcrypt.hash(newPassword, 6);
+            await User.findOneAndUpdate({ login }, { password: hashedNewPassword });
+
+            return res.status(201).json({ message: 'Пароль был успешно обновлён!' });
+        } catch (e) {
+            return res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова...' });
+        }
+    }
+);
 
 module.exports = router;

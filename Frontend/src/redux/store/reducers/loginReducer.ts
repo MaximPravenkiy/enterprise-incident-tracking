@@ -17,7 +17,7 @@ const initialState = {
     } as ValuesLoginForm,
     fullname: '',
     isAuth: false,
-    keyDepsOnPath: '1' as KeysType
+    keyDepsOnPath: '' as KeysType
 };
 
 function loginReducer(

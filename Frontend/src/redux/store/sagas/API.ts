@@ -1,6 +1,10 @@
 import axios from 'axios';
 import { ValuesRegistrationForm } from 'common/interfaces/registration';
-import { ValuesLoginForm, UserData } from 'common/interfaces/login';
+import {
+    ValuesLoginForm,
+    UserData,
+    RestorePasswordFormValue
+} from 'common/interfaces/login';
 import { UpdateIncidentActionType } from 'redux/store/actions/incidents/interfaces';
 import {
     ListOfIncidents,
@@ -20,6 +24,15 @@ const postRegistrationApi = (values: ValuesRegistrationForm) =>
 // login api
 const postLoginApi = (values: ValuesLoginForm) =>
     axios.post<UserData>('/login', values);
+
+// restore password api
+const restorePasswordApi = (
+    restorePasswordFormValue: RestorePasswordFormValue
+) =>
+    axios.put<{ message: 'ВСЁ ОК!' }>(
+        '/forgot-password',
+        restorePasswordFormValue
+    );
 
 // incidents api
 const getMyIncidentsApi = async () => {
@@ -57,5 +70,6 @@ export {
     postIncidentApi,
     deleteIncidentApi,
     updateIncidentApi,
-    getAllIncidentsApi
+    getAllIncidentsApi,
+    restorePasswordApi
 };

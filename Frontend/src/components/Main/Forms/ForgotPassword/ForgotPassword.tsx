@@ -1,5 +1,9 @@
 import React from 'react';
 import { Button, Form, Input } from 'antd';
+import { useDispatch } from 'react-redux';
+import { restorePassword } from 'redux/store/actions/login/loginCreator';
+import { Dispatch } from 'redux';
+import { RestorePasswordType } from 'redux/store/actions/login/interfaces';
 
 const formItemLayout = {
     labelCol: {
@@ -26,8 +30,10 @@ const tailFormItemLayout = {
 };
 
 const ForgotPassword = () => {
+    const dispatch = useDispatch<Dispatch<RestorePasswordType>>();
+
     const onFinish = (values: any) => {
-        console.log(values);
+        dispatch(restorePassword(values));
     };
 
     return (

@@ -1,15 +1,19 @@
 import { put, call, takeEvery, SagaReturnType } from 'redux-saga/effects';
-import { POST_LOGIN } from 'redux/store/actions/actionTypes';
+import { POST_LOGIN, RESTORE_PASSWORD } from 'redux/store/actions/actionTypes';
 import { login } from 'redux/store/actions/login/loginCreator';
-import { postLoginApi } from 'redux/store/sagas/API';
+import { postLoginApi, restorePasswordApi } from 'redux/store/sagas/API';
 import {
     errorNotification,
     successNotification
 } from 'common/serverResponseHandlers/notification';
 import { destroyMessage } from 'common/serverResponseHandlers/message';
-import { PostLoginActionType } from 'redux/store/actions/login/interfaces';
+import {
+    PostLoginActionType,
+    RestorePasswordType
+} from 'redux/store/actions/login/interfaces';
 
 type ResponseLoginType = SagaReturnType<typeof postLoginApi>;
+type ResponseRestorePasswordType = SagaReturnType<typeof restorePasswordApi>;
 
 function* postLoginWorker({ loginFormValues }: PostLoginActionType) {
     try {
@@ -46,8 +50,28 @@ function* postLoginWorker({ loginFormValues }: PostLoginActionType) {
     }
 }
 
+function* restorePasswordWorker({
+    restorePasswordFormValue
+}: RestorePasswordType) {
+    try {
+        const response: ResponseRestorePasswordType = yield call(
+            restorePasswordApi,
+            restorePasswordFormValue
+        );
+        console.log(response.data.message);
+        successNotification('Операция завершена', response.data.message);
+    } catch (e) {
+        console.log(e.response.data.message);
+        errorNotification(
+            'Не удалось обновить пароль...',
+            e.response.data.message
+        );
+    }
+}
+
 function* loginWatcher() {
     yield takeEvery(POST_LOGIN, postLoginWorker);
+    yield takeEvery(RESTORE_PASSWORD, restorePasswordWorker);
 }
 
 export default loginWatcher;

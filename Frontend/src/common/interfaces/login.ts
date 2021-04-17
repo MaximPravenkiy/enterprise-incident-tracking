@@ -9,6 +9,12 @@ export interface UserData {
     tokens: Token;
 }
 
+export interface RestorePasswordFormValue {
+    login: string;
+    password: string;
+    confirmPassword: string;
+}
+
 interface Token {
     accessToken: string;
     refreshToken: string;

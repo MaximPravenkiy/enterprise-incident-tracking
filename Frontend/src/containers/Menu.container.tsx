@@ -63,6 +63,7 @@ const MenuContainer: FC<RouteComponentProps> = ({ location }) => {
 
     useEffect(() => {
         let path: KeysType;
+
         if (location.pathname === '/login') {
             path = '1';
         } else if (location.pathname === '/registration') {
@@ -70,6 +71,7 @@ const MenuContainer: FC<RouteComponentProps> = ({ location }) => {
         } else {
             path = '0';
         }
+
         dispatch(changeKeyDepsOnPath(path));
     }, [dispatch, location.pathname]);
 

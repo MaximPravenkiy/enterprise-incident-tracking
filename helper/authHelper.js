@@ -37,7 +37,10 @@ const replaceDbRefreshToken = async (tokenId, userId, remember) => {
     await Token.deleteOne({ userId });
 
     const newToken = new Token({ tokenId, userId, remember });
-    await newToken.save();
+
+    await newToken.save(function (error) {
+        console.log(error);
+    });
 }
 
 const updateTokens = async (userId, remember) => {
