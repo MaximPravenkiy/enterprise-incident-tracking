@@ -1,6 +1,9 @@
 import { put, call, takeEvery, SagaReturnType } from 'redux-saga/effects';
 import { POST_LOGIN, RESTORE_PASSWORD } from 'redux/store/actions/actionTypes';
-import { login } from 'redux/store/actions/login/loginCreator';
+import {
+    login,
+    resetLoginFormValue
+} from 'redux/store/actions/login/loginCreator';
 import { postLoginApi, restorePasswordApi } from 'redux/store/sagas/API';
 import {
     errorNotification,
@@ -40,6 +43,10 @@ function* postLoginWorker({ loginFormValues }: PostLoginActionType) {
                 `Привет, ${response.data.fullname}!`
             );
             yield put(login(response.data.fullname));
+
+            if (!loginFormValues.remember) {
+                yield put(resetLoginFormValue());
+            }
         }
     } catch (e) {
         destroyMessage();

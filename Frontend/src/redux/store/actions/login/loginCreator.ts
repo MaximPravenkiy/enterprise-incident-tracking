@@ -3,6 +3,7 @@ import {
     LOGIN,
     LOGOUT,
     POST_LOGIN,
+    RESET_LOGIN_FORM_VALUES,
     RESTORE_PASSWORD,
     UPDATE_VALUES_LOGIN_FORM
 } from 'redux/store/actions/actionTypes';
@@ -15,7 +16,7 @@ import {
     ChangeKeyDepsOnPathType,
     LoginActionType,
     LogoutActionType,
-    PostLoginActionType,
+    PostLoginActionType, ResetLoginFormValuesType,
     RestorePasswordType,
     UpdateValuesLoginFormActionType
 } from 'redux/store/actions/login/interfaces';
@@ -56,11 +57,16 @@ const restorePassword = (
     history
 });
 
+const resetLoginFormValue = (): ResetLoginFormValuesType => ({
+    type: RESET_LOGIN_FORM_VALUES
+});
+
 export {
     login,
     logout,
     postLogin,
     updateValuesLoginForm,
     changeKeyDepsOnPath,
-    restorePassword
+    restorePassword,
+    resetLoginFormValue
 };

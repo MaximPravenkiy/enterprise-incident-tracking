@@ -27,7 +27,7 @@ const LoginContainer = () => {
         dispatch(updateValuesLoginForm(value));
     };
 
-    const onRegisterClick = () => {
+    const onRegisterNowClick = () => {
         dispatch(changeKeyDepsOnPath('2')); // Меняет подсветку меню в хедере
     };
 
@@ -42,7 +42,7 @@ const LoginContainer = () => {
             login={login}
             password={password}
             remember={remember}
-            onRegisterClick={onRegisterClick}
+            onRegisterNowClick={onRegisterNowClick}
             onForgotPasswordClick={onForgotPasswordClick}
         />
     );

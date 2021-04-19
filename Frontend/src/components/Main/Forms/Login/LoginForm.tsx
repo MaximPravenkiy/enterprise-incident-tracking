@@ -10,7 +10,7 @@ const LoginForm: FC<LoginFormTypes> = ({
     onChange,
     login,
     password,
-    onRegisterClick,
+    onRegisterNowClick,
     onForgotPasswordClick,
     remember
 }) => {
@@ -59,7 +59,7 @@ const LoginForm: FC<LoginFormTypes> = ({
                     Log in
                 </Button>{' '}
                 Or{' '}
-                <NavLink to="/registration" onClick={onRegisterClick}>
+                <NavLink to="/registration" onClick={onRegisterNowClick}>
                     register now!
                 </NavLink>
             </Form.Item>
