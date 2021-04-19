@@ -16,7 +16,8 @@ import {
     ChangeKeyDepsOnPathType,
     LoginActionType,
     LogoutActionType,
-    PostLoginActionType, ResetLoginFormValuesType,
+    PostLoginActionType,
+    ResetLoginFormValuesType,
     RestorePasswordType,
     UpdateValuesLoginFormActionType
 } from 'redux/store/actions/login/interfaces';

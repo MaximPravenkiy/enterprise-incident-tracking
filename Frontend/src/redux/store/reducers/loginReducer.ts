@@ -1,7 +1,8 @@
 import {
     CHANGE_KEY_DEPS_ON_PATH,
     LOGIN,
-    LOGOUT, RESET_LOGIN_FORM_VALUES,
+    LOGOUT,
+    RESET_LOGIN_FORM_VALUES,
     UPDATE_VALUES_LOGIN_FORM
 } from 'redux/store/actions/actionTypes';
 import { ValuesLoginForm, KeysType } from 'common/interfaces/login';
