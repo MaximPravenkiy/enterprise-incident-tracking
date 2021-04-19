@@ -6,6 +6,7 @@ import {
     UPDATE_VALUES_LOGIN_FORM
 } from 'redux/store/actions/actionTypes';
 import {ValuesLoginForm, KeysType, UserData, RestorePasswordFormValue} from 'common/interfaces/login';
+import {History} from "history";
 
 export interface PostLoginActionType {
     type: typeof POST_LOGIN;
@@ -34,6 +35,7 @@ export interface ChangeKeyDepsOnPathType {
 export interface RestorePasswordType {
     type: typeof RESTORE_PASSWORD;
     restorePasswordFormValue: RestorePasswordFormValue;
+    history: History<unknown>;
 }
 
 export type LoginType =

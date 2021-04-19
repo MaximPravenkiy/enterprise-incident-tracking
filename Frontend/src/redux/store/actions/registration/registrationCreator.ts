@@ -11,12 +11,15 @@ import {
     ResetRegistrationFormActionType,
     UpdateValuesRegistrationFormActionType
 } from 'redux/store/actions/registration/interfaces';
+import { History } from 'history';
 
 const postRegistration = (
-    registrationFormValues: ValuesRegistrationForm
+    registrationFormValues: ValuesRegistrationForm,
+    history: History<unknown>
 ): PostRegistrationActionType => ({
     type: POST_REGISTRATION,
-    registrationFormValues
+    registrationFormValues,
+    history
 });
 
 const updateValuesRegistrationForm = (

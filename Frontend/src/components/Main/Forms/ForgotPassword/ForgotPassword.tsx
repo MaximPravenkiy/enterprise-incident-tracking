@@ -1,39 +1,24 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Button, Form, Input } from 'antd';
 import { useDispatch } from 'react-redux';
 import { restorePassword } from 'redux/store/actions/login/loginCreator';
 import { Dispatch } from 'redux';
 import { RestorePasswordType } from 'redux/store/actions/login/interfaces';
+import { RestorePasswordFormValue } from 'common/interfaces/login';
+import {
+    formItemLayout,
+    tailFormItemLayout,
+    configLogin,
+    configPassword,
+    configConfirmPassword
+} from 'components/Main/Forms/ForgotPassword/data';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 
-const formItemLayout = {
-    labelCol: {
-        xs: { span: 24 },
-        sm: { span: 12 }
-    },
-    wrapperCol: {
-        xs: { span: 24 },
-        sm: { span: 12 }
-    }
-};
-
-const tailFormItemLayout = {
-    wrapperCol: {
-        xs: {
-            span: 24,
-            offset: 0
-        },
-        sm: {
-            span: 24,
-            offset: 12
-        }
-    }
-};
-
-const ForgotPassword = () => {
+const ForgotPassword: FC<RouteComponentProps> = ({ history }) => {
     const dispatch = useDispatch<Dispatch<RestorePasswordType>>();
 
-    const onFinish = (values: any) => {
-        dispatch(restorePassword(values));
+    const onFinish = (values: RestorePasswordFormValue) => {
+        dispatch(restorePassword(values, history));
     };
 
     return (
@@ -42,56 +27,15 @@ const ForgotPassword = () => {
             {...formItemLayout}
             onFinish={onFinish}
         >
-            <Form.Item
-                label="To recover your password, enter your Login"
-                name="login"
-                rules={[
-                    { required: true, message: 'Please input your Login!' }
-                ]}
-            >
+            <Form.Item {...configLogin}>
                 <Input />
             </Form.Item>
 
-            <Form.Item
-                name="password"
-                label="Create and enter a new Password"
-                rules={[
-                    {
-                        min: 6,
-                        message: 'Password must be at least 6 characters long!'
-                    },
-                    {
-                        required: true,
-                        message: 'Please input your Password!'
-                    }
-                ]}
-                hasFeedback
-            >
+            <Form.Item {...configPassword}>
                 <Input.Password />
             </Form.Item>
 
-            <Form.Item
-                name="confirmPassword"
-                label="Confirm new Password"
-                dependencies={['password']}
-                hasFeedback
-                rules={[
-                    {
-                        required: true,
-                        message: 'Please confirm your Password!'
-                    },
-                    ({ getFieldValue }) => ({
-                        validator(_, value) {
-                            if (!value || getFieldValue('password') === value) {
-                                return Promise.resolve();
-                            }
-                            return Promise.reject(
-                                new Error('Passwords do not match!')
-                            );
-                        }
-                    })
-                ]}
-            >
+            <Form.Item {...configConfirmPassword}>
                 <Input.Password />
             </Form.Item>
 
@@ -104,4 +48,4 @@ const ForgotPassword = () => {
     );
 };
 
-export default ForgotPassword;
+export default withRouter(ForgotPassword);

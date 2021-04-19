@@ -13,7 +13,8 @@ import { PostRegistrationActionType } from 'redux/store/actions/registration/int
 type ResponseRegistrationType = SagaReturnType<typeof postRegistrationApi>;
 
 function* postRegistrationWorker({
-    registrationFormValues
+    registrationFormValues,
+    history
 }: PostRegistrationActionType) {
     try {
         const response: ResponseRegistrationType = yield call(
@@ -26,6 +27,7 @@ function* postRegistrationWorker({
             successNotification('Поздравляем!', response.data.message);
             yield put(resetRegistrationForm());
             yield put(changeKeyDepsOnPath('1'));
+            yield call(history.push, '/login');
         }
     } catch (e) {
         destroyMessage();

@@ -5,10 +5,12 @@ import {
     UPDATE_VALUES_REGISTRATION_FORM
 } from 'redux/store/actions/actionTypes';
 import { ValuesRegistrationForm } from 'common/interfaces/registration';
+import { History } from 'history';
 
 export interface PostRegistrationActionType {
     type: typeof POST_REGISTRATION;
     registrationFormValues: ValuesRegistrationForm;
+    history: History<unknown>;
 }
 
 export interface UpdateValuesRegistrationFormActionType {

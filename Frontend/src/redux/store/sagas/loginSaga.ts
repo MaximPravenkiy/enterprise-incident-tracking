@@ -51,17 +51,20 @@ function* postLoginWorker({ loginFormValues }: PostLoginActionType) {
 }
 
 function* restorePasswordWorker({
-    restorePasswordFormValue
+    restorePasswordFormValue,
+    history
 }: RestorePasswordType) {
     try {
         const response: ResponseRestorePasswordType = yield call(
             restorePasswordApi,
             restorePasswordFormValue
         );
-        console.log(response.data.message);
-        successNotification('Операция завершена', response.data.message);
+
+        if (response.status === 201) {
+            successNotification('Операция завершена.', response.data.message);
+            yield call(history.push, '/login');
+        }
     } catch (e) {
-        console.log(e.response.data.message);
         errorNotification(
             'Не удалось обновить пароль...',
             e.response.data.message

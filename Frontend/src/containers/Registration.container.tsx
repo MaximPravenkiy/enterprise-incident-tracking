@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
 import { RegistrationForm } from 'components/Main/Forms/Registration/RegistrationForm';
@@ -10,8 +10,9 @@ import { RootReducer } from 'redux/store/reducers/rootReducer';
 import { openMessage } from 'common/serverResponseHandlers/message';
 import { RegistrationType } from 'redux/store/actions/registration/interfaces';
 import { ValuesRegistrationForm } from 'common/interfaces/registration';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 
-const RegistrationContainer = () => {
+const RegistrationContainer: FC<RouteComponentProps> = ({ history }) => {
     const { dateOfBirth, fullname, login, password, position } = useSelector(
         ({ registrationReducer }: RootReducer) =>
             registrationReducer.valuesRegistrationForm
@@ -20,7 +21,7 @@ const RegistrationContainer = () => {
 
     const registerNewUser = (values: ValuesRegistrationForm) => {
         openMessage('Проверяем данные...');
-        dispatch(postRegistration(values));
+        dispatch(postRegistration(values, history));
     };
 
     const onChange = (value: ValuesRegistrationForm) => {
@@ -40,4 +41,4 @@ const RegistrationContainer = () => {
     );
 };
 
-export default RegistrationContainer;
+export default withRouter(RegistrationContainer);
