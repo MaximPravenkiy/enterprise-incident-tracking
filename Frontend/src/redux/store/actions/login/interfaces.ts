@@ -17,6 +17,7 @@ import { History } from 'history';
 export interface PostLoginActionType {
     type: typeof POST_LOGIN;
     loginFormValues: ValuesLoginForm;
+    history: History<unknown>;
 }
 
 export interface LoginActionType {

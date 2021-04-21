@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
@@ -9,6 +9,7 @@ import App from 'app/App';
 import rootWatcher from 'redux/store/sagas';
 import rootReducer from 'redux/store/reducers/rootReducer';
 import GlobalStyles from 'app/GlobalStyle';
+import InvalidPage from 'common/InvalidPage';
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
@@ -22,7 +23,10 @@ ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             <GlobalStyles />
-            <App />
+            <Switch>
+                <Route exact path="/invalid-page" component={InvalidPage} />
+                <Route path="/" component={App} />
+            </Switch>
         </BrowserRouter>
     </Provider>,
     document.getElementById('root')

@@ -27,7 +27,7 @@ const navContent = [
     { text: 'Регистрация', url: 'registration' }
 ];
 
-const MenuContainer: FC<RouteComponentProps> = ({ location }) => {
+const MenuContainer: FC<RouteComponentProps> = ({ location, history }) => {
     const dispatch = useDispatch<Dispatch<LoginType | IncidentsType>>();
     const { isAuth, fullname, keyDepsOnPath } = useSelector(
         ({ loginReducer }: RootReducer) => loginReducer
@@ -50,6 +50,7 @@ const MenuContainer: FC<RouteComponentProps> = ({ location }) => {
         localStorage.clear();
         dispatch(logout());
         logoutNotification();
+        history.push('/login');
     };
 
     const createIncident = () => {

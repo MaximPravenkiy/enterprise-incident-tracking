@@ -11,16 +11,18 @@ import { RootReducer } from 'redux/store/reducers/rootReducer';
 import { openMessage } from 'common/serverResponseHandlers/message';
 import { ValuesLoginForm } from 'common/interfaces/login';
 import { LoginType } from 'redux/store/actions/login/interfaces';
+import { useHistory } from 'react-router-dom';
 
 const LoginContainer = () => {
     const { login, password, remember } = useSelector(
         ({ loginReducer }: RootReducer) => loginReducer.valuesLoginForm
     );
+    const history = useHistory();
     const dispatch = useDispatch<Dispatch<LoginType>>();
 
     const onFinish = (values: ValuesLoginForm) => {
         openMessage('Проверяем данные...');
-        dispatch(postLogin(values));
+        dispatch(postLogin(values, history));
     };
 
     const onChange = (value: ValuesLoginForm) => {

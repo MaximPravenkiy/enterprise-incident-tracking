@@ -23,9 +23,13 @@ import {
 } from 'redux/store/actions/login/interfaces';
 import { History } from 'history';
 
-const postLogin = (loginFormValues: ValuesLoginForm): PostLoginActionType => ({
+const postLogin = (
+    loginFormValues: ValuesLoginForm,
+    history: History<unknown>
+): PostLoginActionType => ({
     type: POST_LOGIN,
-    loginFormValues
+    loginFormValues,
+    history
 });
 
 const login = (userData: string): LoginActionType => ({

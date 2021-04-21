@@ -11,25 +11,55 @@ const Routes = () => {
     const isAuth = useSelector(
         ({ loginReducer }: RootReducer) => loginReducer.isAuth
     );
-    const routes = isAuth ? (
+
+    return (
         <Switch>
-            <Route exact path="/incidents" component={IncidentsContainer} />
-            <Redirect to="/incidents" />
-        </Switch>
-    ) : (
-        <Switch>
-            <Route exact path="/login" component={LoginContainer} />
+            <Route
+                exact
+                path="/"
+                component={() =>
+                    isAuth ? (
+                        <Redirect to="/incidents" />
+                    ) : (
+                        <Redirect to="/login" />
+                    )
+                }
+            />
+            <Route
+                exact
+                path="/incidents"
+                component={() =>
+                    isAuth ? <IncidentsContainer /> : <Redirect to="/login" />
+                }
+            />
+            <Route
+                exact
+                path="/login"
+                component={() =>
+                    isAuth ? <Redirect to="/incidents" /> : <LoginContainer />
+                }
+            />
             <Route
                 exact
                 path="/registration"
-                component={RegistrationContainer}
+                component={() =>
+                    isAuth ? (
+                        <Redirect to="/incidents" />
+                    ) : (
+                        <RegistrationContainer />
+                    )
+                }
             />
-            <Route exact path="/forgot-password" component={ForgotPassword} />
-            <Redirect to="/login" />
+            <Route
+                exact
+                path="/forgot-password"
+                component={() =>
+                    isAuth ? <Redirect to="/incidents" /> : <ForgotPassword />
+                }
+            />
+            <Redirect to="/invalid-page" />
         </Switch>
     );
-
-    return <>{routes}</>;
 };
 
 export default Routes;
