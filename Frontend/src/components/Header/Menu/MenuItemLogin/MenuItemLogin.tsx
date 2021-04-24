@@ -13,7 +13,7 @@ import {
     RightSection,
     Title,
     Wrapper
-} from 'components/Header/Menu/MenuItemLogin/style';
+} from 'components/Header/Menu/MenuItemLogin/styles';
 
 const MenuItemLogin: FC<MenuItemLoginProps> = ({
     fullname,

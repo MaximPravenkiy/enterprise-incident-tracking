@@ -1,6 +1,6 @@
 import React from 'react';
 import MenuContainer from 'containers/Menu.container';
-import { HeaderCustom } from 'components/Header/style';
+import { HeaderCustom } from 'components/Header/styles';
 
 const Header = () => (
     <HeaderCustom>

@@ -8,36 +8,32 @@ interface GetFieldValue {
 const formItemLayout = {
     labelCol: {
         xs: { span: 24 },
-        sm: { span: 12 }
+        sm: { span: 24 },
+        md: { span: 13, pull: 2 }
     },
     wrapperCol: {
         xs: { span: 24 },
-        sm: { span: 12 }
+        sm: { span: 24 },
+        md: { span: 11, pull: 2 }
     }
 };
 
 const tailFormItemLayout = {
     wrapperCol: {
-        xs: {
-            span: 24,
-            offset: 0
-        },
-        sm: {
-            span: 24,
-            offset: 12
-        }
+        xs: { offset: 0 },
+        md: { offset: 11 }
     }
 };
 
 const configLogin = {
-    label: 'To recover your password, enter your Login',
+    label: 'Enter your Login',
     name: 'login',
     rules: [{ required: true, message: 'Please input your Login!' }]
 };
 
 const configPassword = {
     name: 'password',
-    label: 'Create and enter a new Password',
+    label: 'Create a new Password',
     rules: [
         {
             min: 6,

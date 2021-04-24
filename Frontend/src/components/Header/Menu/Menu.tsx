@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { MenuCustom } from 'components/Header/Menu/style';
+import { MenuCustom } from 'components/Header/Menu/styles';
 import { MenuProps } from 'components/Header/Menu/interfaces';
 
 const NavMenu: FC<MenuProps> = ({ menuItems, keyDepsOnPath, changeKey }) => (

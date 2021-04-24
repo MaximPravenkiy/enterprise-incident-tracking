@@ -1,9 +1,7 @@
 import React, { FC } from 'react';
-import {
-    MenuItemCustom,
-    NavLinkEx
-} from 'components/Header/Menu/MenuItemLogout/styles';
+import { MenuItemCustom } from 'components/Header/Menu/MenuItemLogout/styles';
 import { MenuItemLogoutProps } from 'components/Header/Menu/MenuItemLogout/interfaces';
+import { NavLink } from 'react-router-dom';
 
 const MenuItemLogout: FC<MenuItemLogoutProps> = ({
     key,
@@ -12,7 +10,7 @@ const MenuItemLogout: FC<MenuItemLogoutProps> = ({
     ...props
 }) => (
     <MenuItemCustom {...props} key={key}>
-        <NavLinkEx to={`/${url}`}>{text}</NavLinkEx>
+        <NavLink to={`/${url}`}>{text}</NavLink>
     </MenuItemCustom>
 );
 

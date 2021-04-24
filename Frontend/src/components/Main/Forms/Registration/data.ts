@@ -1,24 +1,20 @@
 export const formItemLayout = {
     labelCol: {
         xs: { span: 24 },
-        sm: { span: 8 }
+        sm: { span: 24 },
+        md: { span: 12, pull: 4 }
     },
     wrapperCol: {
         xs: { span: 24 },
-        sm: { span: 16 }
+        sm: { span: 24 },
+        md: { span: 12, pull: 4 }
     }
 };
 
 export const tailFormItemLayout = {
     wrapperCol: {
-        xs: {
-            span: 24,
-            offset: 0
-        },
-        sm: {
-            span: 16,
-            offset: 8
-        }
+        xs: { offset: 0 },
+        md: { offset: 8 }
     }
 };
 
