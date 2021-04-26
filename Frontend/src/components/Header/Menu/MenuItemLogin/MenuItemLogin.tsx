@@ -11,7 +11,7 @@ import {
     ButtonWrapper,
     IncidentButton,
     RightSection,
-    Title,
+    TittleWrapper,
     Wrapper
 } from 'components/Header/Menu/MenuItemLogin/styles';
 
@@ -52,19 +52,15 @@ const MenuItemLogin: FC<MenuItemLoginProps> = ({
                 </IncidentButton>
             </ButtonWrapper>
 
-            <div>
-                <SnippetsFilled
-                    style={{ fontSize: '3em', marginRight: '10px' }}
-                />
-                <Title>INCIDENT TRACKING</Title>
-                <ScheduleFilled
-                    style={{ fontSize: '3em', marginLeft: '10px' }}
-                />
-            </div>
+            <TittleWrapper>
+                <SnippetsFilled style={{ marginRight: '10px' }} />
+                <span>INCIDENT TRACKING</span>
+                <ScheduleFilled style={{ marginLeft: '10px' }} />
+            </TittleWrapper>
 
             <RightSection>
                 <div>
-                    <Avatar size={50} gap={1}>
+                    <Avatar size={45} gap={1}>
                         {fullname &&
                             fullname
                                 .split(' ')

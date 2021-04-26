@@ -110,6 +110,7 @@ const GlobalStyles = createGlobalStyle`
     .ant-input-affix-wrapper .anticon,
     .ant-picker,
     .ant-input,
+    .ant-select,
     .ant-picker-input > input {
         font-size: 18px;
     

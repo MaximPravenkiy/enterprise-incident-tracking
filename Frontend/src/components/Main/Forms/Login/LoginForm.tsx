@@ -4,7 +4,6 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { NavLink } from 'react-router-dom';
 import { LoginFormTypes } from 'components/Main/Forms/Login/interfaces';
 import { configLogin, configPassword } from 'components/Main/Forms/Login/data';
-import { LoginFormWrapper } from 'components/Main/Forms/Login/styles';
 
 const LoginForm: FC<LoginFormTypes> = ({
     onFinish,
@@ -22,53 +21,48 @@ const LoginForm: FC<LoginFormTypes> = ({
     }, [form, login, password, remember]);
 
     return (
-        <LoginFormWrapper>
-            <Form
-                name="normal_login"
-                onFinish={onFinish}
-                onValuesChange={onChange}
-                form={form}
-            >
-                <Form.Item {...configLogin}>
-                    <Input prefix={<UserOutlined />} placeholder="Login" />
+        <Form
+            name="normal_login"
+            onFinish={onFinish}
+            onValuesChange={onChange}
+            form={form}
+        >
+            <Form.Item {...configLogin}>
+                <Input prefix={<UserOutlined />} placeholder="Login" />
+            </Form.Item>
+
+            <Form.Item {...configPassword}>
+                <Input
+                    prefix={<LockOutlined />}
+                    type="password"
+                    placeholder="Password"
+                />
+            </Form.Item>
+
+            <Form.Item>
+                <Form.Item name="remember" valuePropName="checked" noStyle>
+                    <Checkbox>Remember me</Checkbox>
                 </Form.Item>
 
-                <Form.Item {...configPassword}>
-                    <Input
-                        prefix={<LockOutlined />}
-                        type="password"
-                        placeholder="Password"
-                    />
-                </Form.Item>
+                <NavLink to="/forgot-password" onClick={onForgotPasswordClick}>
+                    Forgot password
+                </NavLink>
+            </Form.Item>
 
-                <Form.Item>
-                    <Form.Item name="remember" valuePropName="checked" noStyle>
-                        <Checkbox>Remember me</Checkbox>
-                    </Form.Item>
-
-                    <NavLink
-                        to="/forgot-password"
-                        onClick={onForgotPasswordClick}
-                    >
-                        Forgot password
-                    </NavLink>
-                </Form.Item>
-
-                <Form.Item>
-                    <Button
-                        type="primary"
-                        htmlType="submit"
-                        className="login-form-button"
-                    >
-                        Log in
-                    </Button>{' '}
-                    Or{' '}
-                    <NavLink to="/registration" onClick={onRegisterNowClick}>
-                        register now!
-                    </NavLink>
-                </Form.Item>
-            </Form>
-        </LoginFormWrapper>
+            <Form.Item>
+                <Button
+                    type="primary"
+                    htmlType="submit"
+                    className="login-form-button"
+                >
+                    Log in
+                </Button>{' '}
+                Or{' '}
+                <NavLink to="/registration" onClick={onRegisterNowClick}>
+                    register now!
+                </NavLink>
+            </Form.Item>
+        </Form>
     );
 };
 
