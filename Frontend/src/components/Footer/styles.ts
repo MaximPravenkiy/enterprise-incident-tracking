@@ -8,10 +8,6 @@ export const FooterCustom = styled(Layout.Footer)`
     align-items: center;
     justify-content: center;
     background-color: #a9a9a9;
-
-    @media (max-width: 1024px) {
-        display: none;
-    }
 `;
 
 export const StyleSpan = styled.span`
@@ -21,5 +17,13 @@ export const StyleSpan = styled.span`
 
     @media (max-width: 1366px) {
         font-size: 32px;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 26px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 20px;
     }
 `;

@@ -1,17 +1,14 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import { MenuItemCustom } from 'components/Header/Menu/MenuItemLogout/styles';
 import { MenuItemLogoutProps } from 'components/Header/Menu/MenuItemLogout/interfaces';
 import { NavLink } from 'react-router-dom';
 
-const MenuItemLogout: FC<MenuItemLogoutProps> = ({
-    key,
-    url,
-    text,
-    ...props
-}) => (
-    <MenuItemCustom {...props} key={key}>
-        <NavLink to={`/${url}`}>{text}</NavLink>
-    </MenuItemCustom>
+const MenuItemLogout: FC<MenuItemLogoutProps> = memo(
+    ({ key, url, text, ...props }) => (
+        <MenuItemCustom {...props} key={key}>
+            <NavLink to={`/${url}`}>{text}</NavLink>
+        </MenuItemCustom>
+    )
 );
 
 export default MenuItemLogout;

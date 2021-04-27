@@ -7,4 +7,11 @@ export const SpanCustom = styled.span`
     font-size: 1.2em;
     line-height: 1.2em;
     color: red;
+
+    @media (max-width: 385px) {
+        &:after {
+            content: '\\A';
+            white-space: pre;
+        }
+    }
 `;

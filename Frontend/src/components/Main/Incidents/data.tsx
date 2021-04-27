@@ -51,7 +51,7 @@ export const columns = [
     {
         title: 'Action',
         key: 'action',
-        render: (incident: ListOfIncidents): any => (
+        render: (incident: ListOfIncidents): JSX.Element => (
             <ActionButtonContainer incident={incident} />
         )
     }

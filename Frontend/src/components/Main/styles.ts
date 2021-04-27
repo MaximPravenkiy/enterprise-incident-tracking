@@ -6,8 +6,9 @@ export const Content = styled(Layout.Content)`
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0;
 
-    @media (max-width: 1024px) {
-        height: 85vh;
+    @media (max-width: 1366px) {
+        padding: 7px 0;
     }
 `;

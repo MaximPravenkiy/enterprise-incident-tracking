@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
@@ -27,7 +27,7 @@ const navContent = [
     { text: 'Регистрация', url: 'registration' }
 ];
 
-const MenuContainer: FC<RouteComponentProps> = ({ location, history }) => {
+const MenuContainer: FC<RouteComponentProps> = memo(({ location, history }) => {
     const dispatch = useDispatch<Dispatch<LoginType | IncidentsType>>();
     const { isAuth, fullname, keyDepsOnPath } = useSelector(
         ({ loginReducer }: RootReducer) => loginReducer
@@ -76,7 +76,6 @@ const MenuContainer: FC<RouteComponentProps> = ({ location, history }) => {
         dispatch(changeKeyDepsOnPath(path));
     }, [dispatch, location.pathname]);
 
-    // Отображение меню в зависимости от аутентификации
     let key = 0;
     const menuItems = isAuth ? (
         <MenuItemLogin
@@ -106,6 +105,6 @@ const MenuContainer: FC<RouteComponentProps> = ({ location, history }) => {
             changeKey={changeKey}
         />
     );
-};
+});
 
 export default withRouter(MenuContainer);
