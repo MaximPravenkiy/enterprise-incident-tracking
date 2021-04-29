@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useRef } from 'react';
 import { Form, Input, Select, DatePicker, Modal } from 'antd';
-import moment from 'moment';
+import moment, { Moment } from 'moment';
 import CloseModalButton from 'components/Main/Forms/CreateIncidents/CloseModalButton/CloseModalButton';
 import TitleModal from 'components/Main/Forms/CreateIncidents/TitleModal/TitleModal';
 import CreateOrUpdateButton from 'components/Main/Forms/CreateIncidents/CreateOrUpdateButton/CreateOrUpdateButton';
@@ -38,7 +38,7 @@ const CreateIncidentsForm: FC<CreateIncidentTypeProps> = ({
         }
     }, [form, valuesCreateIncidentForm]);
 
-    const disabledDate = (currentDate: moment.Moment) =>
+    const disabledDate = (currentDate: Moment) =>
         currentDate && currentDate < moment().startOf('day');
 
     return (

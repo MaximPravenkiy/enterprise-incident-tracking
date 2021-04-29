@@ -1,7 +1,7 @@
-import moment from 'moment';
+import { Moment } from 'moment';
 
 export interface ValuesRegistrationForm {
-    dateOfBirth: null | moment.Moment;
+    dateOfBirth: null | Moment;
     fullname: string;
     login: string;
     password: string;

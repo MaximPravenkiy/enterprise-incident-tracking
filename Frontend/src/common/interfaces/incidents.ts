@@ -1,4 +1,4 @@
-import moment from 'moment';
+import { Moment } from 'moment';
 
 export interface ListOfIncidents extends ValuesCreateIncidentsForm {
     icon: JSX.Element;
@@ -10,10 +10,10 @@ export interface ValuesCreateIncidentsForm {
     area: string;
     assignee: string;
     description: string;
-    dueDate: moment.Moment;
+    dueDate: Moment;
     incidentName: string;
     priority: string;
-    startDate: moment.Moment;
+    startDate: Moment;
     status: string;
 }
 

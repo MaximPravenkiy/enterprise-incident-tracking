@@ -1,5 +1,4 @@
-import moment from 'moment';
+import moment, { Moment } from 'moment';
 
-export const getDate = (
-    date = new Date() as Date | moment.Moment
-): moment.Moment => moment(date, 'YYYY-MM-DD').utc(true);
+export const getDate = (date = new Date() as Date | Moment): Moment =>
+    moment(date, 'YYYY-MM-DD').utc(true);

@@ -1,4 +1,4 @@
-import moment from 'moment';
+import { Moment } from 'moment';
 import {
     RESET_REGISTRATION_FORM,
     UPDATE_VALUES_REGISTRATION_FORM
@@ -10,7 +10,7 @@ type RegistrationInitialStateType = typeof initialState;
 
 const initialState = {
     valuesRegistrationForm: {
-        dateOfBirth: null as null | moment.Moment,
+        dateOfBirth: null as null | Moment,
         fullname: '',
         login: '',
         password: '',

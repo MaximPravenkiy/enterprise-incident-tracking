@@ -2,7 +2,7 @@ import React from 'react';
 import PriorityLabel from 'components/Main/Forms/CreateIncidents/PriorityLabel/PriorityLabel';
 
 export const areas = [
-    { label: 'Layout', value: 'Layout' },
+    { label: 'Designer', value: 'Designer' },
     { label: 'Frontend', value: 'Frontend' },
     { label: 'Backend', value: 'Backend' },
     { label: 'DevOps', value: 'DevOps' },
@@ -54,8 +54,8 @@ export const configIncidentName = {
             message: "Incident name can't be empty!"
         },
         {
-            max: 15,
-            message: "Incident name can't contain more than 15 symbols!"
+            max: 30,
+            message: "Incident name can't contain more than 30 symbols!"
         }
     ]
 };
@@ -83,10 +83,6 @@ export const configDescription = {
         {
             required: true,
             message: "Description can't be empty!"
-        },
-        {
-            max: 35,
-            message: "Incident name can't contain more than 35 symbols!"
         }
     ]
 };

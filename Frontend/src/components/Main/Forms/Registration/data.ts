@@ -39,8 +39,8 @@ export const configFullname = {
             message: 'Please input your Full Name!'
         },
         {
-            pattern: /^\D*$/,
-            message: "This field can't contain numbers!"
+            pattern: /^[a-zA-Z\s]*$/,
+            message: 'Field must contain only letters!'
         }
     ]
 };
@@ -52,6 +52,10 @@ export const configLogin = {
         {
             required: true,
             message: 'Please input your Login!'
+        },
+        {
+            pattern: /^\S*$/,
+            message: "Field can't contain spaces!"
         }
     ]
 };

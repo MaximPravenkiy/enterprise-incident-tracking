@@ -1,8 +1,9 @@
 import React, { FC, memo, useEffect, useState } from 'react';
 import CreateIncidentsContainer from 'containers/CreateIncidents.container';
 import { IncidentsTypeProps } from 'components/Main/Incidents/interfaces';
-import { TableCustom } from 'components/Main/Incidents/styles';
 import { columns } from 'components/Main/Incidents/data';
+import { Table } from 'antd';
+import { TableWrapper } from './styles';
 
 const Incidents: FC<IncidentsTypeProps> = memo(
     ({ listOfIncidents, isListOfIncidentsLoading }) => {
@@ -10,9 +11,9 @@ const Incidents: FC<IncidentsTypeProps> = memo(
 
         const handleResize = () => {
             if (window.innerHeight >= 665 && window.innerWidth >= 1024) {
-                setDataNumberOnPage(4);
-            } else if (window.innerWidth < 1024 && window.innerHeight < 665) {
                 setDataNumberOnPage(5);
+            } else if (window.innerWidth < 1024 && window.innerHeight < 665) {
+                setDataNumberOnPage(4);
             } else {
                 setDataNumberOnPage(6);
             }
@@ -26,8 +27,8 @@ const Incidents: FC<IncidentsTypeProps> = memo(
         }, []);
 
         return (
-            <>
-                <TableCustom
+            <TableWrapper>
+                <Table
                     pagination={{
                         position: ['bottomCenter'],
                         pageSize: dataNumberOnPage
@@ -36,10 +37,10 @@ const Incidents: FC<IncidentsTypeProps> = memo(
                     bordered
                     dataSource={listOfIncidents}
                     loading={isListOfIncidentsLoading}
-                    scroll={{ x: true }}
+                    scroll={{ x: 1200 }}
                 />
                 <CreateIncidentsContainer />
-            </>
+            </TableWrapper>
         );
     }
 );
