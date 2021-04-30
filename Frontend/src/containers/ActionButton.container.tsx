@@ -8,11 +8,11 @@ import {
     getUsers,
     setDataForUpdating,
     updateValuesCreateIncidentForm
-} from 'redux/store/actions/incidents/incidentsCreator';
+} from 'redux/actions/incidents/incidentsCreator';
 import { openMessage } from 'common/serverResponseHandlers/message';
 import { getDate } from 'common/getDate';
-import { IncidentsType } from 'redux/store/actions/incidents/interfaces';
-import { ListOfIncidents } from 'common/interfaces/incidents';
+import { IncidentsType } from 'redux/actions/incidents/interfaces';
+import { ListOfIncidents } from 'common/types/incidents';
 
 const ActionButtonContainer: FC<{ incident: ListOfIncidents }> = ({
     incident

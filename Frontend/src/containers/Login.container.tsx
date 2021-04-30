@@ -6,11 +6,11 @@ import {
     changeKeyDepsOnPath,
     postLogin,
     updateValuesLoginForm
-} from 'redux/store/actions/login/loginCreator';
-import { RootReducer } from 'redux/store/reducers/rootReducer';
+} from 'redux/actions/login/loginCreator';
+import { RootReducer } from 'redux/reducers/rootReducer';
 import { openMessage } from 'common/serverResponseHandlers/message';
-import { ValuesLoginForm } from 'common/interfaces/login';
-import { LoginType } from 'redux/store/actions/login/interfaces';
+import { ValuesLoginForm } from 'common/types/login';
+import { LoginType } from 'redux/actions/login/interfaces';
 import { useHistory } from 'react-router-dom';
 
 const LoginContainer = () => {

@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import { Button, Form, Input } from 'antd';
 import { useDispatch } from 'react-redux';
-import { restorePassword } from 'redux/store/actions/login/loginCreator';
+import { restorePassword } from 'redux/actions/login/loginCreator';
 import { Dispatch } from 'redux';
-import { RestorePasswordType } from 'redux/store/actions/login/interfaces';
-import { RestorePasswordFormValue } from 'common/interfaces/login';
+import { RestorePasswordType } from 'redux/actions/login/interfaces';
+import { RestorePasswordFormValue } from 'common/types/login';
 import {
     formItemLayout,
     tailFormItemLayout,
@@ -13,11 +13,13 @@ import {
     configConfirmPassword
 } from 'components/Main/Forms/ForgotPassword/data';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { openMessage } from 'common/serverResponseHandlers/message';
 
 const ForgotPassword: FC<RouteComponentProps> = ({ history }) => {
     const dispatch = useDispatch<Dispatch<RestorePasswordType>>();
 
     const onFinish = (values: RestorePasswordFormValue) => {
+        openMessage('Проверяем данные...');
         dispatch(restorePassword(values, history));
     };
 

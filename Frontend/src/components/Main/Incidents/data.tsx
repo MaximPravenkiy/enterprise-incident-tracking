@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListOfIncidents } from 'common/interfaces/incidents';
+import { ListOfIncidents } from 'common/types/incidents';
 import ActionButtonContainer from 'containers/ActionButton.container';
 import { ColumnsType } from 'antd/es/table';
 import moment, { Moment } from 'moment';

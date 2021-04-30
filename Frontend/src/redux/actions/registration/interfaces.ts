@@ -3,8 +3,8 @@ import {
     REGISTRATION,
     RESET_REGISTRATION_FORM,
     UPDATE_VALUES_REGISTRATION_FORM
-} from 'redux/store/actions/actionTypes';
-import { ValuesRegistrationForm } from 'common/interfaces/registration';
+} from 'redux/actions/actionTypes';
+import { ValuesRegistrationForm } from 'common/types/registration';
 import { History } from 'history';
 
 export interface PostRegistrationActionType {

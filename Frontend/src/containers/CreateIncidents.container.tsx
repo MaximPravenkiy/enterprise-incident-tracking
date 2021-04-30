@@ -7,14 +7,14 @@ import {
     createIncident,
     updateIncident,
     updateValuesCreateIncidentForm
-} from 'redux/store/actions/incidents/incidentsCreator';
-import { RootReducer } from 'redux/store/reducers/rootReducer';
+} from 'redux/actions/incidents/incidentsCreator';
+import { RootReducer } from 'redux/reducers/rootReducer';
 import { openMessage } from 'common/serverResponseHandlers/message';
-import { IncidentsType } from 'redux/store/actions/incidents/interfaces';
+import { IncidentsType } from 'redux/actions/incidents/interfaces';
 import {
     CreateIncident,
     ValuesCreateIncidentsForm
-} from 'common/interfaces/incidents';
+} from 'common/types/incidents';
 
 const CreateIncidentsContainer = () => {
     const {

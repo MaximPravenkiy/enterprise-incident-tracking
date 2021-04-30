@@ -5,8 +5,7 @@ const schema = new Schema({
     password: { type: String, required: true },
     dateOfBirth: { type: Date, required: true },
     position: { type: String, required: true },
-    incidents: [{ type: Types.ObjectId, ref: 'Incident' }]
+    incidents: [{ type: String }]
 });
 
 module.exports = model('User', schema);
-

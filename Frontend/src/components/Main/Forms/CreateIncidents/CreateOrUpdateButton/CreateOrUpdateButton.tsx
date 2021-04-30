@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
-import { ActionWithCreateIncidentFormType } from 'common/interfaces/incidents';
+import { ActionWithCreateIncidentFormType } from 'common/types/incidents';
 
 const CreateOrUpdateButton = ({
     actionWithCreateIncidentForm

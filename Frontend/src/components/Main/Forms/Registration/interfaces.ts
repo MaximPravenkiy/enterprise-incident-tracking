@@ -1,4 +1,4 @@
-import { ValuesRegistrationForm } from 'common/interfaces/registration';
+import { ValuesRegistrationForm } from 'common/types/registration';
 
 export interface RegistrationFormTypes extends ValuesRegistrationForm {
     registerNewUser: (values: ValuesRegistrationForm) => void;

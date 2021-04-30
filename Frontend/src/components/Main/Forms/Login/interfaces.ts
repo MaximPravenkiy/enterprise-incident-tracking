@@ -1,4 +1,4 @@
-import { ValuesLoginForm } from 'common/interfaces/login';
+import { ValuesLoginForm } from 'common/types/login';
 
 export interface LoginFormTypes extends ValuesLoginForm {
     onFinish: (values: ValuesLoginForm) => void;

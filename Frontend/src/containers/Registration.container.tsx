@@ -5,11 +5,11 @@ import { RegistrationForm } from 'components/Main/Forms/Registration/Registratio
 import {
     postRegistration,
     updateValuesRegistrationForm
-} from 'redux/store/actions/registration/registrationCreator';
-import { RootReducer } from 'redux/store/reducers/rootReducer';
+} from 'redux/actions/registration/registrationCreator';
+import { RootReducer } from 'redux/reducers/rootReducer';
 import { openMessage } from 'common/serverResponseHandlers/message';
-import { RegistrationType } from 'redux/store/actions/registration/interfaces';
-import { ValuesRegistrationForm } from 'common/interfaces/registration';
+import { RegistrationType } from 'redux/actions/registration/interfaces';
+import { ValuesRegistrationForm } from 'common/types/registration';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 const RegistrationContainer: FC<RouteComponentProps> = ({ history }) => {

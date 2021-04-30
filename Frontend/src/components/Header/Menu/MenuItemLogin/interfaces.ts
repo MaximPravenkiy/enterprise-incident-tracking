@@ -1,4 +1,4 @@
-import { ActionWithIncidentsType } from 'common/interfaces/incidents';
+import { ActionWithIncidentsType } from 'common/types/incidents';
 
 export interface MenuItemLoginProps {
     fullname: string;

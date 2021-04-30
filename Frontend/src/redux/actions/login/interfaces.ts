@@ -6,12 +6,12 @@ import {
     RESET_LOGIN_FORM_VALUES,
     RESTORE_PASSWORD,
     UPDATE_VALUES_LOGIN_FORM
-} from 'redux/store/actions/actionTypes';
+} from 'redux/actions/actionTypes';
 import {
     ValuesLoginForm,
     KeysType,
     RestorePasswordFormValue
-} from 'common/interfaces/login';
+} from 'common/types/login';
 import { History } from 'history';
 
 export interface PostLoginActionType {

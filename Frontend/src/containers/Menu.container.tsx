@@ -3,23 +3,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import NavMenu from 'components/Header/Menu/Menu';
-import {
-    changeKeyDepsOnPath,
-    logout
-} from 'redux/store/actions/login/loginCreator';
+import { changeKeyDepsOnPath, logout } from 'redux/actions/login/loginCreator';
 import MenuItemLogin from 'components/Header/Menu/MenuItemLogin/MenuItemLogin';
 import MenuItemLogout from 'components/Header/Menu/MenuItemLogout/MenuItemLogout';
 import {
     changeActionWithListOfIncidents,
     getIncidents,
     getUsers
-} from 'redux/store/actions/incidents/incidentsCreator';
-import { RootReducer } from 'redux/store/reducers/rootReducer';
+} from 'redux/actions/incidents/incidentsCreator';
+import { RootReducer } from 'redux/reducers/rootReducer';
 import { openMessage } from 'common/serverResponseHandlers/message';
-import { LoginType } from 'redux/store/actions/login/interfaces';
-import { IncidentsType } from 'redux/store/actions/incidents/interfaces';
+import { LoginType } from 'redux/actions/login/interfaces';
+import { IncidentsType } from 'redux/actions/incidents/interfaces';
 import { logoutNotification } from 'common/serverResponseHandlers/notification';
-import { KeysType } from 'common/interfaces/login';
+import { KeysType } from 'common/types/login';
 import { MenuInfo } from '../../node_modules/rc-menu/lib/interface';
 
 const navContent = [

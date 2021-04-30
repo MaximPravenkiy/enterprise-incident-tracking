@@ -1,16 +1,16 @@
 import axios from 'axios';
-import { ValuesRegistrationForm } from 'common/interfaces/registration';
+import { ValuesRegistrationForm } from 'common/types/registration';
 import {
     ValuesLoginForm,
     UserData,
     RestorePasswordFormValue
-} from 'common/interfaces/login';
-import { UpdateIncidentActionType } from 'redux/store/actions/incidents/interfaces';
+} from 'common/types/login';
+import { UpdateIncidentActionType } from 'redux/actions/incidents/interfaces';
 import {
     ListOfIncidents,
     Users,
     ValuesCreateIncidentsForm
-} from 'common/interfaces/incidents';
+} from 'common/types/incidents';
 import axiosWithAuthorization from 'common/axiosWithAuthorization';
 
 interface Message {

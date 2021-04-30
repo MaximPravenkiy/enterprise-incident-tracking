@@ -8,7 +8,7 @@ import {
     SET_USERS,
     UPDATE_LOADER,
     UPDATE_VALUES_CREATE_INCIDENT_FORM
-} from 'redux/store/actions/actionTypes';
+} from 'redux/actions/actionTypes';
 import { getDate } from 'common/getDate';
 import {
     ActionWithCreateIncidentFormType,
@@ -16,8 +16,8 @@ import {
     ListOfIncidents,
     Users,
     ValuesCreateIncidentsForm
-} from 'common/interfaces/incidents';
-import { IncidentsType } from 'redux/store/actions/incidents/interfaces';
+} from 'common/types/incidents';
+import { IncidentsType } from 'redux/actions/incidents/interfaces';
 
 export type IncidentsInitialStateType = typeof initialState;
 

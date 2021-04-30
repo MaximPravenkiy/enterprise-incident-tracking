@@ -68,13 +68,16 @@ router.put(
                 return res.status(400).json({ message: 'Пользователь с таким логином не существует!' });
             }
 
-            const isMatchPasswords = await bcrypt.compare(newPassword, user.password);
+            const isMatchPasswords = user.incidents.some(password => bcrypt.compareSync(newPassword, password));
             if (isMatchPasswords) {
                 return res.status(400).json({ message: 'Новый пароль должен отличаться от предыдущего пароля!' });
             }
 
+            const incidents = [...user.incidents];
+            incidents.push(user.password);
+
             const hashedNewPassword = await bcrypt.hash(newPassword, 6);
-            await User.findOneAndUpdate({ login }, { password: hashedNewPassword });
+            await User.findOneAndUpdate({ login }, { password: hashedNewPassword, incidents });
 
             return res.status(201).json({ message: 'Пароль был успешно обновлён!' });
         } catch (e) {

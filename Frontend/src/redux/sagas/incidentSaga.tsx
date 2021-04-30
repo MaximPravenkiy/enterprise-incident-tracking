@@ -7,15 +7,15 @@ import {
     setIncidents,
     setUsers,
     updateLoader
-} from 'redux/store/actions/incidents/incidentsCreator';
+} from 'redux/actions/incidents/incidentsCreator';
 import {
     CREATE_INCIDENT,
     DELETE_INCIDENT,
     GET_INCIDENTS,
     GET_USERS,
     UPDATE_INCIDENT
-} from 'redux/store/actions/actionTypes';
-import { logout } from 'redux/store/actions/login/loginCreator';
+} from 'redux/actions/actionTypes';
+import { logout } from 'redux/actions/login/loginCreator';
 import {
     errorNotification,
     successNotification
@@ -28,12 +28,12 @@ import {
     getUsersForAssigneeOptionApi,
     postIncidentApi,
     updateIncidentApi
-} from 'redux/store/sagas/API';
+} from 'redux/sagas/API';
 import {
     CreateIncidentActionType,
     DeleteIncidentActionType,
     UpdateIncidentActionType
-} from 'redux/store/actions/incidents/interfaces';
+} from 'redux/actions/incidents/interfaces';
 
 type ResponseGetIncidentsType = SagaReturnType<typeof getMyIncidentsApi>;
 type ResponseGetUsersForAssigneeType = SagaReturnType<

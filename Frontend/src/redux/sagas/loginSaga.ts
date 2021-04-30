@@ -1,10 +1,7 @@
 import { put, call, takeEvery, SagaReturnType } from 'redux-saga/effects';
-import { POST_LOGIN, RESTORE_PASSWORD } from 'redux/store/actions/actionTypes';
-import {
-    login,
-    resetLoginFormValue
-} from 'redux/store/actions/login/loginCreator';
-import { postLoginApi, restorePasswordApi } from 'redux/store/sagas/API';
+import { POST_LOGIN, RESTORE_PASSWORD } from 'redux/actions/actionTypes';
+import { login, resetLoginFormValue } from 'redux/actions/login/loginCreator';
+import { postLoginApi, restorePasswordApi } from 'redux/sagas/API';
 import {
     errorNotification,
     successNotification
@@ -13,7 +10,7 @@ import { destroyMessage } from 'common/serverResponseHandlers/message';
 import {
     PostLoginActionType,
     RestorePasswordType
-} from 'redux/store/actions/login/interfaces';
+} from 'redux/actions/login/interfaces';
 
 type ResponseLoginType = SagaReturnType<typeof postLoginApi>;
 type ResponseRestorePasswordType = SagaReturnType<typeof restorePasswordApi>;
@@ -69,10 +66,12 @@ function* restorePasswordWorker({
         );
 
         if (response.status === 201) {
+            destroyMessage();
             successNotification('Операция завершена.', response.data.message);
             yield call(history.push, '/login');
         }
     } catch (e) {
+        destroyMessage();
         errorNotification(
             'Не удалось обновить пароль...',
             e.response.data.message

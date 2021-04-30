@@ -3,7 +3,7 @@ import {
     CreateIncident,
     Users,
     ValuesCreateIncidentsForm
-} from 'common/interfaces/incidents';
+} from 'common/types/incidents';
 
 export interface CreateIncidentTypeProps {
     users: Array<Users>;

@@ -6,8 +6,8 @@ import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import App from 'app/App';
-import rootWatcher from 'redux/store/sagas';
-import rootReducer from 'redux/store/reducers/rootReducer';
+import rootWatcher from 'redux/sagas';
+import rootReducer from 'redux/reducers/rootReducer';
 import GlobalStyles from 'app/GlobalStyle';
 import InvalidPage from 'common/InvalidPage';
 

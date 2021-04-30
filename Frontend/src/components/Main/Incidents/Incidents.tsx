@@ -3,7 +3,7 @@ import CreateIncidentsContainer from 'containers/CreateIncidents.container';
 import { IncidentsTypeProps } from 'components/Main/Incidents/interfaces';
 import { columns } from 'components/Main/Incidents/data';
 import { Table } from 'antd';
-import { TableWrapper } from './styles';
+import { TableWrapper } from 'components/Main/Incidents/styles';
 
 const Incidents: FC<IncidentsTypeProps> = memo(
     ({ listOfIncidents, isListOfIncidentsLoading }) => {

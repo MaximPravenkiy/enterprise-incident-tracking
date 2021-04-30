@@ -1,4 +1,4 @@
-import { ListOfIncidents } from 'common/interfaces/incidents';
+import { ListOfIncidents } from 'common/types/incidents';
 
 export interface IncidentsTypeProps {
     listOfIncidents: Array<ListOfIncidents>;

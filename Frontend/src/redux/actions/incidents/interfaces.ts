@@ -13,14 +13,14 @@ import {
     UPDATE_INCIDENT,
     UPDATE_LOADER,
     UPDATE_VALUES_CREATE_INCIDENT_FORM
-} from 'redux/store/actions/actionTypes';
+} from 'redux/actions/actionTypes';
 import {
     ActionWithIncidentsType,
     CreateIncident,
     ListOfIncidents,
     Users,
     ValuesCreateIncidentsForm
-} from 'common/interfaces/incidents';
+} from 'common/types/incidents';
 
 export interface SetIncidentsActionType {
     type: typeof SET_INCIDENTS;

@@ -4,9 +4,9 @@ import {
     LOGOUT,
     RESET_LOGIN_FORM_VALUES,
     UPDATE_VALUES_LOGIN_FORM
-} from 'redux/store/actions/actionTypes';
-import { ValuesLoginForm, KeysType } from 'common/interfaces/login';
-import { LoginType } from 'redux/store/actions/login/interfaces';
+} from 'redux/actions/actionTypes';
+import { ValuesLoginForm, KeysType } from 'common/types/login';
+import { LoginType } from 'redux/actions/login/interfaces';
 
 type LoginInitialStateType = typeof initialState;
 

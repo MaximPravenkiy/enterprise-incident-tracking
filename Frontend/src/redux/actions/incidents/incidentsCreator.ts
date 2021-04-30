@@ -13,7 +13,7 @@ import {
     RESET_CREATE_INCIDENT_FORM,
     UPDATE_LOADER,
     CHANGE_ACTION_WITH_LIST_OF_INCIDENTS
-} from 'redux/store/actions/actionTypes';
+} from 'redux/actions/actionTypes';
 import {
     ChangeActionWithListOfIncidentsActionType,
     ChangeAssigneeUserIdActionType,
@@ -29,13 +29,13 @@ import {
     UpdateIncidentActionType,
     UpdateLoaderActionType,
     UpdateValuesCreateIncidentFormActionType
-} from 'redux/store/actions/incidents/interfaces';
+} from 'redux/actions/incidents/interfaces';
 import {
     ActionWithIncidentsType,
     ListOfIncidents,
     Users,
     ValuesCreateIncidentsForm
-} from 'common/interfaces/incidents';
+} from 'common/types/incidents';
 
 // Incidents
 const getIncidents = (): GetIncidentsActionType => ({ type: GET_INCIDENTS });

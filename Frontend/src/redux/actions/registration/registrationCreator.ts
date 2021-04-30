@@ -3,14 +3,14 @@ import {
     REGISTRATION,
     RESET_REGISTRATION_FORM,
     UPDATE_VALUES_REGISTRATION_FORM
-} from 'redux/store/actions/actionTypes';
-import { ValuesRegistrationForm } from 'common/interfaces/registration';
+} from 'redux/actions/actionTypes';
+import { ValuesRegistrationForm } from 'common/types/registration';
 import {
     PostRegistrationActionType,
     RegistrationActionType,
     ResetRegistrationFormActionType,
     UpdateValuesRegistrationFormActionType
-} from 'redux/store/actions/registration/interfaces';
+} from 'redux/actions/registration/interfaces';
 import { History } from 'history';
 
 const postRegistration = (
