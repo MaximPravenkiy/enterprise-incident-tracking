@@ -5,6 +5,12 @@ The application is available here https://enterprise-incident-tracking.herokuapp
 Before using the system, you will need to log in to the system. <br>
 If you don't have an account yet, then you will need to register.
 
+##### _Rules for registration_
+- All fields must be filled!
+- "Full Name" - field can't contain numbers and special characters
+- "Login" - field can't contain spaces
+- "Password" - must be at least 6 characters long
+
 #### List of incidents
 After authorization you will see a list of incidents that relate directly to you. <br>
 If you are a new user, the list will be empty. Then you need to [create an incident](https://github.com/MaximPravenkiy/enterprise-incident-tracking#create-new-incident-white_check_mark) yourself or wait until an incident is assigned to you.
