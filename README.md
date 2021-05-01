@@ -29,5 +29,5 @@ If you close the window for creating an incident, then after reopening the windo
 
 After filling in all the fields, click the button "Создать".
 
-#### Completiion of work
+#### Completion of work
 When you have finished working with the system, you can log out by clicking on the button "Logout" in the upper right corner.
