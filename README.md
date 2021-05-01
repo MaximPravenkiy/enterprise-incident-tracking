@@ -19,7 +19,7 @@ If you are a new user, the list will be empty. Then you need to [create an incid
 To create a new incident, click on the button "Создать новый инцидент" in the upper left corner of the screen. <br>
 
 ##### _Rules for creating an incident_
-- When creating an incident, you must fill in the following fields: "Incident Name", "Area", "Due Date", "Description", "Priority", "Staus". 
+- When creating an incident, you must fill in the following fields: "Incident Name", "Area", "Due Date", "Description", "Priority", "Status". 
 - The "Assignee" field is optional. 
 - "Start date" - filled in automatically
 - "Due date" - date cannot be selected earlier "Start date"
