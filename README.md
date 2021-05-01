@@ -3,7 +3,7 @@ The application is available here https://enterprise-incident-tracking.herokuapp
 
 ## How to use :keyboard:
 Before using the system, you will need to log in to the system. <br>
-If you don't have an account yet, then you will neen to register.
+If you don't have an account yet, then you will need to register.
 
 #### List of incidents
 After authorization you will see a list of incidents that relate directly to you. <br>
