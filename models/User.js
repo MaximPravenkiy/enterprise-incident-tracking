@@ -5,7 +5,7 @@ const schema = new Schema({
     password: { type: String, required: true },
     dateOfBirth: { type: Date, required: true },
     position: { type: String, required: true },
-    incidents: [{ type: String }]
+    oldPasswords: [{ type: String }]
 });
 
 module.exports = model('User', schema);
