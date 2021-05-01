@@ -22,9 +22,8 @@ To create a new incident, click on the button "Создать новый инц�
 - When creating an incident, you must fill in the following fields: "Incident Name", "Area", "Due Date", "Description", "Priority", "Status". 
 - The "Assignee" field is optional. 
 - "Start date" - filled in automatically
-- "Due date" - date cannot be selected earlier "Start date"
-- "Incident Name" - can't contain more than 15 symbols
-- "Description" - can't contain more than 35 symbols
+- "Due date" - date can't be selected earlier "Start date"
+- "Incident Name" - can't contain more than 30 symbols
 
 If you close the window for creating an incident, then after reopening the window, all the data that you entered will be saved.
 
