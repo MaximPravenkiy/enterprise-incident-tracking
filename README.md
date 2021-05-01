@@ -11,6 +11,10 @@ If you don't have an account yet, then you will need to register.
 - "Login" - field can't contain spaces
 - "Password" - must be at least 6 characters long
 
+When entering the system, there is an option to select "remember me", which will allow you to stay in the system for a long time.
+
+If you have forgotten your password, you can restore it by clicking "Forgot password". After that, in the window that opens, you will need to indicate your login, enter a new password and confirm the newly entered password. 
+
 #### List of incidents
 After authorization you will see a list of incidents that relate directly to you. <br>
 If you are a new user, the list will be empty. Then you need to [create an incident](https://github.com/MaximPravenkiy/enterprise-incident-tracking#create-new-incident-white_check_mark) yourself or wait until an incident is assigned to you.
