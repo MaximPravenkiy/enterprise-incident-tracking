@@ -1,6 +1,6 @@
 import React from 'react';
 import { ListOfIncidents } from 'common/types/incidents';
-import ActionButtonContainer from 'containers/ActionButton.container';
+import ActionButtonsContainer from 'components/Main/Incidents/ActionButtons/ActionButtons.container';
 import { ColumnsType } from 'antd/es/table';
 import moment, { Moment } from 'moment';
 
@@ -79,7 +79,7 @@ export const columns: ColumnsType<ListOfIncidents> = [
         title: 'Action',
         key: 'action',
         render: (incident: ListOfIncidents): JSX.Element => (
-            <ActionButtonContainer incident={incident} />
+            <ActionButtonsContainer incident={incident} />
         )
     }
 ];

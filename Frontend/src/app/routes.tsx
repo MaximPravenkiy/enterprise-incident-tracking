@@ -2,10 +2,10 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { RootReducer } from 'redux/reducers/rootReducer';
-import RegistrationContainer from 'containers/Registration.container';
-import LoginContainer from 'containers/Login.container';
-import IncidentsContainer from 'containers/Incidents.container';
-import ForgotPassword from 'components/Main/Forms/ForgotPassword/ForgotPassword';
+import RegistrationContainer from 'components/Main/Forms/Registration/RegistrationForm.container';
+import LoginFormContainer from 'components/Main/Forms/Login/LoginForm.container';
+import IncidentsContainer from 'components/Main/Incidents/Incidents.container';
+import ForgotPassword from 'components/Main/Forms/ForgotPassword/ForgotPasswordForm';
 
 const Routes = () => {
     const isAuth = useSelector(
@@ -36,7 +36,7 @@ const Routes = () => {
                 exact
                 path="/login"
                 component={() =>
-                    isAuth ? <Redirect to="/incidents" /> : <LoginContainer />
+                    isAuth ? <Redirect to="/incidents" /> : <LoginFormContainer />
                 }
             />
             <Route

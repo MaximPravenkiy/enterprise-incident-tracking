@@ -1,6 +1,6 @@
 import React from 'react';
 import Routes from 'app/routes';
-import { Content } from 'components/Main/styles';
+import { Content } from 'components/Main/Main.styles';
 
 const Main = () => (
     <Content>

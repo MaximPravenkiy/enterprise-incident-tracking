@@ -43,7 +43,7 @@ type ResponseCreateIncidentType = SagaReturnType<typeof postIncidentApi>;
 type ResponseDeleteIncident = SagaReturnType<typeof deleteIncidentApi>;
 type ResponseUpdateIncident = SagaReturnType<typeof updateIncidentApi>;
 
-function* getInicdentsWorker() {
+function* getIncidentsWorker() {
     try {
         yield put(updateLoader(true));
         const actionWithIncidents = localStorage.getItem('actionWithIncidents');
@@ -174,7 +174,7 @@ function* updateIncidentWorker({ updateData }: UpdateIncidentActionType) {
 }
 
 function* incidentsWatcher() {
-    yield takeEvery(GET_INCIDENTS, getInicdentsWorker);
+    yield takeEvery(GET_INCIDENTS, getIncidentsWorker);
     yield takeEvery(GET_USERS, getUsersForAssigneeOptionWorker);
     yield takeEvery(CREATE_INCIDENT, createIncidentWorker);
     yield takeEvery(DELETE_INCIDENT, deleteIncidentWorker);

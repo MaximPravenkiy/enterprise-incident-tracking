@@ -11,11 +11,11 @@ import {
     configLogin,
     configPassword,
     configConfirmPassword
-} from 'components/Main/Forms/ForgotPassword/data';
+} from 'components/Main/Forms/ForgotPassword/ForgotPasswordForm.data';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { openMessage } from 'common/serverResponseHandlers/message';
 
-const ForgotPassword: FC<RouteComponentProps> = ({ history }) => {
+const ForgotPasswordForm: FC<RouteComponentProps> = ({ history }) => {
     const dispatch = useDispatch<Dispatch<RestorePasswordType>>();
 
     const onFinish = (values: RestorePasswordFormValue) => {
@@ -50,4 +50,4 @@ const ForgotPassword: FC<RouteComponentProps> = ({ history }) => {
     );
 };
 
-export default withRouter(ForgotPassword);
+export default withRouter(ForgotPasswordForm);

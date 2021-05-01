@@ -6,16 +6,16 @@ import {
     SnippetsFilled
 } from '@ant-design/icons/lib';
 import { Avatar, Button } from 'antd';
-import { MenuItemLoginProps } from 'components/Header/Menu/MenuItemLogin/interfaces';
+import { MenuItemLoginProps } from 'components/Header/Menu/MenuItemsLogin/MenuItemsLogin.interfaces';
 import {
     ButtonWrapper,
     IncidentButton,
     RightSection,
     TittleWrapper,
     Wrapper
-} from 'components/Header/Menu/MenuItemLogin/styles';
+} from 'components/Header/Menu/MenuItemsLogin/MenuItemsLogin.styles';
 
-const MenuItemLogin: FC<MenuItemLoginProps> = memo(
+const MenuItemsLogin: FC<MenuItemLoginProps> = memo(
     ({
         fullname,
         onLogout,
@@ -78,4 +78,4 @@ const MenuItemLogin: FC<MenuItemLoginProps> = memo(
     }
 );
 
-export default MenuItemLogin;
+export default MenuItemsLogin;

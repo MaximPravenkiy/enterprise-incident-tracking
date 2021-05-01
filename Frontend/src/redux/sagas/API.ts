@@ -17,15 +17,12 @@ interface Message {
     message: string;
 }
 
-// registration api
 const postRegistrationApi = (values: ValuesRegistrationForm) =>
     axios.post<Message>('/registration', values);
 
-// login api
 const postLoginApi = (values: ValuesLoginForm) =>
     axios.post<UserData>('/login', values);
 
-// restore password api
 const restorePasswordApi = (
     restorePasswordFormValue: RestorePasswordFormValue
 ) =>
@@ -34,7 +31,6 @@ const restorePasswordApi = (
         restorePasswordFormValue
     );
 
-// incidents api
 const getMyIncidentsApi = async () => {
     const axiosInstanceWithAuthorization = await axiosWithAuthorization();
     return axiosInstanceWithAuthorization.get<Array<ListOfIncidents>>(

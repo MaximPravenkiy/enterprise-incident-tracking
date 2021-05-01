@@ -14,7 +14,7 @@ import { getDate } from 'common/getDate';
 import { IncidentsType } from 'redux/actions/incidents/interfaces';
 import { ListOfIncidents } from 'common/types/incidents';
 
-const ActionButtonContainer: FC<{ incident: ListOfIncidents }> = ({
+const ActionButtonsContainer: FC<{ incident: ListOfIncidents }> = ({
     incident
 }) => {
     const dispatch = useDispatch<Dispatch<IncidentsType>>();
@@ -50,4 +50,4 @@ const ActionButtonContainer: FC<{ incident: ListOfIncidents }> = ({
     );
 };
 
-export default ActionButtonContainer;
+export default ActionButtonsContainer;

@@ -4,8 +4,8 @@ import { Dispatch } from 'redux';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import NavMenu from 'components/Header/Menu/Menu';
 import { changeKeyDepsOnPath, logout } from 'redux/actions/login/loginCreator';
-import MenuItemLogin from 'components/Header/Menu/MenuItemLogin/MenuItemLogin';
-import MenuItemLogout from 'components/Header/Menu/MenuItemLogout/MenuItemLogout';
+import MenuItemsLogin from 'components/Header/Menu/MenuItemsLogin/MenuItemsLogin';
+import MenuItemsLogout from 'components/Header/Menu/MenuItemsLogout/MenuItemsLogout';
 import {
     changeActionWithListOfIncidents,
     getIncidents,
@@ -17,7 +17,7 @@ import { LoginType } from 'redux/actions/login/interfaces';
 import { IncidentsType } from 'redux/actions/incidents/interfaces';
 import { logoutNotification } from 'common/serverResponseHandlers/notification';
 import { KeysType } from 'common/types/login';
-import { MenuInfo } from '../../node_modules/rc-menu/lib/interface';
+import { MenuInfo } from 'rc-menu/lib/interface';
 
 const navContent = [
     { text: 'Вход', url: 'login' },
@@ -75,7 +75,7 @@ const MenuContainer: FC<RouteComponentProps> = memo(({ location, history }) => {
 
     let key = 0;
     const menuItems = isAuth ? (
-        <MenuItemLogin
+        <MenuItemsLogin
             fullname={fullname}
             createIncident={createIncident}
             onLogout={onLogout}
@@ -86,7 +86,7 @@ const MenuContainer: FC<RouteComponentProps> = memo(({ location, history }) => {
         navContent.map((content) => {
             key += 1;
             return (
-                <MenuItemLogout
+                <MenuItemsLogout
                     key={key}
                     url={content.url}
                     text={content.text}

@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import { Form, Input, Button, DatePicker } from 'antd';
-import { RegistrationFormTypes } from 'components/Main/Forms/Registration/interfaces';
+import { RegistrationFormTypes } from 'components/Main/Forms/Registration/RegistrationForm.interfaces';
 import {
     configDateOfBirth,
     configFullname,
@@ -9,7 +9,7 @@ import {
     configPosition,
     formItemLayout,
     tailFormItemLayout
-} from 'components/Main/Forms/Registration/data';
+} from 'components/Main/Forms/Registration/RegistrationForm.data';
 
 const RegistrationForm: FC<RegistrationFormTypes> = ({
     registerNewUser,

@@ -1,10 +1,10 @@
 import React, { FC, useEffect, useRef } from 'react';
 import { Form, Input, Select, DatePicker, Modal } from 'antd';
 import moment, { Moment } from 'moment';
-import CloseModalButton from 'components/Main/Forms/CreateIncidents/CloseModalButton/CloseModalButton';
-import TitleModal from 'components/Main/Forms/CreateIncidents/TitleModal/TitleModal';
-import CreateOrUpdateButton from 'components/Main/Forms/CreateIncidents/CreateOrUpdateButton/CreateOrUpdateButton';
-import { CreateIncidentTypeProps } from 'components/Main/Forms/CreateIncidents/interfaces';
+import CloseModalButton from 'components/Main/Forms/CreateIncident/CloseModalButton/CloseModalButton';
+import TitleModal from 'components/Main/Forms/CreateIncident/TitleModal/TitleModal';
+import CreateOrUpdateButton from 'components/Main/Forms/CreateIncident/CreateOrUpdateButton/CreateOrUpdateButton';
+import { CreateIncidentTypeProps } from 'components/Main/Forms/CreateIncident/CreateIncidentForm.interfaces';
 import {
     areas,
     configDate,
@@ -17,9 +17,9 @@ import {
     configPriority,
     configStatus,
     configArea
-} from 'components/Main/Forms/CreateIncidents/data';
+} from 'components/Main/Forms/CreateIncident/CreateIncidentForm.data';
 
-const CreateIncidentsForm: FC<CreateIncidentTypeProps> = ({
+const CreateIncidentForm: FC<CreateIncidentTypeProps> = ({
     isModalVisible,
     users,
     actionWithCreateIncidentForm,
@@ -102,4 +102,4 @@ const CreateIncidentsForm: FC<CreateIncidentTypeProps> = ({
     );
 };
 
-export default CreateIncidentsForm;
+export default CreateIncidentForm;

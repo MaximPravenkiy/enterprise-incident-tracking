@@ -13,7 +13,7 @@ import { ValuesLoginForm } from 'common/types/login';
 import { LoginType } from 'redux/actions/login/interfaces';
 import { useHistory } from 'react-router-dom';
 
-const LoginContainer = () => {
+const LoginFormContainer = () => {
     const { login, password, remember } = useSelector(
         ({ loginReducer }: RootReducer) => loginReducer.valuesLoginForm
     );
@@ -50,4 +50,4 @@ const LoginContainer = () => {
     );
 };
 
-export default LoginContainer;
+export default LoginFormContainer;

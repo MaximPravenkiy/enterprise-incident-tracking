@@ -40,7 +40,7 @@ export const configFullname = {
         },
         {
             pattern: /^[a-zA-Z\s]*$/,
-            message: 'Field must contain only letters!'
+            message: 'Field must contain only letters and spaces!'
         }
     ]
 };

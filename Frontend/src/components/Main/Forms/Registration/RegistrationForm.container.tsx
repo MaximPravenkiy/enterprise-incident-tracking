@@ -12,7 +12,7 @@ import { RegistrationType } from 'redux/actions/registration/interfaces';
 import { ValuesRegistrationForm } from 'common/types/registration';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
-const RegistrationContainer: FC<RouteComponentProps> = ({ history }) => {
+const RegistrationFormContainer: FC<RouteComponentProps> = ({ history }) => {
     const { dateOfBirth, fullname, login, password, position } = useSelector(
         ({ registrationReducer }: RootReducer) =>
             registrationReducer.valuesRegistrationForm
@@ -41,4 +41,4 @@ const RegistrationContainer: FC<RouteComponentProps> = ({ history }) => {
     );
 };
 
-export default withRouter(RegistrationContainer);
+export default withRouter(RegistrationFormContainer);

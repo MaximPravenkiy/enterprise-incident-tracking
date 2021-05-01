@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
-import CreateIncidentsForm from 'components/Main/Forms/CreateIncidents/CreateIncidentsForm';
+import CreateIncidentForm from 'components/Main/Forms/CreateIncident/CreateIncidentForm';
 import {
     changeAssigneeUserId,
     createIncident,
@@ -16,7 +16,7 @@ import {
     ValuesCreateIncidentsForm
 } from 'common/types/incidents';
 
-const CreateIncidentsContainer = () => {
+const CreateIncidentFormContainer = () => {
     const {
         users,
         assigneeUserId,
@@ -60,7 +60,7 @@ const CreateIncidentsContainer = () => {
     };
 
     return (
-        <CreateIncidentsForm
+        <CreateIncidentForm
             users={users}
             isModalVisible={isModalVisible}
             getUserId={getUserId}
@@ -72,4 +72,4 @@ const CreateIncidentsContainer = () => {
     );
 };
 
-export default CreateIncidentsContainer;
+export default CreateIncidentFormContainer;

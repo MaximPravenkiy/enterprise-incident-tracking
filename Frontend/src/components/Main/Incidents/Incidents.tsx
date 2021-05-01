@@ -1,9 +1,9 @@
 import React, { FC, memo, useEffect, useState } from 'react';
-import CreateIncidentsContainer from 'containers/CreateIncidents.container';
-import { IncidentsTypeProps } from 'components/Main/Incidents/interfaces';
-import { columns } from 'components/Main/Incidents/data';
+import CreateIncidentFormContainer from 'components/Main/Forms/CreateIncident/CreateIncidentForm.container';
+import { IncidentsTypeProps } from 'components/Main/Incidents/Incidents.interfaces';
+import { columns } from 'components/Main/Incidents/Incidents.data';
 import { Table } from 'antd';
-import { TableWrapper } from 'components/Main/Incidents/styles';
+import { TableWrapper } from 'components/Main/Incidents/Incidents.styles';
 
 const Incidents: FC<IncidentsTypeProps> = memo(
     ({ listOfIncidents, isListOfIncidentsLoading }) => {
@@ -39,7 +39,7 @@ const Incidents: FC<IncidentsTypeProps> = memo(
                     loading={isListOfIncidentsLoading}
                     scroll={{ x: 1200 }}
                 />
-                <CreateIncidentsContainer />
+                <CreateIncidentFormContainer />
             </TableWrapper>
         );
     }
