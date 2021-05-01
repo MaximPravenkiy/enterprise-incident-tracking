@@ -1,5 +1,5 @@
 # ISCANDER is a system for creating and tracking incidents at IT enterprises :notebook:
-The application is avaliable here https://enterprise-incident-tracking.herokuapp.com/login
+The application is available here https://enterprise-incident-tracking.herokuapp.com/login
 
 ## How to use :keyboard:
 Before using the system, you will need to log in to the system. <br>
