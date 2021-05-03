@@ -1,60 +1,60 @@
-const jwt = require('jsonwebtoken');
-const Token = require('../models/Token');
-const { v4: uuid } = require('uuid');
-const { tokens, secret } = require('../default').jwt;
+const jwt = require("jsonwebtoken");
+const Token = require("../models/Token");
+const { v4: uuid } = require("uuid");
+const { tokens, secret } = require("../default").jwt;
+const { access, refresh } = tokens;
 
 const generateAccessToken = (userId) => {
-    const payload = {
-        userId,
-        type: tokens.access.type
-    };
-    const options = { expiresIn: tokens.access.expiresIn }
+  const payload = {
+    userId,
+    type: access.type,
+  };
+  const options = { expiresIn: access.expiresIn };
 
-    return {
-        token: jwt.sign(payload, secret, options),
-        expiresIn: options.expiresIn
-    };
-}
+  return {
+    token: jwt.sign(payload, secret, options),
+    expiresIn: options.expiresIn,
+  };
+};
 
 const generateRefreshToken = (remember) => {
-    const payload = {
-        id: uuid(),
-        type: tokens.refresh.type
-    };
+  const payload = {
+    id: uuid(),
+    type: refresh.type,
+  };
 
-    const options = { expiresIn: remember
-            ? tokens.refresh.expiresInRemember
-            : tokens.refresh.expiresIn
-    }
+  const options = {
+    expiresIn: remember ? refresh.expiresInRemember : refresh.expiresIn,
+  };
 
-    return {
-        id: payload.id,
-        token: jwt.sign(payload, secret, options)
-    }
-}
+  return {
+    id: payload.id,
+    token: jwt.sign(payload, secret, options),
+  };
+};
 
 const replaceDbRefreshToken = async (tokenId, userId, remember) => {
-    await Token.deleteOne({ userId });
+  await Token.deleteOne({ userId });
 
-    const newToken = new Token({ tokenId, userId, remember });
+  const newToken = new Token({ tokenId, userId, remember });
 
-    await newToken.save(function (error) {
-        console.log(error);
-    });
-}
+  await newToken.save(function (error) {
+    console.log(error);
+  });
+};
 
 const updateTokens = async (userId, remember) => {
-    const accessToken = generateAccessToken(userId);
-    const refreshToken = generateRefreshToken(remember);
-    const expiresIn = Date.now() + parseInt(accessToken.expiresIn) * 60 * 1000;
+  const { token: accessToken } = generateAccessToken(userId);
+  const { token: refreshToken, id: refreshTokenId } = generateRefreshToken(
+    remember
+  );
 
-    await replaceDbRefreshToken(refreshToken.id, userId, remember);
+  await replaceDbRefreshToken(refreshTokenId, userId, remember);
 
-    return {
-        accessToken: accessToken.token,
-        refreshToken: refreshToken.token,
-        expiresIn
-    };
-}
+  return {
+    accessToken: accessToken,
+    refreshToken: refreshToken,
+  };
+};
 
 module.exports = { updateTokens };

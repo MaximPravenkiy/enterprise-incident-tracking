@@ -33,7 +33,7 @@ function* postLoginWorker({ loginFormValues, history }: PostLoginActionType) {
                 'tokens',
                 JSON.stringify(response.data.tokens)
             );
-
+            console.log(response.data.tokens);
             destroyMessage();
             successNotification(
                 'Вы вошли в систему.',

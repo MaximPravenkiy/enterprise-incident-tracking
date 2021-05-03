@@ -1,12 +1,21 @@
+import { decode } from 'jsonwebtoken';
 import axios from 'axios';
+
+interface DecodeAccessToken {
+    userId: string;
+    iat: number;
+    exp: number;
+}
 
 const refreshTokenApi = (refreshToken: string) =>
     axios.put('/refresh-token', { refreshToken });
 
 const axiosWithAuthorization = async (config = {}) => {
-    const { expiresIn } = JSON.parse(<string>localStorage.getItem('tokens'));
+    const { exp } = <DecodeAccessToken>(
+        decode(JSON.parse(<string>localStorage.getItem('tokens')).accessToken)
+    );
 
-    if (Date.now() >= expiresIn) {
+    if (Date.now() >= exp * 1000) {
         try {
             const { refreshToken } = JSON.parse(
                 <string>localStorage.getItem('tokens')
