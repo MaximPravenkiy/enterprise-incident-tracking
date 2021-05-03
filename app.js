@@ -4,12 +4,11 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const path = require('path');
-const { mongoURI } =  require('./config/default');
+const { mongoURI } =  require('./default');
 
-app.use(express.json({ extened: true }));
+app.use(express.json({ extended: true }));
 app.use('/', require('./routes/auth.routes'));
 app.use('/incidents', require('./routes/incidents.routes'));
-app.use('/refreshTokens', require('./routes/refreshTokens.routes'));
 
 if (process.env.NODE_ENV === 'production') {
     app.use('/', express.static(path.join(__dirname, 'Frontend', 'build')));

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const refreshTokenApi = (refreshToken: string) =>
-    axios.put('/refreshTokens', { refreshToken });
+    axios.put('/refresh-token', { refreshToken });
 
 const axiosWithAuthorization = async (config = {}) => {
     const { expiresIn } = JSON.parse(<string>localStorage.getItem('tokens'));

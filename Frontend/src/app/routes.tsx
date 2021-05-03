@@ -36,7 +36,11 @@ const Routes = () => {
                 exact
                 path="/login"
                 component={() =>
-                    isAuth ? <Redirect to="/incidents" /> : <LoginFormContainer />
+                    isAuth ? (
+                        <Redirect to="/incidents" />
+                    ) : (
+                        <LoginFormContainer />
+                    )
                 }
             />
             <Route

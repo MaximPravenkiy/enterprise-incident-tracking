@@ -17,7 +17,7 @@ import { LoginType } from 'redux/actions/login/interfaces';
 import { IncidentsType } from 'redux/actions/incidents/interfaces';
 import { logoutNotification } from 'common/serverResponseHandlers/notification';
 import { KeysType } from 'common/types/login';
-import { MenuInfo } from 'rc-menu/lib/interface';
+import { MenuInfo } from '../../../../node_modules/rc-menu/lib/interface';
 
 const navContent = [
     { text: 'Вход', url: 'login' },

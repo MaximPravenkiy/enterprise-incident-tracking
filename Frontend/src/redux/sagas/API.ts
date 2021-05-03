@@ -25,11 +25,7 @@ const postLoginApi = (values: ValuesLoginForm) =>
 
 const restorePasswordApi = (
     restorePasswordFormValue: RestorePasswordFormValue
-) =>
-    axios.put<{ message: 'ВСЁ ОК!' }>(
-        '/forgot-password',
-        restorePasswordFormValue
-    );
+) => axios.put<Message>('/forgot-password', restorePasswordFormValue);
 
 const getMyIncidentsApi = async () => {
     const axiosInstanceWithAuthorization = await axiosWithAuthorization();

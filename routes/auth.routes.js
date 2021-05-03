@@ -3,6 +3,9 @@ const router = Router();
 const bcrypt = require('bcryptjs');
 const { updateTokens } = require('../helper/authHelper');
 const User = require('../models/User');
+const { secret } = require('../default').jwt;
+const jwt = require('jsonwebtoken');
+const Token = require('../models/Token');
 
 router.post(
     '/registration',
@@ -40,7 +43,7 @@ router.post(
             const user = await User.findOne({ login });
 
             if (!user) {
-                return res.status(400).json({ message: 'Пользователь не найден!' });
+                return res.status(400).json({ message: 'Неверный логин или пароль!' });
             }
 
             const isMatchPasswords = await bcrypt.compare(password, user.password);
@@ -81,6 +84,36 @@ router.put(
             return res.status(201).json({ message: 'Пароль был успешно обновлён!' });
         } catch (e) {
             return res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова...' });
+        }
+    }
+);
+
+router.put(
+    '/refresh-token',
+    async (req, res) => {
+        try {
+            const { refreshToken } = req.body;
+
+            let payload = jwt.verify(refreshToken, secret);
+
+            if (payload.type !== 'refresh') {
+                return res.status(400).json({ message: 'Некорректный токен!'});
+            }
+
+            const { userId, remember } = await Token.findOne({ tokenId: payload.id });
+            if (!userId) {
+                return res.status(400).json({ message: 'Некорректный токен!'});
+            }
+
+            const tokens = await updateTokens(userId, remember);
+
+            return res.json(tokens);
+        } catch (e) {
+            if (e instanceof jwt.TokenExpiredError) {
+                return res.status(400).json({ message: 'Просроченный токен!' });
+            } else if (e instanceof jwt.JsonWebTokenError) {
+                return res.status(400).json({ message: 'Некорректный токен!'});
+            }
         }
     }
 );
