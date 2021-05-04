@@ -99,7 +99,7 @@ const updateLoader = (payload: {
 // Users
 const getUsers = (): GetUsersAction => ({ type: GET_USERS });
 
-const setUsers = (payload: { users: Array<Users> }): SetUsersAction => ({
+const setUsers = (payload: { users: Users[] }): SetUsersAction => ({
     type: SET_USERS,
     payload
 });

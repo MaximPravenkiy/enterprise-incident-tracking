@@ -6,7 +6,7 @@ import {
     UPDATE_VALUES_REGISTRATION_FORM
 } from '../actions/registration/registration.actions';
 
-type RegistrationInitialStateType = typeof initialState;
+type RegistrationInitialState = typeof initialState;
 
 const initialState = {
     valuesRegistrationForm: {
@@ -21,11 +21,10 @@ const initialState = {
 function registrationReducer(
     state = initialState,
     action: RegistrationActions
-): RegistrationInitialStateType {
+): RegistrationInitialState {
     switch (action.type) {
         case UPDATE_VALUES_REGISTRATION_FORM:
             return {
-                ...state,
                 valuesRegistrationForm: {
                     ...state.valuesRegistrationForm,
                     ...action.payload.updatedValueRegistrationForm
@@ -33,7 +32,6 @@ function registrationReducer(
             };
         case RESET_REGISTRATION_FORM:
             return {
-                ...state,
                 valuesRegistrationForm: initialState.valuesRegistrationForm
             };
         default:

@@ -27,9 +27,9 @@ const initialState = {
     assigneeUserId: '',
     incidentID: '',
     isModalVisible: false,
-    listOfIncidents: [] as Array<ListOfIncidents>,
+    listOfIncidents: [] as ListOfIncidents[],
     isListOfIncidentsLoading: false,
-    users: [] as Array<Users>,
+    users: [] as Users[],
     valuesCreateIncidentForm: {
         area: '',
         assignee: '',

@@ -1,7 +1,5 @@
 import { combineReducers } from 'redux';
-import loginReducer from 'redux/reducers/loginReducer';
-import registrationReducer from 'redux/reducers/registrationReducer';
-import incidentsReducer from 'redux/reducers/incidentsReducer';
+import { incidentsReducer, loginReducer, registrationReducer } from './indnex';
 
 const rootReducer = combineReducers({
     loginReducer,

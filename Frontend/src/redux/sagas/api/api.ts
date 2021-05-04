@@ -29,22 +29,20 @@ const restorePasswordApi = (
 
 const getMyIncidentsApi = async () => {
     const axiosInstanceWithAuthorization = await axiosWithAuthorization();
-    return axiosInstanceWithAuthorization.get<Array<ListOfIncidents>>(
+    return axiosInstanceWithAuthorization.get<ListOfIncidents[]>(
         '/incidents?by-owner=true'
     );
 };
 
 const getAllIncidentsApi = async () => {
     const axiosInstanceWithAuthorization = await axiosWithAuthorization();
-    return axiosInstanceWithAuthorization.get<Array<ListOfIncidents>>(
-        '/incidents'
-    );
+    return axiosInstanceWithAuthorization.get<ListOfIncidents[]>('/incidents');
 };
 
 const postIncidentApi = (values: ValuesCreateIncidentsForm) =>
     axios.post<Message>('/incidents', values);
 
-const getUsersForAssigneeOptionApi = () => axios.get<Array<Users>>('/users');
+const getUsersForAssigneeOptionApi = () => axios.get<Users[]>('/users');
 
 const deleteIncidentApi = (incidentID: string) =>
     axios.delete<Message>(`/incidents/${incidentID}`);

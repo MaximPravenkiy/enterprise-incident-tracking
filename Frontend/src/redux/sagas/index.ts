@@ -1,10 +1,3 @@
-import { all } from 'redux-saga/effects';
-import registrationWatcher from 'redux/sagas/registrationSaga';
-import incidentsWatcher from 'redux/sagas/incidentsSaga';
-import loginWatcher from 'redux/sagas/loginSaga';
-
-function* rootWatcher() {
-    yield all([incidentsWatcher(), loginWatcher(), registrationWatcher()]);
-}
-
-export default rootWatcher;
+export { default as registrationWatcher } from 'redux/sagas/registrationSaga';
+export { default as incidentsWatcher } from 'redux/sagas/registrationSaga';
+export { default as loginWatcher } from 'redux/sagas/registrationSaga';

@@ -25,7 +25,7 @@ import {
 interface SetIncidentsAction {
     type: typeof SET_INCIDENTS;
     payload: {
-        listOfIncidents: Array<ListOfIncidents>;
+        listOfIncidents: ListOfIncidents[];
     };
 }
 
@@ -75,7 +75,7 @@ interface GetUsersAction {
 
 interface SetUsersAction {
     type: typeof SET_USERS;
-    payload: { users: Array<Users> };
+    payload: { users: Users[] };
 }
 
 interface ChangeAssigneeUserIdAction {
