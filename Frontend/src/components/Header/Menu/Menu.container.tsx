@@ -12,8 +12,8 @@ import {
     getUsers
 } from 'redux/actions/incidents/incidents.actions';
 import { RootReducer } from 'redux/reducers/rootReducer';
-import { LoginActionsType } from 'redux/actions/login/login.interfaces';
-import { IncidentsActionsType } from 'redux/actions/incidents/incidents.interfaces';
+import { LoginActions } from 'redux/actions/login/login.interfaces';
+import { IncidentsActions } from 'redux/actions/incidents/incidents.interfaces';
 import {
     logoutNotification,
     openMessage
@@ -27,9 +27,7 @@ const navContent = [
 ];
 
 const MenuContainer: FC<RouteComponentProps> = memo(({ location, history }) => {
-    const dispatch = useDispatch<
-        Dispatch<LoginActionsType | IncidentsActionsType>
-    >();
+    const dispatch = useDispatch<Dispatch<LoginActions | IncidentsActions>>();
     const { isAuth, fullname, keyDepsOnPath } = useSelector(
         ({ loginReducer }: RootReducer) => loginReducer
     );

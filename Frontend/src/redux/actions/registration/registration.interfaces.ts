@@ -7,27 +7,35 @@ import {
     UPDATE_VALUES_REGISTRATION_FORM
 } from './registration.actions';
 
-export interface PostRegistrationAction {
+interface PostRegistrationAction {
     type: typeof POST_REGISTRATION;
     registrationFormValues: ValuesRegistrationForm;
     history: History<unknown>;
 }
 
-export interface UpdateValuesRegistrationFormAction {
+interface UpdateValuesRegistrationFormAction {
     type: typeof UPDATE_VALUES_REGISTRATION_FORM;
     payload: { updatedValueRegistrationForm: ValuesRegistrationForm };
 }
 
-export interface RegistrationAction {
+interface RegistrationAction {
     type: typeof REGISTRATION;
 }
 
-export interface ResetRegistrationFormAction {
+interface ResetRegistrationFormAction {
     type: typeof RESET_REGISTRATION_FORM;
 }
 
-export type RegistrationActionsType =
+type RegistrationActions =
     | PostRegistrationAction
     | UpdateValuesRegistrationFormAction
     | RegistrationAction
     | ResetRegistrationFormAction;
+
+export type {
+    RegistrationActions,
+    PostRegistrationAction,
+    UpdateValuesRegistrationFormAction,
+    RegistrationAction,
+    ResetRegistrationFormAction
+};

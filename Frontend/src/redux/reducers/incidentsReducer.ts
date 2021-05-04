@@ -6,7 +6,7 @@ import {
     Users,
     ValuesCreateIncidentsForm
 } from 'common/types/incidents';
-import { IncidentsActionsType } from 'redux/actions/incidents/incidents.interfaces';
+import { IncidentsActions } from 'redux/actions/incidents/incidents.interfaces';
 import {
     CHANGE_ACTION_WITH_LIST_OF_INCIDENTS,
     SET_USERS,
@@ -44,7 +44,7 @@ const initialState = {
 
 function incidentsReducer(
     state = initialState,
-    action: IncidentsActionsType
+    action: IncidentsActions
 ): IncidentsInitialStateType {
     switch (action.type) {
         case SET_INCIDENTS:

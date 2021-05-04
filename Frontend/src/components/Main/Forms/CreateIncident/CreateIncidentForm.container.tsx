@@ -9,7 +9,7 @@ import {
     updateValuesCreateIncidentForm
 } from 'redux/actions/incidents/incidents.actions';
 import { RootReducer } from 'redux/reducers/rootReducer';
-import { IncidentsActionsType } from 'redux/actions/incidents/incidents.interfaces';
+import { IncidentsActions } from 'redux/actions/incidents/incidents.interfaces';
 import {
     CreateIncident,
     ValuesCreateIncidentsForm
@@ -25,7 +25,7 @@ const CreateIncidentFormContainer = () => {
         actionWithCreateIncidentForm,
         incidentID
     } = useSelector(({ incidentsReducer }: RootReducer) => incidentsReducer);
-    const dispatch = useDispatch<Dispatch<IncidentsActionsType>>();
+    const dispatch = useDispatch<Dispatch<IncidentsActions>>();
 
     const getUserId = (value: string) => {
         const helperArray = value.split(' ');

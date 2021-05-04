@@ -10,14 +10,14 @@ import {
     updateValuesCreateIncidentForm
 } from 'redux/actions/incidents/incidents.actions';
 import { getDate } from 'common/helpers';
-import { IncidentsActionsType } from 'redux/actions/incidents/incidents.interfaces';
+import { IncidentsActions } from 'redux/actions/incidents/incidents.interfaces';
 import { ListOfIncidents } from 'common/types/incidents';
 import { openMessage } from 'common/services/notification.services';
 
 const ActionButtonsContainer: FC<{ incident: ListOfIncidents }> = ({
     incident
 }) => {
-    const dispatch = useDispatch<Dispatch<IncidentsActionsType>>();
+    const dispatch = useDispatch<Dispatch<IncidentsActions>>();
 
     const onDeleteIncident = () => {
         const incidentID = incident.key;

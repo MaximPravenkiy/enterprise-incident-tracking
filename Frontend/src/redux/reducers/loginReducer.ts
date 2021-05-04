@@ -1,5 +1,5 @@
 import { ValuesLoginForm, KeysType } from 'common/types/login';
-import { LoginActionsType } from 'redux/actions/login/login.interfaces';
+import { LoginActions } from 'redux/actions/login/login.interfaces';
 import {
     RESET_LOGIN_FORM_VALUES,
     CHANGE_KEY_DEPS_ON_PATH,
@@ -23,7 +23,7 @@ const initialState = {
 
 function loginReducer(
     state = initialState,
-    action: LoginActionsType
+    action: LoginActions
 ): LoginInitialStateType {
     switch (action.type) {
         case LOGIN:

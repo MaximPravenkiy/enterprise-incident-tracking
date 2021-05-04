@@ -1,12 +1,6 @@
 import { Moment } from 'moment';
 
-export interface ListOfIncidents extends ValuesCreateIncidentsForm {
-    icon: JSX.Element;
-    key: string;
-    owner: string;
-}
-
-export interface ValuesCreateIncidentsForm {
+interface ValuesCreateIncidentsForm {
     area: string;
     assignee: string;
     description: string;
@@ -17,18 +11,31 @@ export interface ValuesCreateIncidentsForm {
     status: string;
 }
 
-export interface Users {
+interface ListOfIncidents extends ValuesCreateIncidentsForm {
+    icon: JSX.Element;
+    key: string;
+    owner: string;
+}
+
+interface Users {
     id: string;
     label: string;
     value: string;
     key: string;
 }
 
-export interface CreateIncident extends ValuesCreateIncidentsForm {
+interface CreateIncident extends ValuesCreateIncidentsForm {
     owner: string;
 }
 
-export type ActionWithCreateIncidentForm = 'Создать' | 'Обновить';
-export type ActionWithIncidents =
-    | 'Показать все инциденты'
-    | 'Показать мои инциденты';
+type ActionWithCreateIncidentForm = 'Создать' | 'Обновить';
+type ActionWithIncidents = 'Показать все инциденты' | 'Показать мои инциденты';
+
+export type {
+    ValuesCreateIncidentsForm,
+    ListOfIncidents,
+    Users,
+    CreateIncident,
+    ActionWithCreateIncidentForm,
+    ActionWithIncidents
+};

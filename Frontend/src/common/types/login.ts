@@ -1,15 +1,15 @@
-export interface ValuesLoginForm {
+interface ValuesLoginForm {
     login: string;
     password: string;
     remember: boolean;
 }
 
-export interface UserData {
+interface UserData {
     fullname: string;
     tokens: Token;
 }
 
-export interface RestorePasswordFormValue {
+interface RestorePasswordFormValue {
     login: string;
     password: string;
     confirmPassword: string;
@@ -21,4 +21,6 @@ interface Token {
     expiresIn: number;
 }
 
-export type KeysType = '0' | '1' | '2';
+type KeysType = '0' | '1' | '2';
+
+export type { ValuesLoginForm, UserData, RestorePasswordFormValue, KeysType };

@@ -22,40 +22,40 @@ import {
     SET_INCIDENTS
 } from './incidents.actions';
 
-export interface SetIncidentsAction {
+interface SetIncidentsAction {
     type: typeof SET_INCIDENTS;
     payload: {
         listOfIncidents: Array<ListOfIncidents>;
     };
 }
 
-export interface CreateIncidentAction {
+interface CreateIncidentAction {
     type: typeof CREATE_INCIDENT;
     payload: {
         valuesCreateIncidentForm: ValuesCreateIncidentsForm;
     };
 }
 
-export interface DeleteIncidentAction {
+interface DeleteIncidentAction {
     type: typeof DELETE_INCIDENT;
     payload: { incidentID: string };
 }
 
-export interface CloseModalAction {
+interface CloseModalAction {
     type: typeof CLOSE_MODAL;
 }
 
-export interface UpdateValuesCreateIncidentFormAction {
+interface UpdateValuesCreateIncidentFormAction {
     type: typeof UPDATE_VALUES_CREATE_INCIDENT_FORM;
     payload: { updatedValue: ValuesCreateIncidentsForm };
 }
 
-export interface SetDataForUpdatingAction {
+interface SetDataForUpdatingAction {
     type: typeof SET_DATA_FOR_UPDATING;
     payload: { incidentID: string };
 }
 
-export interface UpdateIncidentAction {
+interface UpdateIncidentAction {
     type: typeof UPDATE_INCIDENT;
     payload: {
         updateData: {
@@ -65,39 +65,39 @@ export interface UpdateIncidentAction {
     };
 }
 
-export interface ResetCreateIncidentFormAction {
+interface ResetCreateIncidentFormAction {
     type: typeof RESET_CREATE_INCIDENT_FORM;
 }
 
-export interface GetUsersAction {
+interface GetUsersAction {
     type: typeof GET_USERS;
 }
 
-export interface SetUsersAction {
+interface SetUsersAction {
     type: typeof SET_USERS;
     payload: { users: Array<Users> };
 }
 
-export interface ChangeAssigneeUserIdAction {
+interface ChangeAssigneeUserIdAction {
     type: typeof CHANGE_ASSIGNEE_USER_ID;
     payload: { assigneeUserId: string };
 }
 
-export interface GetIncidentsAction {
+interface GetIncidentsAction {
     type: typeof GET_INCIDENTS;
 }
 
-export interface UpdateLoaderAction {
+interface UpdateLoaderAction {
     type: typeof UPDATE_LOADER;
     payload: { isListOfIncidentsLoading: boolean };
 }
 
-export interface ChangeActionWithListOfIncidentsAction {
+interface ChangeActionWithListOfIncidentsAction {
     type: typeof CHANGE_ACTION_WITH_LIST_OF_INCIDENTS;
     payload: { actionWithIncidents: ActionWithIncidents };
 }
 
-export type IncidentsActionsType =
+type IncidentsActions =
     | SetIncidentsAction
     | CreateIncidentAction
     | DeleteIncidentAction
@@ -112,3 +112,21 @@ export type IncidentsActionsType =
     | GetIncidentsAction
     | UpdateLoaderAction
     | ChangeActionWithListOfIncidentsAction;
+
+export type {
+    IncidentsActions,
+    SetIncidentsAction,
+    CreateIncidentAction,
+    DeleteIncidentAction,
+    CloseModalAction,
+    UpdateValuesCreateIncidentFormAction,
+    SetDataForUpdatingAction,
+    UpdateIncidentAction,
+    ResetCreateIncidentFormAction,
+    GetUsersAction,
+    SetUsersAction,
+    ChangeAssigneeUserIdAction,
+    GetIncidentsAction,
+    UpdateLoaderAction,
+    ChangeActionWithListOfIncidentsAction
+};
