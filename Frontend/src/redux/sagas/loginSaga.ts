@@ -1,7 +1,7 @@
 import { put, call, takeEvery, SagaReturnType } from 'redux-saga/effects';
 import { POST_LOGIN, RESTORE_PASSWORD } from 'redux/actions/actionTypes';
 import { login, resetLoginFormValue } from 'redux/actions/login/loginCreator';
-import { postLoginApi, restorePasswordApi } from 'redux/sagas/API';
+import { postLoginApi, restorePasswordApi } from 'redux/sagas/api/api';
 import {
     errorNotification,
     successNotification
@@ -33,7 +33,7 @@ function* postLoginWorker({ loginFormValues, history }: PostLoginActionType) {
                 'tokens',
                 JSON.stringify(response.data.tokens)
             );
-            console.log(response.data.tokens);
+
             destroyMessage();
             successNotification(
                 'Вы вошли в систему.',

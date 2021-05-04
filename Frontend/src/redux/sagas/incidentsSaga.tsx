@@ -28,7 +28,7 @@ import {
     getUsersForAssigneeOptionApi,
     postIncidentApi,
     updateIncidentApi
-} from 'redux/sagas/API';
+} from 'redux/sagas/api/api';
 import {
     CreateIncidentActionType,
     DeleteIncidentActionType,

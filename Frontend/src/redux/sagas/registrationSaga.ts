@@ -1,6 +1,6 @@
 import { call, put, SagaReturnType, takeEvery } from 'redux-saga/effects';
 import { POST_REGISTRATION } from 'redux/actions/actionTypes';
-import { postRegistrationApi } from 'redux/sagas/API';
+import { postRegistrationApi } from 'redux/sagas/api/api';
 import { destroyMessage } from 'common/serverResponseHandlers/message';
 import {
     errorNotification,

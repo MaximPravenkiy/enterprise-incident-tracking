@@ -10,7 +10,7 @@ import {
     updateValuesCreateIncidentForm
 } from 'redux/actions/incidents/incidentsCreator';
 import { openMessage } from 'common/serverResponseHandlers/message';
-import { getDate } from 'common/getDate';
+import { getDate } from 'common/helpers';
 import { IncidentsType } from 'redux/actions/incidents/interfaces';
 import { ListOfIncidents } from 'common/types/incidents';
 

@@ -42,11 +42,5 @@
   },
   "settings": {
     "import/core-modules": ["moment", "uuid"]
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   }
 }
