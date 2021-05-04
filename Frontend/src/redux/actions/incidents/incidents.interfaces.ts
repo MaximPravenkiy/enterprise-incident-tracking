@@ -24,17 +24,21 @@ import {
 
 export interface SetIncidentsActionType {
     type: typeof SET_INCIDENTS;
-    listOfIncidents: Array<ListOfIncidents>;
+    payload: {
+        listOfIncidents: Array<ListOfIncidents>;
+    };
 }
 
 export interface CreateIncidentActionType {
     type: typeof CREATE_INCIDENT;
-    valuesCreateIncidentForm: ValuesCreateIncidentsForm;
+    payload: {
+        valuesCreateIncidentForm: ValuesCreateIncidentsForm;
+    };
 }
 
 export interface DeleteIncidentActionType {
     type: typeof DELETE_INCIDENT;
-    incidentID: string;
+    payload: { incidentID: string };
 }
 
 export interface CloseModalActionType {
@@ -43,19 +47,21 @@ export interface CloseModalActionType {
 
 export interface UpdateValuesCreateIncidentFormActionType {
     type: typeof UPDATE_VALUES_CREATE_INCIDENT_FORM;
-    updatedValue: ValuesCreateIncidentsForm;
+    payload: { updatedValue: ValuesCreateIncidentsForm };
 }
 
 export interface SetDataForUpdatingActionType {
     type: typeof SET_DATA_FOR_UPDATING;
-    incidentID: string;
+    payload: { incidentID: string };
 }
 
 export interface UpdateIncidentActionType {
     type: typeof UPDATE_INCIDENT;
-    updateData: {
-        incidentID: string;
-        incidentFormData: CreateIncident;
+    payload: {
+        updateData: {
+            incidentID: string;
+            incidentFormData: CreateIncident;
+        };
     };
 }
 
@@ -69,12 +75,12 @@ export interface GetUsersActionType {
 
 export interface SetUsersActionType {
     type: typeof SET_USERS;
-    users: Array<Users>;
+    payload: { users: Array<Users> };
 }
 
 export interface ChangeAssigneeUserIdActionType {
     type: typeof CHANGE_ASSIGNEE_USER_ID;
-    assigneeUserId: string;
+    payload: { assigneeUserId: string };
 }
 
 export interface GetIncidentsActionType {
@@ -83,12 +89,12 @@ export interface GetIncidentsActionType {
 
 export interface UpdateLoaderActionType {
     type: typeof UPDATE_LOADER;
-    isListOfIncidentsLoading: boolean;
+    payload: { isListOfIncidentsLoading: boolean };
 }
 
 export interface ChangeActionWithListOfIncidentsActionType {
     type: typeof CHANGE_ACTION_WITH_LIST_OF_INCIDENTS;
-    actionWithIncidents: ActionWithIncidentsType;
+    payload: { actionWithIncidents: ActionWithIncidentsType };
 }
 
 export type IncidentsType =

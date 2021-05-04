@@ -22,19 +22,19 @@ const LoginFormContainer = () => {
 
     const onFinish = (values: ValuesLoginForm) => {
         openMessage('Проверяем данные...');
-        dispatch(postLogin(values, history));
+        dispatch(postLogin({ loginFormValues: values, history }));
     };
 
     const onChange = (value: ValuesLoginForm) => {
-        dispatch(updateValuesLoginForm(value));
+        dispatch(updateValuesLoginForm({ updatedValueLoginForm: value }));
     };
 
     const onRegisterNowClick = () => {
-        dispatch(changeKeyDepsOnPath('2')); // Меняет подсветку меню в хедере
+        dispatch(changeKeyDepsOnPath({ keyDepsOnPath: '2' })); // Меняет подсветку меню в хедере
     };
 
     const onForgotPasswordClick = () => {
-        dispatch(changeKeyDepsOnPath('0'));
+        dispatch(changeKeyDepsOnPath({ keyDepsOnPath: '0' }));
     };
 
     return (

@@ -28,7 +28,7 @@ function registrationReducer(
                 ...state,
                 valuesRegistrationForm: {
                     ...state.valuesRegistrationForm,
-                    ...action.updatedValueRegistrationForm
+                    ...action.payload.updatedValueRegistrationForm
                 }
             };
         case RESET_REGISTRATION_FORM:

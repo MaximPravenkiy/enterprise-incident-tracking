@@ -19,7 +19,9 @@ import {
 type ResponseLoginType = SagaReturnType<typeof postLoginApi>;
 type ResponseRestorePasswordType = SagaReturnType<typeof restorePasswordApi>;
 
-function* postLoginWorker({ loginFormValues, history }: PostLoginActionType) {
+function* postLoginWorker({
+    payload: { loginFormValues, history }
+}: PostLoginActionType) {
     try {
         const response: ResponseLoginType = yield call(
             postLoginApi,
@@ -43,7 +45,7 @@ function* postLoginWorker({ loginFormValues, history }: PostLoginActionType) {
                 'Вы вошли в систему.',
                 `Привет, ${response.data.fullname}!`
             );
-            yield put(login(response.data.fullname));
+            yield put(login({ fullname: response.data.fullname }));
             yield call(history.push, '/incidents');
 
             if (!loginFormValues.remember) {
@@ -60,8 +62,7 @@ function* postLoginWorker({ loginFormValues, history }: PostLoginActionType) {
 }
 
 function* restorePasswordWorker({
-    restorePasswordFormValue,
-    history
+    payload: { restorePasswordFormValue, history }
 }: RestorePasswordType) {
     try {
         const response: ResponseRestorePasswordType = yield call(

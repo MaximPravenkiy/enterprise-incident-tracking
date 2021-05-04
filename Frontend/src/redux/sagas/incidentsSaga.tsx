@@ -43,7 +43,7 @@ type ResponseUpdateIncident = SagaReturnType<typeof updateIncidentApi>;
 
 function* getIncidentsWorker() {
     try {
-        yield put(updateLoader(true));
+        yield put(updateLoader({ isListOfIncidentsLoading: true }));
         const actionWithIncidents = localStorage.getItem('actionWithIncidents');
         let response: ResponseGetIncidentsType;
 
@@ -62,8 +62,8 @@ function* getIncidentsWorker() {
                 dueDate: incident.dueDate.split('T')[0]
             }));
 
-            yield put(setIncidents(listOfIncidents));
-            yield put(updateLoader(false));
+            yield put(setIncidents({ listOfIncidents }));
+            yield put(updateLoader({ isListOfIncidentsLoading: false }));
         }
     } catch (e) {
         errorNotification(
@@ -93,7 +93,7 @@ function* getUsersForAssigneeOptionWorker() {
 
         if (response.status === 200) {
             destroyMessage();
-            yield put(setUsers(users));
+            yield put(setUsers({ users }));
         }
     } catch (e) {
         destroyMessage();
@@ -105,7 +105,7 @@ function* getUsersForAssigneeOptionWorker() {
 }
 
 function* createIncidentWorker({
-    valuesCreateIncidentForm
+    payload: { valuesCreateIncidentForm }
 }: CreateIncidentActionType) {
     try {
         const response: ResponseCreateIncidentType = yield call(
@@ -128,7 +128,9 @@ function* createIncidentWorker({
     }
 }
 
-function* deleteIncidentWorker({ incidentID }: DeleteIncidentActionType) {
+function* deleteIncidentWorker({
+    payload: { incidentID }
+}: DeleteIncidentActionType) {
     try {
         const response: ResponseDeleteIncident = yield call(
             deleteIncidentApi,
@@ -149,7 +151,9 @@ function* deleteIncidentWorker({ incidentID }: DeleteIncidentActionType) {
     }
 }
 
-function* updateIncidentWorker({ updateData }: UpdateIncidentActionType) {
+function* updateIncidentWorker({
+    payload: { updateData }
+}: UpdateIncidentActionType) {
     try {
         const response: ResponseUpdateIncident = yield call(
             updateIncidentApi,

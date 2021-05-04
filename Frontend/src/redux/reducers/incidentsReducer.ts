@@ -50,19 +50,19 @@ function incidentsReducer(
         case SET_INCIDENTS:
             return {
                 ...state,
-                listOfIncidents: action.listOfIncidents,
+                ...action.payload,
                 isModalVisible: false
             };
         case SET_USERS:
             return {
                 ...state,
-                users: action.users,
+                ...action.payload,
                 isModalVisible: true
             };
         case CHANGE_ASSIGNEE_USER_ID:
             return {
                 ...state,
-                assigneeUserId: action.assigneeUserId
+                ...action.payload
             };
         case CLOSE_MODAL:
             return {
@@ -74,14 +74,14 @@ function incidentsReducer(
                 ...state,
                 valuesCreateIncidentForm: {
                     ...state.valuesCreateIncidentForm,
-                    ...action.updatedValue
+                    ...action.payload.updatedValue
                 }
             };
         case SET_DATA_FOR_UPDATING:
             return {
                 ...state,
                 actionWithCreateIncidentForm: 'Обновить',
-                incidentID: action.incidentID
+                ...action.payload
             };
         case RESET_CREATE_INCIDENT_FORM:
             return {
@@ -94,12 +94,12 @@ function incidentsReducer(
         case UPDATE_LOADER:
             return {
                 ...state,
-                isListOfIncidentsLoading: action.isListOfIncidentsLoading
+                ...action.payload
             };
         case CHANGE_ACTION_WITH_LIST_OF_INCIDENTS:
             return {
                 ...state,
-                actionWithIncidents: action.actionWithIncidents
+                ...action.payload
             };
         default:
             return state;

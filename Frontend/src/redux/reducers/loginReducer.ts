@@ -30,14 +30,14 @@ function loginReducer(
             return {
                 ...state,
                 isAuth: true,
-                fullname: action.userData
+                ...action.payload
             };
         case UPDATE_VALUES_LOGIN_FORM:
             return {
                 ...state,
                 valuesLoginForm: {
                     ...state.valuesLoginForm,
-                    ...action.updatedValueLoginForm
+                    ...action.payload.updatedValueLoginForm
                 }
             };
         case LOGOUT:
@@ -48,7 +48,7 @@ function loginReducer(
         case CHANGE_KEY_DEPS_ON_PATH:
             return {
                 ...state,
-                keyDepsOnPath: action.keyDepsOnPath
+                ...action.payload
             };
         case RESET_LOGIN_FORM_VALUES:
             return {

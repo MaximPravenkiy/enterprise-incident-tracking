@@ -21,11 +21,11 @@ const postRegistration = (
     history
 });
 
-const updateValuesRegistrationForm = (
-    updatedValueRegistrationForm: ValuesRegistrationForm
-): UpdateValuesRegistrationFormActionType => ({
+const updateValuesRegistrationForm = (payload: {
+    updatedValueRegistrationForm: ValuesRegistrationForm;
+}): UpdateValuesRegistrationFormActionType => ({
     type: UPDATE_VALUES_REGISTRATION_FORM,
-    updatedValueRegistrationForm
+    payload
 });
 
 const registration = (): RegistrationActionType => ({ type: REGISTRATION });

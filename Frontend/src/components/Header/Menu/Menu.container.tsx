@@ -41,7 +41,9 @@ const MenuContainer: FC<RouteComponentProps> = memo(({ location, history }) => {
             actionWithIncidents === 'Показать мои инциденты'
                 ? 'Показать все инциденты'
                 : 'Показать мои инциденты';
-        dispatch(changeActionWithListOfIncidents(action));
+        dispatch(
+            changeActionWithListOfIncidents({ actionWithIncidents: action })
+        );
         dispatch(getIncidents());
     };
 
@@ -58,7 +60,9 @@ const MenuContainer: FC<RouteComponentProps> = memo(({ location, history }) => {
     };
 
     const changeKey = ({ key }: MenuInfo) => {
-        dispatch(changeKeyDepsOnPath(key === '1' ? '1' : '2'));
+        dispatch(
+            changeKeyDepsOnPath({ keyDepsOnPath: key === '1' ? '1' : '2' })
+        );
     };
 
     useEffect(() => {
@@ -72,7 +76,7 @@ const MenuContainer: FC<RouteComponentProps> = memo(({ location, history }) => {
             path = '0';
         }
 
-        dispatch(changeKeyDepsOnPath(path));
+        dispatch(changeKeyDepsOnPath({ keyDepsOnPath: path }));
     }, [dispatch, location.pathname]);
 
     let key = 0;

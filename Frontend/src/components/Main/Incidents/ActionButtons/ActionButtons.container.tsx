@@ -23,20 +23,22 @@ const ActionButtonsContainer: FC<{ incident: ListOfIncidents }> = ({
         const incidentID = incident.key;
 
         openMessage('Выполняем запрос...');
-        dispatch(deleteIncident(incidentID));
+        dispatch(deleteIncident({ incidentID }));
     };
 
     const onEditIncident = () => {
         const incidentID = incident.key;
 
         openMessage('Загружаем данные...');
-        dispatch(setDataForUpdating(incidentID));
-        dispatch(changeAssigneeUserId(incident.owner));
+        dispatch(setDataForUpdating({ incidentID }));
+        dispatch(changeAssigneeUserId({ assigneeUserId: incident.owner }));
         dispatch(
             updateValuesCreateIncidentForm({
-                ...incident,
-                startDate: getDate(incident.startDate),
-                dueDate: getDate(incident.dueDate)
+                updatedValue: {
+                    ...incident,
+                    startDate: getDate(incident.startDate),
+                    dueDate: getDate(incident.dueDate)
+                }
             })
         );
         dispatch(getUsers());

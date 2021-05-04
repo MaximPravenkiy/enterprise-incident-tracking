@@ -27,19 +27,16 @@ const CreateIncidentFormContainer = () => {
     } = useSelector(({ incidentsReducer }: RootReducer) => incidentsReducer);
     const dispatch = useDispatch<Dispatch<IncidentsType>>();
 
-    // Получить user id для поля Assignee
     const getUserId = (value: string) => {
         const helperArray = value.split(' ');
         const extractID = helperArray[helperArray.length - 1];
-        dispatch(changeAssigneeUserId(extractID));
+        dispatch(changeAssigneeUserId({ assigneeUserId: extractID }));
     };
 
-    // Диспатч изменения контролов формы
     const onChange = (value: ValuesCreateIncidentsForm) => {
-        dispatch(updateValuesCreateIncidentForm(value));
+        dispatch(updateValuesCreateIncidentForm({ updatedValue: value }));
     };
 
-    // Создать или обновить инцидент
     const onFinish = (values: CreateIncident) => {
         const incidentFormData = {
             ...values,
@@ -51,11 +48,15 @@ const CreateIncidentFormContainer = () => {
         openMessage('Проверяем данные...');
 
         if (actionWithCreateIncidentForm === 'Создать') {
-            dispatch(createIncident(incidentFormData));
+            dispatch(
+                createIncident({ valuesCreateIncidentForm: incidentFormData })
+            );
         }
 
         if (actionWithCreateIncidentForm === 'Обновить') {
-            dispatch(updateIncident({ incidentFormData, incidentID }));
+            dispatch(
+                updateIncident({ updateData: { incidentFormData, incidentID } })
+            );
         }
     };
 

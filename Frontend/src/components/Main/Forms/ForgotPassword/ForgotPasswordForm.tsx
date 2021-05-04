@@ -20,7 +20,9 @@ const ForgotPasswordForm: FC<RouteComponentProps> = ({ history }) => {
 
     const onFinish = (values: RestorePasswordFormValue) => {
         openMessage('Проверяем данные...');
-        dispatch(restorePassword(values, history));
+        dispatch(
+            restorePassword({ restorePasswordFormValue: values, history })
+        );
     };
 
     return (

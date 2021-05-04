@@ -15,7 +15,7 @@ export interface PostRegistrationActionType {
 
 export interface UpdateValuesRegistrationFormActionType {
     type: typeof UPDATE_VALUES_REGISTRATION_FORM;
-    updatedValueRegistrationForm: ValuesRegistrationForm;
+    payload: { updatedValueRegistrationForm: ValuesRegistrationForm };
 }
 
 export interface RegistrationActionType {

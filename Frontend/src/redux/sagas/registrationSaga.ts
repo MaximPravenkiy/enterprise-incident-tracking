@@ -28,7 +28,7 @@ function* postRegistrationWorker({
             destroyMessage();
             successNotification('Поздравляем!', response.data.message);
             yield put(resetRegistrationForm());
-            yield put(changeKeyDepsOnPath('1'));
+            yield put(changeKeyDepsOnPath({ keyDepsOnPath: '1' }));
             yield call(history.push, '/login');
         }
     } catch (e) {

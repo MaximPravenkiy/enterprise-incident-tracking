@@ -16,18 +16,20 @@ import {
 
 export interface PostLoginActionType {
     type: typeof POST_LOGIN;
-    loginFormValues: ValuesLoginForm;
-    history: History<unknown>;
+    payload: {
+        loginFormValues: ValuesLoginForm;
+        history: History<unknown>;
+    };
 }
 
 export interface LoginActionType {
     type: typeof LOGIN;
-    userData: string;
+    payload: { fullname: string };
 }
 
 export interface UpdateValuesLoginFormActionType {
     type: typeof UPDATE_VALUES_LOGIN_FORM;
-    updatedValueLoginForm: ValuesLoginForm;
+    payload: { updatedValueLoginForm: ValuesLoginForm };
 }
 
 export interface LogoutActionType {
@@ -36,13 +38,15 @@ export interface LogoutActionType {
 
 export interface ChangeKeyDepsOnPathType {
     type: typeof CHANGE_KEY_DEPS_ON_PATH;
-    keyDepsOnPath: KeysType;
+    payload: { keyDepsOnPath: KeysType };
 }
 
 export interface RestorePasswordType {
     type: typeof RESTORE_PASSWORD;
-    restorePasswordFormValue: RestorePasswordFormValue;
-    history: History<unknown>;
+    payload: {
+        restorePasswordFormValue: RestorePasswordFormValue;
+        history: History<unknown>;
+    };
 }
 
 export interface ResetLoginFormValuesType {
