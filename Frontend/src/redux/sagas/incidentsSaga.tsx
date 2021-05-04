@@ -28,9 +28,9 @@ import {
     updateIncidentApi
 } from 'redux/sagas/api/api';
 import {
-    CreateIncidentActionType,
-    DeleteIncidentActionType,
-    UpdateIncidentActionType
+    CreateIncidentAction,
+    DeleteIncidentAction,
+    UpdateIncidentAction
 } from 'redux/actions/incidents/incidents.interfaces';
 
 type ResponseGetIncidentsType = SagaReturnType<typeof getMyIncidentsApi>;
@@ -106,7 +106,7 @@ function* getUsersForAssigneeOptionWorker() {
 
 function* createIncidentWorker({
     payload: { valuesCreateIncidentForm }
-}: CreateIncidentActionType) {
+}: CreateIncidentAction) {
     try {
         const response: ResponseCreateIncidentType = yield call(
             postIncidentApi,
@@ -130,7 +130,7 @@ function* createIncidentWorker({
 
 function* deleteIncidentWorker({
     payload: { incidentID }
-}: DeleteIncidentActionType) {
+}: DeleteIncidentAction) {
     try {
         const response: ResponseDeleteIncident = yield call(
             deleteIncidentApi,
@@ -153,7 +153,7 @@ function* deleteIncidentWorker({
 
 function* updateIncidentWorker({
     payload: { updateData }
-}: UpdateIncidentActionType) {
+}: UpdateIncidentAction) {
     try {
         const response: ResponseUpdateIncident = yield call(
             updateIncidentApi,

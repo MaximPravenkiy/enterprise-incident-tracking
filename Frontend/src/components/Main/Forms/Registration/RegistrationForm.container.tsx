@@ -7,7 +7,7 @@ import {
     updateValuesRegistrationForm
 } from 'redux/actions/registration/registration.actions';
 import { RootReducer } from 'redux/reducers/rootReducer';
-import { RegistrationType } from 'redux/actions/registration/registration.interfaces';
+import { RegistrationActionsType } from 'redux/actions/registration/registration.interfaces';
 import { ValuesRegistrationForm } from 'common/types/registration';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { openMessage } from 'common/services/notification.services';
@@ -17,7 +17,7 @@ const RegistrationFormContainer: FC<RouteComponentProps> = ({ history }) => {
         ({ registrationReducer }: RootReducer) =>
             registrationReducer.valuesRegistrationForm
     );
-    const dispatch = useDispatch<Dispatch<RegistrationType>>();
+    const dispatch = useDispatch<Dispatch<RegistrationActionsType>>();
 
     const registerNewUser = (values: ValuesRegistrationForm) => {
         openMessage('Проверяем данные...');

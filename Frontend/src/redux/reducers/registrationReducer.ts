@@ -1,5 +1,5 @@
 import { Moment } from 'moment';
-import { RegistrationType } from 'redux/actions/registration/registration.interfaces';
+import { RegistrationActionsType } from 'redux/actions/registration/registration.interfaces';
 import { ValuesRegistrationForm } from 'common/types/registration';
 import {
     RESET_REGISTRATION_FORM,
@@ -20,7 +20,7 @@ const initialState = {
 
 function registrationReducer(
     state = initialState,
-    action: RegistrationType
+    action: RegistrationActionsType
 ): RegistrationInitialStateType {
     switch (action.type) {
         case UPDATE_VALUES_REGISTRATION_FORM:

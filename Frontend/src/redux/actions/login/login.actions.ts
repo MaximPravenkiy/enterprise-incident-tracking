@@ -1,12 +1,12 @@
 import { KeysType, ValuesLoginForm } from 'common/types/login';
 import {
-    ChangeKeyDepsOnPathType,
-    LoginActionType,
-    LogoutActionType,
-    PostLoginActionType,
-    ResetLoginFormValuesType,
-    RestorePasswordType,
-    UpdateValuesLoginFormActionType
+    ChangeKeyDepsOnPath,
+    LoginAction,
+    LogoutAction,
+    PostLoginAction,
+    ResetLoginFormValues,
+    RestorePassword,
+    UpdateValuesLoginFormAction
 } from 'redux/actions/login/login.interfaces';
 
 const LOGIN = 'LOGIN';
@@ -17,42 +17,40 @@ const UPDATE_VALUES_LOGIN_FORM = 'UPDATE_VALUES_LOGIN_FORM';
 const CHANGE_KEY_DEPS_ON_PATH = 'CHANGE_KEY_DEPS_ON_PATH';
 const RESTORE_PASSWORD = 'RESTORE_PASSWORD';
 
-const postLogin = (
-    payload: PostLoginActionType['payload']
-): PostLoginActionType => ({
+const postLogin = (payload: PostLoginAction['payload']): PostLoginAction => ({
     type: POST_LOGIN,
     payload
 });
 
-const login = (payload: { fullname: string }): LoginActionType => ({
+const login = (payload: { fullname: string }): LoginAction => ({
     type: LOGIN,
     payload
 });
 
 const updateValuesLoginForm = (payload: {
     updatedValueLoginForm: ValuesLoginForm;
-}): UpdateValuesLoginFormActionType => ({
+}): UpdateValuesLoginFormAction => ({
     type: UPDATE_VALUES_LOGIN_FORM,
     payload
 });
 
 const changeKeyDepsOnPath = (payload: {
     keyDepsOnPath: KeysType;
-}): ChangeKeyDepsOnPathType => ({
+}): ChangeKeyDepsOnPath => ({
     type: CHANGE_KEY_DEPS_ON_PATH,
     payload
 });
 
-const logout = (): LogoutActionType => ({ type: LOGOUT });
+const logout = (): LogoutAction => ({ type: LOGOUT });
 
 const restorePassword = (
-    payload: RestorePasswordType['payload']
-): RestorePasswordType => ({
+    payload: RestorePassword['payload']
+): RestorePassword => ({
     type: RESTORE_PASSWORD,
     payload
 });
 
-const resetLoginFormValue = (): ResetLoginFormValuesType => ({
+const resetLoginFormValue = (): ResetLoginFormValues => ({
     type: RESET_LOGIN_FORM_VALUES
 });
 

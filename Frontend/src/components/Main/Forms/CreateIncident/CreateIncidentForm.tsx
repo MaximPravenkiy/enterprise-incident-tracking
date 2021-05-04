@@ -4,7 +4,7 @@ import moment, { Moment } from 'moment';
 import CloseModalButton from 'components/Main/Forms/CreateIncident/CloseModalButton/CloseModalButton';
 import TitleModal from 'components/Main/Forms/CreateIncident/TitleModal/TitleModal';
 import CreateOrUpdateButton from 'components/Main/Forms/CreateIncident/CreateOrUpdateButton/CreateOrUpdateButton';
-import { CreateIncidentTypeProps } from 'components/Main/Forms/CreateIncident/CreateIncidentForm.interfaces';
+import { CreateIncidentProps } from 'components/Main/Forms/CreateIncident/CreateIncidentForm.interfaces';
 import {
     areas,
     configDate,
@@ -19,7 +19,7 @@ import {
     configArea
 } from 'components/Main/Forms/CreateIncident/CreateIncidentForm.data';
 
-const CreateIncidentForm: FC<CreateIncidentTypeProps> = ({
+const CreateIncidentForm: FC<CreateIncidentProps> = ({
     isModalVisible,
     users,
     actionWithCreateIncidentForm,

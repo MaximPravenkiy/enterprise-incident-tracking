@@ -12,8 +12,8 @@ import {
     successNotification
 } from 'common/services/notification.services';
 import {
-    PostLoginActionType,
-    RestorePasswordType
+    PostLoginAction,
+    RestorePassword
 } from 'redux/actions/login/login.interfaces';
 
 type ResponseLoginType = SagaReturnType<typeof postLoginApi>;
@@ -21,7 +21,7 @@ type ResponseRestorePasswordType = SagaReturnType<typeof restorePasswordApi>;
 
 function* postLoginWorker({
     payload: { loginFormValues, history }
-}: PostLoginActionType) {
+}: PostLoginAction) {
     try {
         const response: ResponseLoginType = yield call(
             postLoginApi,
@@ -63,7 +63,7 @@ function* postLoginWorker({
 
 function* restorePasswordWorker({
     payload: { restorePasswordFormValue, history }
-}: RestorePasswordType) {
+}: RestorePassword) {
     try {
         const response: ResponseRestorePasswordType = yield call(
             restorePasswordApi,

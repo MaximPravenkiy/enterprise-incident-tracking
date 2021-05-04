@@ -1,9 +1,9 @@
 import { ValuesRegistrationForm } from 'common/types/registration';
 import {
-    PostRegistrationActionType,
-    RegistrationActionType,
-    ResetRegistrationFormActionType,
-    UpdateValuesRegistrationFormActionType
+    PostRegistrationAction,
+    RegistrationAction,
+    ResetRegistrationFormAction,
+    UpdateValuesRegistrationFormAction
 } from 'redux/actions/registration/registration.interfaces';
 import { History } from 'history';
 
@@ -15,7 +15,7 @@ const POST_REGISTRATION = 'POST_REGISTRATION';
 const postRegistration = (
     registrationFormValues: ValuesRegistrationForm,
     history: History<unknown>
-): PostRegistrationActionType => ({
+): PostRegistrationAction => ({
     type: POST_REGISTRATION,
     registrationFormValues,
     history
@@ -23,14 +23,14 @@ const postRegistration = (
 
 const updateValuesRegistrationForm = (payload: {
     updatedValueRegistrationForm: ValuesRegistrationForm;
-}): UpdateValuesRegistrationFormActionType => ({
+}): UpdateValuesRegistrationFormAction => ({
     type: UPDATE_VALUES_REGISTRATION_FORM,
     payload
 });
 
-const registration = (): RegistrationActionType => ({ type: REGISTRATION });
+const registration = (): RegistrationAction => ({ type: REGISTRATION });
 
-const resetRegistrationForm = (): ResetRegistrationFormActionType => ({
+const resetRegistrationForm = (): ResetRegistrationFormAction => ({
     type: RESET_REGISTRATION_FORM
 });
 

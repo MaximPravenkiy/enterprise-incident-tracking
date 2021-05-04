@@ -1,12 +1,12 @@
 import { getDate } from 'common/helpers';
 import {
-    ActionWithCreateIncidentFormType,
-    ActionWithIncidentsType,
+    ActionWithCreateIncidentForm,
+    ActionWithIncidents,
     ListOfIncidents,
     Users,
     ValuesCreateIncidentsForm
 } from 'common/types/incidents';
-import { IncidentsType } from 'redux/actions/incidents/incidents.interfaces';
+import { IncidentsActionsType } from 'redux/actions/incidents/incidents.interfaces';
 import {
     CHANGE_ACTION_WITH_LIST_OF_INCIDENTS,
     SET_USERS,
@@ -22,8 +22,8 @@ import {
 export type IncidentsInitialStateType = typeof initialState;
 
 const initialState = {
-    actionWithCreateIncidentForm: 'Создать' as ActionWithCreateIncidentFormType,
-    actionWithIncidents: 'Показать все инциденты' as ActionWithIncidentsType,
+    actionWithCreateIncidentForm: 'Создать' as ActionWithCreateIncidentForm,
+    actionWithIncidents: 'Показать все инциденты' as ActionWithIncidents,
     assigneeUserId: '',
     incidentID: '',
     isModalVisible: false,
@@ -44,7 +44,7 @@ const initialState = {
 
 function incidentsReducer(
     state = initialState,
-    action: IncidentsType
+    action: IncidentsActionsType
 ): IncidentsInitialStateType {
     switch (action.type) {
         case SET_INCIDENTS:

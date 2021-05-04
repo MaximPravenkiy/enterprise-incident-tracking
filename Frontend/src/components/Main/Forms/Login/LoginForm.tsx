@@ -69,4 +69,4 @@ const LoginForm: FC<LoginFormTypes> = ({
     );
 };
 
-export { LoginForm };
+export default LoginForm;

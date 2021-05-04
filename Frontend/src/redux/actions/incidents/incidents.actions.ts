@@ -1,21 +1,21 @@
 import {
-    ChangeActionWithListOfIncidentsActionType,
-    ChangeAssigneeUserIdActionType,
-    CloseModalActionType,
-    CreateIncidentActionType,
-    DeleteIncidentActionType,
-    GetIncidentsActionType,
-    GetUsersActionType,
-    ResetCreateIncidentFormActionType,
-    SetDataForUpdatingActionType,
-    SetIncidentsActionType,
-    SetUsersActionType,
-    UpdateIncidentActionType,
-    UpdateLoaderActionType,
-    UpdateValuesCreateIncidentFormActionType
+    ChangeActionWithListOfIncidentsAction,
+    ChangeAssigneeUserIdAction,
+    CloseModalAction,
+    CreateIncidentAction,
+    DeleteIncidentAction,
+    GetIncidentsAction,
+    GetUsersAction,
+    ResetCreateIncidentFormAction,
+    SetDataForUpdatingAction,
+    SetIncidentsAction,
+    SetUsersAction,
+    UpdateIncidentAction,
+    UpdateLoaderAction,
+    UpdateValuesCreateIncidentFormAction
 } from 'redux/actions/incidents/incidents.interfaces';
 import {
-    ActionWithIncidentsType,
+    ActionWithIncidents,
     ListOfIncidents,
     Users,
     ValuesCreateIncidentsForm
@@ -37,75 +37,75 @@ const CREATE_INCIDENT = 'CREATE_INCIDENT';
 const DELETE_INCIDENT = 'DELETE_INCIDENT';
 const UPDATE_INCIDENT = 'UPDATE_INCIDENT';
 
-const getIncidents = (): GetIncidentsActionType => ({ type: GET_INCIDENTS });
+const getIncidents = (): GetIncidentsAction => ({ type: GET_INCIDENTS });
 
 const setIncidents = (payload: {
     listOfIncidents: ListOfIncidents[];
-}): SetIncidentsActionType => ({ type: SET_INCIDENTS, payload });
+}): SetIncidentsAction => ({ type: SET_INCIDENTS, payload });
 
 const createIncident = (payload: {
     valuesCreateIncidentForm: ValuesCreateIncidentsForm;
-}): CreateIncidentActionType => ({
+}): CreateIncidentAction => ({
     type: CREATE_INCIDENT,
     payload
 });
 
 const deleteIncident = (payload: {
     incidentID: string;
-}): DeleteIncidentActionType => ({
+}): DeleteIncidentAction => ({
     type: DELETE_INCIDENT,
     payload
 });
 
-const closeModal = (): CloseModalActionType => ({ type: CLOSE_MODAL });
+const closeModal = (): CloseModalAction => ({ type: CLOSE_MODAL });
 
 const updateValuesCreateIncidentForm = (payload: {
     updatedValue: ValuesCreateIncidentsForm;
-}): UpdateValuesCreateIncidentFormActionType => ({
+}): UpdateValuesCreateIncidentFormAction => ({
     type: UPDATE_VALUES_CREATE_INCIDENT_FORM,
     payload
 });
 
 const setDataForUpdating = (payload: {
     incidentID: string;
-}): SetDataForUpdatingActionType => ({
+}): SetDataForUpdatingAction => ({
     type: SET_DATA_FOR_UPDATING,
     payload
 });
 
 const updateIncident = (
-    payload: UpdateIncidentActionType['payload']
-): UpdateIncidentActionType => ({ type: UPDATE_INCIDENT, payload });
+    payload: UpdateIncidentAction['payload']
+): UpdateIncidentAction => ({ type: UPDATE_INCIDENT, payload });
 
-const resetCreateIncidentForm = (): ResetCreateIncidentFormActionType => ({
+const resetCreateIncidentForm = (): ResetCreateIncidentFormAction => ({
     type: RESET_CREATE_INCIDENT_FORM
 });
 
 const changeActionWithListOfIncidents = (payload: {
-    actionWithIncidents: ActionWithIncidentsType;
-}): ChangeActionWithListOfIncidentsActionType => ({
+    actionWithIncidents: ActionWithIncidents;
+}): ChangeActionWithListOfIncidentsAction => ({
     type: CHANGE_ACTION_WITH_LIST_OF_INCIDENTS,
     payload
 });
 
 const updateLoader = (payload: {
     isListOfIncidentsLoading: boolean;
-}): UpdateLoaderActionType => ({
+}): UpdateLoaderAction => ({
     type: UPDATE_LOADER,
     payload
 });
 
 // Users
-const getUsers = (): GetUsersActionType => ({ type: GET_USERS });
+const getUsers = (): GetUsersAction => ({ type: GET_USERS });
 
-const setUsers = (payload: { users: Array<Users> }): SetUsersActionType => ({
+const setUsers = (payload: { users: Array<Users> }): SetUsersAction => ({
     type: SET_USERS,
     payload
 });
 
 const changeAssigneeUserId = (payload: {
     assigneeUserId: string;
-}): ChangeAssigneeUserIdActionType => ({
+}): ChangeAssigneeUserIdAction => ({
     type: CHANGE_ASSIGNEE_USER_ID,
     payload
 });

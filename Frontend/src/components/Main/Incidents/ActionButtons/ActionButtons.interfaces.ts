@@ -1,4 +1,4 @@
-export interface ActionButtonsTypeProps {
+export interface ActionButtonsProps {
     onEditIncident: () => void;
     onDeleteIncident: () => void;
 }

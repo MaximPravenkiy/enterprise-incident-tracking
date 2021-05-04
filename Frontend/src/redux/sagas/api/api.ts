@@ -5,7 +5,7 @@ import {
     UserData,
     RestorePasswordFormValue
 } from 'common/types/login';
-import { UpdateIncidentActionType } from 'redux/actions/incidents/incidents.interfaces';
+import { UpdateIncidentAction } from 'redux/actions/incidents/incidents.interfaces';
 import {
     ListOfIncidents,
     Users,
@@ -50,7 +50,7 @@ const deleteIncidentApi = (incidentID: string) =>
     axios.delete<Message>(`/incidents/${incidentID}`);
 
 const updateIncidentApi = (
-    updateData: UpdateIncidentActionType['payload']['updateData']
+    updateData: UpdateIncidentAction['payload']['updateData']
 ) => {
     const { incidentFormData, incidentID } = updateData;
     return axios.put<Message>(`/incidents/${incidentID}`, incidentFormData);

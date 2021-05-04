@@ -4,10 +4,10 @@ import { Dispatch } from 'redux';
 import Incidents from 'components/Main/Incidents/Incidents';
 import { getIncidents } from 'redux/actions/incidents/incidents.actions';
 import { RootReducer } from 'redux/reducers/rootReducer';
-import { IncidentsType } from 'redux/actions/incidents/incidents.interfaces';
+import { IncidentsActionsType } from 'redux/actions/incidents/incidents.interfaces';
 
 const IncidentsContainer = () => {
-    const dispatch = useDispatch<Dispatch<IncidentsType>>();
+    const dispatch = useDispatch<Dispatch<IncidentsActionsType>>();
     const { listOfIncidents, isListOfIncidentsLoading } = useSelector(
         ({ incidentsReducer }: RootReducer) => incidentsReducer
     );

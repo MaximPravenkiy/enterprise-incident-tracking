@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
-import { LoginForm } from 'components/Main/Forms/Login/LoginForm';
+import LoginForm from 'components/Main/Forms/Login/LoginForm';
 import {
     changeKeyDepsOnPath,
     postLogin,
@@ -9,7 +9,7 @@ import {
 } from 'redux/actions/login/login.actions';
 import { RootReducer } from 'redux/reducers/rootReducer';
 import { ValuesLoginForm } from 'common/types/login';
-import { LoginType } from 'redux/actions/login/login.interfaces';
+import { LoginActionsType } from 'redux/actions/login/login.interfaces';
 import { useHistory } from 'react-router-dom';
 import { openMessage } from 'common/services/notification.services';
 
@@ -18,7 +18,7 @@ const LoginFormContainer = () => {
         ({ loginReducer }: RootReducer) => loginReducer.valuesLoginForm
     );
     const history = useHistory();
-    const dispatch = useDispatch<Dispatch<LoginType>>();
+    const dispatch = useDispatch<Dispatch<LoginActionsType>>();
 
     const onFinish = (values: ValuesLoginForm) => {
         openMessage('Проверяем данные...');

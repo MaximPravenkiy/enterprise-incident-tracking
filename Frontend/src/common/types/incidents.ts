@@ -28,7 +28,7 @@ export interface CreateIncident extends ValuesCreateIncidentsForm {
     owner: string;
 }
 
-export type ActionWithCreateIncidentFormType = 'Создать' | 'Обновить';
-export type ActionWithIncidentsType =
+export type ActionWithCreateIncidentForm = 'Создать' | 'Обновить';
+export type ActionWithIncidents =
     | 'Показать все инциденты'
     | 'Показать мои инциденты';

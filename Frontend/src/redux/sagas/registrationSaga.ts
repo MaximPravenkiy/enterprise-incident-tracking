@@ -10,14 +10,14 @@ import {
     resetRegistrationForm
 } from 'redux/actions/registration/registration.actions';
 import { changeKeyDepsOnPath } from 'redux/actions/login/login.actions';
-import { PostRegistrationActionType } from 'redux/actions/registration/registration.interfaces';
+import { PostRegistrationAction } from 'redux/actions/registration/registration.interfaces';
 
 type ResponseRegistrationType = SagaReturnType<typeof postRegistrationApi>;
 
 function* postRegistrationWorker({
     registrationFormValues,
     history
-}: PostRegistrationActionType) {
+}: PostRegistrationAction) {
     try {
         const response: ResponseRegistrationType = yield call(
             postRegistrationApi,

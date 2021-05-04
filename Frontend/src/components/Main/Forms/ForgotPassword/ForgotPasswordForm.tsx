@@ -3,7 +3,7 @@ import { Button, Form, Input } from 'antd';
 import { useDispatch } from 'react-redux';
 import { restorePassword } from 'redux/actions/login/login.actions';
 import { Dispatch } from 'redux';
-import { RestorePasswordType } from 'redux/actions/login/login.interfaces';
+import { RestorePassword } from 'redux/actions/login/login.interfaces';
 import { RestorePasswordFormValue } from 'common/types/login';
 import {
     formItemLayout,
@@ -16,7 +16,7 @@ import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { openMessage } from '../../../../common/services/notification.services';
 
 const ForgotPasswordForm: FC<RouteComponentProps> = ({ history }) => {
-    const dispatch = useDispatch<Dispatch<RestorePasswordType>>();
+    const dispatch = useDispatch<Dispatch<RestorePassword>>();
 
     const onFinish = (values: RestorePasswordFormValue) => {
         openMessage('Проверяем данные...');

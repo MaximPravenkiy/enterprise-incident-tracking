@@ -14,7 +14,7 @@ import {
     LOGOUT
 } from './login.actions';
 
-export interface PostLoginActionType {
+export interface PostLoginAction {
     type: typeof POST_LOGIN;
     payload: {
         loginFormValues: ValuesLoginForm;
@@ -22,26 +22,26 @@ export interface PostLoginActionType {
     };
 }
 
-export interface LoginActionType {
+export interface LoginAction {
     type: typeof LOGIN;
     payload: { fullname: string };
 }
 
-export interface UpdateValuesLoginFormActionType {
+export interface UpdateValuesLoginFormAction {
     type: typeof UPDATE_VALUES_LOGIN_FORM;
     payload: { updatedValueLoginForm: ValuesLoginForm };
 }
 
-export interface LogoutActionType {
+export interface LogoutAction {
     type: typeof LOGOUT;
 }
 
-export interface ChangeKeyDepsOnPathType {
+export interface ChangeKeyDepsOnPath {
     type: typeof CHANGE_KEY_DEPS_ON_PATH;
     payload: { keyDepsOnPath: KeysType };
 }
 
-export interface RestorePasswordType {
+export interface RestorePassword {
     type: typeof RESTORE_PASSWORD;
     payload: {
         restorePasswordFormValue: RestorePasswordFormValue;
@@ -49,14 +49,14 @@ export interface RestorePasswordType {
     };
 }
 
-export interface ResetLoginFormValuesType {
+export interface ResetLoginFormValues {
     type: typeof RESET_LOGIN_FORM_VALUES;
 }
 
-export type LoginType =
-    | PostLoginActionType
-    | LoginActionType
-    | UpdateValuesLoginFormActionType
-    | LogoutActionType
-    | ChangeKeyDepsOnPathType
-    | ResetLoginFormValuesType;
+export type LoginActionsType =
+    | PostLoginAction
+    | LoginAction
+    | UpdateValuesLoginFormAction
+    | LogoutAction
+    | ChangeKeyDepsOnPath
+    | ResetLoginFormValues;

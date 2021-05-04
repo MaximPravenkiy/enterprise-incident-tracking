@@ -1,11 +1,11 @@
 import React, { FC, memo, useEffect, useState } from 'react';
 import CreateIncidentFormContainer from 'components/Main/Forms/CreateIncident/CreateIncidentForm.container';
-import { IncidentsTypeProps } from 'components/Main/Incidents/Incidents.interfaces';
+import { IncidentsProps } from 'components/Main/Incidents/Incidents.interfaces';
 import { columns } from 'components/Main/Incidents/Incidents.data';
 import { Table } from 'antd';
 import { TableWrapper } from 'components/Main/Incidents/Incidents.styles';
 
-const Incidents: FC<IncidentsTypeProps> = memo(
+const Incidents: FC<IncidentsProps> = memo(
     ({ listOfIncidents, isListOfIncidentsLoading }) => {
         const [dataNumberOnPage, setDataNumberOnPage] = useState(3);
 
