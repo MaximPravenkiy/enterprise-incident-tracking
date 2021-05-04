@@ -1,14 +1,16 @@
 import { call, put, SagaReturnType, takeEvery } from 'redux-saga/effects';
-import { POST_REGISTRATION } from 'redux/actions/actionTypes';
 import { postRegistrationApi } from 'redux/sagas/api/api';
 import {
     destroyMessage,
     errorNotification,
     successNotification
 } from 'common/services/notification.services';
-import { resetRegistrationForm } from 'redux/actions/registration/registrationCreator';
-import { changeKeyDepsOnPath } from 'redux/actions/login/loginCreator';
-import { PostRegistrationActionType } from 'redux/actions/registration/interfaces';
+import {
+    POST_REGISTRATION,
+    resetRegistrationForm
+} from 'redux/actions/registration/registration.actions';
+import { changeKeyDepsOnPath } from 'redux/actions/login/login.actions';
+import { PostRegistrationActionType } from 'redux/actions/registration/registration.interfaces';
 
 type ResponseRegistrationType = SagaReturnType<typeof postRegistrationApi>;
 

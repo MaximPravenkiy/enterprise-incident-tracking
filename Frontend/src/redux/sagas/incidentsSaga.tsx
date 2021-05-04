@@ -2,20 +2,18 @@ import React from 'react';
 import { put, call, takeEvery, SagaReturnType } from 'redux-saga/effects';
 import PriorityIcon from 'components/PriorityIcon';
 import {
+    CREATE_INCIDENT,
+    DELETE_INCIDENT,
+    GET_INCIDENTS,
+    GET_USERS,
+    UPDATE_INCIDENT,
     getIncidents,
     resetCreateIncidentForm,
     setIncidents,
     setUsers,
     updateLoader
-} from 'redux/actions/incidents/incidentsCreator';
-import {
-    CREATE_INCIDENT,
-    DELETE_INCIDENT,
-    GET_INCIDENTS,
-    GET_USERS,
-    UPDATE_INCIDENT
-} from 'redux/actions/actionTypes';
-import { logout } from 'redux/actions/login/loginCreator';
+} from 'redux/actions/incidents/incidents.actions';
+import { logout } from 'redux/actions/login/login.actions';
 import {
     destroyMessage,
     errorNotification,
@@ -33,7 +31,7 @@ import {
     CreateIncidentActionType,
     DeleteIncidentActionType,
     UpdateIncidentActionType
-} from 'redux/actions/incidents/interfaces';
+} from 'redux/actions/incidents/incidents.interfaces';
 
 type ResponseGetIncidentsType = SagaReturnType<typeof getMyIncidentsApi>;
 type ResponseGetUsersForAssigneeType = SagaReturnType<

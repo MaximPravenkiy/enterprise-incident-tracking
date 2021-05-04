@@ -1,12 +1,12 @@
+import { ValuesLoginForm, KeysType } from 'common/types/login';
+import { LoginType } from 'redux/actions/login/login.interfaces';
 import {
+    RESET_LOGIN_FORM_VALUES,
     CHANGE_KEY_DEPS_ON_PATH,
     LOGIN,
-    LOGOUT,
-    RESET_LOGIN_FORM_VALUES,
-    UPDATE_VALUES_LOGIN_FORM
-} from 'redux/actions/actionTypes';
-import { ValuesLoginForm, KeysType } from 'common/types/login';
-import { LoginType } from 'redux/actions/login/interfaces';
+    UPDATE_VALUES_LOGIN_FORM,
+    LOGOUT
+} from '../actions/login/login.actions';
 
 type LoginInitialStateType = typeof initialState;
 

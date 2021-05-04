@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { Button, Form, Input } from 'antd';
 import { useDispatch } from 'react-redux';
-import { restorePassword } from 'redux/actions/login/loginCreator';
+import { restorePassword } from 'redux/actions/login/login.actions';
 import { Dispatch } from 'redux';
-import { RestorePasswordType } from 'redux/actions/login/interfaces';
+import { RestorePasswordType } from 'redux/actions/login/login.interfaces';
 import { RestorePasswordFormValue } from 'common/types/login';
 import {
     formItemLayout,

@@ -6,8 +6,8 @@ import { Dispatch } from 'redux';
 import Header from 'components/Header/Header';
 import Main from 'components/Main/Main';
 import Footer from 'components/Footer/Footer';
-import { login } from 'redux/actions/login/loginCreator';
-import { LoginActionType } from 'redux/actions/login/interfaces';
+import { login } from 'redux/actions/login/login.actions';
+import { LoginActionType } from 'redux/actions/login/login.interfaces';
 
 const App = () => {
     const dispatch = useDispatch<Dispatch<LoginActionType>>();

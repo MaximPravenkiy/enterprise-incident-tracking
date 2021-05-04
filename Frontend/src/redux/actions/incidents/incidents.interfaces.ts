@@ -1,26 +1,26 @@
 import {
-    CHANGE_ACTION_WITH_LIST_OF_INCIDENTS,
-    CHANGE_ASSIGNEE_USER_ID,
-    CLOSE_MODAL,
-    CREATE_INCIDENT,
-    DELETE_INCIDENT,
-    GET_INCIDENTS,
-    GET_USERS,
-    RESET_CREATE_INCIDENT_FORM,
-    SET_DATA_FOR_UPDATING,
-    SET_INCIDENTS,
-    SET_USERS,
-    UPDATE_INCIDENT,
-    UPDATE_LOADER,
-    UPDATE_VALUES_CREATE_INCIDENT_FORM
-} from 'redux/actions/actionTypes';
-import {
     ActionWithIncidentsType,
     CreateIncident,
     ListOfIncidents,
     Users,
     ValuesCreateIncidentsForm
 } from 'common/types/incidents';
+import {
+    UPDATE_INCIDENT,
+    DELETE_INCIDENT,
+    CREATE_INCIDENT,
+    GET_USERS,
+    GET_INCIDENTS,
+    CHANGE_ACTION_WITH_LIST_OF_INCIDENTS,
+    UPDATE_LOADER,
+    SET_DATA_FOR_UPDATING,
+    RESET_CREATE_INCIDENT_FORM,
+    UPDATE_VALUES_CREATE_INCIDENT_FORM,
+    CHANGE_ASSIGNEE_USER_ID,
+    CLOSE_MODAL,
+    SET_USERS,
+    SET_INCIDENTS
+} from './incidents.actions';
 
 export interface SetIncidentsActionType {
     type: typeof SET_INCIDENTS;

@@ -5,9 +5,9 @@ import { Dispatch } from 'redux';
 import {
     closeModal,
     resetCreateIncidentForm
-} from 'redux/actions/incidents/incidentsCreator';
+} from 'redux/actions/incidents/incidents.actions';
 import { RootReducer } from 'redux/reducers/rootReducer';
-import { IncidentsType } from 'redux/actions/incidents/interfaces';
+import { IncidentsType } from 'redux/actions/incidents/incidents.interfaces';
 
 const CloseModalButton = () => {
     const { actionWithCreateIncidentForm } = useSelector(

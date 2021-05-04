@@ -1,10 +1,10 @@
 import { Moment } from 'moment';
+import { RegistrationType } from 'redux/actions/registration/registration.interfaces';
+import { ValuesRegistrationForm } from 'common/types/registration';
 import {
     RESET_REGISTRATION_FORM,
     UPDATE_VALUES_REGISTRATION_FORM
-} from 'redux/actions/actionTypes';
-import { RegistrationType } from 'redux/actions/registration/interfaces';
-import { ValuesRegistrationForm } from 'common/types/registration';
+} from '../actions/registration/registration.actions';
 
 type RegistrationInitialStateType = typeof initialState;
 

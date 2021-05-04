@@ -5,7 +5,7 @@ import {
     UserData,
     RestorePasswordFormValue
 } from 'common/types/login';
-import { UpdateIncidentActionType } from 'redux/actions/incidents/interfaces';
+import { UpdateIncidentActionType } from 'redux/actions/incidents/incidents.interfaces';
 import {
     ListOfIncidents,
     Users,

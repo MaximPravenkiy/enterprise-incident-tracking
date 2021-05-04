@@ -1,14 +1,3 @@
-import {
-    CHANGE_ACTION_WITH_LIST_OF_INCIDENTS,
-    CHANGE_ASSIGNEE_USER_ID,
-    CLOSE_MODAL,
-    RESET_CREATE_INCIDENT_FORM,
-    SET_DATA_FOR_UPDATING,
-    SET_INCIDENTS,
-    SET_USERS,
-    UPDATE_LOADER,
-    UPDATE_VALUES_CREATE_INCIDENT_FORM
-} from 'redux/actions/actionTypes';
 import { getDate } from 'common/helpers';
 import {
     ActionWithCreateIncidentFormType,
@@ -17,7 +6,18 @@ import {
     Users,
     ValuesCreateIncidentsForm
 } from 'common/types/incidents';
-import { IncidentsType } from 'redux/actions/incidents/interfaces';
+import { IncidentsType } from 'redux/actions/incidents/incidents.interfaces';
+import {
+    CHANGE_ACTION_WITH_LIST_OF_INCIDENTS,
+    SET_USERS,
+    UPDATE_LOADER,
+    UPDATE_VALUES_CREATE_INCIDENT_FORM,
+    SET_DATA_FOR_UPDATING,
+    RESET_CREATE_INCIDENT_FORM,
+    CLOSE_MODAL,
+    CHANGE_ASSIGNEE_USER_ID,
+    SET_INCIDENTS
+} from '../actions/incidents/incidents.actions';
 
 export type IncidentsInitialStateType = typeof initialState;
 

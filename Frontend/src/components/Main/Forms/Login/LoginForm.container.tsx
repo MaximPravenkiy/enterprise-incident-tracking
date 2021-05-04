@@ -6,10 +6,10 @@ import {
     changeKeyDepsOnPath,
     postLogin,
     updateValuesLoginForm
-} from 'redux/actions/login/loginCreator';
+} from 'redux/actions/login/login.actions';
 import { RootReducer } from 'redux/reducers/rootReducer';
 import { ValuesLoginForm } from 'common/types/login';
-import { LoginType } from 'redux/actions/login/interfaces';
+import { LoginType } from 'redux/actions/login/login.interfaces';
 import { useHistory } from 'react-router-dom';
 import { openMessage } from 'common/services/notification.services';
 

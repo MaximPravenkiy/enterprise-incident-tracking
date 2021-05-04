@@ -5,9 +5,9 @@ import { RegistrationForm } from 'components/Main/Forms/Registration/Registratio
 import {
     postRegistration,
     updateValuesRegistrationForm
-} from 'redux/actions/registration/registrationCreator';
+} from 'redux/actions/registration/registration.actions';
 import { RootReducer } from 'redux/reducers/rootReducer';
-import { RegistrationType } from 'redux/actions/registration/interfaces';
+import { RegistrationType } from 'redux/actions/registration/registration.interfaces';
 import { ValuesRegistrationForm } from 'common/types/registration';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { openMessage } from 'common/services/notification.services';

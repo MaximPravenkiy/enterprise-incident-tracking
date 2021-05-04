@@ -1,11 +1,11 @@
+import { ValuesRegistrationForm } from 'common/types/registration';
+import { History } from 'history';
 import {
     POST_REGISTRATION,
     REGISTRATION,
     RESET_REGISTRATION_FORM,
     UPDATE_VALUES_REGISTRATION_FORM
-} from 'redux/actions/actionTypes';
-import { ValuesRegistrationForm } from 'common/types/registration';
-import { History } from 'history';
+} from './registration.actions';
 
 export interface PostRegistrationActionType {
     type: typeof POST_REGISTRATION;

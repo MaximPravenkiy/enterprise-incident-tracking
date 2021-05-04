@@ -1,18 +1,18 @@
 import {
-    CHANGE_KEY_DEPS_ON_PATH,
-    LOGIN,
-    LOGOUT,
-    POST_LOGIN,
-    RESET_LOGIN_FORM_VALUES,
-    RESTORE_PASSWORD,
-    UPDATE_VALUES_LOGIN_FORM
-} from 'redux/actions/actionTypes';
-import {
     ValuesLoginForm,
     KeysType,
     RestorePasswordFormValue
 } from 'common/types/login';
 import { History } from 'history';
+import {
+    CHANGE_KEY_DEPS_ON_PATH,
+    RESTORE_PASSWORD,
+    LOGIN,
+    UPDATE_VALUES_LOGIN_FORM,
+    POST_LOGIN,
+    RESET_LOGIN_FORM_VALUES,
+    LOGOUT
+} from './login.actions';
 
 export interface PostLoginActionType {
     type: typeof POST_LOGIN;

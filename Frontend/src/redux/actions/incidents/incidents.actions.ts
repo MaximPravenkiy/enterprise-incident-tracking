@@ -1,20 +1,4 @@
 import {
-    CHANGE_ASSIGNEE_USER_ID,
-    SET_INCIDENTS,
-    GET_USERS,
-    GET_INCIDENTS,
-    SET_USERS,
-    CREATE_INCIDENT,
-    CLOSE_MODAL,
-    DELETE_INCIDENT,
-    UPDATE_VALUES_CREATE_INCIDENT_FORM,
-    UPDATE_INCIDENT,
-    SET_DATA_FOR_UPDATING,
-    RESET_CREATE_INCIDENT_FORM,
-    UPDATE_LOADER,
-    CHANGE_ACTION_WITH_LIST_OF_INCIDENTS
-} from 'redux/actions/actionTypes';
-import {
     ChangeActionWithListOfIncidentsActionType,
     ChangeAssigneeUserIdActionType,
     CloseModalActionType,
@@ -29,7 +13,7 @@ import {
     UpdateIncidentActionType,
     UpdateLoaderActionType,
     UpdateValuesCreateIncidentFormActionType
-} from 'redux/actions/incidents/interfaces';
+} from 'redux/actions/incidents/incidents.interfaces';
 import {
     ActionWithIncidentsType,
     ListOfIncidents,
@@ -37,7 +21,22 @@ import {
     ValuesCreateIncidentsForm
 } from 'common/types/incidents';
 
-// Incidents
+const SET_INCIDENTS = 'SET_INCIDENTS';
+const SET_USERS = 'SET_USERS';
+const CHANGE_ASSIGNEE_USER_ID = 'CHANGE_ASSIGNEE_USER_ID';
+const CLOSE_MODAL = 'CLOSE_MODAL';
+const UPDATE_VALUES_CREATE_INCIDENT_FORM = 'UPDATE_VALUES_CREATE_INCIDENT_FORM';
+const RESET_CREATE_INCIDENT_FORM = 'RESET_CREATE_INCIDENT_FORM';
+const SET_DATA_FOR_UPDATING = 'SET_DATA_FOR_UPDATING';
+const UPDATE_LOADER = 'UPDATE_LOADER';
+const CHANGE_ACTION_WITH_LIST_OF_INCIDENTS =
+    'CHANGE_ACTION_WITH_LIST_OF_INCIDENTS';
+const GET_INCIDENTS = 'GET_INCIDENTS';
+const GET_USERS = 'GET_USERS';
+const CREATE_INCIDENT = 'CREATE_INCIDENT';
+const DELETE_INCIDENT = 'DELETE_INCIDENT';
+const UPDATE_INCIDENT = 'UPDATE_INCIDENT';
+
 const getIncidents = (): GetIncidentsActionType => ({ type: GET_INCIDENTS });
 
 const setIncidents = (
@@ -123,5 +122,19 @@ export {
     setDataForUpdating,
     resetCreateIncidentForm,
     updateLoader,
-    changeActionWithListOfIncidents
+    changeActionWithListOfIncidents,
+    UPDATE_INCIDENT,
+    DELETE_INCIDENT,
+    CREATE_INCIDENT,
+    GET_USERS,
+    GET_INCIDENTS,
+    CHANGE_ACTION_WITH_LIST_OF_INCIDENTS,
+    UPDATE_LOADER,
+    SET_DATA_FOR_UPDATING,
+    RESET_CREATE_INCIDENT_FORM,
+    UPDATE_VALUES_CREATE_INCIDENT_FORM,
+    CLOSE_MODAL,
+    CHANGE_ASSIGNEE_USER_ID,
+    SET_USERS,
+    SET_INCIDENTS
 };

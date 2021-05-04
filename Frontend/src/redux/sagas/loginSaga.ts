@@ -1,6 +1,10 @@
 import { put, call, takeEvery, SagaReturnType } from 'redux-saga/effects';
-import { POST_LOGIN, RESTORE_PASSWORD } from 'redux/actions/actionTypes';
-import { login, resetLoginFormValue } from 'redux/actions/login/loginCreator';
+import {
+    login,
+    resetLoginFormValue,
+    POST_LOGIN,
+    RESTORE_PASSWORD
+} from 'redux/actions/login/login.actions';
 import { postLoginApi, restorePasswordApi } from 'redux/sagas/api/api';
 import {
     destroyMessage,
@@ -10,7 +14,7 @@ import {
 import {
     PostLoginActionType,
     RestorePasswordType
-} from 'redux/actions/login/interfaces';
+} from 'redux/actions/login/login.interfaces';
 
 type ResponseLoginType = SagaReturnType<typeof postLoginApi>;
 type ResponseRestorePasswordType = SagaReturnType<typeof restorePasswordApi>;

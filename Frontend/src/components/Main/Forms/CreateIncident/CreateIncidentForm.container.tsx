@@ -7,9 +7,9 @@ import {
     createIncident,
     updateIncident,
     updateValuesCreateIncidentForm
-} from 'redux/actions/incidents/incidentsCreator';
+} from 'redux/actions/incidents/incidents.actions';
 import { RootReducer } from 'redux/reducers/rootReducer';
-import { IncidentsType } from 'redux/actions/incidents/interfaces';
+import { IncidentsType } from 'redux/actions/incidents/incidents.interfaces';
 import {
     CreateIncident,
     ValuesCreateIncidentsForm

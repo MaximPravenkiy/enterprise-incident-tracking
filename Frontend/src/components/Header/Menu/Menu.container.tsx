@@ -3,17 +3,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import NavMenu from 'components/Header/Menu/Menu';
-import { changeKeyDepsOnPath, logout } from 'redux/actions/login/loginCreator';
+import { changeKeyDepsOnPath, logout } from 'redux/actions/login/login.actions';
 import MenuItemsLogin from 'components/Header/Menu/MenuItemsLogin/MenuItemsLogin';
 import MenuItemsLogout from 'components/Header/Menu/MenuItemsLogout/MenuItemsLogout';
 import {
     changeActionWithListOfIncidents,
     getIncidents,
     getUsers
-} from 'redux/actions/incidents/incidentsCreator';
+} from 'redux/actions/incidents/incidents.actions';
 import { RootReducer } from 'redux/reducers/rootReducer';
-import { LoginType } from 'redux/actions/login/interfaces';
-import { IncidentsType } from 'redux/actions/incidents/interfaces';
+import { LoginType } from 'redux/actions/login/login.interfaces';
+import { IncidentsType } from 'redux/actions/incidents/incidents.interfaces';
 import {
     logoutNotification,
     openMessage

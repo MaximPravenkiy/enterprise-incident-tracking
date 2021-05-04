@@ -1,16 +1,7 @@
 import {
-    CHANGE_KEY_DEPS_ON_PATH,
-    LOGIN,
-    LOGOUT,
-    POST_LOGIN,
-    RESET_LOGIN_FORM_VALUES,
-    RESTORE_PASSWORD,
-    UPDATE_VALUES_LOGIN_FORM
-} from 'redux/actions/actionTypes';
-import {
-    ValuesLoginForm,
     KeysType,
-    RestorePasswordFormValue
+    RestorePasswordFormValue,
+    ValuesLoginForm
 } from 'common/types/login';
 import {
     ChangeKeyDepsOnPathType,
@@ -20,8 +11,16 @@ import {
     ResetLoginFormValuesType,
     RestorePasswordType,
     UpdateValuesLoginFormActionType
-} from 'redux/actions/login/interfaces';
+} from 'redux/actions/login/login.interfaces';
 import { History } from 'history';
+
+const LOGIN = 'LOGIN';
+const LOGOUT = 'LOGOUT';
+const RESET_LOGIN_FORM_VALUES = 'RESET_LOGIN_FORM_VALUES';
+const POST_LOGIN = 'POST_LOGIN';
+const UPDATE_VALUES_LOGIN_FORM = 'UPDATE_VALUES_LOGIN_FORM';
+const CHANGE_KEY_DEPS_ON_PATH = 'CHANGE_KEY_DEPS_ON_PATH';
+const RESTORE_PASSWORD = 'RESTORE_PASSWORD';
 
 const postLogin = (
     loginFormValues: ValuesLoginForm,
@@ -73,5 +72,12 @@ export {
     updateValuesLoginForm,
     changeKeyDepsOnPath,
     restorePassword,
-    resetLoginFormValue
+    resetLoginFormValue,
+    RESTORE_PASSWORD,
+    CHANGE_KEY_DEPS_ON_PATH,
+    POST_LOGIN,
+    RESET_LOGIN_FORM_VALUES,
+    LOGOUT,
+    LOGIN,
+    UPDATE_VALUES_LOGIN_FORM
 };
