@@ -3,10 +3,10 @@ import { POST_LOGIN, RESTORE_PASSWORD } from 'redux/actions/actionTypes';
 import { login, resetLoginFormValue } from 'redux/actions/login/loginCreator';
 import { postLoginApi, restorePasswordApi } from 'redux/sagas/api/api';
 import {
+    destroyMessage,
     errorNotification,
     successNotification
-} from 'common/serverResponseHandlers/notification';
-import { destroyMessage } from 'common/serverResponseHandlers/message';
+} from 'common/services/notification.services';
 import {
     PostLoginActionType,
     RestorePasswordType

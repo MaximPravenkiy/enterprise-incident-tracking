@@ -7,10 +7,10 @@ import {
     updateValuesRegistrationForm
 } from 'redux/actions/registration/registrationCreator';
 import { RootReducer } from 'redux/reducers/rootReducer';
-import { openMessage } from 'common/serverResponseHandlers/message';
 import { RegistrationType } from 'redux/actions/registration/interfaces';
 import { ValuesRegistrationForm } from 'common/types/registration';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { openMessage } from 'common/services/notification.services';
 
 const RegistrationFormContainer: FC<RouteComponentProps> = ({ history }) => {
     const { dateOfBirth, fullname, login, password, position } = useSelector(

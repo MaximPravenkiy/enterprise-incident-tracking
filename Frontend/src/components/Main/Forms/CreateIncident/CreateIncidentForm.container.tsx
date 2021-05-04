@@ -9,12 +9,12 @@ import {
     updateValuesCreateIncidentForm
 } from 'redux/actions/incidents/incidentsCreator';
 import { RootReducer } from 'redux/reducers/rootReducer';
-import { openMessage } from 'common/serverResponseHandlers/message';
 import { IncidentsType } from 'redux/actions/incidents/interfaces';
 import {
     CreateIncident,
     ValuesCreateIncidentsForm
 } from 'common/types/incidents';
+import { openMessage } from '../../../../common/services/notification.services';
 
 const CreateIncidentFormContainer = () => {
     const {

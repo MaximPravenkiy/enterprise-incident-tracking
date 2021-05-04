@@ -1,6 +1,6 @@
 import React from 'react';
 import { put, call, takeEvery, SagaReturnType } from 'redux-saga/effects';
-import PriorityIcon from 'common/PriorityIcon';
+import PriorityIcon from 'components/PriorityIcon';
 import {
     getIncidents,
     resetCreateIncidentForm,
@@ -17,10 +17,10 @@ import {
 } from 'redux/actions/actionTypes';
 import { logout } from 'redux/actions/login/loginCreator';
 import {
+    destroyMessage,
     errorNotification,
     successNotification
-} from 'common/serverResponseHandlers/notification';
-import { destroyMessage } from 'common/serverResponseHandlers/message';
+} from 'common/services/notification.services';
 import {
     deleteIncidentApi,
     getAllIncidentsApi,

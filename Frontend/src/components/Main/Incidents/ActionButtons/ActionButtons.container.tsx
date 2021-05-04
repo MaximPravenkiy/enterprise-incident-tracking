@@ -9,10 +9,10 @@ import {
     setDataForUpdating,
     updateValuesCreateIncidentForm
 } from 'redux/actions/incidents/incidentsCreator';
-import { openMessage } from 'common/serverResponseHandlers/message';
 import { getDate } from 'common/helpers';
 import { IncidentsType } from 'redux/actions/incidents/interfaces';
 import { ListOfIncidents } from 'common/types/incidents';
+import { openMessage } from 'common/services/notification.services';
 
 const ActionButtonsContainer: FC<{ incident: ListOfIncidents }> = ({
     incident

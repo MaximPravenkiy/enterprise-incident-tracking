@@ -9,7 +9,7 @@ import App from 'app/App';
 import rootWatcher from 'redux/sagas';
 import rootReducer from 'redux/reducers/rootReducer';
 import GlobalStyles from 'app/GlobalStyle';
-import InvalidPage from 'common/InvalidPage';
+import InvalidPage from 'components/InvalidPage';
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(

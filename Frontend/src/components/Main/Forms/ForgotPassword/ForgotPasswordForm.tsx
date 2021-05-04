@@ -13,7 +13,7 @@ import {
     configConfirmPassword
 } from 'components/Main/Forms/ForgotPassword/ForgotPasswordForm.data';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
-import { openMessage } from 'common/serverResponseHandlers/message';
+import { openMessage } from '../../../../common/services/notification.services';
 
 const ForgotPasswordForm: FC<RouteComponentProps> = ({ history }) => {
     const dispatch = useDispatch<Dispatch<RestorePasswordType>>();

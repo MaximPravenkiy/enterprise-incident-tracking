@@ -8,10 +8,10 @@ import {
     updateValuesLoginForm
 } from 'redux/actions/login/loginCreator';
 import { RootReducer } from 'redux/reducers/rootReducer';
-import { openMessage } from 'common/serverResponseHandlers/message';
 import { ValuesLoginForm } from 'common/types/login';
 import { LoginType } from 'redux/actions/login/interfaces';
 import { useHistory } from 'react-router-dom';
+import { openMessage } from 'common/services/notification.services';
 
 const LoginFormContainer = () => {
     const { login, password, remember } = useSelector(

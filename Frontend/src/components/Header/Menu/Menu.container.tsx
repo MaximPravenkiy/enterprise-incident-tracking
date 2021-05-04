@@ -12,10 +12,12 @@ import {
     getUsers
 } from 'redux/actions/incidents/incidentsCreator';
 import { RootReducer } from 'redux/reducers/rootReducer';
-import { openMessage } from 'common/serverResponseHandlers/message';
 import { LoginType } from 'redux/actions/login/interfaces';
 import { IncidentsType } from 'redux/actions/incidents/interfaces';
-import { logoutNotification } from 'common/serverResponseHandlers/notification';
+import {
+    logoutNotification,
+    openMessage
+} from 'common/services/notification.services';
 import { KeysType } from 'common/types/login';
 import { MenuInfo } from '../../../../node_modules/rc-menu/lib/interface';
 
