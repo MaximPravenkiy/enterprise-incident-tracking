@@ -2,8 +2,8 @@ import { getDate } from 'common/helpers';
 import {
     ActionWithCreateIncidentForm,
     ActionWithIncidents,
-    ListOfIncidents,
-    Users,
+    Incident,
+    User,
     ValuesCreateIncidentsForm
 } from 'common/types/incidents';
 import { IncidentsActions } from 'redux/actions/incidents/incidents.interfaces';
@@ -27,9 +27,9 @@ const initialState = {
     assigneeUserId: '',
     incidentID: '',
     isModalVisible: false,
-    listOfIncidents: [] as ListOfIncidents[],
+    listOfIncidents: [] as Incident[],
     isListOfIncidentsLoading: false,
-    users: [] as Users[],
+    users: [] as User[],
     valuesCreateIncidentForm: {
         area: '',
         assignee: '',

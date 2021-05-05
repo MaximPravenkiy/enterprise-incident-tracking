@@ -1,6 +1,6 @@
-import { ListOfIncidents } from 'common/types/incidents';
+import { Incident } from 'common/types/incidents';
 
 export interface IncidentsProps {
-    listOfIncidents: ListOfIncidents[];
+    listOfIncidents: Incident[];
     isListOfIncidentsLoading: boolean;
 }

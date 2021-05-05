@@ -6,11 +6,7 @@ import {
     RestorePasswordFormValue
 } from 'common/types/login';
 import { UpdateIncidentAction } from 'redux/actions/incidents/incidents.interfaces';
-import {
-    ListOfIncidents,
-    Users,
-    ValuesCreateIncidentsForm
-} from 'common/types/incidents';
+import { Incident, ValuesCreateIncidentsForm } from 'common/types/incidents';
 import axiosWithAuthorization from 'redux/sagas/api/api.services';
 
 interface Message {
@@ -29,20 +25,21 @@ const restorePasswordApi = (
 
 const getMyIncidentsApi = async () => {
     const axiosInstanceWithAuthorization = await axiosWithAuthorization();
-    return axiosInstanceWithAuthorization.get<ListOfIncidents[]>(
+    return axiosInstanceWithAuthorization.get<Incident[]>(
         '/incidents?by-owner=true'
     );
 };
 
 const getAllIncidentsApi = async () => {
     const axiosInstanceWithAuthorization = await axiosWithAuthorization();
-    return axiosInstanceWithAuthorization.get<ListOfIncidents[]>('/incidents');
+    return axiosInstanceWithAuthorization.get<Incident[]>('/incidents');
 };
 
 const postIncidentApi = (values: ValuesCreateIncidentsForm) =>
     axios.post<Message>('/incidents', values);
 
-const getUsersForAssigneeOptionApi = () => axios.get<Users[]>('/users');
+const getUsersForAssigneeOptionApi = () =>
+    axios.get<{ fullname: string; _id: string }[]>('/users');
 
 const deleteIncidentApi = (incidentID: string) =>
     axios.delete<Message>(`/incidents/${incidentID}`);

@@ -1,7 +1,7 @@
 import { call, put, SagaReturnType, takeEvery } from 'redux-saga/effects';
 import { postRegistrationApi } from 'redux/sagas/api/api';
 import {
-    destroyMessage,
+    destroyLoadingMessage,
     errorNotification,
     successNotification
 } from 'common/services/notification.services';
@@ -25,14 +25,14 @@ function* postRegistrationWorker({
         );
 
         if (response.status === 201) {
-            destroyMessage();
+            destroyLoadingMessage();
             successNotification('Поздравляем!', response.data.message);
             yield put(resetRegistrationForm());
             yield put(changeKeyDepsOnPath({ keyDepsOnPath: '1' }));
             yield call(history.push, '/login');
         }
     } catch (e) {
-        destroyMessage();
+        destroyLoadingMessage();
         errorNotification(
             'К сожалению, регистрация не удалась...',
             e.response.data.message

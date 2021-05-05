@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { Menu } from 'antd';
 
-// 320px, 576px, 768px, 1024px, 1280px || 1366 х 768
 export const MenuItemCustom = styled(Menu.Item)`
     && {
         display: flex;

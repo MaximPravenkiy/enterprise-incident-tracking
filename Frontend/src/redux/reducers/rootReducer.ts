@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { incidentsReducer, loginReducer, registrationReducer } from './indnex';
+import { incidentsReducer, loginReducer, registrationReducer } from './index';
 
 const rootReducer = combineReducers({
     loginReducer,

@@ -15,7 +15,7 @@ import {
 } from 'redux/actions/incidents/incidents.actions';
 import { logout } from 'redux/actions/login/login.actions';
 import {
-    destroyMessage,
+    destroyLoadingMessage,
     errorNotification,
     successNotification
 } from 'common/services/notification.services';
@@ -32,6 +32,12 @@ import {
     DeleteIncidentAction,
     UpdateIncidentAction
 } from 'redux/actions/incidents/incidents.interfaces';
+import { getDate } from '../../common/helpers';
+
+// interface User {
+//     fullname: string;
+//     _id: string
+// }
 
 type ResponseGetIncidentsType = SagaReturnType<typeof getMyIncidentsApi>;
 type ResponseGetUsersForAssigneeType = SagaReturnType<
@@ -54,12 +60,12 @@ function* getIncidentsWorker() {
         }
 
         if (response.status === 200) {
-            const listOfIncidents = response.data.map((incident: any) => ({
+            const listOfIncidents = response.data.map((incident) => ({
                 ...incident,
                 key: incident._id,
                 icon: <PriorityIcon priority={incident.priority} />,
-                startDate: incident.startDate.split('T')[0],
-                dueDate: incident.dueDate.split('T')[0]
+                startDate: getDate(incident.startDate).format('YYYY-MM-DD'),
+                dueDate: getDate(incident.dueDate).format('YYYY-MM-DD')
             }));
 
             yield put(setIncidents({ listOfIncidents }));
@@ -84,7 +90,7 @@ function* getUsersForAssigneeOptionWorker() {
         const response: ResponseGetUsersForAssigneeType = yield call(
             getUsersForAssigneeOptionApi
         );
-        const users = response.data.map((item: any) => ({
+        const users = response.data.map((item) => ({
             label: item.fullname,
             value: `${item.fullname} ${item._id}`,
             id: item._id,
@@ -92,11 +98,11 @@ function* getUsersForAssigneeOptionWorker() {
         }));
 
         if (response.status === 200) {
-            destroyMessage();
+            destroyLoadingMessage();
             yield put(setUsers({ users }));
         }
     } catch (e) {
-        destroyMessage();
+        destroyLoadingMessage();
         errorNotification(
             'Не удалось выполнить операцию...',
             e.response.data.message
@@ -114,13 +120,13 @@ function* createIncidentWorker({
         );
 
         if (response.status === 201) {
-            destroyMessage();
+            destroyLoadingMessage();
             successNotification('Операция выполнена.', response.data.message);
             yield put(getIncidents());
             yield put(resetCreateIncidentForm());
         }
     } catch (e) {
-        destroyMessage();
+        destroyLoadingMessage();
         errorNotification(
             'Не удалось выполнить операцию...',
             e.response.data.message
@@ -138,12 +144,12 @@ function* deleteIncidentWorker({
         );
 
         if (response.status === 201) {
-            destroyMessage();
+            destroyLoadingMessage();
             successNotification('Операция выполнена.', response.data.message);
             yield put(getIncidents());
         }
     } catch (e) {
-        destroyMessage();
+        destroyLoadingMessage();
         errorNotification(
             'Не удалось выполнить операцию...',
             e.response.data.message
@@ -161,13 +167,13 @@ function* updateIncidentWorker({
         );
 
         if (response.status === 201) {
-            destroyMessage();
+            destroyLoadingMessage();
             successNotification('Операция выполнена.', response.data.message);
             yield put(getIncidents());
             yield put(resetCreateIncidentForm());
         }
     } catch (e) {
-        destroyMessage();
+        destroyLoadingMessage();
         errorNotification(
             'Не удалось выполнить операцию...',
             e.response.data.message

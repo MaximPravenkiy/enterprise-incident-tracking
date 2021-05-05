@@ -7,7 +7,7 @@ import {
 } from 'redux/actions/login/login.actions';
 import { postLoginApi, restorePasswordApi } from 'redux/sagas/api/api';
 import {
-    destroyMessage,
+    destroyLoadingMessage,
     errorNotification,
     successNotification
 } from 'common/services/notification.services';
@@ -23,6 +23,7 @@ function* postLoginWorker({
     payload: { loginFormValues, history }
 }: PostLoginAction) {
     try {
+        console.log(loginFormValues);
         const response: ResponseLoginType = yield call(
             postLoginApi,
             loginFormValues
@@ -40,7 +41,7 @@ function* postLoginWorker({
                 JSON.stringify(response.data.tokens)
             );
 
-            destroyMessage();
+            destroyLoadingMessage();
             successNotification(
                 'Вы вошли в систему.',
                 `Привет, ${response.data.fullname}!`
@@ -53,7 +54,7 @@ function* postLoginWorker({
             }
         }
     } catch (e) {
-        destroyMessage();
+        destroyLoadingMessage();
         errorNotification(
             'Вход в систему невозможен.',
             e.response.data.message
@@ -71,12 +72,12 @@ function* restorePasswordWorker({
         );
 
         if (response.status === 201) {
-            destroyMessage();
+            destroyLoadingMessage();
             successNotification('Операция завершена.', response.data.message);
             yield call(history.push, '/login');
         }
     } catch (e) {
-        destroyMessage();
+        destroyLoadingMessage();
         errorNotification(
             'Не удалось обновить пароль...',
             e.response.data.message

@@ -36,27 +36,27 @@ const logoutNotification = () => {
     });
 };
 
-const key = 'loading';
+const KEY = 'loading';
 
-const openMessage = (text: string): void => {
+const openLoadingMessage = (text: string): void => {
     message.loading({
         content: text,
         duration: 0,
-        key,
+        key: KEY,
         style: {
             marginTop: '18vh'
         }
     });
 };
 
-const destroyMessage = (): void => {
-    message.destroy(key);
+const destroyLoadingMessage = (): void => {
+    message.destroy(KEY);
 };
 
 export {
     successNotification,
     errorNotification,
     logoutNotification,
-    openMessage,
-    destroyMessage
+    openLoadingMessage,
+    destroyLoadingMessage
 };

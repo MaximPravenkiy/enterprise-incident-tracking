@@ -14,7 +14,7 @@ import {
     CreateIncident,
     ValuesCreateIncidentsForm
 } from 'common/types/incidents';
-import { openMessage } from '../../../../common/services/notification.services';
+import { openLoadingMessage } from '../../../../common/services/notification.services';
 
 const CreateIncidentFormContainer = () => {
     const {
@@ -45,7 +45,7 @@ const CreateIncidentFormContainer = () => {
                 : '',
             owner: assigneeUserId
         };
-        openMessage('Проверяем данные...');
+        openLoadingMessage('Проверяем данные...');
 
         if (actionWithCreateIncidentForm === 'Создать') {
             dispatch(

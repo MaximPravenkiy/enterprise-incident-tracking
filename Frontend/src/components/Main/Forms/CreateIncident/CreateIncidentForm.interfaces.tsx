@@ -1,12 +1,12 @@
 import {
     ActionWithCreateIncidentForm,
     CreateIncident,
-    Users,
+    User,
     ValuesCreateIncidentsForm
 } from 'common/types/incidents';
 
 export interface CreateIncidentProps {
-    users: Users[];
+    users: User[];
     isModalVisible: boolean;
     valuesCreateIncidentForm: ValuesCreateIncidentsForm;
     actionWithCreateIncidentForm: ActionWithCreateIncidentForm;

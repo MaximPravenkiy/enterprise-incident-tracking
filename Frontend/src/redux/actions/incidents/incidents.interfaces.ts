@@ -1,8 +1,8 @@
 import {
     ActionWithIncidents,
     CreateIncident,
-    ListOfIncidents,
-    Users,
+    Incident,
+    User,
     ValuesCreateIncidentsForm
 } from 'common/types/incidents';
 import {
@@ -25,7 +25,7 @@ import {
 interface SetIncidentsAction {
     type: typeof SET_INCIDENTS;
     payload: {
-        listOfIncidents: ListOfIncidents[];
+        listOfIncidents: Incident[];
     };
 }
 
@@ -75,7 +75,7 @@ interface GetUsersAction {
 
 interface SetUsersAction {
     type: typeof SET_USERS;
-    payload: { users: Users[] };
+    payload: { users: User[] };
 }
 
 interface ChangeAssigneeUserIdAction {

@@ -11,7 +11,7 @@ import { RootReducer } from 'redux/reducers/rootReducer';
 import { ValuesLoginForm } from 'common/types/login';
 import { LoginActions } from 'redux/actions/login/login.interfaces';
 import { useHistory } from 'react-router-dom';
-import { openMessage } from 'common/services/notification.services';
+import { openLoadingMessage } from 'common/services/notification.services';
 
 const LoginFormContainer = () => {
     const { login, password, remember } = useSelector(
@@ -21,7 +21,7 @@ const LoginFormContainer = () => {
     const dispatch = useDispatch<Dispatch<LoginActions>>();
 
     const onFinish = (values: ValuesLoginForm) => {
-        openMessage('Проверяем данные...');
+        openLoadingMessage('Проверяем данные...');
         dispatch(postLogin({ loginFormValues: values, history }));
     };
 
@@ -30,7 +30,7 @@ const LoginFormContainer = () => {
     };
 
     const onRegisterNowClick = () => {
-        dispatch(changeKeyDepsOnPath({ keyDepsOnPath: '2' })); // Меняет подсветку меню в хедере
+        dispatch(changeKeyDepsOnPath({ keyDepsOnPath: '2' }));
     };
 
     const onForgotPasswordClick = () => {

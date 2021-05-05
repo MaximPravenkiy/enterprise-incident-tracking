@@ -11,25 +11,23 @@ import {
 } from 'redux/actions/incidents/incidents.actions';
 import { getDate } from 'common/helpers';
 import { IncidentsActions } from 'redux/actions/incidents/incidents.interfaces';
-import { ListOfIncidents } from 'common/types/incidents';
-import { openMessage } from 'common/services/notification.services';
+import { Incident } from 'common/types/incidents';
+import { openLoadingMessage } from 'common/services/notification.services';
 
-const ActionButtonsContainer: FC<{ incident: ListOfIncidents }> = ({
-    incident
-}) => {
+const ActionButtonsContainer: FC<{ incident: Incident }> = ({ incident }) => {
     const dispatch = useDispatch<Dispatch<IncidentsActions>>();
 
     const onDeleteIncident = () => {
         const incidentID = incident.key;
 
-        openMessage('Выполняем запрос...');
+        openLoadingMessage('Выполняем запрос...');
         dispatch(deleteIncident({ incidentID }));
     };
 
     const onEditIncident = () => {
         const incidentID = incident.key;
 
-        openMessage('Загружаем данные...');
+        openLoadingMessage('Загружаем данные...');
         dispatch(setDataForUpdating({ incidentID }));
         dispatch(changeAssigneeUserId({ assigneeUserId: incident.owner }));
         dispatch(

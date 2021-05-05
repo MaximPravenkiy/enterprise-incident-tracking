@@ -17,8 +17,8 @@ import {
 
 import {
     ActionWithIncidents,
-    ListOfIncidents,
-    Users,
+    Incident,
+    User,
     ValuesCreateIncidentsForm
 } from 'common/types/incidents';
 
@@ -41,7 +41,7 @@ const UPDATE_INCIDENT = 'UPDATE_INCIDENT';
 const getIncidents = (): GetIncidentsAction => ({ type: GET_INCIDENTS });
 
 const setIncidents = (payload: {
-    listOfIncidents: ListOfIncidents[];
+    listOfIncidents: Incident[];
 }): SetIncidentsAction => ({ type: SET_INCIDENTS, payload });
 
 const createIncident = (payload: {
@@ -96,10 +96,9 @@ const updateLoader = (payload: {
     payload
 });
 
-// Users
 const getUsers = (): GetUsersAction => ({ type: GET_USERS });
 
-const setUsers = (payload: { users: Users[] }): SetUsersAction => ({
+const setUsers = (payload: { users: User[] }): SetUsersAction => ({
     type: SET_USERS,
     payload
 });

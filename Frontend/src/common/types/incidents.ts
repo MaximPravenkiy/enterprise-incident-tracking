@@ -4,20 +4,21 @@ interface ValuesCreateIncidentsForm {
     area: string;
     assignee: string;
     description: string;
-    dueDate: Moment;
+    dueDate: string | Moment;
     incidentName: string;
     priority: string;
-    startDate: Moment;
+    startDate: string | Moment;
     status: string;
+    _id: string;
 }
 
-interface ListOfIncidents extends ValuesCreateIncidentsForm {
+interface Incident extends ValuesCreateIncidentsForm {
     icon: JSX.Element;
     key: string;
     owner: string;
 }
 
-interface Users {
+interface User {
     id: string;
     label: string;
     value: string;
@@ -33,8 +34,8 @@ type ActionWithIncidents = 'Показать все инциденты' | 'По�
 
 export type {
     ValuesCreateIncidentsForm,
-    ListOfIncidents,
-    Users,
+    Incident,
+    User,
     CreateIncident,
     ActionWithCreateIncidentForm,
     ActionWithIncidents

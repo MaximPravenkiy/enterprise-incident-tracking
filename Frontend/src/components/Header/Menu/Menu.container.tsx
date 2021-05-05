@@ -16,7 +16,7 @@ import { LoginActions } from 'redux/actions/login/login.interfaces';
 import { IncidentsActions } from 'redux/actions/incidents/incidents.interfaces';
 import {
     logoutNotification,
-    openMessage
+    openLoadingMessage
 } from 'common/services/notification.services';
 import { KeysType } from 'common/types/login';
 import { MenuInfo } from '../../../../node_modules/rc-menu/lib/interface';
@@ -55,7 +55,7 @@ const MenuContainer: FC<RouteComponentProps> = memo(({ location, history }) => {
     };
 
     const createIncident = () => {
-        openMessage('Загружаем данные...');
+        openLoadingMessage('Загружаем данные...');
         dispatch(getUsers());
     };
 

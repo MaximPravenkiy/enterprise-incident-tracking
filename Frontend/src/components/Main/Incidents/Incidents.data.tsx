@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListOfIncidents } from 'common/types/incidents';
+import { Incident } from 'common/types/incidents';
 import ActionButtonsContainer from 'components/Main/Incidents/ActionButtons/ActionButtons.container';
 import { ColumnsType } from 'antd/es/table';
 import moment, { Moment } from 'moment';
@@ -14,11 +14,11 @@ function comparePriority(a: string, b: string) {
     return -1;
 }
 
-function compareDate(a: Moment, b: Moment) {
+function compareDate(a: string | Moment, b: string | Moment) {
     return moment(a).isAfter(b) ? 1 : -1;
 }
 
-export const columns: ColumnsType<ListOfIncidents> = [
+export const columns: ColumnsType<Incident> = [
     {
         title: '',
         dataIndex: 'icon',
@@ -78,7 +78,7 @@ export const columns: ColumnsType<ListOfIncidents> = [
     {
         title: 'Action',
         key: 'action',
-        render: (incident: ListOfIncidents): JSX.Element => (
+        render: (incident: Incident): JSX.Element => (
             <ActionButtonsContainer incident={incident} />
         )
     }
