@@ -9,7 +9,7 @@ import ForgotPassword from 'components/Main/Forms/ForgotPassword/ForgotPasswordF
 
 const Routes = () => {
     const isAuth = useSelector(
-        ({ loginReducer }: RootReducer) => loginReducer.isAuth
+        ({ userInfoReducer }: RootReducer) => userInfoReducer.isAuth
     );
 
     return (

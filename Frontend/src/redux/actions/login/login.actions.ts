@@ -1,16 +1,12 @@
 import { KeysType, ValuesLoginForm } from 'common/types/login';
 import {
     ChangeKeyDepsOnPath,
-    LoginAction,
-    LogoutAction,
     PostLoginAction,
     ResetLoginFormValues,
     RestorePassword,
     UpdateValuesLoginFormAction
 } from 'redux/actions/login/login.interfaces';
 
-const LOGIN = 'LOGIN';
-const LOGOUT = 'LOGOUT';
 const RESET_LOGIN_FORM_VALUES = 'RESET_LOGIN_FORM_VALUES';
 const POST_LOGIN = 'POST_LOGIN';
 const UPDATE_VALUES_LOGIN_FORM = 'UPDATE_VALUES_LOGIN_FORM';
@@ -19,11 +15,6 @@ const RESTORE_PASSWORD = 'RESTORE_PASSWORD';
 
 const postLogin = (payload: PostLoginAction['payload']): PostLoginAction => ({
     type: POST_LOGIN,
-    payload
-});
-
-const login = (payload: { fullname: string }): LoginAction => ({
-    type: LOGIN,
     payload
 });
 
@@ -41,8 +32,6 @@ const changeKeyDepsOnPath = (payload: {
     payload
 });
 
-const logout = (): LogoutAction => ({ type: LOGOUT });
-
 const restorePassword = (
     payload: RestorePassword['payload']
 ): RestorePassword => ({
@@ -55,8 +44,6 @@ const resetLoginFormValue = (): ResetLoginFormValues => ({
 });
 
 export {
-    login,
-    logout,
     postLogin,
     updateValuesLoginForm,
     changeKeyDepsOnPath,
@@ -66,7 +53,5 @@ export {
     CHANGE_KEY_DEPS_ON_PATH,
     POST_LOGIN,
     RESET_LOGIN_FORM_VALUES,
-    LOGOUT,
-    LOGIN,
     UPDATE_VALUES_LOGIN_FORM
 };

@@ -3,12 +3,10 @@ import { LoginActions } from 'redux/actions/login/login.interfaces';
 import {
     RESET_LOGIN_FORM_VALUES,
     CHANGE_KEY_DEPS_ON_PATH,
-    LOGIN,
-    UPDATE_VALUES_LOGIN_FORM,
-    LOGOUT
+    UPDATE_VALUES_LOGIN_FORM
 } from '../actions/login/login.actions';
 
-type LoginInitialStateType = typeof initialState;
+type LoginInitialState = typeof initialState;
 
 const initialState = {
     valuesLoginForm: {
@@ -24,14 +22,8 @@ const initialState = {
 function loginReducer(
     state = initialState,
     action: LoginActions
-): LoginInitialStateType {
+): LoginInitialState {
     switch (action.type) {
-        case LOGIN:
-            return {
-                ...state,
-                isAuth: true,
-                ...action.payload
-            };
         case UPDATE_VALUES_LOGIN_FORM:
             return {
                 ...state,
@@ -39,11 +31,6 @@ function loginReducer(
                     ...state.valuesLoginForm,
                     ...action.payload.updatedValueLoginForm
                 }
-            };
-        case LOGOUT:
-            return {
-                ...state,
-                isAuth: false
             };
         case CHANGE_KEY_DEPS_ON_PATH:
             return {

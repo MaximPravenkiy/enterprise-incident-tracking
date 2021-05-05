@@ -1,6 +1,5 @@
 import { put, call, takeEvery, SagaReturnType } from 'redux-saga/effects';
 import {
-    login,
     resetLoginFormValue,
     POST_LOGIN,
     RESTORE_PASSWORD
@@ -15,6 +14,9 @@ import {
     PostLoginAction,
     RestorePassword
 } from 'redux/actions/login/login.interfaces';
+import { login } from 'redux/actions/userInfo/userInfo.actions';
+import { decode } from 'jsonwebtoken';
+import { DecodeAccessToken } from 'common/types/login';
 
 type ResponseLoginType = SagaReturnType<typeof postLoginApi>;
 type ResponseRestorePasswordType = SagaReturnType<typeof restorePasswordApi>;
@@ -23,30 +25,25 @@ function* postLoginWorker({
     payload: { loginFormValues, history }
 }: PostLoginAction) {
     try {
-        console.log(loginFormValues);
         const response: ResponseLoginType = yield call(
             postLoginApi,
             loginFormValues
         );
 
         if (response.status === 200) {
+            const { accessToken } = response.data.tokens;
+            const { fullname } = <DecodeAccessToken>decode(accessToken);
             const actionWithIncidents = 'Показать мои инциденты' as 'Показать мои инциденты';
             localStorage.setItem('actionWithIncidents', actionWithIncidents);
-            localStorage.setItem(
-                'userData',
-                JSON.stringify(response.data.fullname)
-            );
             localStorage.setItem(
                 'tokens',
                 JSON.stringify(response.data.tokens)
             );
 
+            console.log(accessToken);
             destroyLoadingMessage();
-            successNotification(
-                'Вы вошли в систему.',
-                `Привет, ${response.data.fullname}!`
-            );
-            yield put(login({ fullname: response.data.fullname }));
+            successNotification('Вы вошли в систему.', `Привет, ${fullname}!`);
+            yield put(login({ fullname }));
             yield call(history.push, '/incidents');
 
             if (!loginFormValues.remember) {

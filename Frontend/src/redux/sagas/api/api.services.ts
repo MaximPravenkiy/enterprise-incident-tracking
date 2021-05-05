@@ -1,11 +1,6 @@
 import { decode } from 'jsonwebtoken';
 import axios from 'axios';
-
-interface DecodeAccessToken {
-    userId: string;
-    iat: number;
-    exp: number;
-}
+import { DecodeAccessToken } from 'common/types/login';
 
 const refreshTokenApi = (refreshToken: string) =>
     axios.put('/refresh-token', { refreshToken });

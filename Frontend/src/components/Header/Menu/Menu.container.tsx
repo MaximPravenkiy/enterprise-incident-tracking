@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import NavMenu from 'components/Header/Menu/Menu';
-import { changeKeyDepsOnPath, logout } from 'redux/actions/login/login.actions';
+import { changeKeyDepsOnPath } from 'redux/actions/login/login.actions';
 import MenuItemsLogin from 'components/Header/Menu/MenuItemsLogin/MenuItemsLogin';
 import MenuItemsLogout from 'components/Header/Menu/MenuItemsLogout/MenuItemsLogout';
 import {
@@ -19,6 +19,8 @@ import {
     openLoadingMessage
 } from 'common/services/notification.services';
 import { KeysType } from 'common/types/login';
+import { logout } from 'redux/actions/userInfo/userInfo.actions';
+import { UserInfoActions } from 'redux/actions/userInfo/userInfo.interfaces';
 import { MenuInfo } from '../../../../node_modules/rc-menu/lib/interface';
 
 const navContent = [
@@ -27,9 +29,14 @@ const navContent = [
 ];
 
 const MenuContainer: FC<RouteComponentProps> = memo(({ location, history }) => {
-    const dispatch = useDispatch<Dispatch<LoginActions | IncidentsActions>>();
-    const { isAuth, fullname, keyDepsOnPath } = useSelector(
+    const dispatch = useDispatch<
+        Dispatch<LoginActions | UserInfoActions | IncidentsActions>
+    >();
+    const { keyDepsOnPath } = useSelector(
         ({ loginReducer }: RootReducer) => loginReducer
+    );
+    const { isAuth, fullname } = useSelector(
+        ({ userInfoReducer }: RootReducer) => userInfoReducer
     );
     const { actionWithIncidents } = useSelector(
         ({ incidentsReducer }: RootReducer) => incidentsReducer

@@ -6,17 +6,23 @@ import { Dispatch } from 'redux';
 import Header from 'components/Header/Header';
 import Main from 'components/Main/Main';
 import Footer from 'components/Footer/Footer';
-import { login } from 'redux/actions/login/login.actions';
-import { LoginAction } from 'redux/actions/login/login.interfaces';
+import { decode } from 'jsonwebtoken';
+import { LoginAction } from 'redux/actions/userInfo/userInfo.interfaces';
+import { login } from 'redux/actions/userInfo/userInfo.actions';
+import { DecodeAccessToken } from 'common/types/login';
 
 const App = () => {
     const dispatch = useDispatch<Dispatch<LoginAction>>();
 
     useEffect(() => {
-        const data = localStorage.getItem('userData');
+        const tokens = localStorage.getItem('tokens');
 
-        if (data) {
-            dispatch(login(JSON.parse(data)));
+        if (tokens) {
+            const { fullname } = decode(
+                JSON.parse(tokens).accessToken
+            ) as DecodeAccessToken;
+
+            dispatch(login({ fullname }));
         }
     });
 

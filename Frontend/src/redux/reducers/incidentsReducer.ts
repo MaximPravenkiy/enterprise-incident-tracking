@@ -19,7 +19,7 @@ import {
     SET_INCIDENTS
 } from '../actions/incidents/incidents.actions';
 
-export type IncidentsInitialStateType = typeof initialState;
+export type IncidentsInitialState = typeof initialState;
 
 const initialState = {
     actionWithCreateIncidentForm: 'Создать' as ActionWithCreateIncidentForm,
@@ -45,7 +45,7 @@ const initialState = {
 function incidentsReducer(
     state = initialState,
     action: IncidentsActions
-): IncidentsInitialStateType {
+): IncidentsInitialState {
     switch (action.type) {
         case SET_INCIDENTS:
             return {

@@ -1,10 +1,16 @@
 import { combineReducers } from 'redux';
-import { incidentsReducer, loginReducer, registrationReducer } from './index';
+import {
+    incidentsReducer,
+    loginReducer,
+    registrationReducer,
+    userInfoReducer
+} from './index';
 
 const rootReducer = combineReducers({
     loginReducer,
     registrationReducer,
-    incidentsReducer
+    incidentsReducer,
+    userInfoReducer
 });
 
 export type RootReducer = ReturnType<typeof rootReducer>;

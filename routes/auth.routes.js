@@ -54,9 +54,9 @@ router.post("/login", async (req, res) => {
       return res.status(400).json({ message: "Неверный логин или пароль!" });
     }
 
-    const tokens = await updateTokens(id, remember);
+    const tokens = await updateTokens(id, remember, fullname);
 
-    return res.json({ tokens, fullname });
+    return res.json({ tokens });
   } catch (e) {
     return res
       .status(500)

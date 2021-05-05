@@ -21,6 +21,19 @@ interface Token {
     expiresIn: number;
 }
 
+interface DecodeAccessToken {
+    fullname: string;
+    userId: string;
+    iat: number;
+    exp: number;
+}
+
 type KeysType = '0' | '1' | '2';
 
-export type { ValuesLoginForm, UserData, RestorePasswordFormValue, KeysType };
+export type {
+    ValuesLoginForm,
+    UserData,
+    RestorePasswordFormValue,
+    KeysType,
+    DecodeAccessToken
+};

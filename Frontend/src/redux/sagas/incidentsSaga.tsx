@@ -13,7 +13,6 @@ import {
     setUsers,
     updateLoader
 } from 'redux/actions/incidents/incidents.actions';
-import { logout } from 'redux/actions/login/login.actions';
 import {
     destroyLoadingMessage,
     errorNotification,
@@ -32,12 +31,8 @@ import {
     DeleteIncidentAction,
     UpdateIncidentAction
 } from 'redux/actions/incidents/incidents.interfaces';
-import { getDate } from '../../common/helpers';
-
-// interface User {
-//     fullname: string;
-//     _id: string
-// }
+import { getDate } from 'common/helpers';
+import { logout } from 'redux/actions/userInfo/userInfo.actions';
 
 type ResponseGetIncidentsType = SagaReturnType<typeof getMyIncidentsApi>;
 type ResponseGetUsersForAssigneeType = SagaReturnType<
@@ -90,14 +85,15 @@ function* getUsersForAssigneeOptionWorker() {
         const response: ResponseGetUsersForAssigneeType = yield call(
             getUsersForAssigneeOptionApi
         );
-        const users = response.data.map((item) => ({
-            label: item.fullname,
-            value: `${item.fullname} ${item._id}`,
-            id: item._id,
-            key: item._id
-        }));
 
         if (response.status === 200) {
+            const users = response.data.map((item) => ({
+                label: item.fullname,
+                value: `${item.fullname} ${item._id}`,
+                id: item._id,
+                key: item._id
+            }));
+
             destroyLoadingMessage();
             yield put(setUsers({ users }));
         }

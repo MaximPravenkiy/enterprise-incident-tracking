@@ -1,17 +1,15 @@
 import {
-    ValuesLoginForm,
     KeysType,
-    RestorePasswordFormValue
+    RestorePasswordFormValue,
+    ValuesLoginForm
 } from 'common/types/login';
 import { History } from 'history';
 import {
     CHANGE_KEY_DEPS_ON_PATH,
-    RESTORE_PASSWORD,
-    LOGIN,
-    UPDATE_VALUES_LOGIN_FORM,
     POST_LOGIN,
     RESET_LOGIN_FORM_VALUES,
-    LOGOUT
+    RESTORE_PASSWORD,
+    UPDATE_VALUES_LOGIN_FORM
 } from './login.actions';
 
 interface PostLoginAction {
@@ -22,18 +20,9 @@ interface PostLoginAction {
     };
 }
 
-interface LoginAction {
-    type: typeof LOGIN;
-    payload: { fullname: string };
-}
-
 interface UpdateValuesLoginFormAction {
     type: typeof UPDATE_VALUES_LOGIN_FORM;
     payload: { updatedValueLoginForm: ValuesLoginForm };
-}
-
-interface LogoutAction {
-    type: typeof LOGOUT;
 }
 
 interface ChangeKeyDepsOnPath {
@@ -55,9 +44,7 @@ interface ResetLoginFormValues {
 
 type LoginActions =
     | PostLoginAction
-    | LoginAction
     | UpdateValuesLoginFormAction
-    | LogoutAction
     | ChangeKeyDepsOnPath
     | ResetLoginFormValues
     | RestorePassword;
@@ -65,9 +52,7 @@ type LoginActions =
 export type {
     LoginActions,
     PostLoginAction,
-    LoginAction,
     UpdateValuesLoginFormAction,
-    LogoutAction,
     ChangeKeyDepsOnPath,
     ResetLoginFormValues,
     RestorePassword

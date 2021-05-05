@@ -4,10 +4,11 @@ const { v4: uuid } = require("uuid");
 const { tokens, secret } = require("../default").jwt;
 const { access, refresh } = tokens;
 
-const generateAccessToken = (userId) => {
+const generateAccessToken = (userId, fullname) => {
   const payload = {
     userId,
     type: access.type,
+    fullname,
   };
   const options = { expiresIn: access.expiresIn };
 
@@ -43,8 +44,8 @@ const replaceDbRefreshToken = async (tokenId, userId, remember) => {
   });
 };
 
-const updateTokens = async (userId, remember) => {
-  const { token: accessToken } = generateAccessToken(userId);
+const updateTokens = async (userId, remember, fullname) => {
+  const { token: accessToken } = generateAccessToken(userId, fullname);
   const { token: refreshToken, id: refreshTokenId } = generateRefreshToken(
     remember
   );
