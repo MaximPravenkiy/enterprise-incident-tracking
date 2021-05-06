@@ -55,13 +55,16 @@ function* getIncidentsWorker() {
         }
 
         if (response.status === 200) {
-            const listOfIncidents = response.data.map((incident) => ({
-                ...incident,
-                key: incident._id,
-                icon: <PriorityIcon priority={incident.priority} />,
-                startDate: getDate(incident.startDate).format('YYYY-MM-DD'),
-                dueDate: getDate(incident.dueDate).format('YYYY-MM-DD')
-            }));
+            const listOfIncidents = response.data.map((incident) => {
+                const { _id: id, priority, startDate, dueDate } = incident;
+                return {
+                    ...incident,
+                    key: id,
+                    icon: <PriorityIcon priority={priority} />,
+                    startDate: getDate(startDate).format('YYYY-MM-DD'),
+                    dueDate: getDate(dueDate).format('YYYY-MM-DD')
+                };
+            });
 
             yield put(setIncidents({ listOfIncidents }));
             yield put(updateLoader({ isListOfIncidentsLoading: false }));
@@ -87,12 +90,15 @@ function* getUsersForAssigneeOptionWorker() {
         );
 
         if (response.status === 200) {
-            const users = response.data.map((item) => ({
-                label: item.fullname,
-                value: `${item.fullname} ${item._id}`,
-                id: item._id,
-                key: item._id
-            }));
+            const users = response.data.map((item) => {
+                const { _id: id, fullname } = item;
+                return {
+                    label: fullname,
+                    value: id,
+                    id,
+                    key: id
+                };
+            });
 
             destroyLoadingMessage();
             yield put(setUsers({ users }));

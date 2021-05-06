@@ -40,7 +40,6 @@ function* postLoginWorker({
                 JSON.stringify(response.data.tokens)
             );
 
-            console.log(accessToken);
             destroyLoadingMessage();
             successNotification('Вы вошли в систему.', `Привет, ${fullname}!`);
             yield put(login({ fullname }));

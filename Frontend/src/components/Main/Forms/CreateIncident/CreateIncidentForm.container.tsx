@@ -14,7 +14,7 @@ import {
     CreateIncident,
     ValuesCreateIncidentsForm
 } from 'common/types/incidents';
-import { openLoadingMessage } from '../../../../common/services/notification.services';
+import { openLoadingMessage } from 'common/services/notification.services';
 
 const CreateIncidentFormContainer = () => {
     const {
@@ -28,9 +28,7 @@ const CreateIncidentFormContainer = () => {
     const dispatch = useDispatch<Dispatch<IncidentsActions>>();
 
     const getUserId = (value: string) => {
-        const helperArray = value.split(' ');
-        const extractID = helperArray[helperArray.length - 1];
-        dispatch(changeAssigneeUserId({ assigneeUserId: extractID }));
+        dispatch(changeAssigneeUserId({ assigneeUserId: value }));
     };
 
     const onChange = (value: ValuesCreateIncidentsForm) => {
@@ -38,11 +36,13 @@ const CreateIncidentFormContainer = () => {
     };
 
     const onFinish = (values: CreateIncident) => {
+        const assigneeCandidate = users.find(
+            (user) => user.id === values.assignee
+        );
+        const assignee = assigneeCandidate ? assigneeCandidate.label : '';
         const incidentFormData = {
             ...values,
-            assignee: values.assignee
-                ? values.assignee.split(assigneeUserId)[0].trim()
-                : '',
+            assignee,
             owner: assigneeUserId
         };
         openLoadingMessage('Проверяем данные...');
