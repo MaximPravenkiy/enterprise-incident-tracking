@@ -2,43 +2,60 @@ import React from 'react';
 import { SmileOutlined } from '@ant-design/icons';
 import { message, notification } from 'antd';
 
+interface NotificationArguments {
+    title: string;
+    text: string;
+    duration: number;
+    icon?: JSX.Element;
+}
+
+interface NotificationOptions {
+    message: string;
+    description: string;
+    duration: number;
+    style: {
+        marginTop: string;
+    };
+    icon?: JSX.Element;
+}
+
+const getNotificationOptions = ({
+    title,
+    text,
+    duration,
+    icon
+}: NotificationArguments): NotificationOptions => ({
+    message: title,
+    description: text,
+    duration,
+    style: {
+        marginTop: '18vh'
+    },
+    icon
+});
+
 const successNotification = (title: string, text: string) => {
-    notification.success({
-        message: title,
-        description: text,
-        duration: 3,
-        style: {
-            marginTop: '18vh'
-        }
-    });
+    notification.success(getNotificationOptions({ title, text, duration: 3 }));
 };
 
 const errorNotification = (title: string, text: string) => {
-    notification.error({
-        message: title,
-        description: text,
-        duration: 3,
-        style: {
-            marginTop: '18vh'
-        }
-    });
+    notification.error(getNotificationOptions({ title, text, duration: 3 }));
 };
 
 const logoutNotification = () => {
-    notification.open({
-        message: 'Всего доброго!',
-        description: 'Спасибо за использование нашей системы!',
-        icon: <SmileOutlined style={{ color: '#108ee9' }} />,
-        duration: 3,
-        style: {
-            marginTop: '18vh'
-        }
-    });
+    notification.open(
+        getNotificationOptions({
+            title: 'Всего доброго!',
+            text: 'Спасибо за использование нашей системы!',
+            duration: 3,
+            icon: <SmileOutlined style={{ color: '#108ee9' }} />
+        })
+    );
 };
 
 const KEY = 'loading';
 
-const openLoadingMessage = (text: string): void => {
+const openLoadingMessage = (text: string) => {
     message.loading({
         content: text,
         duration: 0,
@@ -49,7 +66,7 @@ const openLoadingMessage = (text: string): void => {
     });
 };
 
-const destroyLoadingMessage = (): void => {
+const destroyLoadingMessage = () => {
     message.destroy(KEY);
 };
 
