@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
 import CreateIncidentForm from 'components/Main/Forms/CreateIncident/CreateIncidentForm';
 import {
-    changeAssigneeUserId,
     createIncident,
     updateIncident,
     updateValuesCreateIncidentForm
@@ -14,22 +13,16 @@ import {
     CreateIncident,
     ValuesCreateIncidentsForm
 } from 'common/types/incidents';
-import { openLoadingMessage } from 'common/services/notification.services';
 
 const CreateIncidentFormContainer = () => {
     const {
         users,
-        assigneeUserId,
         isModalVisible,
         valuesCreateIncidentForm,
         actionWithCreateIncidentForm,
         incidentID
     } = useSelector(({ incidentsReducer }: RootReducer) => incidentsReducer);
     const dispatch = useDispatch<Dispatch<IncidentsActions>>();
-
-    const getUserId = (value: string) => {
-        dispatch(changeAssigneeUserId({ assigneeUserId: value }));
-    };
 
     const onChange = (value: ValuesCreateIncidentsForm) => {
         dispatch(updateValuesCreateIncidentForm({ updatedValue: value }));
@@ -43,9 +36,8 @@ const CreateIncidentFormContainer = () => {
         const incidentFormData = {
             ...values,
             assignee,
-            owner: assigneeUserId
+            owner: values.assignee
         };
-        openLoadingMessage('Проверяем данные...');
 
         if (actionWithCreateIncidentForm === 'Создать') {
             dispatch(
@@ -64,7 +56,6 @@ const CreateIncidentFormContainer = () => {
         <CreateIncidentForm
             users={users}
             isModalVisible={isModalVisible}
-            getUserId={getUserId}
             onFinish={onFinish}
             valuesCreateIncidentForm={valuesCreateIncidentForm}
             onChange={onChange}

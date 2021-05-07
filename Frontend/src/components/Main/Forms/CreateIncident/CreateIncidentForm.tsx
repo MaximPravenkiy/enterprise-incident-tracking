@@ -25,8 +25,7 @@ const CreateIncidentForm: FC<CreateIncidentProps> = ({
     actionWithCreateIncidentForm,
     valuesCreateIncidentForm,
     onChange,
-    onFinish,
-    getUserId
+    onFinish
 }) => {
     // Костыль для ворнинга
     const formRef = useRef(null);
@@ -63,7 +62,7 @@ const CreateIncidentForm: FC<CreateIncidentProps> = ({
                 </Form.Item>
 
                 <Form.Item name="assignee" label="Assignee">
-                    <Select options={users} onChange={getUserId} />
+                    <Select options={users} />
                 </Form.Item>
 
                 <Form.Item {...configArea}>

@@ -16,7 +16,6 @@ import {
     SET_DATA_FOR_UPDATING,
     RESET_CREATE_INCIDENT_FORM,
     UPDATE_VALUES_CREATE_INCIDENT_FORM,
-    CHANGE_ASSIGNEE_USER_ID,
     CLOSE_MODAL,
     SET_USERS,
     SET_INCIDENTS
@@ -78,11 +77,6 @@ interface SetUsersAction {
     payload: { users: User[] };
 }
 
-interface ChangeAssigneeUserIdAction {
-    type: typeof CHANGE_ASSIGNEE_USER_ID;
-    payload: { assigneeUserId: string };
-}
-
 interface GetIncidentsAction {
     type: typeof GET_INCIDENTS;
 }
@@ -108,7 +102,6 @@ type IncidentsActions =
     | ResetCreateIncidentFormAction
     | GetUsersAction
     | SetUsersAction
-    | ChangeAssigneeUserIdAction
     | GetIncidentsAction
     | UpdateLoaderAction
     | ChangeActionWithListOfIncidentsAction;
@@ -125,7 +118,6 @@ export type {
     ResetCreateIncidentFormAction,
     GetUsersAction,
     SetUsersAction,
-    ChangeAssigneeUserIdAction,
     GetIncidentsAction,
     UpdateLoaderAction,
     ChangeActionWithListOfIncidentsAction

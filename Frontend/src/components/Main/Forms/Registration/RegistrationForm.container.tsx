@@ -10,7 +10,6 @@ import { RootReducer } from 'redux/reducers/rootReducer';
 import { RegistrationActions } from 'redux/actions/registration/registration.interfaces';
 import { ValuesRegistrationForm } from 'common/types/registration';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { openLoadingMessage } from 'common/services/notification.services';
 
 const RegistrationFormContainer: FC<RouteComponentProps> = ({ history }) => {
     const { dateOfBirth, fullname, login, password, position } = useSelector(
@@ -20,7 +19,6 @@ const RegistrationFormContainer: FC<RouteComponentProps> = ({ history }) => {
     const dispatch = useDispatch<Dispatch<RegistrationActions>>();
 
     const registerNewUser = (values: ValuesRegistrationForm) => {
-        openLoadingMessage('Проверяем данные...');
         dispatch(postRegistration(values, history));
     };
 

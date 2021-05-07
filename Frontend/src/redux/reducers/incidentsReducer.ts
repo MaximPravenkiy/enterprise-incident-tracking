@@ -15,16 +15,14 @@ import {
     SET_DATA_FOR_UPDATING,
     RESET_CREATE_INCIDENT_FORM,
     CLOSE_MODAL,
-    CHANGE_ASSIGNEE_USER_ID,
     SET_INCIDENTS
-} from '../actions/incidents/incidents.actions';
+} from 'redux/actions/incidents/incidents.actions';
 
 export type IncidentsInitialState = typeof initialState;
 
 const initialState = {
     actionWithCreateIncidentForm: 'Создать' as ActionWithCreateIncidentForm,
     actionWithIncidents: 'Показать все инциденты' as ActionWithIncidents,
-    assigneeUserId: '',
     incidentID: '',
     isModalVisible: false,
     listOfIncidents: [] as Incident[],
@@ -58,11 +56,6 @@ function incidentsReducer(
                 ...state,
                 ...action.payload,
                 isModalVisible: true
-            };
-        case CHANGE_ASSIGNEE_USER_ID:
-            return {
-                ...state,
-                ...action.payload
             };
         case CLOSE_MODAL:
             return {

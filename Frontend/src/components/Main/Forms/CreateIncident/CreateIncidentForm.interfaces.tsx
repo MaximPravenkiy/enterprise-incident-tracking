@@ -10,7 +10,6 @@ export interface CreateIncidentProps {
     isModalVisible: boolean;
     valuesCreateIncidentForm: ValuesCreateIncidentsForm;
     actionWithCreateIncidentForm: ActionWithCreateIncidentForm;
-    getUserId: (value: string) => void;
     onFinish: (value: CreateIncident) => void;
     onChange: (value: ValuesCreateIncidentsForm) => void;
 }

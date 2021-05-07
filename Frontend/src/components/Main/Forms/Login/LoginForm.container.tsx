@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
 import LoginForm from 'components/Main/Forms/Login/LoginForm';
@@ -10,18 +10,15 @@ import {
 import { RootReducer } from 'redux/reducers/rootReducer';
 import { ValuesLoginForm } from 'common/types/login';
 import { LoginActions } from 'redux/actions/login/login.interfaces';
-import { useHistory } from 'react-router-dom';
-import { openLoadingMessage } from 'common/services/notification.services';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 
-const LoginFormContainer = () => {
+const LoginFormContainer: FC<RouteComponentProps> = ({ history }) => {
     const { login, password, remember } = useSelector(
         ({ loginReducer }: RootReducer) => loginReducer.valuesLoginForm
     );
-    const history = useHistory();
     const dispatch = useDispatch<Dispatch<LoginActions>>();
 
     const onFinish = (values: ValuesLoginForm) => {
-        openLoadingMessage('Проверяем данные...');
         dispatch(postLogin({ loginFormValues: values, history }));
     };
 
@@ -50,4 +47,4 @@ const LoginFormContainer = () => {
     );
 };
 
-export default LoginFormContainer;
+export default withRouter(LoginFormContainer);

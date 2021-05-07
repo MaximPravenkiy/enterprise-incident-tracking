@@ -62,10 +62,9 @@ const MenuItemsLogin: FC<MenuItemLoginProps> = memo(
                 <RightSection>
                     <div>
                         <Avatar size={45} gap={1}>
-                            {fullname &&
-                                fullname
-                                    .split(' ')
-                                    .map((item) => item[0].toUpperCase())}
+                            {fullname
+                                ?.split(' ')
+                                .map((item) => item[0].toUpperCase())}
                         </Avatar>
                     </div>
 

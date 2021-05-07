@@ -6,15 +6,13 @@ const refreshTokenApi = (refreshToken: string) =>
     axios.put('/refresh-token', { refreshToken });
 
 const axiosWithAuthorization = async (config = {}) => {
-    const { exp } = <DecodeAccessToken>(
-        decode(JSON.parse(<string>localStorage.getItem('tokens')).accessToken)
+    const { accessToken, refreshToken } = JSON.parse(
+        <string>localStorage.getItem('tokens')
     );
+    const { exp } = <DecodeAccessToken>decode(accessToken);
 
     if (Date.now() >= exp * 1000) {
         try {
-            const { refreshToken } = JSON.parse(
-                <string>localStorage.getItem('tokens')
-            );
             const response = await refreshTokenApi(refreshToken);
             const newTokens = response.data;
             localStorage.setItem('tokens', JSON.stringify(newTokens));
@@ -23,7 +21,6 @@ const axiosWithAuthorization = async (config = {}) => {
         }
     }
 
-    const { accessToken } = JSON.parse(<string>localStorage.getItem('tokens'));
     return axios.create({
         baseURL: '/',
         headers: { Authorization: `Bearer ${accessToken}` },

@@ -1,6 +1,5 @@
 import {
     ChangeActionWithListOfIncidentsAction,
-    ChangeAssigneeUserIdAction,
     CloseModalAction,
     CreateIncidentAction,
     DeleteIncidentAction,
@@ -24,7 +23,6 @@ import {
 
 const SET_INCIDENTS = 'SET_INCIDENTS';
 const SET_USERS = 'SET_USERS';
-const CHANGE_ASSIGNEE_USER_ID = 'CHANGE_ASSIGNEE_USER_ID';
 const CLOSE_MODAL = 'CLOSE_MODAL';
 const UPDATE_VALUES_CREATE_INCIDENT_FORM = 'UPDATE_VALUES_CREATE_INCIDENT_FORM';
 const RESET_CREATE_INCIDENT_FORM = 'RESET_CREATE_INCIDENT_FORM';
@@ -103,19 +101,11 @@ const setUsers = (payload: { users: User[] }): SetUsersAction => ({
     payload
 });
 
-const changeAssigneeUserId = (payload: {
-    assigneeUserId: string;
-}): ChangeAssigneeUserIdAction => ({
-    type: CHANGE_ASSIGNEE_USER_ID,
-    payload
-});
-
 export {
     getIncidents,
     setIncidents,
     getUsers,
     setUsers,
-    changeAssigneeUserId,
     createIncident,
     closeModal,
     deleteIncident,
@@ -136,7 +126,6 @@ export {
     RESET_CREATE_INCIDENT_FORM,
     UPDATE_VALUES_CREATE_INCIDENT_FORM,
     CLOSE_MODAL,
-    CHANGE_ASSIGNEE_USER_ID,
     SET_USERS,
     SET_INCIDENTS
 };

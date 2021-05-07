@@ -16,6 +16,7 @@ import {
 import {
     destroyLoadingMessage,
     errorNotification,
+    openLoadingMessage,
     successNotification
 } from 'common/services/notification.services';
 import {
@@ -85,6 +86,8 @@ function* getIncidentsWorker() {
 
 function* getUsersForAssigneeOptionWorker() {
     try {
+        openLoadingMessage('Загружаем данные...');
+
         const response: ResponseGetUsersForAssigneeType = yield call(
             getUsersForAssigneeOptionApi
         );
@@ -116,6 +119,8 @@ function* createIncidentWorker({
     payload: { valuesCreateIncidentForm }
 }: CreateIncidentAction) {
     try {
+        openLoadingMessage('Проверяем данные...');
+
         const response: ResponseCreateIncidentType = yield call(
             postIncidentApi,
             valuesCreateIncidentForm
@@ -140,6 +145,8 @@ function* deleteIncidentWorker({
     payload: { incidentID }
 }: DeleteIncidentAction) {
     try {
+        openLoadingMessage('Выполняем запрос...');
+
         const response: ResponseDeleteIncident = yield call(
             deleteIncidentApi,
             incidentID
@@ -163,6 +170,8 @@ function* updateIncidentWorker({
     payload: { updateData }
 }: UpdateIncidentAction) {
     try {
+        openLoadingMessage('Проверяем данные...');
+
         const response: ResponseUpdateIncident = yield call(
             updateIncidentApi,
             updateData

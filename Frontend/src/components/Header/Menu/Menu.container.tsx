@@ -14,10 +14,7 @@ import {
 import { RootReducer } from 'redux/reducers/rootReducer';
 import { LoginActions } from 'redux/actions/login/login.interfaces';
 import { IncidentsActions } from 'redux/actions/incidents/incidents.interfaces';
-import {
-    logoutNotification,
-    openLoadingMessage
-} from 'common/services/notification.services';
+import { logoutNotification } from 'common/services/notification.services';
 import { KeysType } from 'common/types/login';
 import { logout } from 'redux/actions/userInfo/userInfo.actions';
 import { UserInfoActions } from 'redux/actions/userInfo/userInfo.interfaces';
@@ -55,14 +52,13 @@ const MenuContainer: FC<RouteComponentProps> = memo(({ location, history }) => {
     };
 
     const onLogout = () => {
-        localStorage.clear();
         dispatch(logout());
+        localStorage.clear();
         logoutNotification();
         history.push('/login');
     };
 
     const createIncident = () => {
-        openLoadingMessage('Загружаем данные...');
         dispatch(getUsers());
     };
 

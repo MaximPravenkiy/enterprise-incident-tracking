@@ -8,6 +8,7 @@ import { postLoginApi, restorePasswordApi } from 'redux/sagas/api/api';
 import {
     destroyLoadingMessage,
     errorNotification,
+    openLoadingMessage,
     successNotification
 } from 'common/services/notification.services';
 import {
@@ -25,6 +26,8 @@ function* postLoginWorker({
     payload: { loginFormValues, history }
 }: PostLoginAction) {
     try {
+        openLoadingMessage('Проверяем данные...');
+
         const response: ResponseLoginType = yield call(
             postLoginApi,
             loginFormValues
@@ -62,6 +65,8 @@ function* restorePasswordWorker({
     payload: { restorePasswordFormValue, history }
 }: RestorePassword) {
     try {
+        openLoadingMessage('Проверяем данные...');
+
         const response: ResponseRestorePasswordType = yield call(
             restorePasswordApi,
             restorePasswordFormValue

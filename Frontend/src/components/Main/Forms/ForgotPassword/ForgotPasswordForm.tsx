@@ -13,13 +13,11 @@ import {
     configConfirmPassword
 } from 'components/Main/Forms/ForgotPassword/ForgotPasswordForm.data';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
-import { openLoadingMessage } from '../../../../common/services/notification.services';
 
 const ForgotPasswordForm: FC<RouteComponentProps> = ({ history }) => {
     const dispatch = useDispatch<Dispatch<RestorePassword>>();
 
     const onFinish = (values: RestorePasswordFormValue) => {
-        openLoadingMessage('Проверяем данные...');
         dispatch(
             restorePassword({ restorePasswordFormValue: values, history })
         );

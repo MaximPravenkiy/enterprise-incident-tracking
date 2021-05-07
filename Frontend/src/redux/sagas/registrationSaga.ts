@@ -3,6 +3,7 @@ import { postRegistrationApi } from 'redux/sagas/api/api';
 import {
     destroyLoadingMessage,
     errorNotification,
+    openLoadingMessage,
     successNotification
 } from 'common/services/notification.services';
 import {
@@ -19,6 +20,8 @@ function* postRegistrationWorker({
     history
 }: PostRegistrationAction) {
     try {
+        openLoadingMessage('Проверяем данные...');
+
         const response: ResponseRegistrationType = yield call(
             postRegistrationApi,
             registrationFormValues
