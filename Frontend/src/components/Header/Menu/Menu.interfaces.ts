@@ -1,7 +1,5 @@
-import { MenuClickEventHandler } from '../../../../node_modules/rc-menu/lib/interface';
+import { RouteComponentProps } from 'react-router-dom';
 
-export interface MenuProps {
+export interface MenuProps extends RouteComponentProps {
     menuItems: JSX.Element | JSX.Element[];
-    keyDepsOnPath: string;
-    changeKey: MenuClickEventHandler;
 }

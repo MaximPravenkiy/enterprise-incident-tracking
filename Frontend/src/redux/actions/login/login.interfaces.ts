@@ -1,11 +1,6 @@
-import {
-    KeysType,
-    RestorePasswordFormValue,
-    ValuesLoginForm
-} from 'common/types/login';
+import { RestorePasswordFormValue, ValuesLoginForm } from 'common/types/login';
 import { History } from 'history';
 import {
-    CHANGE_KEY_DEPS_ON_PATH,
     POST_LOGIN,
     RESET_LOGIN_FORM_VALUES,
     RESTORE_PASSWORD,
@@ -25,11 +20,6 @@ interface UpdateValuesLoginFormAction {
     payload: { updatedValueLoginForm: ValuesLoginForm };
 }
 
-interface ChangeKeyDepsOnPath {
-    type: typeof CHANGE_KEY_DEPS_ON_PATH;
-    payload: { keyDepsOnPath: KeysType };
-}
-
 interface RestorePassword {
     type: typeof RESTORE_PASSWORD;
     payload: {
@@ -45,7 +35,6 @@ interface ResetLoginFormValues {
 type LoginActions =
     | PostLoginAction
     | UpdateValuesLoginFormAction
-    | ChangeKeyDepsOnPath
     | ResetLoginFormValues
     | RestorePassword;
 
@@ -53,7 +42,6 @@ export type {
     LoginActions,
     PostLoginAction,
     UpdateValuesLoginFormAction,
-    ChangeKeyDepsOnPath,
     ResetLoginFormValues,
     RestorePassword
 };

@@ -10,7 +10,6 @@ import {
     POST_REGISTRATION,
     resetRegistrationForm
 } from 'redux/actions/registration/registration.actions';
-import { changeKeyDepsOnPath } from 'redux/actions/login/login.actions';
 import { PostRegistrationAction } from 'redux/actions/registration/registration.interfaces';
 
 type ResponseRegistrationType = SagaReturnType<typeof postRegistrationApi>;
@@ -31,7 +30,6 @@ function* postRegistrationWorker({
             destroyLoadingMessage();
             successNotification('Поздравляем!', response.data.message);
             yield put(resetRegistrationForm());
-            yield put(changeKeyDepsOnPath({ keyDepsOnPath: '1' }));
             yield call(history.push, '/login');
         }
     } catch (e) {

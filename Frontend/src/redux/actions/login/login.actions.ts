@@ -1,6 +1,5 @@
-import { KeysType, ValuesLoginForm } from 'common/types/login';
+import { ValuesLoginForm } from 'common/types/login';
 import {
-    ChangeKeyDepsOnPath,
     PostLoginAction,
     ResetLoginFormValues,
     RestorePassword,
@@ -25,13 +24,6 @@ const updateValuesLoginForm = (payload: {
     payload
 });
 
-const changeKeyDepsOnPath = (payload: {
-    keyDepsOnPath: KeysType;
-}): ChangeKeyDepsOnPath => ({
-    type: CHANGE_KEY_DEPS_ON_PATH,
-    payload
-});
-
 const restorePassword = (
     payload: RestorePassword['payload']
 ): RestorePassword => ({
@@ -46,7 +38,6 @@ const resetLoginFormValue = (): ResetLoginFormValues => ({
 export {
     postLogin,
     updateValuesLoginForm,
-    changeKeyDepsOnPath,
     restorePassword,
     resetLoginFormValue,
     RESTORE_PASSWORD,

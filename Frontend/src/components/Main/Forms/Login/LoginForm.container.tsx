@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
 import LoginForm from 'components/Main/Forms/Login/LoginForm';
 import {
-    changeKeyDepsOnPath,
     postLogin,
     updateValuesLoginForm
 } from 'redux/actions/login/login.actions';
@@ -27,11 +26,11 @@ const LoginFormContainer: FC<RouteComponentProps> = ({ history }) => {
     };
 
     const onRegisterNowClick = () => {
-        dispatch(changeKeyDepsOnPath({ keyDepsOnPath: '2' }));
+        history.push('/register');
     };
 
     const onForgotPasswordClick = () => {
-        dispatch(changeKeyDepsOnPath({ keyDepsOnPath: '0' }));
+        history.push('/forgot-password');
     };
 
     return (
