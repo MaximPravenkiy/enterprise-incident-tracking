@@ -14,22 +14,20 @@ import {
     TittleWrapper,
     Wrapper
 } from 'components/Header/Menu/MenuItemsLogin/MenuItemsLogin.styles';
+import { ButtonLabel } from 'common/types/incidents';
 
 const MenuItemsLogin: FC<MenuItemLoginProps> = memo(
     ({
+        isOwnIncidents,
         fullname,
         onLogout,
         createIncident,
-        actionWithIncidents,
-        changeAction
+        changeTheShowingOfIncidents
     }) => {
         useEffect(() => {
-            const data = localStorage.getItem('actionWithIncidents');
-
-            if (data === actionWithIncidents) {
-                changeAction();
-            }
-        });
+            localStorage.setItem('isOwnIncidents', JSON.stringify(true));
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, []);
 
         return (
             <Wrapper>
@@ -40,16 +38,18 @@ const MenuItemsLogin: FC<MenuItemLoginProps> = memo(
                         icon={<ScheduleOutlined />}
                         onClick={createIncident}
                     >
-                        Создать новый инцидент
+                        Create new incident
                     </IncidentButton>
 
                     <IncidentButton
                         danger
                         ghost
                         icon={<ExceptionOutlined />}
-                        onClick={changeAction}
+                        onClick={changeTheShowingOfIncidents}
                     >
-                        {actionWithIncidents}
+                        {isOwnIncidents
+                            ? ButtonLabel.ShowAllIncidents
+                            : ButtonLabel.ShowOwnIncidents}
                     </IncidentButton>
                 </ButtonWrapper>
 

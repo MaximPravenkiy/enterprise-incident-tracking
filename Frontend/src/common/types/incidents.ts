@@ -30,13 +30,16 @@ interface CreateIncident extends ValuesCreateIncidentsForm {
 }
 
 type ActionWithCreateIncidentForm = 'Создать' | 'Обновить';
-type ActionWithIncidents = 'Показать все инциденты' | 'Показать мои инциденты';
+
+export enum ButtonLabel {
+    ShowOwnIncidents = 'Show own incidents',
+    ShowAllIncidents = 'Show all incidents'
+}
 
 export type {
     ValuesCreateIncidentsForm,
     Incident,
     User,
     CreateIncident,
-    ActionWithCreateIncidentForm,
-    ActionWithIncidents
+    ActionWithCreateIncidentForm
 };

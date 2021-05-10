@@ -36,8 +36,7 @@ function* postLoginWorker({
         if (response.status === 200) {
             const { accessToken } = response.data.tokens;
             const { fullname } = <DecodeAccessToken>decode(accessToken);
-            const actionWithIncidents = 'Показать мои инциденты' as 'Показать мои инциденты';
-            localStorage.setItem('actionWithIncidents', actionWithIncidents);
+            localStorage.setItem('isOwnIncidents', JSON.stringify(true));
             localStorage.setItem(
                 'tokens',
                 JSON.stringify(response.data.tokens)

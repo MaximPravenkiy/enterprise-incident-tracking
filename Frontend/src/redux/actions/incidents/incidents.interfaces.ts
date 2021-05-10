@@ -1,5 +1,4 @@
 import {
-    ActionWithIncidents,
     CreateIncident,
     Incident,
     User,
@@ -11,14 +10,15 @@ import {
     CREATE_INCIDENT,
     GET_USERS,
     GET_INCIDENTS,
-    CHANGE_ACTION_WITH_LIST_OF_INCIDENTS,
     UPDATE_LOADER,
     SET_DATA_FOR_UPDATING,
     RESET_CREATE_INCIDENT_FORM,
     UPDATE_VALUES_CREATE_INCIDENT_FORM,
     CLOSE_MODAL,
     SET_USERS,
-    SET_INCIDENTS
+    SET_INCIDENTS,
+    SHOW_OWN_INCIDENTS,
+    SHOW_ALL_INCIDENTS
 } from './incidents.actions';
 
 interface SetIncidentsAction {
@@ -86,9 +86,12 @@ interface UpdateLoaderAction {
     payload: { isListOfIncidentsLoading: boolean };
 }
 
-interface ChangeActionWithListOfIncidentsAction {
-    type: typeof CHANGE_ACTION_WITH_LIST_OF_INCIDENTS;
-    payload: { actionWithIncidents: ActionWithIncidents };
+interface ShowOwnIncidentsAction {
+    type: typeof SHOW_OWN_INCIDENTS;
+}
+
+interface ShowAllIncidentsAction {
+    type: typeof SHOW_ALL_INCIDENTS;
 }
 
 type IncidentsActions =
@@ -104,7 +107,8 @@ type IncidentsActions =
     | SetUsersAction
     | GetIncidentsAction
     | UpdateLoaderAction
-    | ChangeActionWithListOfIncidentsAction;
+    | ShowOwnIncidentsAction
+    | ShowAllIncidentsAction;
 
 export type {
     IncidentsActions,
@@ -120,5 +124,6 @@ export type {
     SetUsersAction,
     GetIncidentsAction,
     UpdateLoaderAction,
-    ChangeActionWithListOfIncidentsAction
+    ShowOwnIncidentsAction,
+    ShowAllIncidentsAction
 };

@@ -46,10 +46,12 @@ type ResponseUpdateIncident = SagaReturnType<typeof updateIncidentApi>;
 function* getIncidentsWorker() {
     try {
         yield put(updateLoader({ isListOfIncidentsLoading: true }));
-        const actionWithIncidents = localStorage.getItem('actionWithIncidents');
+        const isOwnIncidents = JSON.parse(
+            localStorage.getItem('isOwnIncidents') as string
+        );
         let response: ResponseGetIncidentsType;
 
-        if (actionWithIncidents === 'Показать мои инциденты') {
+        if (isOwnIncidents) {
             response = yield call(getMyIncidentsApi);
         } else {
             response = yield call(getAllIncidentsApi);

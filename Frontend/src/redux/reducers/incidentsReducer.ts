@@ -1,28 +1,28 @@
 import { getDate } from 'common/helpers';
 import {
     ActionWithCreateIncidentForm,
-    ActionWithIncidents,
     Incident,
     User,
     ValuesCreateIncidentsForm
 } from 'common/types/incidents';
 import { IncidentsActions } from 'redux/actions/incidents/incidents.interfaces';
 import {
-    CHANGE_ACTION_WITH_LIST_OF_INCIDENTS,
-    SET_USERS,
-    UPDATE_LOADER,
-    UPDATE_VALUES_CREATE_INCIDENT_FORM,
-    SET_DATA_FOR_UPDATING,
-    RESET_CREATE_INCIDENT_FORM,
     CLOSE_MODAL,
-    SET_INCIDENTS
+    RESET_CREATE_INCIDENT_FORM,
+    SET_DATA_FOR_UPDATING,
+    SET_INCIDENTS,
+    SET_USERS,
+    SHOW_ALL_INCIDENTS,
+    SHOW_OWN_INCIDENTS,
+    UPDATE_LOADER,
+    UPDATE_VALUES_CREATE_INCIDENT_FORM
 } from 'redux/actions/incidents/incidents.actions';
 
 export type IncidentsInitialState = typeof initialState;
 
 const initialState = {
     actionWithCreateIncidentForm: 'Создать' as ActionWithCreateIncidentForm,
-    actionWithIncidents: 'Показать все инциденты' as ActionWithIncidents,
+    isOwnIncidents: true,
     incidentID: '',
     isModalVisible: false,
     listOfIncidents: [] as Incident[],
@@ -89,10 +89,15 @@ function incidentsReducer(
                 ...state,
                 ...action.payload
             };
-        case CHANGE_ACTION_WITH_LIST_OF_INCIDENTS:
+        case SHOW_OWN_INCIDENTS:
             return {
                 ...state,
-                ...action.payload
+                isOwnIncidents: true
+            };
+        case SHOW_ALL_INCIDENTS:
+            return {
+                ...state,
+                isOwnIncidents: false
             };
         default:
             return state;

@@ -10,6 +10,7 @@ import { RootReducer } from 'redux/reducers/rootReducer';
 import { RegistrationActions } from 'redux/actions/registration/registration.interfaces';
 import { ValuesRegistrationForm } from 'common/types/registration';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useDebouncedCallback } from 'use-debounce';
 
 const RegistrationFormContainer: FC<RouteComponentProps> = ({ history }) => {
     const { dateOfBirth, fullname, login, password, position } = useSelector(
@@ -23,12 +24,14 @@ const RegistrationFormContainer: FC<RouteComponentProps> = ({ history }) => {
     };
 
     const onChange = (value: ValuesRegistrationForm) => {
+        console.log(value);
         dispatch(
             updateValuesRegistrationForm({
                 updatedValueRegistrationForm: value
             })
         );
     };
+    const debouncedOnChange = useDebouncedCallback(onChange, 500);
 
     return (
         <RegistrationForm
@@ -38,7 +41,7 @@ const RegistrationFormContainer: FC<RouteComponentProps> = ({ history }) => {
             login={login}
             password={password}
             position={position}
-            onChange={onChange}
+            onChange={debouncedOnChange}
         />
     );
 };
