@@ -1,7 +1,12 @@
-import { LoginAction, LogoutAction } from './userInfo.interfaces';
+import {
+    LoginAction,
+    LogoutAction,
+    OnLogoutAction
+} from 'redux/actions/userInfo/userInfo.interfaces';
 
 const LOGIN = 'LOGIN';
 const LOGOUT = 'LOGOUT';
+const ON_LOGOUT = 'ON_LOGOUT';
 
 const login = (payload: { fullname: string }): LoginAction => ({
     type: LOGIN,
@@ -10,4 +15,6 @@ const login = (payload: { fullname: string }): LoginAction => ({
 
 const logout = (): LogoutAction => ({ type: LOGOUT });
 
-export { login, logout, LOGOUT, LOGIN };
+const onLogout = (): OnLogoutAction => ({ type: ON_LOGOUT });
+
+export { login, logout, onLogout, LOGOUT, LOGIN, ON_LOGOUT };

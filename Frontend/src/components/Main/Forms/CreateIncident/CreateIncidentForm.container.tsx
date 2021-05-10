@@ -1,20 +1,23 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Dispatch } from 'redux';
+import React, { FC } from 'react';
+import { connect, useSelector } from 'react-redux';
 import {
     createIncident,
     updateIncident,
     updateValuesCreateIncidentForm
 } from 'redux/actions/incidents/incidents.actions';
 import { RootReducer } from 'redux/reducers/rootReducer';
-import { IncidentsActions } from 'redux/actions/incidents/incidents.interfaces';
 import {
     CreateIncident,
     ValuesCreateIncidentsForm
 } from 'common/types/incidents';
 import CreateIncidentForm from './CreateIncidentForm';
+import { CreateIncidentFormContainerProps } from './CreateIncidentForm.interfaces';
 
-const CreateIncidentFormContainer = () => {
+const CreateIncidentFormContainer: FC<CreateIncidentFormContainerProps> = ({
+    dispatchUpdateValuesCreateIncidentForm,
+    dispatchCreateIncident,
+    dispatchUpdateIncident
+}) => {
     const {
         users,
         isModalVisible,
@@ -22,10 +25,9 @@ const CreateIncidentFormContainer = () => {
         actionWithCreateIncidentForm,
         incidentID
     } = useSelector(({ incidentsReducer }: RootReducer) => incidentsReducer);
-    const dispatch = useDispatch<Dispatch<IncidentsActions>>();
 
     const onChange = (value: ValuesCreateIncidentsForm) => {
-        dispatch(updateValuesCreateIncidentForm({ updatedValue: value }));
+        dispatchUpdateValuesCreateIncidentForm({ updatedValue: value });
     };
 
     const onFinish = (values: CreateIncident) => {
@@ -40,15 +42,15 @@ const CreateIncidentFormContainer = () => {
         };
 
         if (actionWithCreateIncidentForm === 'Создать') {
-            dispatch(
-                createIncident({ valuesCreateIncidentForm: incidentFormData })
-            );
+            dispatchCreateIncident({
+                valuesCreateIncidentForm: incidentFormData
+            });
         }
 
         if (actionWithCreateIncidentForm === 'Обновить') {
-            dispatch(
-                updateIncident({ updateData: { incidentFormData, incidentID } })
-            );
+            dispatchUpdateIncident({
+                updateData: { incidentFormData, incidentID }
+            });
         }
     };
 
@@ -64,4 +66,10 @@ const CreateIncidentFormContainer = () => {
     );
 };
 
-export default CreateIncidentFormContainer;
+const mapDispatchToProps = {
+    dispatchUpdateValuesCreateIncidentForm: updateValuesCreateIncidentForm,
+    dispatchCreateIncident: createIncident,
+    dispatchUpdateIncident: updateIncident
+};
+
+export default connect(null, mapDispatchToProps)(CreateIncidentFormContainer);

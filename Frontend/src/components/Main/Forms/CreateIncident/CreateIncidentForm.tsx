@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useRef } from 'react';
 import { Form, Input, Select, DatePicker, Modal } from 'antd';
 import moment, { Moment } from 'moment';
 import CloseModalButton from './CloseModalButton/CloseModalButton';
@@ -27,10 +27,14 @@ const CreateIncidentForm: FC<CreateIncidentProps> = ({
     onChange,
     onFinish
 }) => {
+    // Костыль для ворнинга
+    const formRef = useRef(null);
     const [form] = Form.useForm();
 
     useEffect(() => {
-        form.setFieldsValue({ ...valuesCreateIncidentForm });
+        if (formRef.current) {
+            form.setFieldsValue({ ...valuesCreateIncidentForm });
+        }
     }, [form, valuesCreateIncidentForm]);
 
     const disabledDate = (currentDate: Moment) =>

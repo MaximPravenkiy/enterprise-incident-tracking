@@ -24,7 +24,6 @@ const RegistrationFormContainer: FC<RouteComponentProps> = ({ history }) => {
     };
 
     const onChange = (value: ValuesRegistrationForm) => {
-        console.log(value);
         dispatch(
             updateValuesRegistrationForm({
                 updatedValueRegistrationForm: value

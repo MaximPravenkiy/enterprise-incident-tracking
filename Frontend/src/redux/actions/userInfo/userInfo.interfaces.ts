@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT } from 'redux/actions/userInfo/userInfo.actions';
+import { LOGIN, LOGOUT, ON_LOGOUT } from './userInfo.actions';
 
 interface LoginAction {
     type: typeof LOGIN;
@@ -9,6 +9,10 @@ interface LogoutAction {
     type: typeof LOGOUT;
 }
 
-type UserInfoActions = LoginAction | LogoutAction;
+interface OnLogoutAction {
+    type: typeof ON_LOGOUT;
+}
 
-export type { UserInfoActions, LogoutAction, LoginAction };
+type UserInfoActions = LoginAction | LogoutAction | OnLogoutAction;
+
+export type { UserInfoActions, LogoutAction, LoginAction, OnLogoutAction };

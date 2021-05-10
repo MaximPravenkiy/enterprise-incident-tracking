@@ -25,7 +25,7 @@ import {
     UpdateIncidentAction
 } from 'redux/actions/incidents/incidents.interfaces';
 import { getDate } from 'common/helpers';
-import { logout } from 'redux/actions/userInfo/userInfo.actions';
+import { onLogout } from 'redux/actions/userInfo/userInfo.actions';
 import {
     deleteIncidentApi,
     getAllIncidentsApi,
@@ -78,10 +78,8 @@ function* getIncidentsWorker() {
             e.response.data.message
         );
 
-        localStorage.clear();
-
         if (e.response.status === 401) {
-            yield put(logout());
+            yield put(onLogout());
         }
     }
 }

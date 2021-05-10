@@ -14,7 +14,8 @@ const IncidentsContainer = () => {
 
     useEffect(() => {
         dispatch(getIncidents());
-    }, [dispatch]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <Incidents

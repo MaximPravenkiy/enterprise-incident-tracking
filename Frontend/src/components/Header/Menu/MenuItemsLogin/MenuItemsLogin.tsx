@@ -20,7 +20,7 @@ const MenuItemsLogin: FC<MenuItemLoginProps> = memo(
     ({
         isOwnIncidents,
         fullname,
-        onLogout,
+        logout,
         createIncident,
         changeTheShowingOfIncidents
     }) => {
@@ -68,7 +68,7 @@ const MenuItemsLogin: FC<MenuItemLoginProps> = memo(
                         </Avatar>
                     </div>
 
-                    <Button danger ghost onClick={onLogout}>
+                    <Button danger ghost onClick={logout}>
                         Logout
                     </Button>
                 </RightSection>

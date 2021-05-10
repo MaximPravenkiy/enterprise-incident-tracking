@@ -4,8 +4,13 @@ import {
     User,
     ValuesCreateIncidentsForm
 } from 'common/types/incidents';
+import {
+    CreateIncidentAction,
+    UpdateIncidentAction,
+    UpdateValuesCreateIncidentFormAction
+} from 'redux/actions/incidents/incidents.interfaces';
 
-export interface CreateIncidentProps {
+interface CreateIncidentProps {
     users: User[];
     isModalVisible: boolean;
     valuesCreateIncidentForm: ValuesCreateIncidentsForm;
@@ -13,3 +18,17 @@ export interface CreateIncidentProps {
     onFinish: (value: CreateIncident) => void;
     onChange: (value: ValuesCreateIncidentsForm) => void;
 }
+
+interface CreateIncidentFormContainerProps {
+    dispatchUpdateValuesCreateIncidentForm: (payload: {
+        updatedValue: ValuesCreateIncidentsForm;
+    }) => UpdateValuesCreateIncidentFormAction;
+    dispatchCreateIncident: (payload: {
+        valuesCreateIncidentForm: ValuesCreateIncidentsForm;
+    }) => CreateIncidentAction;
+    dispatchUpdateIncident: (payload: {
+        updateData: { incidentID: string; incidentFormData: CreateIncident };
+    }) => UpdateIncidentAction;
+}
+
+export type { CreateIncidentFormContainerProps, CreateIncidentProps };

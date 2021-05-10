@@ -14,7 +14,11 @@ import {
     PostLoginAction,
     RestorePassword
 } from 'redux/actions/login/login.interfaces';
-import { login } from 'redux/actions/userInfo/userInfo.actions';
+import {
+    login,
+    logout,
+    ON_LOGOUT
+} from 'redux/actions/userInfo/userInfo.actions';
 import { decode } from 'jsonwebtoken';
 import { DecodeAccessToken } from 'common/types/login';
 import { postLoginApi, restorePasswordApi } from './api/api';
@@ -85,9 +89,15 @@ function* restorePasswordWorker({
     }
 }
 
+function* logoutWorker() {
+    localStorage.clear();
+    yield put(logout());
+}
+
 function* loginWatcher() {
     yield takeEvery(POST_LOGIN, postLoginWorker);
     yield takeEvery(RESTORE_PASSWORD, restorePasswordWorker);
+    yield takeEvery(ON_LOGOUT, logoutWorker);
 }
 
 export default loginWatcher;

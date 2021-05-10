@@ -25,7 +25,8 @@ const App = () => {
 
             dispatch(login({ fullname }));
         }
-    });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <Layout>

@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
-import { useDispatch } from 'react-redux';
-import { Dispatch } from 'redux';
+import { connect } from 'react-redux';
 import {
     deleteIncident,
     getUsers,
@@ -8,33 +7,34 @@ import {
     updateValuesCreateIncidentForm
 } from 'redux/actions/incidents/incidents.actions';
 import { getDate } from 'common/helpers';
-import { IncidentsActions } from 'redux/actions/incidents/incidents.interfaces';
-import { Incident } from 'common/types/incidents';
 import ActionButtons from './ActionButtons';
+import { ActionButtonsContainerProps } from './ActionButtons.interfaces';
 
-const ActionButtonsContainer: FC<{ incident: Incident }> = ({ incident }) => {
-    const dispatch = useDispatch<Dispatch<IncidentsActions>>();
-
+const ActionButtonsContainer: FC<ActionButtonsContainerProps> = ({
+    incident,
+    dispatchGetUsers,
+    dispatchUpdateValuesCreateIncidentForm,
+    dispatchSetDataForUpdating,
+    dispatchDeleteIncident
+}) => {
     const onDeleteIncident = () => {
         const incidentID = incident.key;
 
-        dispatch(deleteIncident({ incidentID }));
+        dispatchDeleteIncident({ incidentID });
     };
 
     const onEditIncident = () => {
         const incidentID = incident.key;
 
-        dispatch(setDataForUpdating({ incidentID }));
-        dispatch(
-            updateValuesCreateIncidentForm({
-                updatedValue: {
-                    ...incident,
-                    startDate: getDate(incident.startDate),
-                    dueDate: getDate(incident.dueDate)
-                }
-            })
-        );
-        dispatch(getUsers());
+        dispatchSetDataForUpdating({ incidentID });
+        dispatchUpdateValuesCreateIncidentForm({
+            updatedValue: {
+                ...incident,
+                startDate: getDate(incident.startDate),
+                dueDate: getDate(incident.dueDate)
+            }
+        });
+        dispatchGetUsers();
     };
 
     return (
@@ -45,4 +45,11 @@ const ActionButtonsContainer: FC<{ incident: Incident }> = ({ incident }) => {
     );
 };
 
-export default ActionButtonsContainer;
+const mapDispatchToProps = {
+    dispatchGetUsers: getUsers,
+    dispatchUpdateValuesCreateIncidentForm: updateValuesCreateIncidentForm,
+    dispatchSetDataForUpdating: setDataForUpdating,
+    dispatchDeleteIncident: deleteIncident
+};
+
+export default connect(null, mapDispatchToProps)(ActionButtonsContainer);
