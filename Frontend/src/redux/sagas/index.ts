@@ -1,3 +1,3 @@
-export { default as registrationWatcher } from 'redux/sagas/registrationSaga';
-export { default as incidentsWatcher } from 'redux/sagas/incidentsSaga';
-export { default as loginWatcher } from 'redux/sagas/loginSaga';
+export { default as registrationWatcher } from './registrationSaga';
+export { default as incidentsWatcher } from './incidentsSaga';
+export { default as loginWatcher } from './loginSaga';

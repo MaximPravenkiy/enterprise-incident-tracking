@@ -7,9 +7,9 @@ const refreshTokenApi = (refreshToken: string) =>
 
 const axiosWithAuthorization = async (config = {}) => {
     const { accessToken, refreshToken } = JSON.parse(
-        <string>localStorage.getItem('tokens')
+        localStorage.getItem('tokens') as string
     );
-    const { exp } = <DecodeAccessToken>decode(accessToken);
+    const { exp } = decode(accessToken) as DecodeAccessToken;
 
     if (Date.now() >= exp * 1000) {
         try {

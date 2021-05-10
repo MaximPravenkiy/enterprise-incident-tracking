@@ -1,9 +1,9 @@
 import React, { FC, memo, useEffect, useState } from 'react';
-import CreateIncidentFormContainer from 'components/Main/Forms/CreateIncident/CreateIncidentForm.container';
-import { IncidentsProps } from 'components/Main/Incidents/Incidents.interfaces';
-import { columns } from 'components/Main/Incidents/Incidents.data';
 import { Table } from 'antd';
-import { TableWrapper } from 'components/Main/Incidents/Incidents.styles';
+import CreateIncidentFormContainer from '../Forms/CreateIncident/CreateIncidentForm.container';
+import { IncidentsProps } from './Incidents.interfaces';
+import { columns } from './Incidents.data';
+import { TableWrapper } from './Incidents.styles';
 
 const Incidents: FC<IncidentsProps> = memo(
     ({ listOfIncidents, isListOfIncidentsLoading }) => {

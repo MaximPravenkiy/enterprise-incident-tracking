@@ -5,16 +5,16 @@ import {
     UPDATE_VALUES_LOGIN_FORM
 } from 'redux/actions/login/login.actions';
 
-type LoginInitialState = typeof initialState;
+interface LoginInitialState {
+    valuesLoginForm: ValuesLoginForm;
+}
 
 const initialState = {
     valuesLoginForm: {
         login: '',
         password: '',
         remember: false
-    } as ValuesLoginForm,
-    fullname: '',
-    isAuth: false
+    } as ValuesLoginForm
 };
 
 function loginReducer(

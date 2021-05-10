@@ -6,15 +6,15 @@ import {
     SnippetsFilled
 } from '@ant-design/icons/lib';
 import { Avatar, Button } from 'antd';
-import { MenuItemLoginProps } from 'components/Header/Menu/MenuItemsLogin/MenuItemsLogin.interfaces';
+import { ButtonLabel } from 'common/types/incidents';
+import { MenuItemLoginProps } from './MenuItemsLogin.interfaces';
 import {
     ButtonWrapper,
     IncidentButton,
     RightSection,
     TittleWrapper,
     Wrapper
-} from 'components/Header/Menu/MenuItemsLogin/MenuItemsLogin.styles';
-import { ButtonLabel } from 'common/types/incidents';
+} from './MenuItemsLogin.styles';
 
 const MenuItemsLogin: FC<MenuItemLoginProps> = memo(
     ({

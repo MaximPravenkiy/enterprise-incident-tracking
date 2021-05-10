@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import { MenuCustom } from 'components/Header/Menu/Menu.styles';
-import { MenuProps } from 'components/Header/Menu/Menu.interfaces';
 import { withRouter } from 'react-router-dom';
+import { MenuCustom } from './Menu.styles';
+import { MenuProps } from './Menu.interfaces';
 
 const NavMenu: FC<MenuProps> = ({ menuItems, location }) => (
     <MenuCustom

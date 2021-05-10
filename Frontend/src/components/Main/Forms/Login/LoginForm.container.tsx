@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
-import LoginForm from 'components/Main/Forms/Login/LoginForm';
 import {
     postLogin,
     updateValuesLoginForm
@@ -10,6 +9,7 @@ import { RootReducer } from 'redux/reducers/rootReducer';
 import { ValuesLoginForm } from 'common/types/login';
 import { LoginActions } from 'redux/actions/login/login.interfaces';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
+import LoginForm from './LoginForm';
 
 const LoginFormContainer: FC<RouteComponentProps> = ({ history }) => {
     const { login, password, remember } = useSelector(

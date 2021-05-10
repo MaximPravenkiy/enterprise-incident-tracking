@@ -4,7 +4,6 @@ import {
     POST_LOGIN,
     RESTORE_PASSWORD
 } from 'redux/actions/login/login.actions';
-import { postLoginApi, restorePasswordApi } from 'redux/sagas/api/api';
 import {
     destroyLoadingMessage,
     errorNotification,
@@ -18,6 +17,7 @@ import {
 import { login } from 'redux/actions/userInfo/userInfo.actions';
 import { decode } from 'jsonwebtoken';
 import { DecodeAccessToken } from 'common/types/login';
+import { postLoginApi, restorePasswordApi } from './api/api';
 
 type ResponseLoginType = SagaReturnType<typeof postLoginApi>;
 type ResponseRestorePasswordType = SagaReturnType<typeof restorePasswordApi>;
@@ -35,7 +35,7 @@ function* postLoginWorker({
 
         if (response.status === 200) {
             const { accessToken } = response.data.tokens;
-            const { fullname } = <DecodeAccessToken>decode(accessToken);
+            const { fullname } = decode(accessToken) as DecodeAccessToken;
             localStorage.setItem('isOwnIncidents', JSON.stringify(true));
             localStorage.setItem(
                 'tokens',

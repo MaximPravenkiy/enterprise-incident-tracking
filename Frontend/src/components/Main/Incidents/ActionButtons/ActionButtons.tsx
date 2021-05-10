@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Button, Space } from 'antd';
-import { ActionButtonsProps } from 'components/Main/Incidents/ActionButtons/ActionButtons.interfaces';
+import { ActionButtonsProps } from './ActionButtons.interfaces';
 
 const ActionButtons: FC<ActionButtonsProps> = ({
     onEditIncident,

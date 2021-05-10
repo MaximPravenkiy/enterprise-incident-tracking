@@ -1,7 +1,10 @@
-import { UserInfoActions } from '../actions/userInfo/userInfo.interfaces';
-import { LOGIN, LOGOUT } from '../actions/userInfo/userInfo.actions';
+import { UserInfoActions } from 'redux/actions/userInfo/userInfo.interfaces';
+import { LOGIN, LOGOUT } from 'redux/actions/userInfo/userInfo.actions';
 
-type UserInfoInitialState = typeof initialState;
+interface UserInfoInitialState {
+    fullname: string;
+    isAuth: boolean;
+}
 
 const initialState = {
     fullname: '',

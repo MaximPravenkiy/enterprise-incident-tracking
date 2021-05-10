@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { WarningOutlined } from '@ant-design/icons/lib';
-import { PriorityLabelProps } from 'components/Main/Forms/CreateIncident/PriorityLabel/PriorityLabel.interfaces';
-import { Label } from 'components/Main/Forms/CreateIncident/PriorityLabel/PriorityLabel.styles';
+import { PriorityLabelProps } from './PriorityLabel.interfaces';
+import { Label } from './PriorityLabel.styles';
 
 const PriorityLabel: FC<PriorityLabelProps> = ({ color, text }) => (
     <Label>

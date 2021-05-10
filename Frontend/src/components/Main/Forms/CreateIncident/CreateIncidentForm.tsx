@@ -1,10 +1,10 @@
-import React, { FC, useEffect, useRef } from 'react';
+import React, { FC, useEffect } from 'react';
 import { Form, Input, Select, DatePicker, Modal } from 'antd';
 import moment, { Moment } from 'moment';
-import CloseModalButton from 'components/Main/Forms/CreateIncident/CloseModalButton/CloseModalButton';
-import TitleModal from 'components/Main/Forms/CreateIncident/TitleModal/TitleModal';
-import CreateOrUpdateButton from 'components/Main/Forms/CreateIncident/CreateOrUpdateButton/CreateOrUpdateButton';
-import { CreateIncidentProps } from 'components/Main/Forms/CreateIncident/CreateIncidentForm.interfaces';
+import CloseModalButton from './CloseModalButton/CloseModalButton';
+import TitleModal from './TitleModal/TitleModal';
+import CreateOrUpdateButton from './CreateOrUpdateButton/CreateOrUpdateButton';
+import { CreateIncidentProps } from './CreateIncidentForm.interfaces';
 import {
     areas,
     configDate,
@@ -17,7 +17,7 @@ import {
     configPriority,
     configStatus,
     configArea
-} from 'components/Main/Forms/CreateIncident/CreateIncidentForm.data';
+} from './CreateIncidentForm.data';
 
 const CreateIncidentForm: FC<CreateIncidentProps> = ({
     isModalVisible,
@@ -27,14 +27,10 @@ const CreateIncidentForm: FC<CreateIncidentProps> = ({
     onChange,
     onFinish
 }) => {
-    // Костыль для ворнинга
-    const formRef = useRef(null);
     const [form] = Form.useForm();
 
     useEffect(() => {
-        if (formRef.current) {
-            form.setFieldsValue({ ...valuesCreateIncidentForm });
-        }
+        form.setFieldsValue({ ...valuesCreateIncidentForm });
     }, [form, valuesCreateIncidentForm]);
 
     const disabledDate = (currentDate: Moment) =>
@@ -55,7 +51,6 @@ const CreateIncidentForm: FC<CreateIncidentProps> = ({
                 form={form}
                 initialValues={valuesCreateIncidentForm}
                 onValuesChange={onChange}
-                ref={formRef}
             >
                 <Form.Item {...configIncidentName}>
                     <Input />

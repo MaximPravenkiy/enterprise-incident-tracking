@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { Dispatch } from 'redux';
-import ActionButtons from 'components/Main/Incidents/ActionButtons/ActionButtons';
 import {
     deleteIncident,
     getUsers,
@@ -11,6 +10,7 @@ import {
 import { getDate } from 'common/helpers';
 import { IncidentsActions } from 'redux/actions/incidents/incidents.interfaces';
 import { Incident } from 'common/types/incidents';
+import ActionButtons from './ActionButtons';
 
 const ActionButtonsContainer: FC<{ incident: Incident }> = ({ incident }) => {
     const dispatch = useDispatch<Dispatch<IncidentsActions>>();

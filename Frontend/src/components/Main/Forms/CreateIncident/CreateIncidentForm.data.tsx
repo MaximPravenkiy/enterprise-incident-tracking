@@ -1,5 +1,5 @@
 import React from 'react';
-import PriorityLabel from 'components/Main/Forms/CreateIncident/PriorityLabel/PriorityLabel';
+import PriorityLabel from './PriorityLabel/PriorityLabel';
 
 export const areas = [
     { label: 'Designer', value: 'Designer' },

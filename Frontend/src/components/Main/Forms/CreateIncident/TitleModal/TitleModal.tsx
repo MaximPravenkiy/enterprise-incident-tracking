@@ -1,7 +1,7 @@
 import React from 'react';
 import { Spin } from 'antd';
 import { CopyrightOutlined } from '@ant-design/icons/lib';
-import { SpanCustom } from 'components/Main/Forms/CreateIncident/TitleModal/TitleModal.styles';
+import { SpanCustom } from './TitleModal.styles';
 
 const TitleModal = () => (
     <>

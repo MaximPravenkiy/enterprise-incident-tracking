@@ -18,7 +18,16 @@ import {
     UPDATE_VALUES_CREATE_INCIDENT_FORM
 } from 'redux/actions/incidents/incidents.actions';
 
-export type IncidentsInitialState = typeof initialState;
+interface IncidentsInitialState {
+    actionWithCreateIncidentForm: ActionWithCreateIncidentForm;
+    isOwnIncidents: boolean;
+    incidentID: string;
+    isModalVisible: boolean;
+    listOfIncidents: Incident[];
+    isListOfIncidentsLoading: boolean;
+    users: User[];
+    valuesCreateIncidentForm: ValuesCreateIncidentsForm;
+}
 
 const initialState = {
     actionWithCreateIncidentForm: 'Создать' as ActionWithCreateIncidentForm,

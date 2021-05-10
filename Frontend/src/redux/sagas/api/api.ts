@@ -7,7 +7,7 @@ import {
 } from 'common/types/login';
 import { UpdateIncidentAction } from 'redux/actions/incidents/incidents.interfaces';
 import { Incident, ValuesCreateIncidentsForm } from 'common/types/incidents';
-import axiosWithAuthorization from 'redux/sagas/api/api.services';
+import axiosWithAuthorization from './api.services';
 
 interface Message {
     message: string;

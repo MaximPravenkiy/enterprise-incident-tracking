@@ -1,6 +1,6 @@
 import React from 'react';
 import { SettingOutlined, ToolOutlined } from '@ant-design/icons';
-import { FooterCustom, StyleSpan } from 'components/Footer/Footer.styles';
+import { FooterCustom, StyleSpan } from './Footer.styles';
 
 const Footer = () => (
     <FooterCustom>

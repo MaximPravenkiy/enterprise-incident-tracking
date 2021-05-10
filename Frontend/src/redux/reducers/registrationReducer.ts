@@ -4,9 +4,11 @@ import { ValuesRegistrationForm } from 'common/types/registration';
 import {
     RESET_REGISTRATION_FORM,
     UPDATE_VALUES_REGISTRATION_FORM
-} from '../actions/registration/registration.actions';
+} from 'redux/actions/registration/registration.actions';
 
-type RegistrationInitialState = typeof initialState;
+interface RegistrationInitialState {
+    valuesRegistrationForm: ValuesRegistrationForm;
+}
 
 const initialState = {
     valuesRegistrationForm: {

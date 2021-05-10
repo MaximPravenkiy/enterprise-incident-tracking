@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
-import { RegistrationForm } from 'components/Main/Forms/Registration/RegistrationForm';
 import {
     postRegistration,
     updateValuesRegistrationForm
@@ -11,6 +10,7 @@ import { RegistrationActions } from 'redux/actions/registration/registration.int
 import { ValuesRegistrationForm } from 'common/types/registration';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { useDebouncedCallback } from 'use-debounce';
+import { RegistrationForm } from './RegistrationForm';
 
 const RegistrationFormContainer: FC<RouteComponentProps> = ({ history }) => {
     const { dateOfBirth, fullname, login, password, position } = useSelector(

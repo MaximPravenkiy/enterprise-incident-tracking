@@ -2,11 +2,8 @@ import React, { FC, useEffect } from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { NavLink } from 'react-router-dom';
-import { LoginFormTypes } from 'components/Main/Forms/Login/LoginForm.interfaces';
-import {
-    configLogin,
-    configPassword
-} from 'components/Main/Forms/Login/LoginForm.data';
+import { LoginFormTypes } from './LoginForm.interfaces';
+import { configLogin, configPassword } from './LoginForm.data';
 
 const LoginForm: FC<LoginFormTypes> = ({
     onFinish,

@@ -1,5 +1,4 @@
 import { call, put, SagaReturnType, takeEvery } from 'redux-saga/effects';
-import { postRegistrationApi } from 'redux/sagas/api/api';
 import {
     destroyLoadingMessage,
     errorNotification,
@@ -11,6 +10,7 @@ import {
     resetRegistrationForm
 } from 'redux/actions/registration/registration.actions';
 import { PostRegistrationAction } from 'redux/actions/registration/registration.interfaces';
+import { postRegistrationApi } from './api/api';
 
 type ResponseRegistrationType = SagaReturnType<typeof postRegistrationApi>;
 

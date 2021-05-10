@@ -1,7 +1,7 @@
 import React, { FC, memo } from 'react';
-import { MenuItemCustom } from 'components/Header/Menu/MenuItemLogout/MenuItemLogout.styles';
-import { MenuItemLogoutProps } from 'components/Header/Menu/MenuItemLogout/MenuItemLogout.interfaces';
 import { NavLink } from 'react-router-dom';
+import { MenuItemCustom } from './MenuItemLogout.styles';
+import { MenuItemLogoutProps } from './MenuItemLogout.interfaces';
 
 const MenuItemLogout: FC<MenuItemLogoutProps> = memo(
     ({ key, url, text, ...props }) => (

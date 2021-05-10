@@ -2,8 +2,6 @@ import React, { FC, memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import NavMenu from 'components/Header/Menu/Menu';
-import MenuItemsLogin from 'components/Header/Menu/MenuItemsLogin/MenuItemsLogin';
 import {
     getIncidents,
     getUsers,
@@ -15,6 +13,8 @@ import { IncidentsActions } from 'redux/actions/incidents/incidents.interfaces';
 import { logoutNotification } from 'common/services/notification.services';
 import { logout } from 'redux/actions/userInfo/userInfo.actions';
 import { UserInfoActions } from 'redux/actions/userInfo/userInfo.interfaces';
+import MenuItemsLogin from './MenuItemsLogin/MenuItemsLogin';
+import NavMenu from './Menu';
 import MenuItemsLogout from './Menu.data';
 
 const MenuContainer: FC<RouteComponentProps> = memo(({ history }) => {

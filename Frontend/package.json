@@ -43,12 +43,6 @@
             "last 1 safari version"
         ]
     },
-    "eslintConfig": {
-        "extends": [
-            "react-app",
-            "react-app/jest"
-        ]
-    },
     "devDependencies": {
         "@types/jest": "^26.0.23",
         "@types/jsonwebtoken": "^8.5.1",

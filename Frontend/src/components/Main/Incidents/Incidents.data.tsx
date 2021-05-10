@@ -1,8 +1,8 @@
 import React from 'react';
 import { Incident } from 'common/types/incidents';
-import ActionButtonsContainer from 'components/Main/Incidents/ActionButtons/ActionButtons.container';
 import { ColumnsType } from 'antd/es/table';
 import moment, { Moment } from 'moment';
+import ActionButtonsContainer from './ActionButtons/ActionButtons.container';
 
 function comparePriority(a: string, b: string) {
     if (a === 'Minor' || b === 'Blocker') return -1;

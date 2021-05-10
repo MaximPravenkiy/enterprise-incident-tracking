@@ -20,20 +20,20 @@ import {
     successNotification
 } from 'common/services/notification.services';
 import {
-    deleteIncidentApi,
-    getAllIncidentsApi,
-    getMyIncidentsApi,
-    getUsersForAssigneeOptionApi,
-    postIncidentApi,
-    updateIncidentApi
-} from 'redux/sagas/api/api';
-import {
     CreateIncidentAction,
     DeleteIncidentAction,
     UpdateIncidentAction
 } from 'redux/actions/incidents/incidents.interfaces';
 import { getDate } from 'common/helpers';
 import { logout } from 'redux/actions/userInfo/userInfo.actions';
+import {
+    deleteIncidentApi,
+    getAllIncidentsApi,
+    getMyIncidentsApi,
+    getUsersForAssigneeOptionApi,
+    postIncidentApi,
+    updateIncidentApi
+} from './api/api';
 
 type ResponseGetIncidentsType = SagaReturnType<typeof getMyIncidentsApi>;
 type ResponseGetUsersForAssigneeType = SagaReturnType<

@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 const schema = new Schema({
-    incidentName: { type: String, required:  true },
+    incidentName: { type: String, required: true },
     assignee: { type: String },
     area: { type: String, required: true },
     startDate: { type: Date, required: true },

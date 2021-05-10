@@ -7,6 +7,7 @@ module.exports = (req, res, next) => {
     }
 
     try {
+        const { JWT_TOKEN_ACCESS_TYPE } = process.env;
         const token = req.headers.authorization.split(' ')[1];
 
         if (!token) {
@@ -15,8 +16,8 @@ module.exports = (req, res, next) => {
 
         const { type, userId } = jwt.verify(token, secret);
 
-        if (type !== 'access') {
-            return res.status(400).json({ message: 'Некорректный токен!'});
+        if (type !== JWT_TOKEN_ACCESS_TYPE) {
+            return res.status(400).json({ message: 'Некорректный токен!' });
         }
 
         req.userId = userId;
@@ -24,4 +25,4 @@ module.exports = (req, res, next) => {
     } catch (e) {
         return res.status(401).json({ message: 'Нет авторизации!' });
     }
-}
+};

@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
-import CreateIncidentForm from 'components/Main/Forms/CreateIncident/CreateIncidentForm';
 import {
     createIncident,
     updateIncident,
@@ -13,6 +12,7 @@ import {
     CreateIncident,
     ValuesCreateIncidentsForm
 } from 'common/types/incidents';
+import CreateIncidentForm from './CreateIncidentForm';
 
 const CreateIncidentFormContainer = () => {
     const {

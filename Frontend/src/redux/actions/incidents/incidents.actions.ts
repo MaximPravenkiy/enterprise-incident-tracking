@@ -14,7 +14,6 @@ import {
     UpdateLoaderAction,
     UpdateValuesCreateIncidentFormAction
 } from 'redux/actions/incidents/incidents.interfaces';
-
 import {
     Incident,
     User,

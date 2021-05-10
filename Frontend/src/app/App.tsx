@@ -4,12 +4,13 @@ import { Layout } from 'antd';
 import { useDispatch } from 'react-redux';
 import { Dispatch } from 'redux';
 import Header from 'components/Header/Header';
-import Main from 'components/Main/Main';
 import Footer from 'components/Footer/Footer';
 import { decode } from 'jsonwebtoken';
 import { LoginAction } from 'redux/actions/userInfo/userInfo.interfaces';
 import { login } from 'redux/actions/userInfo/userInfo.actions';
 import { DecodeAccessToken } from 'common/types/login';
+import { Content } from './App.styles';
+import Routes from './routes';
 
 const App = () => {
     const dispatch = useDispatch<Dispatch<LoginAction>>();
@@ -29,7 +30,9 @@ const App = () => {
     return (
         <Layout>
             <Header />
-            <Main />
+            <Content>
+                <Routes />
+            </Content>
             <Footer />
         </Layout>
     );

@@ -1,4 +1,4 @@
-export { default as loginReducer } from 'redux/reducers/loginReducer';
-export { default as registrationReducer } from 'redux/reducers/registrationReducer';
-export { default as incidentsReducer } from 'redux/reducers/incidentsReducer';
-export { default as userInfoReducer } from 'redux/reducers/userInfoReducer';
+export { default as loginReducer } from './loginReducer';
+export { default as registrationReducer } from './registrationReducer';
+export { default as incidentsReducer } from './incidentsReducer';
+export { default as userInfoReducer } from './userInfoReducer';
