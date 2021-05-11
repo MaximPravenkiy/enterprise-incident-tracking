@@ -47,8 +47,11 @@ const deleteIncidentApi = (incidentID: string) =>
 const updateIncidentApi = (
     updateData: UpdateIncidentAction['payload']['updateData']
 ) => {
-    const { incidentFormData, incidentID } = updateData;
-    return axios.put<Message>(`/incidents/${incidentID}`, incidentFormData);
+    const { incidentFormData, editedIncidentId } = updateData;
+    return axios.put<Message>(
+        `/incidents/${editedIncidentId}`,
+        incidentFormData
+    );
 };
 
 export {

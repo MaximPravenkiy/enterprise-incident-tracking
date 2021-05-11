@@ -1,6 +1,5 @@
 import { getDate } from 'common/helpers';
 import {
-    ActionWithCreateIncidentForm,
     Incident,
     User,
     ValuesCreateIncidentsForm
@@ -13,16 +12,18 @@ import {
     SET_INCIDENTS,
     SET_USERS,
     SHOW_ALL_INCIDENTS,
+    SHOW_CREATE_INCIDENT_FORM,
+    SHOW_EDIT_INCIDENT_FORM,
     SHOW_OWN_INCIDENTS,
     UPDATE_LOADER,
     UPDATE_VALUES_CREATE_INCIDENT_FORM
 } from 'redux/actions/incidents/incidents.actions';
 
 interface IncidentsInitialState {
-    actionWithCreateIncidentForm: ActionWithCreateIncidentForm;
     isOwnIncidents: boolean;
-    incidentID: string;
-    isModalVisible: boolean;
+    editedIncidentId: string;
+    isCreateModalVisible: boolean;
+    isEditModalVisible: boolean;
     listOfIncidents: Incident[];
     isListOfIncidentsLoading: boolean;
     users: User[];
@@ -30,10 +31,10 @@ interface IncidentsInitialState {
 }
 
 const initialState = {
-    actionWithCreateIncidentForm: 'Создать' as ActionWithCreateIncidentForm,
     isOwnIncidents: true,
-    incidentID: '',
-    isModalVisible: false,
+    editedIncidentId: '',
+    isCreateModalVisible: false,
+    isEditModalVisible: false,
     listOfIncidents: [] as Incident[],
     isListOfIncidentsLoading: false,
     users: [] as User[],
@@ -57,19 +58,28 @@ function incidentsReducer(
         case SET_INCIDENTS:
             return {
                 ...state,
-                ...action.payload,
-                isModalVisible: false
+                ...action.payload
             };
         case SET_USERS:
             return {
                 ...state,
-                ...action.payload,
-                isModalVisible: true
+                ...action.payload
+            };
+        case SHOW_CREATE_INCIDENT_FORM:
+            return {
+                ...state,
+                isCreateModalVisible: true
+            };
+        case SHOW_EDIT_INCIDENT_FORM:
+            return {
+                ...state,
+                isEditModalVisible: true
             };
         case CLOSE_MODAL:
             return {
                 ...state,
-                isModalVisible: false
+                isCreateModalVisible: false,
+                isEditModalVisible: false
             };
         case UPDATE_VALUES_CREATE_INCIDENT_FORM:
             return {
@@ -82,15 +92,11 @@ function incidentsReducer(
         case SET_DATA_FOR_UPDATING:
             return {
                 ...state,
-                actionWithCreateIncidentForm: 'Обновить',
                 ...action.payload
             };
         case RESET_CREATE_INCIDENT_FORM:
             return {
                 ...state,
-                actionWithCreateIncidentForm:
-                    initialState.actionWithCreateIncidentForm,
-                incidentID: initialState.incidentID,
                 valuesCreateIncidentForm: initialState.valuesCreateIncidentForm
             };
         case UPDATE_LOADER:

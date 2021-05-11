@@ -1,10 +1,11 @@
 import React, { FC, memo, useEffect, useState } from 'react';
 import { Table } from 'antd';
 import { useDebouncedCallback } from 'use-debounce';
-import CreateIncidentFormContainer from '../Forms/CreateIncident/CreateIncidentForm.container';
+import CreateIncidentFormContainer from '../Forms/Incident/CreateIncidentForm.container';
 import { IncidentsProps } from './Incidents.interfaces';
 import { columns } from './Incidents.data';
 import { TableWrapper } from './Incidents.styles';
+import EditIncidentFormContainer from '../Forms/Incident/EditIncidentForm.container';
 
 const Incidents: FC<IncidentsProps> = memo(
     ({ listOfIncidents, isListOfIncidentsLoading }) => {
@@ -43,6 +44,7 @@ const Incidents: FC<IncidentsProps> = memo(
                     scroll={{ x: 1200 }}
                 />
                 <CreateIncidentFormContainer />
+                <EditIncidentFormContainer />
             </TableWrapper>
         );
     }

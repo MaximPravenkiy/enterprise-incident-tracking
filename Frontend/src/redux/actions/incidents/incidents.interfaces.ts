@@ -12,13 +12,15 @@ import {
     GET_INCIDENTS,
     UPDATE_LOADER,
     SET_DATA_FOR_UPDATING,
-    RESET_CREATE_INCIDENT_FORM,
     UPDATE_VALUES_CREATE_INCIDENT_FORM,
     CLOSE_MODAL,
     SET_USERS,
     SET_INCIDENTS,
     SHOW_OWN_INCIDENTS,
-    SHOW_ALL_INCIDENTS
+    SHOW_ALL_INCIDENTS,
+    SHOW_CREATE_INCIDENT_FORM,
+    SHOW_EDIT_INCIDENT_FORM,
+    RESET_CREATE_INCIDENT_FORM
 } from './incidents.actions';
 
 interface SetIncidentsAction {
@@ -51,21 +53,17 @@ interface UpdateValuesCreateIncidentFormAction {
 
 interface SetDataForUpdatingAction {
     type: typeof SET_DATA_FOR_UPDATING;
-    payload: { incidentID: string };
+    payload: { editedIncidentId: string };
 }
 
 interface UpdateIncidentAction {
     type: typeof UPDATE_INCIDENT;
     payload: {
         updateData: {
-            incidentID: string;
+            editedIncidentId: string;
             incidentFormData: CreateIncident;
         };
     };
-}
-
-interface ResetCreateIncidentFormAction {
-    type: typeof RESET_CREATE_INCIDENT_FORM;
 }
 
 interface GetUsersAction {
@@ -94,6 +92,18 @@ interface ShowAllIncidentsAction {
     type: typeof SHOW_ALL_INCIDENTS;
 }
 
+interface ShowCreateIncidentAction {
+    type: typeof SHOW_CREATE_INCIDENT_FORM;
+}
+
+interface ShowEditIncidentAction {
+    type: typeof SHOW_EDIT_INCIDENT_FORM;
+}
+
+interface ResetCreateIncidentFormAction {
+    type: typeof RESET_CREATE_INCIDENT_FORM;
+}
+
 type IncidentsActions =
     | SetIncidentsAction
     | CreateIncidentAction
@@ -102,13 +112,15 @@ type IncidentsActions =
     | UpdateValuesCreateIncidentFormAction
     | SetDataForUpdatingAction
     | UpdateIncidentAction
-    | ResetCreateIncidentFormAction
     | GetUsersAction
     | SetUsersAction
     | GetIncidentsAction
     | UpdateLoaderAction
     | ShowOwnIncidentsAction
-    | ShowAllIncidentsAction;
+    | ShowAllIncidentsAction
+    | ShowCreateIncidentAction
+    | ShowEditIncidentAction
+    | ResetCreateIncidentFormAction;
 
 export type {
     IncidentsActions,
@@ -119,11 +131,13 @@ export type {
     UpdateValuesCreateIncidentFormAction,
     SetDataForUpdatingAction,
     UpdateIncidentAction,
-    ResetCreateIncidentFormAction,
     GetUsersAction,
     SetUsersAction,
     GetIncidentsAction,
     UpdateLoaderAction,
     ShowOwnIncidentsAction,
-    ShowAllIncidentsAction
+    ShowAllIncidentsAction,
+    ShowCreateIncidentAction,
+    ShowEditIncidentAction,
+    ResetCreateIncidentFormAction
 };

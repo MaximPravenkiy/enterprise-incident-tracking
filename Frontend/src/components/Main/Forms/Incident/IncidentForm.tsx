@@ -1,10 +1,10 @@
-import React, { FC, useEffect, useRef } from 'react';
+import React, { FC, useEffect } from 'react';
 import { Form, Input, Select, DatePicker, Modal } from 'antd';
 import moment, { Moment } from 'moment';
 import CloseModalButton from './CloseModalButton/CloseModalButton';
 import TitleModal from './TitleModal/TitleModal';
 import CreateOrUpdateButton from './CreateOrUpdateButton/CreateOrUpdateButton';
-import { CreateIncidentProps } from './CreateIncidentForm.interfaces';
+import { CreateIncidentProps } from './IncidentForm.interfaces';
 import {
     areas,
     configDate,
@@ -17,26 +17,21 @@ import {
     configPriority,
     configStatus,
     configArea
-} from './CreateIncidentForm.data';
+} from './IncidentForm.data';
 
-const CreateIncidentForm: FC<CreateIncidentProps> = ({
+const IncidentForm: FC<CreateIncidentProps> = ({
     isModalVisible,
     users,
-    actionWithCreateIncidentForm,
-    valuesCreateIncidentForm,
+    valuesIncidentForm,
     onChange,
-    onFinish
+    onFinish,
+    actionWithIncidentForm
 }) => {
-    // Костыль для ворнинга
-    const formRef = useRef(null);
     const [form] = Form.useForm();
 
     useEffect(() => {
-        if (formRef.current) {
-            form.setFieldsValue({ ...valuesCreateIncidentForm });
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+        form.setFieldsValue({ ...valuesIncidentForm });
+    }, [form, valuesIncidentForm]);
 
     const disabledDate = (currentDate: Moment) =>
         currentDate && currentDate < moment().startOf('day');
@@ -47,14 +42,18 @@ const CreateIncidentForm: FC<CreateIncidentProps> = ({
             centered
             title={<TitleModal />}
             visible={isModalVisible}
-            closeIcon={<CloseModalButton />}
+            closeIcon={
+                <CloseModalButton
+                    actionWithIncidentForm={actionWithIncidentForm}
+                />
+            }
         >
             <Form
                 {...layout}
                 name="create-incident"
                 onFinish={onFinish}
                 form={form}
-                initialValues={valuesCreateIncidentForm}
+                initialValues={valuesIncidentForm}
                 onValuesChange={onChange}
             >
                 <Form.Item {...configIncidentName}>
@@ -91,9 +90,7 @@ const CreateIncidentForm: FC<CreateIncidentProps> = ({
 
                 <Form.Item {...tailLayout}>
                     <CreateOrUpdateButton
-                        actionWithCreateIncidentForm={
-                            actionWithCreateIncidentForm
-                        }
+                        actionWithIncidentForm={actionWithIncidentForm}
                     />
                 </Form.Item>
             </Form>
@@ -101,4 +98,4 @@ const CreateIncidentForm: FC<CreateIncidentProps> = ({
     );
 };
 
-export default CreateIncidentForm;
+export default IncidentForm;

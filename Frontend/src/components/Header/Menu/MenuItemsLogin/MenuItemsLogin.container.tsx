@@ -5,6 +5,7 @@ import {
     getIncidents,
     getUsers,
     showAllIncidents,
+    showCreateIncident,
     showOwnIncidents
 } from 'redux/actions/incidents/incidents.actions';
 import { logoutNotification } from 'common/services/notification.services';
@@ -17,7 +18,8 @@ const MenuItemsLoginContainer: FC<MenuItemsLoginContainerProps> = ({
     dispatchShowAllIncidents,
     dispatchShowOwnIncidents,
     dispatchGetIncidents,
-    dispatchGetUsers
+    dispatchGetUsers,
+    dispatchShowCreateIncident
 }) => {
     const { fullname, isOwnIncidents } = useSelector(
         ({ userInfoReducer, incidentsReducer }: RootReducer) => ({
@@ -45,6 +47,7 @@ const MenuItemsLoginContainer: FC<MenuItemsLoginContainerProps> = ({
 
     const createIncident = () => {
         dispatchGetUsers();
+        dispatchShowCreateIncident();
     };
 
     return (
@@ -63,7 +66,8 @@ const mapDispatchToProps = {
     dispatchShowAllIncidents: showAllIncidents,
     dispatchShowOwnIncidents: showOwnIncidents,
     dispatchGetIncidents: getIncidents,
-    dispatchGetUsers: getUsers
+    dispatchGetUsers: getUsers,
+    dispatchShowCreateIncident: showCreateIncident
 };
 
 export default connect(null, mapDispatchToProps)(MenuItemsLoginContainer);

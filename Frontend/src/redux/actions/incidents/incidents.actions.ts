@@ -9,6 +9,8 @@ import {
     SetIncidentsAction,
     SetUsersAction,
     ShowAllIncidentsAction,
+    ShowCreateIncidentAction,
+    ShowEditIncidentAction,
     ShowOwnIncidentsAction,
     UpdateIncidentAction,
     UpdateLoaderAction,
@@ -24,7 +26,6 @@ const SET_INCIDENTS = 'SET_INCIDENTS';
 const SET_USERS = 'SET_USERS';
 const CLOSE_MODAL = 'CLOSE_MODAL';
 const UPDATE_VALUES_CREATE_INCIDENT_FORM = 'UPDATE_VALUES_CREATE_INCIDENT_FORM';
-const RESET_CREATE_INCIDENT_FORM = 'RESET_CREATE_INCIDENT_FORM';
 const SET_DATA_FOR_UPDATING = 'SET_DATA_FOR_UPDATING';
 const UPDATE_LOADER = 'UPDATE_LOADER';
 const GET_INCIDENTS = 'GET_INCIDENTS';
@@ -34,6 +35,9 @@ const DELETE_INCIDENT = 'DELETE_INCIDENT';
 const UPDATE_INCIDENT = 'UPDATE_INCIDENT';
 const SHOW_OWN_INCIDENTS = 'SHOW_OWN_INCIDENTS';
 const SHOW_ALL_INCIDENTS = 'SHOW_ALL_INCIDENTS';
+const SHOW_CREATE_INCIDENT_FORM = 'SHOW_CREATE_INCIDENT_FORM';
+const SHOW_EDIT_INCIDENT_FORM = 'SHOW_EDIT_INCIDENT_FORM';
+const RESET_CREATE_INCIDENT_FORM = 'RESET_CREATE_INCIDENT_FORM';
 
 const getIncidents = (): GetIncidentsAction => ({ type: GET_INCIDENTS });
 
@@ -64,8 +68,12 @@ const updateValuesCreateIncidentForm = (payload: {
     payload
 });
 
+const resetCreateIncidentForm = (): ResetCreateIncidentFormAction => ({
+    type: RESET_CREATE_INCIDENT_FORM
+});
+
 const setDataForUpdating = (payload: {
-    incidentID: string;
+    editedIncidentId: string;
 }): SetDataForUpdatingAction => ({
     type: SET_DATA_FOR_UPDATING,
     payload
@@ -74,10 +82,6 @@ const setDataForUpdating = (payload: {
 const updateIncident = (
     payload: UpdateIncidentAction['payload']
 ): UpdateIncidentAction => ({ type: UPDATE_INCIDENT, payload });
-
-const resetCreateIncidentForm = (): ResetCreateIncidentFormAction => ({
-    type: RESET_CREATE_INCIDENT_FORM
-});
 
 const updateLoader = (payload: {
     isListOfIncidentsLoading: boolean;
@@ -101,6 +105,14 @@ const showAllIncidents = (): ShowAllIncidentsAction => ({
     type: SHOW_ALL_INCIDENTS
 });
 
+const showCreateIncident = (): ShowCreateIncidentAction => ({
+    type: SHOW_CREATE_INCIDENT_FORM
+});
+
+const showEditIncident = (): ShowEditIncidentAction => ({
+    type: SHOW_EDIT_INCIDENT_FORM
+});
+
 export {
     getIncidents,
     setIncidents,
@@ -112,10 +124,12 @@ export {
     updateValuesCreateIncidentForm,
     updateIncident,
     setDataForUpdating,
-    resetCreateIncidentForm,
     updateLoader,
     showOwnIncidents,
     showAllIncidents,
+    showCreateIncident,
+    showEditIncident,
+    resetCreateIncidentForm,
     UPDATE_INCIDENT,
     DELETE_INCIDENT,
     CREATE_INCIDENT,
@@ -123,11 +137,13 @@ export {
     GET_INCIDENTS,
     UPDATE_LOADER,
     SET_DATA_FOR_UPDATING,
-    RESET_CREATE_INCIDENT_FORM,
     UPDATE_VALUES_CREATE_INCIDENT_FORM,
     CLOSE_MODAL,
     SET_USERS,
     SET_INCIDENTS,
     SHOW_OWN_INCIDENTS,
-    SHOW_ALL_INCIDENTS
+    SHOW_ALL_INCIDENTS,
+    SHOW_EDIT_INCIDENT_FORM,
+    SHOW_CREATE_INCIDENT_FORM,
+    RESET_CREATE_INCIDENT_FORM
 };

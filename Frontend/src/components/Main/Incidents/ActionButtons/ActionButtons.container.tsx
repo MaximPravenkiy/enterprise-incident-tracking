@@ -4,18 +4,17 @@ import {
     deleteIncident,
     getUsers,
     setDataForUpdating,
-    updateValuesCreateIncidentForm
+    showEditIncident
 } from 'redux/actions/incidents/incidents.actions';
-import { getDate } from 'common/helpers';
 import ActionButtons from './ActionButtons';
 import { ActionButtonsContainerProps } from './ActionButtons.interfaces';
 
 const ActionButtonsContainer: FC<ActionButtonsContainerProps> = ({
     incident,
     dispatchGetUsers,
-    dispatchUpdateValuesCreateIncidentForm,
     dispatchSetDataForUpdating,
-    dispatchDeleteIncident
+    dispatchDeleteIncident,
+    dispatchShowEditIncident
 }) => {
     const onDeleteIncident = () => {
         const incidentID = incident.key;
@@ -24,17 +23,11 @@ const ActionButtonsContainer: FC<ActionButtonsContainerProps> = ({
     };
 
     const onEditIncident = () => {
-        const incidentID = incident.key;
+        const editedIncidentId = incident.key;
 
-        dispatchSetDataForUpdating({ incidentID });
-        dispatchUpdateValuesCreateIncidentForm({
-            updatedValue: {
-                ...incident,
-                startDate: getDate(incident.startDate),
-                dueDate: getDate(incident.dueDate)
-            }
-        });
         dispatchGetUsers();
+        dispatchShowEditIncident();
+        dispatchSetDataForUpdating({ editedIncidentId });
     };
 
     return (
@@ -47,9 +40,9 @@ const ActionButtonsContainer: FC<ActionButtonsContainerProps> = ({
 
 const mapDispatchToProps = {
     dispatchGetUsers: getUsers,
-    dispatchUpdateValuesCreateIncidentForm: updateValuesCreateIncidentForm,
     dispatchSetDataForUpdating: setDataForUpdating,
-    dispatchDeleteIncident: deleteIncident
+    dispatchDeleteIncident: deleteIncident,
+    dispatchShowEditIncident: showEditIncident
 };
 
 export default connect(null, mapDispatchToProps)(ActionButtonsContainer);

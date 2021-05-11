@@ -3,6 +3,7 @@ import {
     GetIncidentsAction,
     GetUsersAction,
     ShowAllIncidentsAction,
+    ShowCreateIncidentAction,
     ShowOwnIncidentsAction
 } from 'redux/actions/incidents/incidents.interfaces';
 
@@ -20,6 +21,7 @@ interface MenuItemsLoginContainerProps {
     dispatchShowOwnIncidents: () => ShowOwnIncidentsAction;
     dispatchGetIncidents: () => GetIncidentsAction;
     dispatchGetUsers: () => GetUsersAction;
+    dispatchShowCreateIncident: () => ShowCreateIncidentAction;
 }
 
 export type { MenuItemLoginProps, MenuItemsLoginContainerProps };

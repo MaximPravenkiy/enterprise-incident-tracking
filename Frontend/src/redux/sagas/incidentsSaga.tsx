@@ -11,7 +11,8 @@ import {
     resetCreateIncidentForm,
     setIncidents,
     setUsers,
-    updateLoader
+    updateLoader,
+    closeModal
 } from 'redux/actions/incidents/incidents.actions';
 import {
     destroyLoadingMessage,
@@ -131,6 +132,7 @@ function* createIncidentWorker({
             successNotification('Операция выполнена.', response.data.message);
             yield put(getIncidents());
             yield put(resetCreateIncidentForm());
+            yield put(closeModal());
         }
     } catch (e) {
         destroyLoadingMessage();
@@ -181,7 +183,7 @@ function* updateIncidentWorker({
             destroyLoadingMessage();
             successNotification('Операция выполнена.', response.data.message);
             yield put(getIncidents());
-            yield put(resetCreateIncidentForm());
+            yield put(closeModal());
         }
     } catch (e) {
         destroyLoadingMessage();
