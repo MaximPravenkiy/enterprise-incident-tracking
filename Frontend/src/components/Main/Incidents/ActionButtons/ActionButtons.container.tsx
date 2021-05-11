@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo, useCallback } from 'react';
 import { connect } from 'react-redux';
 import {
     deleteIncident,
@@ -9,34 +9,38 @@ import {
 import ActionButtons from './ActionButtons';
 import { ActionButtonsContainerProps } from './ActionButtons.interfaces';
 
-const ActionButtonsContainer: FC<ActionButtonsContainerProps> = ({
-    incident,
-    dispatchGetUsers,
-    dispatchSetDataForUpdating,
-    dispatchDeleteIncident,
-    dispatchShowEditIncident
-}) => {
-    const onDeleteIncident = () => {
-        const incidentID = incident.key;
+const ActionButtonsContainer: FC<ActionButtonsContainerProps> = memo(
+    ({
+        incident,
+        dispatchGetUsers,
+        dispatchSetDataForUpdating,
+        dispatchDeleteIncident,
+        dispatchShowEditIncident
+    }) => {
+        const onDeleteIncident = useCallback(() => {
+            const incidentID = incident.key;
 
-        dispatchDeleteIncident({ incidentID });
-    };
+            dispatchDeleteIncident({ incidentID });
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, []);
 
-    const onEditIncident = () => {
-        const editedIncidentId = incident.key;
+        const onEditIncident = useCallback(() => {
+            const editedIncidentId = incident.key;
 
-        dispatchGetUsers();
-        dispatchShowEditIncident();
-        dispatchSetDataForUpdating({ editedIncidentId });
-    };
+            dispatchGetUsers();
+            dispatchShowEditIncident();
+            dispatchSetDataForUpdating({ editedIncidentId });
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, []);
 
-    return (
-        <ActionButtons
-            onEditIncident={onEditIncident}
-            onDeleteIncident={onDeleteIncident}
-        />
-    );
-};
+        return (
+            <ActionButtons
+                onEditIncident={onEditIncident}
+                onDeleteIncident={onDeleteIncident}
+            />
+        );
+    }
+);
 
 const mapDispatchToProps = {
     dispatchGetUsers: getUsers,

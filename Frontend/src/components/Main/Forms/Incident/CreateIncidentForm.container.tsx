@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
     createIncident,
@@ -14,7 +14,7 @@ import { Dispatch } from 'redux';
 import { IncidentsActions } from 'redux/actions/incidents/incidents.interfaces';
 import IncidentForm from './IncidentForm';
 
-const CreateIncidentFormContainer = () => {
+const CreateIncidentFormContainer = memo(() => {
     const {
         users,
         isCreateModalVisible,
@@ -23,12 +23,13 @@ const CreateIncidentFormContainer = () => {
 
     const dispatch = useDispatch<Dispatch<IncidentsActions>>();
 
-    const onChange = (value: ValuesCreateIncidentsForm) => {
+    const onChange = useCallback((value: ValuesCreateIncidentsForm) => {
         dispatch(updateValuesCreateIncidentForm({ updatedValue: value }));
-    };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
     const debouncedHandleResize = useDebouncedCallback(onChange, 500);
 
-    const onFinish = (values: CreateIncident) => {
+    const onFinish = useCallback((values: CreateIncident) => {
         const assigneeCandidate = users.find(
             (user) => user.id === values.assignee
         );
@@ -44,7 +45,8 @@ const CreateIncidentFormContainer = () => {
                 valuesCreateIncidentForm: incidentFormData
             })
         );
-    };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <IncidentForm
@@ -56,6 +58,6 @@ const CreateIncidentFormContainer = () => {
             actionWithIncidentForm="Создать"
         />
     );
-};
+});
 
 export default CreateIncidentFormContainer;

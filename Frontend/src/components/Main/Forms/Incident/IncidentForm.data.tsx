@@ -1,4 +1,5 @@
 import React from 'react';
+import moment, { Moment } from 'moment';
 import PriorityLabel from './PriorityLabel/PriorityLabel';
 
 export const areas = [
@@ -98,3 +99,6 @@ export const configStatus = {
     label: 'Status',
     rules: [{ required: true, message: 'Status is missing area' }]
 };
+
+export const disabledDate = (currentDate: Moment) =>
+    currentDate && currentDate < moment().startOf('day');

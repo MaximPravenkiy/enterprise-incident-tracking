@@ -18,7 +18,8 @@ function compareDate(a: string | Moment, b: string | Moment) {
     return moment(a).isAfter(b) ? 1 : -1;
 }
 
-export const columns: ColumnsType<Incident> = [
+const scrollSettings = { x: 1200 };
+const columns: ColumnsType<Incident> = [
     {
         title: '',
         dataIndex: 'icon',
@@ -83,3 +84,5 @@ export const columns: ColumnsType<Incident> = [
         )
     }
 ];
+
+export { scrollSettings, columns };

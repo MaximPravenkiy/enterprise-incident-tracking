@@ -1,6 +1,5 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, memo, useEffect } from 'react';
 import { Form, Input, Select, DatePicker, Modal } from 'antd';
-import moment, { Moment } from 'moment';
 import CloseModalButton from './CloseModalButton/CloseModalButton';
 import TitleModal from './TitleModal/TitleModal';
 import CreateOrUpdateButton from './CreateOrUpdateButton/CreateOrUpdateButton';
@@ -16,86 +15,86 @@ import {
     configDescription,
     configPriority,
     configStatus,
-    configArea
+    configArea,
+    disabledDate
 } from './IncidentForm.data';
 
-const IncidentForm: FC<CreateIncidentProps> = ({
-    isModalVisible,
-    users,
-    valuesIncidentForm,
-    onChange,
-    onFinish,
-    actionWithIncidentForm
-}) => {
-    const [form] = Form.useForm();
+const IncidentForm: FC<CreateIncidentProps> = memo(
+    ({
+        isModalVisible,
+        users,
+        valuesIncidentForm,
+        onChange,
+        onFinish,
+        actionWithIncidentForm
+    }) => {
+        const [form] = Form.useForm();
 
-    useEffect(() => {
-        form.setFieldsValue({ ...valuesIncidentForm });
-    }, [form, valuesIncidentForm]);
+        useEffect(() => {
+            form.setFieldsValue({ ...valuesIncidentForm });
+        }, [form, valuesIncidentForm]);
 
-    const disabledDate = (currentDate: Moment) =>
-        currentDate && currentDate < moment().startOf('day');
-
-    return (
-        <Modal
-            footer={null}
-            centered
-            title={<TitleModal />}
-            visible={isModalVisible}
-            closeIcon={
-                <CloseModalButton
-                    actionWithIncidentForm={actionWithIncidentForm}
-                />
-            }
-        >
-            <Form
-                {...layout}
-                name="create-incident"
-                onFinish={onFinish}
-                form={form}
-                initialValues={valuesIncidentForm}
-                onValuesChange={onChange}
+        return (
+            <Modal
+                footer={null}
+                centered
+                title={<TitleModal />}
+                visible={isModalVisible}
+                closeIcon={<CloseModalButton />}
             >
-                <Form.Item {...configIncidentName}>
-                    <Input />
-                </Form.Item>
+                <Form
+                    {...layout}
+                    name="create-incident"
+                    onFinish={onFinish}
+                    form={form}
+                    initialValues={valuesIncidentForm}
+                    onValuesChange={onChange}
+                >
+                    <Form.Item {...configIncidentName}>
+                        <Input />
+                    </Form.Item>
 
-                <Form.Item name="assignee" label="Assignee">
-                    <Select options={users} />
-                </Form.Item>
+                    <Form.Item name="assignee" label="Assignee">
+                        <Select options={users} />
+                    </Form.Item>
 
-                <Form.Item {...configArea}>
-                    <Select options={areas} />
-                </Form.Item>
+                    <Form.Item {...configArea}>
+                        <Select options={areas} />
+                    </Form.Item>
 
-                <Form.Item name="startDate" label="Start date" {...configDate}>
-                    <DatePicker disabled />
-                </Form.Item>
+                    <Form.Item
+                        name="startDate"
+                        label="Start date"
+                        {...configDate}
+                    >
+                        <DatePicker disabled />
+                    </Form.Item>
 
-                <Form.Item name="dueDate" label="Due Date" {...configDate}>
-                    <DatePicker disabledDate={disabledDate} />
-                </Form.Item>
+                    <Form.Item name="dueDate" label="Due Date" {...configDate}>
+                        <DatePicker disabledDate={disabledDate} />
+                    </Form.Item>
 
-                <Form.Item {...configDescription}>
-                    <Input />
-                </Form.Item>
+                    <Form.Item {...configDescription}>
+                        <Input />
+                    </Form.Item>
 
-                <Form.Item {...configPriority}>
-                    <Select options={priority} />
-                </Form.Item>
+                    <Form.Item {...configPriority}>
+                        <Select options={priority} />
+                    </Form.Item>
 
-                <Form.Item {...configStatus}>
-                    <Select options={status} />
-                </Form.Item>
+                    <Form.Item {...configStatus}>
+                        <Select options={status} />
+                    </Form.Item>
 
-                <Form.Item {...tailLayout}>
-                    <CreateOrUpdateButton
-                        actionWithIncidentForm={actionWithIncidentForm}
-                    />
-                </Form.Item>
-            </Form>
-        </Modal>
-    );
-};
+                    <Form.Item {...tailLayout}>
+                        <CreateOrUpdateButton
+                            actionWithIncidentForm={actionWithIncidentForm}
+                        />
+                    </Form.Item>
+                </Form>
+            </Modal>
+        );
+    }
+);
 
 export default IncidentForm;

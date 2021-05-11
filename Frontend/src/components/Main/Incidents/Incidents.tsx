@@ -1,9 +1,16 @@
-import React, { FC, memo, useEffect, useState } from 'react';
-import { Table } from 'antd';
+import React, {
+    FC,
+    memo,
+    useCallback,
+    useEffect,
+    useMemo,
+    useState
+} from 'react';
+import { Table, TablePaginationConfig } from 'antd';
 import { useDebouncedCallback } from 'use-debounce';
 import CreateIncidentFormContainer from '../Forms/Incident/CreateIncidentForm.container';
 import { IncidentsProps } from './Incidents.interfaces';
-import { columns } from './Incidents.data';
+import { columns, scrollSettings } from './Incidents.data';
 import { TableWrapper } from './Incidents.styles';
 import EditIncidentFormContainer from '../Forms/Incident/EditIncidentForm.container';
 
@@ -11,7 +18,7 @@ const Incidents: FC<IncidentsProps> = memo(
     ({ listOfIncidents, isListOfIncidentsLoading }) => {
         const [dataNumberOnPage, setDataNumberOnPage] = useState(3);
 
-        const handleResize = () => {
+        const handleResize = useCallback(() => {
             if (window.innerHeight >= 665 && window.innerWidth >= 1024) {
                 setDataNumberOnPage(5);
             } else if (window.innerWidth < 1024 && window.innerHeight < 665) {
@@ -19,8 +26,17 @@ const Incidents: FC<IncidentsProps> = memo(
             } else {
                 setDataNumberOnPage(6);
             }
-        };
+        }, []);
         const debouncedHandleResize = useDebouncedCallback(handleResize, 200);
+
+        const paginationConfig = useMemo(
+            () =>
+                ({
+                    position: ['bottomCenter'],
+                    pageSize: dataNumberOnPage
+                } as TablePaginationConfig),
+            [dataNumberOnPage]
+        );
 
         useEffect(() => {
             debouncedHandleResize();
@@ -33,15 +49,12 @@ const Incidents: FC<IncidentsProps> = memo(
         return (
             <TableWrapper>
                 <Table
-                    pagination={{
-                        position: ['bottomCenter'],
-                        pageSize: dataNumberOnPage
-                    }}
+                    pagination={paginationConfig}
                     columns={columns}
                     bordered
                     dataSource={listOfIncidents}
                     loading={isListOfIncidentsLoading}
-                    scroll={{ x: 1200 }}
+                    scroll={scrollSettings}
                 />
                 <CreateIncidentFormContainer />
                 <EditIncidentFormContainer />

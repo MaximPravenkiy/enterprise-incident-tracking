@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo, useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootReducer } from 'redux/reducers/rootReducer';
 import { CreateIncident, Incident } from 'common/types/incidents';
@@ -8,7 +8,7 @@ import { IncidentsActions } from 'redux/actions/incidents/incidents.interfaces';
 import { getDate } from 'common/helpers';
 import IncidentForm from './IncidentForm';
 
-const EditIncidentFormContainer = () => {
+const EditIncidentFormContainer = memo(() => {
     const {
         listOfIncidents,
         users,
@@ -17,28 +17,37 @@ const EditIncidentFormContainer = () => {
     } = useSelector(({ incidentsReducer }: RootReducer) => incidentsReducer);
     const dispatch = useDispatch<Dispatch<IncidentsActions>>();
 
-    const editIncidentData = listOfIncidents.find(
-        (incident) => incident._id === editedIncidentId
-    ) as Incident;
-    const valuesEditIncidentForm = editIncidentData
-        ? {
-              ...editIncidentData,
-              startDate: getDate(editIncidentData.startDate),
-              dueDate: getDate(editIncidentData.dueDate)
-          }
-        : {
-              area: '',
-              assignee: '',
-              description: '',
-              dueDate: getDate(),
-              incidentName: '',
-              priority: '',
-              startDate: getDate(),
-              status: '',
-              _id: ''
-          };
+    const editIncidentData = useMemo(
+        () =>
+            listOfIncidents.find(
+                (incident) => incident._id === editedIncidentId
+            ) as Incident,
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        [editedIncidentId]
+    );
+    const valuesEditIncidentForm = useMemo(
+        () =>
+            editIncidentData
+                ? {
+                      ...editIncidentData,
+                      startDate: getDate(editIncidentData.startDate),
+                      dueDate: getDate(editIncidentData.dueDate)
+                  }
+                : {
+                      area: '',
+                      assignee: '',
+                      description: '',
+                      dueDate: getDate(),
+                      incidentName: '',
+                      priority: '',
+                      startDate: getDate(),
+                      status: '',
+                      _id: ''
+                  },
+        [editIncidentData]
+    );
 
-    const onFinish = (values: CreateIncident) => {
+    const onFinish = useCallback((values: CreateIncident) => {
         const incidentFormData = {
             ...values,
             owner: editIncidentData.owner
@@ -49,7 +58,8 @@ const EditIncidentFormContainer = () => {
                 updateData: { incidentFormData, editedIncidentId }
             })
         );
-    };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <IncidentForm
@@ -60,6 +70,6 @@ const EditIncidentFormContainer = () => {
             valuesIncidentForm={valuesEditIncidentForm}
         />
     );
-};
+});
 
 export default EditIncidentFormContainer;

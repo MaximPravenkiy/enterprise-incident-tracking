@@ -1,6 +1,5 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import { Button, Form, Input } from 'antd';
-import { RestorePasswordFormValue } from 'common/types/login';
 import {
     formItemLayout,
     tailFormItemLayout,
@@ -8,12 +7,9 @@ import {
     configPassword,
     configConfirmPassword
 } from './ForgotPasswordForm.data';
+import { ForgotPasswordFormProps } from './ForgotPasswordForm.interfaces';
 
-interface ForgotPasswordFormProps {
-    onFinish: (values: RestorePasswordFormValue) => void;
-}
-
-const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({ onFinish }) => (
+const ForgotPasswordForm: FC<ForgotPasswordFormProps> = memo(({ onFinish }) => (
     <Form
         className="recover-password-form"
         {...formItemLayout}
@@ -37,6 +33,6 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({ onFinish }) => (
             </Button>
         </Form.Item>
     </Form>
-);
+));
 
 export default ForgotPasswordForm;

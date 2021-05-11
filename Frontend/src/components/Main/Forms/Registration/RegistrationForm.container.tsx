@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
 import {
@@ -12,37 +12,53 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { useDebouncedCallback } from 'use-debounce';
 import { RegistrationForm } from './RegistrationForm';
 
-const RegistrationFormContainer: FC<RouteComponentProps> = ({ history }) => {
-    const { dateOfBirth, fullname, login, password, position } = useSelector(
-        ({ registrationReducer }: RootReducer) =>
-            registrationReducer.valuesRegistrationForm
-    );
-    const dispatch = useDispatch<Dispatch<RegistrationActions>>();
-
-    const registerNewUser = (values: ValuesRegistrationForm) => {
-        dispatch(postRegistration(values, history));
-    };
-
-    const onChange = (value: ValuesRegistrationForm) => {
-        dispatch(
-            updateValuesRegistrationForm({
-                updatedValueRegistrationForm: value
-            })
+const RegistrationFormContainer: FC<RouteComponentProps> = memo(
+    ({ history }) => {
+        const {
+            dateOfBirth,
+            fullname,
+            login,
+            password,
+            position
+        } = useSelector(
+            ({ registrationReducer }: RootReducer) =>
+                registrationReducer.valuesRegistrationForm
         );
-    };
-    const debouncedOnChange = useDebouncedCallback(onChange, 500);
+        const dispatch = useDispatch<Dispatch<RegistrationActions>>();
 
-    return (
-        <RegistrationForm
-            registerNewUser={registerNewUser}
-            dateOfBirth={dateOfBirth}
-            fullname={fullname}
-            login={login}
-            password={password}
-            position={position}
-            onChange={debouncedOnChange}
-        />
-    );
-};
+        const registerNewUser = useCallback(
+            (values: ValuesRegistrationForm) => {
+                dispatch(postRegistration(values, history));
+            },
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+            []
+        );
+
+        const onChange = useCallback(
+            (value: ValuesRegistrationForm) => {
+                dispatch(
+                    updateValuesRegistrationForm({
+                        updatedValueRegistrationForm: value
+                    })
+                );
+            },
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+            []
+        );
+        const debouncedOnChange = useDebouncedCallback(onChange, 500);
+
+        return (
+            <RegistrationForm
+                registerNewUser={registerNewUser}
+                dateOfBirth={dateOfBirth}
+                fullname={fullname}
+                login={login}
+                password={password}
+                position={position}
+                onChange={debouncedOnChange}
+            />
+        );
+    }
+);
 
 export default withRouter(RegistrationFormContainer);

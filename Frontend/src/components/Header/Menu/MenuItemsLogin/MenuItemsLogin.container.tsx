@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo, useCallback } from 'react';
 import { connect, useSelector } from 'react-redux';
 import { RootReducer } from 'redux/reducers/rootReducer';
 import {
@@ -13,53 +13,61 @@ import { onLogout } from 'redux/actions/userInfo/userInfo.actions';
 import MenuItemsLogin from './MenuItemsLogin';
 import { MenuItemsLoginContainerProps } from './MenuItemsLogin.interfaces';
 
-const MenuItemsLoginContainer: FC<MenuItemsLoginContainerProps> = ({
-    dispatchOnLogout,
-    dispatchShowAllIncidents,
-    dispatchShowOwnIncidents,
-    dispatchGetIncidents,
-    dispatchGetUsers,
-    dispatchShowCreateIncident
-}) => {
-    const { fullname, isOwnIncidents } = useSelector(
-        ({ userInfoReducer, incidentsReducer }: RootReducer) => ({
-            fullname: userInfoReducer.fullname,
-            isOwnIncidents: incidentsReducer.isOwnIncidents
-        })
-    );
+const MenuItemsLoginContainer: FC<MenuItemsLoginContainerProps> = memo(
+    ({
+        dispatchOnLogout,
+        dispatchShowAllIncidents,
+        dispatchShowOwnIncidents,
+        dispatchGetIncidents,
+        dispatchGetUsers,
+        dispatchShowCreateIncident
+    }) => {
+        const { fullname, isOwnIncidents } = useSelector(
+            ({ userInfoReducer, incidentsReducer }: RootReducer) => ({
+                fullname: userInfoReducer.fullname,
+                isOwnIncidents: incidentsReducer.isOwnIncidents
+            })
+        );
 
-    const changeTheShowingOfIncidents = () => {
-        if (isOwnIncidents) {
-            dispatchShowAllIncidents();
-        } else {
-            dispatchShowOwnIncidents();
-        }
+        const changeTheShowingOfIncidents = useCallback(() => {
+            if (isOwnIncidents) {
+                dispatchShowAllIncidents();
+            } else {
+                dispatchShowOwnIncidents();
+            }
 
-        localStorage.setItem('isOwnIncidents', JSON.stringify(!isOwnIncidents));
+            localStorage.setItem(
+                'isOwnIncidents',
+                JSON.stringify(!isOwnIncidents)
+            );
 
-        dispatchGetIncidents();
-    };
+            dispatchGetIncidents();
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, [isOwnIncidents]);
 
-    const logout = () => {
-        logoutNotification();
-        dispatchOnLogout();
-    };
+        const logout = useCallback(() => {
+            logoutNotification();
+            dispatchOnLogout();
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, []);
 
-    const createIncident = () => {
-        dispatchGetUsers();
-        dispatchShowCreateIncident();
-    };
+        const createIncident = useCallback(() => {
+            dispatchGetUsers();
+            dispatchShowCreateIncident();
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, []);
 
-    return (
-        <MenuItemsLogin
-            isOwnIncidents={isOwnIncidents}
-            fullname={fullname}
-            createIncident={createIncident}
-            logout={logout}
-            changeTheShowingOfIncidents={changeTheShowingOfIncidents}
-        />
-    );
-};
+        return (
+            <MenuItemsLogin
+                isOwnIncidents={isOwnIncidents}
+                fullname={fullname}
+                createIncident={createIncident}
+                logout={logout}
+                changeTheShowingOfIncidents={changeTheShowingOfIncidents}
+            />
+        );
+    }
+);
 
 const mapDispatchToProps = {
     dispatchOnLogout: onLogout,

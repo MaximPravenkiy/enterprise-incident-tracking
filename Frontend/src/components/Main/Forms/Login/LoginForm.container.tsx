@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
 import {
@@ -12,28 +12,35 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { useDebouncedCallback } from 'use-debounce';
 import LoginForm from './LoginForm';
 
-const LoginFormContainer: FC<RouteComponentProps> = ({ history }) => {
+const LoginFormContainer: FC<RouteComponentProps> = memo(({ history }) => {
     const { login, password, remember } = useSelector(
         ({ loginReducer }: RootReducer) => loginReducer.valuesLoginForm
     );
     const dispatch = useDispatch<Dispatch<LoginActions>>();
 
-    const onFinish = (values: ValuesLoginForm) => {
-        dispatch(postLogin({ loginFormValues: values, history }));
-    };
+    const onFinish = useCallback(
+        (values: ValuesLoginForm) => {
+            dispatch(postLogin({ loginFormValues: values, history }));
+        },
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        []
+    );
 
-    const onChange = (value: ValuesLoginForm) => {
+    const onChange = useCallback((value: ValuesLoginForm) => {
         dispatch(updateValuesLoginForm({ updatedValueLoginForm: value }));
-    };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
     const debouncedOnChange = useDebouncedCallback(onChange, 500);
 
-    const onRegisterNowClick = () => {
+    const onRegisterNowClick = useCallback(() => {
         history.push('/register');
-    };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
-    const onForgotPasswordClick = () => {
+    const onForgotPasswordClick = useCallback(() => {
         history.push('/forgot-password');
-    };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <LoginForm
@@ -46,6 +53,6 @@ const LoginFormContainer: FC<RouteComponentProps> = ({ history }) => {
             onForgotPasswordClick={onForgotPasswordClick}
         />
     );
-};
+});
 
 export default withRouter(LoginFormContainer);

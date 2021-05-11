@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
 import { getIncidents } from 'redux/actions/incidents/incidents.actions';
@@ -6,7 +6,7 @@ import { RootReducer } from 'redux/reducers/rootReducer';
 import { IncidentsActions } from 'redux/actions/incidents/incidents.interfaces';
 import Incidents from './Incidents';
 
-const IncidentsContainer = () => {
+const IncidentsContainer = memo(() => {
     const dispatch = useDispatch<Dispatch<IncidentsActions>>();
     const { listOfIncidents, isListOfIncidentsLoading } = useSelector(
         ({ incidentsReducer }: RootReducer) => incidentsReducer
@@ -23,6 +23,6 @@ const IncidentsContainer = () => {
             isListOfIncidentsLoading={isListOfIncidentsLoading}
         />
     );
-};
+});
 
 export default IncidentsContainer;
