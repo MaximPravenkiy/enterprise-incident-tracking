@@ -5,7 +5,7 @@ import {
     postLogin,
     updateValuesLoginForm
 } from 'redux/actions/login/login.actions';
-import { RootReducer } from 'redux/reducers/rootReducer';
+import { RootReducer } from 'redux/reducers/root.reducer';
 import { ValuesLoginForm } from 'common/types/login';
 import { LoginActions } from 'redux/actions/login/login.interfaces';
 import { RouteComponentProps, withRouter } from 'react-router-dom';

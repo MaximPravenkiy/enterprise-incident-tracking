@@ -2,7 +2,7 @@ import React, { memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
 import { getIncidents } from 'redux/actions/incidents/incidents.actions';
-import { RootReducer } from 'redux/reducers/rootReducer';
+import { RootReducer } from 'redux/reducers/root.reducer';
 import { IncidentsActions } from 'redux/actions/incidents/incidents.interfaces';
 import Incidents from './Incidents';
 

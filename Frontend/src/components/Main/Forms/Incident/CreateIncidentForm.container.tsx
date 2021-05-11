@@ -4,7 +4,7 @@ import {
     createIncident,
     updateValuesCreateIncidentForm
 } from 'redux/actions/incidents/incidents.actions';
-import { RootReducer } from 'redux/reducers/rootReducer';
+import { RootReducer } from 'redux/reducers/root.reducer';
 import {
     CreateIncident,
     ValuesCreateIncidentsForm

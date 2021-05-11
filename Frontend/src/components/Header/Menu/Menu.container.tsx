@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { useSelector } from 'react-redux';
-import { RootReducer } from 'redux/reducers/rootReducer';
+import { RootReducer } from 'redux/reducers/root.reducer';
 import NavMenu from './Menu';
 
 const MenuContainer = memo(() => {

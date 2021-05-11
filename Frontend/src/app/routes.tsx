@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import { RootReducer } from 'redux/reducers/rootReducer';
+import { RootReducer } from 'redux/reducers/root.reducer';
 import RegistrationContainer from 'components/Main/Forms/Registration/RegistrationForm.container';
 import LoginFormContainer from 'components/Main/Forms/Login/LoginForm.container';
 import IncidentsContainer from 'components/Main/Incidents/Incidents.container';

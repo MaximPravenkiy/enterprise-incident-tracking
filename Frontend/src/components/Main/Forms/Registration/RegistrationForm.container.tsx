@@ -5,7 +5,7 @@ import {
     postRegistration,
     updateValuesRegistrationForm
 } from 'redux/actions/registration/registration.actions';
-import { RootReducer } from 'redux/reducers/rootReducer';
+import { RootReducer } from 'redux/reducers/root.reducer';
 import { RegistrationActions } from 'redux/actions/registration/registration.interfaces';
 import { ValuesRegistrationForm } from 'common/types/registration';
 import { RouteComponentProps, withRouter } from 'react-router-dom';

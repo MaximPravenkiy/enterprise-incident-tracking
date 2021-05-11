@@ -1,6 +1,6 @@
 import React, { FC, memo, useCallback } from 'react';
 import { connect, useSelector } from 'react-redux';
-import { RootReducer } from 'redux/reducers/rootReducer';
+import { RootReducer } from 'redux/reducers/root.reducer';
 import {
     getIncidents,
     getUsers,

@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootReducer } from 'redux/reducers/rootReducer';
+import { RootReducer } from 'redux/reducers/root.reducer';
 import { CreateIncident, Incident } from 'common/types/incidents';
 import { updateIncident } from 'redux/actions/incidents/incidents.actions';
 import { Dispatch } from 'redux';
