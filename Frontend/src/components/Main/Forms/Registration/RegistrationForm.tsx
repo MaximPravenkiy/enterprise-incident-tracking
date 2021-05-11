@@ -30,7 +30,8 @@ const RegistrationForm: FC<RegistrationFormTypes> = ({
             password,
             position
         });
-    }, [form, dateOfBirth, fullname, login, password, position]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <Form

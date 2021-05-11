@@ -9,6 +9,7 @@ import { RootReducer } from 'redux/reducers/rootReducer';
 import { ValuesLoginForm } from 'common/types/login';
 import { LoginActions } from 'redux/actions/login/login.interfaces';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useDebouncedCallback } from 'use-debounce';
 import LoginForm from './LoginForm';
 
 const LoginFormContainer: FC<RouteComponentProps> = ({ history }) => {
@@ -24,6 +25,7 @@ const LoginFormContainer: FC<RouteComponentProps> = ({ history }) => {
     const onChange = (value: ValuesLoginForm) => {
         dispatch(updateValuesLoginForm({ updatedValueLoginForm: value }));
     };
+    const debouncedOnChange = useDebouncedCallback(onChange, 500);
 
     const onRegisterNowClick = () => {
         history.push('/register');
@@ -36,7 +38,7 @@ const LoginFormContainer: FC<RouteComponentProps> = ({ history }) => {
     return (
         <LoginForm
             onFinish={onFinish}
-            onChange={onChange}
+            onChange={debouncedOnChange}
             login={login}
             password={password}
             remember={remember}

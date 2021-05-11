@@ -35,7 +35,8 @@ const CreateIncidentForm: FC<CreateIncidentProps> = ({
         if (formRef.current) {
             form.setFieldsValue({ ...valuesCreateIncidentForm });
         }
-    }, [form, valuesCreateIncidentForm]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const disabledDate = (currentDate: Moment) =>
         currentDate && currentDate < moment().startOf('day');

@@ -18,7 +18,8 @@ const LoginForm: FC<LoginFormTypes> = ({
 
     useEffect(() => {
         form.setFieldsValue({ login, password, remember });
-    }, [form, login, password, remember]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <Form

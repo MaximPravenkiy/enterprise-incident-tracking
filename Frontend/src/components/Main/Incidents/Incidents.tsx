@@ -1,5 +1,6 @@
 import React, { FC, memo, useEffect, useState } from 'react';
 import { Table } from 'antd';
+import { useDebouncedCallback } from 'use-debounce';
 import CreateIncidentFormContainer from '../Forms/CreateIncident/CreateIncidentForm.container';
 import { IncidentsProps } from './Incidents.interfaces';
 import { columns } from './Incidents.data';
@@ -18,12 +19,14 @@ const Incidents: FC<IncidentsProps> = memo(
                 setDataNumberOnPage(6);
             }
         };
+        const debouncedHandleResize = useDebouncedCallback(handleResize, 200);
 
         useEffect(() => {
-            handleResize();
-
-            window.addEventListener('resize', handleResize);
-            return () => window.removeEventListener('resize', handleResize);
+            debouncedHandleResize();
+            window.addEventListener('resize', debouncedHandleResize);
+            return () =>
+                window.removeEventListener('resize', debouncedHandleResize);
+            // eslint-disable-next-line react-hooks/exhaustive-deps
         }, []);
 
         return (

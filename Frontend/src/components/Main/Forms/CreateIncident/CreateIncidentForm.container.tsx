@@ -10,6 +10,7 @@ import {
     CreateIncident,
     ValuesCreateIncidentsForm
 } from 'common/types/incidents';
+import { useDebouncedCallback } from 'use-debounce';
 import CreateIncidentForm from './CreateIncidentForm';
 import { CreateIncidentFormContainerProps } from './CreateIncidentForm.interfaces';
 
@@ -27,8 +28,10 @@ const CreateIncidentFormContainer: FC<CreateIncidentFormContainerProps> = ({
     } = useSelector(({ incidentsReducer }: RootReducer) => incidentsReducer);
 
     const onChange = (value: ValuesCreateIncidentsForm) => {
+        console.log(value);
         dispatchUpdateValuesCreateIncidentForm({ updatedValue: value });
     };
+    const debouncedHandleResize = useDebouncedCallback(onChange, 500);
 
     const onFinish = (values: CreateIncident) => {
         const assigneeCandidate = users.find(
@@ -60,7 +63,7 @@ const CreateIncidentFormContainer: FC<CreateIncidentFormContainerProps> = ({
             isModalVisible={isModalVisible}
             onFinish={onFinish}
             valuesCreateIncidentForm={valuesCreateIncidentForm}
-            onChange={onChange}
+            onChange={debouncedHandleResize}
             actionWithCreateIncidentForm={actionWithCreateIncidentForm}
         />
     );
