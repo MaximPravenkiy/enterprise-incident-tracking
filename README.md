@@ -1,9 +1,19 @@
 # ISCANDER is a system for creating and tracking incidents at IT enterprises :notebook:
-The application is avaliable here https://enterprise-incident-tracking.herokuapp.com/login
+The application is available here https://enterprise-incident-tracking.herokuapp.com/login
 
 ## How to use :keyboard:
 Before using the system, you will need to log in to the system. <br>
-If you don't have an account yet, then you will neen to register.
+If you don't have an account yet, then you will need to register.
+
+##### _Rules for registration_
+- All fields must be filled!
+- "Full Name" - field can't contain numbers and special characters
+- "Login" - field can't contain spaces
+- "Password" - must be at least 6 characters long
+
+When entering the system, there is an option to select "remember me", which will allow you to stay in the system for a long time.
+
+If you have forgotten your password, you can restore it by clicking "Forgot password". After that, in the window that opens, you will need to indicate your login, enter a new password and confirm the newly entered password. 
 
 #### List of incidents
 After authorization you will see a list of incidents that relate directly to you. <br>
@@ -19,16 +29,15 @@ If you are a new user, the list will be empty. Then you need to [create an incid
 To create a new incident, click on the button "Создать новый инцидент" in the upper left corner of the screen. <br>
 
 ##### _Rules for creating an incident_
-- When creating an incident, you must fill in the following fields: "Incident Name", "Area", "Due Date", "Description", "Priority", "Staus". 
+- When creating an incident, you must fill in the following fields: "Incident Name", "Area", "Due Date", "Description", "Priority", "Status". 
 - The "Assignee" field is optional. 
 - "Start date" - filled in automatically
-- "Due date" - date cannot be selected earlier "Start date"
-- "Incident Name" - can't contain more than 15 symbols
-- "Description" - can't contain more than 35 symbols
+- "Due date" - date can't be selected earlier "Start date"
+- "Incident Name" - can't contain more than 30 symbols
 
 If you close the window for creating an incident, then after reopening the window, all the data that you entered will be saved.
 
 After filling in all the fields, click the button "Создать".
 
-#### Completiion of work
+#### Completion of work
 When you have finished working with the system, you can log out by clicking on the button "Logout" in the upper right corner.
