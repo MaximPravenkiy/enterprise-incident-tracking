@@ -20,14 +20,14 @@ const LoginFormContainer: FC<RouteComponentProps> = memo(({ history }) => {
 
     const onFinish = useCallback(
         (values: ValuesLoginForm) => {
-            dispatch(postLogin({ loginFormValues: values, history }));
+            dispatch(postLogin(values, history));
         },
         // eslint-disable-next-line react-hooks/exhaustive-deps
         []
     );
 
     const onChange = useCallback((value: ValuesLoginForm) => {
-        dispatch(updateValuesLoginForm({ updatedValueLoginForm: value }));
+        dispatch(updateValuesLoginForm(value));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     const debouncedOnChange = useDebouncedCallback(onChange, 500);

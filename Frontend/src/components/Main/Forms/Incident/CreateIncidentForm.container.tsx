@@ -24,29 +24,28 @@ const CreateIncidentFormContainer = memo(() => {
     const dispatch = useDispatch<Dispatch<IncidentsActions>>();
 
     const onChange = useCallback((value: ValuesCreateIncidentsForm) => {
-        dispatch(updateValuesCreateIncidentForm({ updatedValue: value }));
+        dispatch(updateValuesCreateIncidentForm(value));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     const debouncedHandleResize = useDebouncedCallback(onChange, 500);
 
-    const onFinish = useCallback((values: CreateIncident) => {
-        const assigneeCandidate = users.find(
-            (user) => user.id === values.assignee
-        );
-        const assignee = assigneeCandidate ? assigneeCandidate.label : '';
-        const incidentFormData = {
-            ...values,
-            assignee,
-            owner: values.assignee
-        };
+    const onFinish = useCallback(
+        (values: CreateIncident) => {
+            const assigneeCandidate = users.find(
+                (user) => user.id === values.assignee
+            );
+            const assignee = assigneeCandidate ? assigneeCandidate.label : '';
+            const incidentFormData = {
+                ...values,
+                assignee,
+                owner: values.assignee
+            };
 
-        dispatch(
-            createIncident({
-                valuesCreateIncidentForm: incidentFormData
-            })
-        );
+            dispatch(createIncident(incidentFormData));
+        },
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+        [users]
+    );
 
     return (
         <IncidentForm

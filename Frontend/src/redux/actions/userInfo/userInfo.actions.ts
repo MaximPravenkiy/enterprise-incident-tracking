@@ -8,9 +8,9 @@ const LOGIN = 'LOGIN';
 const LOGOUT = 'LOGOUT';
 const ON_LOGOUT = 'ON_LOGOUT';
 
-const login = (payload: { fullname: string }): LoginAction => ({
+const login = (fullname: string): LoginAction => ({
     type: LOGIN,
-    payload
+    payload: { fullname }
 });
 
 const logout = (): LogoutAction => ({ type: LOGOUT });

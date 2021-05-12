@@ -25,7 +25,8 @@ router.post('/registration', async (req, res) => {
             login,
             password: hashedPassword,
             dateOfBirth,
-            position
+            position,
+            oldPasswords: [hashedPassword]
         });
 
         await user.save();
@@ -90,9 +91,9 @@ router.put('/forgot-password', async (req, res) => {
             });
         }
 
-        const updatedOldPasswords = [...oldPasswords, password];
-
         const hashedNewPassword = await bcrypt.hash(newPassword, salt);
+        const updatedOldPasswords = [...oldPasswords, hashedNewPassword];
+
         await User.findOneAndUpdate(
             { login },
             { password: hashedNewPassword, oldPasswords: updatedOldPasswords }

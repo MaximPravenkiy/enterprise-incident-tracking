@@ -47,19 +47,18 @@ const EditIncidentFormContainer = memo(() => {
         [editIncidentData]
     );
 
-    const onFinish = useCallback((values: CreateIncident) => {
-        const incidentFormData = {
-            ...values,
-            owner: editIncidentData.owner
-        };
+    const onFinish = useCallback(
+        (values: CreateIncident) => {
+            const incidentFormData = {
+                ...values,
+                owner: editIncidentData.owner
+            };
 
-        dispatch(
-            updateIncident({
-                updateData: { incidentFormData, editedIncidentId }
-            })
-        );
+            dispatch(updateIncident(incidentFormData, editedIncidentId));
+        },
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+        [editIncidentData]
+    );
 
     return (
         <IncidentForm

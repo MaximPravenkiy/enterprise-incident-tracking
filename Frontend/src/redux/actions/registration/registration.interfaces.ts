@@ -9,8 +9,10 @@ import {
 
 interface PostRegistrationAction {
     type: typeof POST_REGISTRATION;
-    registrationFormValues: ValuesRegistrationForm;
-    history: History<unknown>;
+    payload: {
+        registrationFormValues: ValuesRegistrationForm;
+        history: History<unknown>;
+    };
 }
 
 interface UpdateValuesRegistrationFormAction {

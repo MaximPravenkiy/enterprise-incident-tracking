@@ -44,9 +44,11 @@ type ResponseCreateIncidentType = SagaReturnType<typeof postIncidentApi>;
 type ResponseDeleteIncident = SagaReturnType<typeof deleteIncidentApi>;
 type ResponseUpdateIncident = SagaReturnType<typeof updateIncidentApi>;
 
+const ISO_DATE_FORMAT = 'YYYY-MM-DD';
+
 function* getIncidentsWorker() {
     try {
-        yield put(updateLoader({ isListOfIncidentsLoading: true }));
+        yield put(updateLoader(true));
         const isOwnIncidents = JSON.parse(
             localStorage.getItem('isOwnIncidents') as string
         );
@@ -65,13 +67,13 @@ function* getIncidentsWorker() {
                     ...incident,
                     key: id,
                     icon: <PriorityIcon priority={priority} />,
-                    startDate: getDate(startDate).format('YYYY-MM-DD'),
-                    dueDate: getDate(dueDate).format('YYYY-MM-DD')
+                    startDate: getDate(startDate).format(ISO_DATE_FORMAT),
+                    dueDate: getDate(dueDate).format(ISO_DATE_FORMAT)
                 };
             });
 
-            yield put(setIncidents({ listOfIncidents }));
-            yield put(updateLoader({ isListOfIncidentsLoading: false }));
+            yield put(setIncidents(listOfIncidents));
+            yield put(updateLoader(false));
         }
     } catch (e) {
         errorNotification(
@@ -105,7 +107,7 @@ function* getUsersForAssigneeOptionWorker() {
             });
 
             destroyLoadingMessage();
-            yield put(setUsers({ users }));
+            yield put(setUsers(users));
         }
     } catch (e) {
         destroyLoadingMessage();
@@ -169,14 +171,15 @@ function* deleteIncidentWorker({
 }
 
 function* updateIncidentWorker({
-    payload: { updateData }
+    payload: { incidentFormData, editedIncidentId }
 }: UpdateIncidentAction) {
     try {
         openLoadingMessage('Проверяем данные...');
 
         const response: ResponseUpdateIncident = yield call(
             updateIncidentApi,
-            updateData
+            incidentFormData,
+            editedIncidentId
         );
 
         if (response.status === 201) {

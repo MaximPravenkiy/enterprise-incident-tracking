@@ -17,6 +17,7 @@ import {
     UpdateValuesCreateIncidentFormAction
 } from 'redux/actions/incidents/incidents.interfaces';
 import {
+    CreateIncident,
     Incident,
     User,
     ValuesCreateIncidentsForm
@@ -41,60 +42,63 @@ const RESET_CREATE_INCIDENT_FORM = 'RESET_CREATE_INCIDENT_FORM';
 
 const getIncidents = (): GetIncidentsAction => ({ type: GET_INCIDENTS });
 
-const setIncidents = (payload: {
-    listOfIncidents: Incident[];
-}): SetIncidentsAction => ({ type: SET_INCIDENTS, payload });
-
-const createIncident = (payload: {
-    valuesCreateIncidentForm: ValuesCreateIncidentsForm;
-}): CreateIncidentAction => ({
-    type: CREATE_INCIDENT,
-    payload
+const setIncidents = (listOfIncidents: Incident[]): SetIncidentsAction => ({
+    type: SET_INCIDENTS,
+    payload: { listOfIncidents }
 });
 
-const deleteIncident = (payload: {
-    incidentID: string;
-}): DeleteIncidentAction => ({
+const createIncident = (
+    valuesCreateIncidentForm: ValuesCreateIncidentsForm
+): CreateIncidentAction => ({
+    type: CREATE_INCIDENT,
+    payload: { valuesCreateIncidentForm }
+});
+
+const deleteIncident = (incidentID: string): DeleteIncidentAction => ({
     type: DELETE_INCIDENT,
-    payload
+    payload: { incidentID }
 });
 
 const closeModal = (): CloseModalAction => ({ type: CLOSE_MODAL });
 
-const updateValuesCreateIncidentForm = (payload: {
-    updatedValue: ValuesCreateIncidentsForm;
-}): UpdateValuesCreateIncidentFormAction => ({
+const updateValuesCreateIncidentForm = (
+    updatedValue: ValuesCreateIncidentsForm
+): UpdateValuesCreateIncidentFormAction => ({
     type: UPDATE_VALUES_CREATE_INCIDENT_FORM,
-    payload
+    payload: { updatedValue }
 });
 
 const resetCreateIncidentForm = (): ResetCreateIncidentFormAction => ({
     type: RESET_CREATE_INCIDENT_FORM
 });
 
-const setDataForUpdating = (payload: {
-    editedIncidentId: string;
-}): SetDataForUpdatingAction => ({
+const setDataForUpdating = (
+    editedIncidentId: string
+): SetDataForUpdatingAction => ({
     type: SET_DATA_FOR_UPDATING,
-    payload
+    payload: { editedIncidentId }
 });
 
 const updateIncident = (
-    payload: UpdateIncidentAction['payload']
-): UpdateIncidentAction => ({ type: UPDATE_INCIDENT, payload });
+    incidentFormData: CreateIncident,
+    editedIncidentId: string
+): UpdateIncidentAction => ({
+    type: UPDATE_INCIDENT,
+    payload: { incidentFormData, editedIncidentId }
+});
 
-const updateLoader = (payload: {
-    isListOfIncidentsLoading: boolean;
-}): UpdateLoaderAction => ({
+const updateLoader = (
+    isListOfIncidentsLoading: boolean
+): UpdateLoaderAction => ({
     type: UPDATE_LOADER,
-    payload
+    payload: { isListOfIncidentsLoading }
 });
 
 const getUsers = (): GetUsersAction => ({ type: GET_USERS });
 
-const setUsers = (payload: { users: User[] }): SetUsersAction => ({
+const setUsers = (users: User[]): SetUsersAction => ({
     type: SET_USERS,
-    payload
+    payload: { users }
 });
 
 const showOwnIncidents = (): ShowOwnIncidentsAction => ({

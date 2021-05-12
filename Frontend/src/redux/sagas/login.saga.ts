@@ -48,7 +48,7 @@ function* postLoginWorker({
 
             destroyLoadingMessage();
             successNotification('Вы вошли в систему.', `Привет, ${fullname}!`);
-            yield put(login({ fullname }));
+            yield put(login(fullname));
             yield call(history.push, '/incidents');
 
             if (!loginFormValues.remember) {

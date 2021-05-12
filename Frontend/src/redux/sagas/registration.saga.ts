@@ -15,8 +15,7 @@ import { postRegistrationApi } from './api/api';
 type ResponseRegistrationType = SagaReturnType<typeof postRegistrationApi>;
 
 function* postRegistrationWorker({
-    registrationFormValues,
-    history
+    payload: { registrationFormValues, history }
 }: PostRegistrationAction) {
     try {
         openLoadingMessage('Проверяем данные...');

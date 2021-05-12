@@ -15,12 +15,10 @@ interface ActionButtonsProps {
 interface ActionButtonsContainerProps {
     incident: Incident;
     dispatchGetUsers: () => GetUsersAction;
-    dispatchSetDataForUpdating: (payload: {
-        editedIncidentId: string;
-    }) => SetDataForUpdatingAction;
-    dispatchDeleteIncident: (payload: {
-        incidentID: string;
-    }) => DeleteIncidentAction;
+    dispatchSetDataForUpdating: (
+        editedIncidentId: string
+    ) => SetDataForUpdatingAction;
+    dispatchDeleteIncident: (incidentID: string) => DeleteIncidentAction;
     dispatchShowEditIncident: () => ShowEditIncidentAction;
 }
 

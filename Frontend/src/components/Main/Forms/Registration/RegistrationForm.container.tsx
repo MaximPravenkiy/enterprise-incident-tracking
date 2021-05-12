@@ -36,11 +36,7 @@ const RegistrationFormContainer: FC<RouteComponentProps> = memo(
 
         const onChange = useCallback(
             (value: ValuesRegistrationForm) => {
-                dispatch(
-                    updateValuesRegistrationForm({
-                        updatedValueRegistrationForm: value
-                    })
-                );
+                dispatch(updateValuesRegistrationForm(value));
             },
             // eslint-disable-next-line react-hooks/exhaustive-deps
             []

@@ -23,7 +23,7 @@ const App = () => {
                 JSON.parse(tokens).accessToken
             ) as DecodeAccessToken;
 
-            dispatch(login({ fullname }));
+            dispatch(login(fullname));
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);

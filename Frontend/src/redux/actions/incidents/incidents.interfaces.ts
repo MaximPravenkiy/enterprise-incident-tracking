@@ -59,10 +59,8 @@ interface SetDataForUpdatingAction {
 interface UpdateIncidentAction {
     type: typeof UPDATE_INCIDENT;
     payload: {
-        updateData: {
-            editedIncidentId: string;
-            incidentFormData: CreateIncident;
-        };
+        incidentFormData: CreateIncident;
+        editedIncidentId: string;
     };
 }
 

@@ -17,15 +17,14 @@ const postRegistration = (
     history: History<unknown>
 ): PostRegistrationAction => ({
     type: POST_REGISTRATION,
-    registrationFormValues,
-    history
+    payload: { registrationFormValues, history }
 });
 
-const updateValuesRegistrationForm = (payload: {
-    updatedValueRegistrationForm: ValuesRegistrationForm;
-}): UpdateValuesRegistrationFormAction => ({
+const updateValuesRegistrationForm = (
+    updatedValueRegistrationForm: ValuesRegistrationForm
+): UpdateValuesRegistrationFormAction => ({
     type: UPDATE_VALUES_REGISTRATION_FORM,
-    payload
+    payload: { updatedValueRegistrationForm }
 });
 
 const registration = (): RegistrationAction => ({ type: REGISTRATION });

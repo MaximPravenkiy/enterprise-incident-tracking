@@ -5,12 +5,13 @@ const { tokens, secret } = require('../default').jwt;
 const { access, refresh } = tokens;
 
 const generateAccessToken = (userId, fullname) => {
+    const { type, expiresIn } = access;
     const payload = {
         userId,
-        type: access.type,
+        type,
         fullname
     };
-    const options = { expiresIn: access.expiresIn };
+    const options = { expiresIn };
 
     return {
         token: jwt.sign(payload, secret, options),
@@ -19,13 +20,14 @@ const generateAccessToken = (userId, fullname) => {
 };
 
 const generateRefreshToken = (remember) => {
+    const { type, expiresInRemember, expiresIn } = refresh
     const payload = {
         id: uuid(),
-        type: refresh.type
+        type
     };
 
     const options = {
-        expiresIn: remember ? refresh.expiresInRemember : refresh.expiresIn
+        expiresIn: remember ? expiresInRemember : expiresIn
     };
 
     return {
@@ -52,8 +54,8 @@ const updateTokens = async (userId, remember, fullname) => {
     await replaceDbRefreshToken(refreshTokenId, userId, remember);
 
     return {
-        accessToken: accessToken,
-        refreshToken: refreshToken
+        accessToken,
+        refreshToken
     };
 };
 

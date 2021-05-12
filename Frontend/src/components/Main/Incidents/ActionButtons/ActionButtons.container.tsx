@@ -20,7 +20,7 @@ const ActionButtonsContainer: FC<ActionButtonsContainerProps> = memo(
         const onDeleteIncident = useCallback(() => {
             const incidentID = incident.key;
 
-            dispatchDeleteIncident({ incidentID });
+            dispatchDeleteIncident(incidentID);
             // eslint-disable-next-line react-hooks/exhaustive-deps
         }, []);
 
@@ -29,7 +29,7 @@ const ActionButtonsContainer: FC<ActionButtonsContainerProps> = memo(
 
             dispatchGetUsers();
             dispatchShowEditIncident();
-            dispatchSetDataForUpdating({ editedIncidentId });
+            dispatchSetDataForUpdating(editedIncidentId);
             // eslint-disable-next-line react-hooks/exhaustive-deps
         }, []);
 

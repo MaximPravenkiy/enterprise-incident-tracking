@@ -1,10 +1,11 @@
-import { ValuesLoginForm } from 'common/types/login';
+import { RestorePasswordFormValue, ValuesLoginForm } from 'common/types/login';
 import {
     PostLoginAction,
     ResetLoginFormValues,
     RestorePassword,
     UpdateValuesLoginFormAction
 } from 'redux/actions/login/login.interfaces';
+import { History } from 'history';
 
 const RESET_LOGIN_FORM_VALUES = 'RESET_LOGIN_FORM_VALUES';
 const POST_LOGIN = 'POST_LOGIN';
@@ -12,23 +13,27 @@ const UPDATE_VALUES_LOGIN_FORM = 'UPDATE_VALUES_LOGIN_FORM';
 const CHANGE_KEY_DEPS_ON_PATH = 'CHANGE_KEY_DEPS_ON_PATH';
 const RESTORE_PASSWORD = 'RESTORE_PASSWORD';
 
-const postLogin = (payload: PostLoginAction['payload']): PostLoginAction => ({
+const postLogin = (
+    loginFormValues: ValuesLoginForm,
+    history: History<unknown>
+): PostLoginAction => ({
     type: POST_LOGIN,
-    payload
+    payload: { loginFormValues, history }
 });
 
-const updateValuesLoginForm = (payload: {
-    updatedValueLoginForm: ValuesLoginForm;
-}): UpdateValuesLoginFormAction => ({
+const updateValuesLoginForm = (
+    updatedValueLoginForm: ValuesLoginForm
+): UpdateValuesLoginFormAction => ({
     type: UPDATE_VALUES_LOGIN_FORM,
-    payload
+    payload: { updatedValueLoginForm }
 });
 
 const restorePassword = (
-    payload: RestorePassword['payload']
+    restorePasswordFormValue: RestorePasswordFormValue,
+    history: History<unknown>
 ): RestorePassword => ({
     type: RESTORE_PASSWORD,
-    payload
+    payload: { restorePasswordFormValue, history }
 });
 
 const resetLoginFormValue = (): ResetLoginFormValues => ({

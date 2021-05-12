@@ -5,8 +5,11 @@ import {
     UserData,
     RestorePasswordFormValue
 } from 'common/types/login';
-import { UpdateIncidentAction } from 'redux/actions/incidents/incidents.interfaces';
-import { Incident, ValuesCreateIncidentsForm } from 'common/types/incidents';
+import {
+    CreateIncident,
+    Incident,
+    ValuesCreateIncidentsForm
+} from 'common/types/incidents';
 import axiosWithAuthorization from './api.services';
 
 interface Message {
@@ -45,14 +48,9 @@ const deleteIncidentApi = (incidentID: string) =>
     axios.delete<Message>(`/incidents/${incidentID}`);
 
 const updateIncidentApi = (
-    updateData: UpdateIncidentAction['payload']['updateData']
-) => {
-    const { incidentFormData, editedIncidentId } = updateData;
-    return axios.put<Message>(
-        `/incidents/${editedIncidentId}`,
-        incidentFormData
-    );
-};
+    incidentFormData: CreateIncident,
+    editedIncidentId: string
+) => axios.put<Message>(`/incidents/${editedIncidentId}`, incidentFormData);
 
 export {
     getMyIncidentsApi,

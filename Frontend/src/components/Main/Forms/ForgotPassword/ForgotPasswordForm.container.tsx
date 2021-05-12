@@ -12,9 +12,7 @@ const ForgotPasswordFormContainer: FC<RouteComponentProps> = memo(
         const dispatch = useDispatch<Dispatch<RestorePassword>>();
 
         const onFinish = useCallback((values: RestorePasswordFormValue) => {
-            dispatch(
-                restorePassword({ restorePasswordFormValue: values, history })
-            );
+            dispatch(restorePassword(values, history));
             // eslint-disable-next-line react-hooks/exhaustive-deps
         }, []);
 
