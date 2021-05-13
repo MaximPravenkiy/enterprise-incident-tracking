@@ -2,10 +2,10 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { RootReducer } from 'redux/reducers/root.reducer';
-import RegistrationContainer from 'components/Main/Forms/Registration/RegistrationForm.container';
-import LoginFormContainer from 'components/Main/Forms/Login/LoginForm.container';
-import IncidentsContainer from 'components/Main/Incidents/Incidents.container';
-import ForgotPasswordFormContainer from 'components/Main/Forms/ForgotPassword/ForgotPasswordForm.container';
+import RegistrationContainer from 'components/main/forms/registration/registration-form.container';
+import LoginFormContainer from 'components/main/forms/login/login-form.container';
+import IncidentsContainer from 'components/main/incidents/incidents.container';
+import ForgotPasswordFormContainer from 'components/main/forms/forgot-password/forgot-password-form.container';
 
 const Routes = () => {
     const isAuth = useSelector(

@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const router = Router();
-const Incident = require('../models/Incident');
+const Incident = require('../models/incident');
 const auth = require('../middleware/auth.middleware');
 
 router.post('/', async (req, res) => {

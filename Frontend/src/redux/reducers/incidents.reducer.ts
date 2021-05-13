@@ -1,6 +1,7 @@
 import { getDate } from 'common/helpers';
 import {
     Incident,
+    PriorityType,
     User,
     ValuesCreateIncidentsForm
 } from 'common/types/incidents';
@@ -44,7 +45,7 @@ const initialState = {
         description: '',
         dueDate: getDate(),
         incidentName: '',
-        priority: '',
+        priority: '' as PriorityType,
         startDate: getDate(),
         status: ''
     } as ValuesCreateIncidentsForm

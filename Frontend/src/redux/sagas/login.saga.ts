@@ -18,7 +18,7 @@ import {
     login,
     logout,
     ON_LOGOUT
-} from 'redux/actions/userInfo/userInfo.actions';
+} from 'redux/actions/user-info/user-info.actions';
 import { decode } from 'jsonwebtoken';
 import { DecodeAccessToken } from 'common/types/login';
 import { postLoginApi, restorePasswordApi } from './api/api';

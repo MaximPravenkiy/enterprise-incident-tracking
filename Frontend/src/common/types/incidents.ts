@@ -1,12 +1,14 @@
 import { Moment } from 'moment';
 
+type PriorityType = 'Minor' | 'Major' | 'Normal' | 'Critical' | 'Blocker';
+
 interface ValuesCreateIncidentsForm {
     area: string;
     assignee: string;
     description: string;
     dueDate: string | Moment;
     incidentName: string;
-    priority: string;
+    priority: PriorityType;
     startDate: string | Moment;
     status: string;
     _id: string;
@@ -29,8 +31,6 @@ interface CreateIncident extends ValuesCreateIncidentsForm {
     owner: string;
 }
 
-type ActionWithCreateIncidentForm = 'Создать' | 'Обновить';
-
 export enum ButtonLabel {
     ShowOwnIncidents = 'Show own incidents',
     ShowAllIncidents = 'Show all incidents'
@@ -41,5 +41,5 @@ export type {
     Incident,
     User,
     CreateIncident,
-    ActionWithCreateIncidentForm
+    PriorityType
 };

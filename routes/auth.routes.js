@@ -1,11 +1,11 @@
 const { Router } = require('express');
 const router = Router();
 const bcrypt = require('bcryptjs');
-const { updateTokens } = require('../helper/authHelper');
-const User = require('../models/User');
+const { updateTokens } = require('../helper/auth.helper');
+const User = require('../models/user');
 const { secret } = require('../default').jwt;
 const jwt = require('jsonwebtoken');
-const Token = require('../models/Token');
+const Token = require('../models/token');
 const salt = 6;
 
 router.post('/registration', async (req, res) => {

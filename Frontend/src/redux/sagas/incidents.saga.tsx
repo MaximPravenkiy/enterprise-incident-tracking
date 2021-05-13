@@ -1,6 +1,6 @@
 import React from 'react';
 import { put, call, takeEvery, SagaReturnType } from 'redux-saga/effects';
-import PriorityIcon from 'components/PriorityIcon';
+import PriorityIcon from 'components/priority-icon.component';
 import {
     CREATE_INCIDENT,
     DELETE_INCIDENT,
@@ -26,7 +26,7 @@ import {
     UpdateIncidentAction
 } from 'redux/actions/incidents/incidents.interfaces';
 import { getDate } from 'common/helpers';
-import { onLogout } from 'redux/actions/userInfo/userInfo.actions';
+import { onLogout } from 'redux/actions/user-info/user-info.actions';
 import {
     deleteIncidentApi,
     getAllIncidentsApi,
