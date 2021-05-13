@@ -20,7 +20,7 @@ const EditIncidentFormContainer = memo(() => {
     const editIncidentData = useMemo(
         () =>
             listOfIncidents.find(
-                (incident) => incident._id === editedIncidentId
+                (incident: Incident) => incident._id === editedIncidentId
             ) as Incident,
         // eslint-disable-next-line react-hooks/exhaustive-deps
         [editedIncidentId]
