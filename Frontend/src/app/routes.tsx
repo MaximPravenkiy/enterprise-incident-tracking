@@ -1,15 +1,15 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import { RootReducer } from 'redux/store/reducers/rootReducer';
-import RegistrationContainer from 'containers/Registration.container';
-import LoginContainer from 'containers/Login.container';
-import IncidentsContainer from 'containers/Incidents.container';
-import ForgotPassword from 'components/Main/Forms/ForgotPassword/ForgotPassword';
+import { RootReducer } from 'redux/reducers/root.reducer';
+import RegistrationContainer from 'components/main/forms/registration/registration-form.container';
+import LoginFormContainer from 'components/main/forms/login/login-form.container';
+import IncidentsContainer from 'components/main/incidents/incidents.container';
+import ForgotPasswordFormContainer from 'components/main/forms/forgot-password/forgot-password-form.container';
 
 const Routes = () => {
     const isAuth = useSelector(
-        ({ loginReducer }: RootReducer) => loginReducer.isAuth
+        ({ userInfoReducer }: RootReducer) => userInfoReducer.isAuth
     );
 
     return (
@@ -36,7 +36,11 @@ const Routes = () => {
                 exact
                 path="/login"
                 component={() =>
-                    isAuth ? <Redirect to="/incidents" /> : <LoginContainer />
+                    isAuth ? (
+                        <Redirect to="/incidents" />
+                    ) : (
+                        <LoginFormContainer />
+                    )
                 }
             />
             <Route
@@ -54,7 +58,11 @@ const Routes = () => {
                 exact
                 path="/forgot-password"
                 component={() =>
-                    isAuth ? <Redirect to="/incidents" /> : <ForgotPassword />
+                    isAuth ? (
+                        <Redirect to="/incidents" />
+                    ) : (
+                        <ForgotPasswordFormContainer />
+                    )
                 }
             />
             <Redirect to="/invalid-page" />
