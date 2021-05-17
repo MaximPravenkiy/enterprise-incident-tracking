@@ -1,3 +1,5 @@
+import moment, { Moment } from 'moment';
+
 export const formItemLayout = {
     labelCol: {
         xs: { span: 24 },
@@ -85,3 +87,6 @@ export const configPosition = {
         }
     ]
 };
+
+export const disabledDate = (currentDate: Moment) =>
+    currentDate && currentDate >= moment().startOf('day');

@@ -8,7 +8,8 @@ import {
     configPassword,
     configPosition,
     formItemLayout,
-    tailFormItemLayout
+    tailFormItemLayout,
+    disabledDate
 } from './registration-form.data';
 
 const RegistrationForm: FC<RegistrationFormTypes> = memo(
@@ -56,7 +57,7 @@ const RegistrationForm: FC<RegistrationFormTypes> = memo(
                 </Form.Item>
 
                 <Form.Item {...configDateOfBirth}>
-                    <DatePicker />
+                    <DatePicker disabledDate={disabledDate} />
                 </Form.Item>
 
                 <Form.Item {...configPosition}>
