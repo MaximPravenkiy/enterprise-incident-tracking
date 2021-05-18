@@ -22,6 +22,7 @@ import {
 import { decode } from 'jsonwebtoken';
 import { DecodeAccessToken } from 'common/types/login';
 import { postLoginApi, restorePasswordApi } from './api/api';
+import { showOwnIncidents } from '../actions/incidents/incidents.actions';
 
 type ResponseLoginType = SagaReturnType<typeof postLoginApi>;
 type ResponseRestorePasswordType = SagaReturnType<typeof restorePasswordApi>;
@@ -92,6 +93,7 @@ function* restorePasswordWorker({
 function* logoutWorker() {
     localStorage.clear();
     yield put(logout());
+    yield put(showOwnIncidents());
 }
 
 function* loginWatcher() {

@@ -6,7 +6,8 @@ const refreshTokenApi = (refreshToken: string) =>
     axios.put('/refresh-token', { refreshToken });
 
 const axiosWithAuthorization = async (config = {}) => {
-    const { accessToken, refreshToken } = JSON.parse(
+    // eslint-disable-next-line prefer-const
+    let { accessToken, refreshToken } = JSON.parse(
         localStorage.getItem('tokens') as string
     );
     const { exp } = decode(accessToken) as DecodeAccessToken;
@@ -15,6 +16,7 @@ const axiosWithAuthorization = async (config = {}) => {
         try {
             const response = await refreshTokenApi(refreshToken);
             const newTokens = response.data;
+            accessToken = newTokens.accessToken;
             localStorage.setItem('tokens', JSON.stringify(newTokens));
         } catch (e) {
             console.log(e.response.data.message);

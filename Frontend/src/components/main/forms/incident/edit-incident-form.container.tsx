@@ -25,11 +25,13 @@ const EditIncidentFormContainer = memo(() => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
         [editedIncidentId]
     );
+
     const valuesEditIncidentForm = useMemo(
         () =>
             editIncidentData
                 ? {
                       ...editIncidentData,
+                      assignee: editIncidentData.owner,
                       startDate: getDate(editIncidentData.startDate),
                       dueDate: getDate(editIncidentData.dueDate)
                   }
@@ -49,9 +51,14 @@ const EditIncidentFormContainer = memo(() => {
 
     const onFinish = useCallback(
         (values: CreateIncident) => {
+            const assigneeCandidate = users.find(
+                (user) => user.id === values.assignee
+            );
+            const assignee = assigneeCandidate ? assigneeCandidate.label : '';
             const incidentFormData = {
                 ...values,
-                owner: editIncidentData.owner
+                assignee,
+                owner: values.assignee
             };
 
             dispatch(updateIncident(incidentFormData, editedIncidentId));

@@ -80,7 +80,8 @@ function incidentsReducer(
             return {
                 ...state,
                 isCreateModalVisible: false,
-                isEditModalVisible: false
+                isEditModalVisible: false,
+                editedIncidentId: ''
             };
         case UPDATE_VALUES_CREATE_INCIDENT_FORM:
             return {
