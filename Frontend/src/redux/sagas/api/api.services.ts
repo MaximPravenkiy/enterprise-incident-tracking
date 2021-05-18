@@ -1,9 +1,9 @@
 import { decode } from 'jsonwebtoken';
 import axios from 'axios';
-import { DecodeAccessToken } from 'common/types/login';
+import { DecodeAccessToken, Token } from 'common/types/login';
 
 const refreshTokenApi = (refreshToken: string) =>
-    axios.put('/refresh-token', { refreshToken });
+    axios.put<Token>('/refresh-token', { refreshToken });
 
 const axiosWithAuthorization = async (config = {}) => {
     // eslint-disable-next-line prefer-const
